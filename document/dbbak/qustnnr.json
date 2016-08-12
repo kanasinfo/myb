@@ -1,0 +1,1085 @@
+{
+    "qustnr_tmplt_id" : "1212sdfdssddfwsdffdsdsfsdfeiujh",
+    "industry" :["餐饮","中式正餐","业态1"],
+    "qustnr_name" : "测试问卷",
+    "tenement_id" : "1212_sdfds_sddfw_sdfsdfdsfsdf_s",
+    "credit_amount" : "1000",
+    "collected_amount" : "500",
+    "company_name" : "xxxx餐厅",
+    "created_time" : "2015-11-01 19:41:00",
+    "updated_time" : "2015-11-03 19:41:00",
+    "first_received_time" : "2015-11-01 19:41:00", 
+    "qustnnr_status" :"1",   
+    "welcome":{
+    	"active_flag":true,
+    	"welcome_msg":"欢迎填写问卷"
+    }
+    "store":[
+        {
+            "store_id" : "storesdfdssddfwsdfsdfdsfsdfsijhy",
+            "store_name" : "门店1",
+            "address": "长安街",
+            "active_flag":"y",
+            "sort_num" : "0"
+        },
+        {
+            "store_id" : "storesdfdss3edwsdfsdfdsfsdfsmijh",
+            "store_name" : "门店2",
+            "address": "知春路12号",
+            "active_flag":"y",
+            "sort_num" : "1"
+        },
+        {
+            "store_id" : "storesgrdssddfwsdfsdfdsfsdfsdfcs",
+            "store_name" : "门店3",
+            "address": "广渠门3号",
+            "active_flag":"y",
+            "sort_num" : "2"
+        }
+      ],
+     "store_group":[
+         {
+            "store_group_id" : "storesdfdssddfwsdfsdfdsfsdfsijhy",
+            "store_group_name" : "门店1",
+            "store_ids" : ["storesgrdssddfwsdfsdfdsfsdfsdfcs"],
+            "active_flag":"y",
+            "sort_num" : "0"
+        } 
+     ], 
+     "chart_mapping":[{
+			"id": "2a2f67018bc645f197c562c96edd35b2",
+			"question_group_id": "9b75c031d45647d3b8cee887fba3e634",
+			"question_id": "5ce948f174a440c0be20030b112ebbc0",
+			"chart_type": ["p8", "p411", "p11", "p10", "p13"]
+		}, {
+			"id": "33a4261b406944e18baa9a9a92cee728",
+			"question_group_id": "9b75c031d45647d3b8cee887fba3e634",
+			"question_id": "fcf21c3c05954e7a8c27193e7b0eaeec",
+			"chart_type": ["p81", "d1", null, null, null]
+		}, {
+			"id": "7547071df55c4bbc9c8579844a438c79",
+			"question_group_id": "17e47e9fc66b45a09d80baeb766ba156",
+			"question_id": null,
+			"chart_type": ["d4", "d2", "d7", "d8", null]
+		}, {
+			"id": "af2191c0de694757b5b1095edb03265f",
+			"question_group_id": "904f327e83484031938860904bd47460",
+			"question_id": null,
+			"chart_type": ["d3", "p52", "d5", "d6", null]
+		}, {
+			"id": "af2191c0de694757b5b1095edb03266f",
+			"question_group_id": "904f327e83484031938860904bd47461",
+			"question_id": null,
+			"chart_type": [null, "p63", "p64", null, null]
+		}, {
+			"id": "af2191c0de694757b5b1095edb03267f",
+			"question_group_id": "904f327e83484031938860904bd47462",
+			"question_id": null,
+			"chart_type": [null, "p68", "p69", null, null]
+		}, {
+			"id": "e5e788f690754fd6aeae57b338a0a8b3",
+			"question_group_id": "9b75c031d45647d3b8cee887fba3e634",
+			"question_id": "f22f7b7f7c7842308a01060d24ea728b",
+			"chart_type": ["p8", "p41", "p11", "p10", "p13"]
+		}, {
+			"id": "e8e62352db1941d9a6876869e2cf7e5f",
+			"question_group_id": "f07574753d644908924f313f7cc0fc8f",
+			"question_id": null,
+			"chart_type": ["d73", "d1", "p80", "p73", null]
+		}, {
+			"id": "f249ce9eb40b4ce9b9fc9563708dde7f",
+			"question_group_id": "9b75c031d45647d3b8cee887fba3e634",
+			"question_id": "7760d7f2400d4fc99f9606708c9dcd00",
+			"chart_type": ["p8", "p4", "p11", "p10", "p13"]
+		}],
+    "questions" : [
+        {
+            "question_id" : "bad7aa2dd8a641f896d464260b3b7063",
+            "question_group_id" : "9b75c031d45647d3b8cee887fba3e634",
+            "question_group_name" : "总体满意度",
+            "question_group_value" : "顾客与店家的整体关系是否健康?",
+            "question_group_sort_num":0,
+            "question_name" : "总体满意度",
+            "question_value" : "您对本次消费的满意程度如何？",
+            "sort_num" : 0,
+            "template_flag" :true,
+            "active_flag" :true,
+            "active_period" : [
+            	{
+            		"start_time":"2015/01/30",
+            		"end_time":"2015/08/30"
+            	},
+            	{
+            		"start_time":"2015/10/30",
+            		"end_time":""
+            	}
+            ], 
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不满意",
+                    "option_value" : 1,
+                    "template_flag" :true,
+            		"active_flag" :true,
+		            "active_period" : [
+		            	{
+		            		"start_time":"2015/01/30",
+		            		"end_time":"2015/08/30"
+		            	},
+		            	{
+		            		"start_time":"2015/10/30",
+		            		"end_time":""
+		            	}
+		            ]                    
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "一般",
+                    "option_value" : 5
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :2,
+                    "option_name" : "满意",
+                    "option_value" : 10
+                }
+            ]
+        },
+        {
+            "question_id" : "f22f7b7f7c7842308a01060d24ea728b",
+            "question_group_id" : "9b75c031d45647d3b8cee887fba3e634",
+            "question_group_name" : "总体满意度",
+            "question_group_value" : "顾客与店家的整体关系是否健康?",
+            "question_group_sort_num":0,
+            "question_name" : "再购意愿",
+            "question_value" : "您今后是否会再次光顾本店?",
+            "sort_num" : 1,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不满意",
+                    "option_value" : 1
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : 5
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "满意",
+                    "option_value" : 10
+                }
+            ]
+        },
+        {
+            "question_id" : "5ce948f174a440c0be20030b112ebbc0",
+            "question_group_id" : "9b75c031d45647d3b8cee887fba3e634",
+            "question_group_name" : "总体满意度",
+            "question_group_value" : "顾客与店家的整体关系是否健康?",
+            "question_group_sort_num":0,
+            "question_name" : "推荐意愿",
+            "question_value" : "您是否愿意推荐本店给身边的人?",
+            "sort_num" : 2,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : 1
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : 5
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : 10
+                }
+            ]
+        },
+        {
+            "question_id" : "fcf21c3c05954e7a8c27193e7b0eaeec",
+            "question_group_id" : "9b75c031d45647d3b8cee887fba3e634",
+            "question_group_name" : "总体满意度",
+            "question_group_value" : "顾客与店家的整体关系是否健康?",
+            "question_group_sort_num":0,
+            "question_name" : "DIY总体指标",
+            "question_value" : "DIY总体指标?",
+            "sort_num" : 4,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "904f327e83484031938860904bd47460",
+            "question_group_name" : "顾客满意度驱动因素",
+            "question_group_value" : "顾客在各服务环节的体验满意度如何?",
+            "question_group_sort_num":1,
+            "question_name" : "卫生程度",
+            "question_value" : "卫生程度?",
+            "sort_num" : 0,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "904f327e83484031938860904bd47460",
+            "question_group_name" : "顾客满意度驱动因素",
+            "question_group_value" : "顾客在各服务环节的体验满意度如何?",
+            "question_group_sort_num":1,
+            "question_name" : "菜品口味",
+            "question_value" : "菜品口味?",
+            "sort_num" : 1,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "904f327e83484031938860904bd47460",
+            "question_group_name" : "顾客满意度驱动因素",
+            "question_group_value" : "顾客在各服务环节的体验满意度如何?",
+            "question_group_sort_num":1,
+            "question_name" : "菜品种类",
+            "question_value" : "菜品种类?",
+            "sort_num" : 2,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "904f327e83484031938860904bd47460",
+            "question_group_name" : "顾客满意度驱动因素",
+            "question_group_value" : "顾客在各服务环节的体验满意度如何?",
+            "question_group_sort_num":1,
+            "question_name" : "就餐环境",
+            "question_value" : "就餐环境?",
+            "sort_num" : 3,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "904f327e83484031938860904bd47460",
+            "question_group_name" : "顾客满意度驱动因素",
+            "question_group_value" : "顾客在各服务环节的体验满意度如何?",
+            "question_group_sort_num":1,
+            "question_name" : "卫生程度",
+            "question_value" : "卫生程度?",
+            "sort_num" : 4,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "904f327e83484031938860904bd47460",
+            "question_group_name" : "顾客满意度驱动因素",
+            "question_group_value" : "顾客在各服务环节的体验满意度如何?",
+            "question_group_sort_num":1,
+            "question_name" : "服务态度",
+            "question_value" : "服务态度?",
+            "sort_num" : 5,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "904f327e83484031938860904bd47460",
+            "question_group_name" : "顾客满意度驱动因素",
+            "question_group_value" : "顾客在各服务环节的体验满意度如何?",
+            "question_group_sort_num":1,
+            "question_name" : "备餐速度",
+            "question_value" : "备餐速度?",
+            "sort_num" : 6,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "904f327e83484031938860904bd47460",
+            "question_group_name" : "顾客满意度驱动因素",
+            "question_group_value" : "顾客在各服务环节的体验满意度如何?",
+            "question_group_sort_num":1,
+            "question_name" : "结账速度",
+            "question_value" : "结账速度?",
+            "sort_num" : 7,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "904f327e83484031938860904bd47460",
+            "question_group_name" : "顾客满意度驱动因素",
+            "question_group_value" : "顾客在各服务环节的体验满意度如何?",
+            "question_group_sort_num":1,
+            "question_name" : "DIY驱动因素",
+            "question_value" : "DIY驱动因素?",
+            "sort_num" : 8,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "非常不愿意",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfds",
+                    "option_name" : "一般",
+                    "active_flag" :"y",
+                    "option_value" : "5"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "愿意",
+                    "option_value" : "10"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",
+            "question_group_name" : "服务规范评价",
+            "question_group_value" : "哪些服务规范没有达标?",
+            "question_group_sort_num":2,
+            "question_name" : "未招呼领座",
+            "question_value" : "未招呼领座?",
+            "sort_num" : 0,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "是",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "否",
+                    "option_value" : "1"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",
+            "question_group_name" : "服务规范评价",
+            "question_group_value" : "哪些服务规范没有达标?",
+            "question_group_sort_num":2,
+            "question_name" : "未及时送菜单",
+            "question_value" : "未及时送菜单",
+            "sort_num" : 1,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "是",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "否",
+                    "option_value" : "1"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",
+            "question_group_name" : "服务规范评价",
+            "question_group_value" : "哪些服务规范没有达标?",
+            "question_group_sort_num":2,
+            "question_name" : "未倒水",
+            "question_value" : "未倒水",
+            "sort_num" : 2,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "是",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "否",
+                    "option_value" : "1"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",
+            "question_group_name" : "服务规范评价",
+            "question_group_value" : "哪些服务规范没有达标?",
+            "question_group_sort_num":2,
+            "question_name" : "未准备好餐具",
+            "question_value" : "未准备好餐具",
+            "sort_num" : 3,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "是",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "否",
+                    "option_value" : "1"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",
+            "question_group_name" : "服务规范评价",
+            "question_group_value" : "哪些服务规范没有达标?",
+            "question_group_sort_num":2,
+            "question_name" : "未提示上餐时间",
+            "question_value" : "未提示上餐时间",
+            "sort_num" : 4,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "是",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "否",
+                    "option_value" : "1"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",
+            "question_group_name" : "服务规范评价",
+            "question_group_value" : "哪些服务规范没有达标?",
+            "question_group_sort_num":2,
+            "question_name" : "未报菜名",
+            "question_value" : "未报菜名",
+            "sort_num" : 5,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "未报菜名",
+                    "option_value" : "未报菜名"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",
+            "question_group_name" : "服务规范评价",
+            "question_group_value" : "哪些服务规范没有达标?",
+            "question_group_sort_num":2,
+            "question_name" : "未及时响应",
+            "question_value" : "未及时响应",
+            "sort_num" : 6,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "是",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "否",
+                    "option_value" : "1"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",
+            "question_group_name" : "服务规范评价",
+            "question_group_value" : "哪些服务规范没有达标?",
+            "question_group_sort_num":2,
+            "question_name" : "未道别",
+            "question_value" : "未道别",
+            "sort_num" : 7,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "是",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "否",
+                    "option_value" : "1"
+                }
+            ]
+        },
+        {
+            "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+            "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",
+            "question_group_name" : "服务规范评价",
+            "question_group_value" : "哪些服务规范没有达标?",
+            "question_group_sort_num":2,
+            "question_name" : "DIY服务规范",
+            "question_value" : "DIY服务规范",
+            "sort_num" : 8,
+            "active_flag" :"y",
+            "options" : [
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :0,
+                    "option_name" : "是",
+                    "option_value" : "1"
+                },
+                {
+                    "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfcs",
+                    "active_flag" :"y",
+                    "sort_num" :1,
+                    "option_name" : "否",
+                    "option_value" : "1"
+                }
+            ]
+        },
+        {
+          "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+          "question_group_id" : "f07574753d644908924f313f7cc0fc8f",
+          "question_group_name" : "顾客消费习惯及背景信息",
+          "question_group_value" : "我的顾客有哪些消费特征?",
+          "question_group_sort_num":3,
+          "question_name" : "就餐时间",
+          "question_value" : "本次就餐是早餐、午餐，还是晚餐？",
+          "active_flag" :"y",
+          "sort_num" :0,
+          "options" : [
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "早餐",
+                "active_flag" :"y",
+                "sort_num" :0,
+                "option_value" : "早餐"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "中餐",
+                "active_flag" :"y",
+                "sort_num" :1,
+                "option_value" : "中餐"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "晚餐",
+                "active_flag" :"n",
+                "sort_num" :2,
+                "option_value" : "晚餐"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "间餐",
+                "active_flag" :"n",
+                "sort_num" :3,
+                "option_value" : "间餐"
+              }
+          ]
+        },
+        {
+          "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+          "question_group_id" : "f07574753d644908924f313f7cc0fc8f",
+          "question_group_name" : "顾客消费习惯及背景信息",
+          "question_group_value" : "我的顾客有哪些消费特征?",
+          "question_group_sort_num":3,
+          "question_name" : "新老顾客",
+          "question_value" : "请问您是否是经常来本店消费？",
+          "sort_num" :1,
+          "active_flag" :"y",
+          "options" : [
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "第一次",
+                "active_flag" :"y",
+                "sort_num" :0,
+                "option_value" : "第一次"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "不常来，但也不是第一次",
+                "active_flag" :"y",
+                "sort_num" :1,
+                "option_value" : "不常来，但也不是第一次"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "经常来",
+                "active_flag" :"n",
+                "sort_num" :2,
+                "option_value" : "经常来"
+              }
+          ]
+        },
+        {
+          "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+          "question_group_id" : "f07574753d644908924f313f7cc0fc8f",
+          "question_group_name" : "顾客消费习惯及背景信息",
+          "question_group_value" : "我的顾客有哪些消费特征?",
+          "question_group_sort_num":3,
+          "question_name" : "和谁一起消费",
+          "question_value" : "本次消费是一个人，还是和其他人？",
+          "sort_num" :2,
+          "active_flag" :"y",
+          "options" : [
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "自己",
+                "active_flag" :"y",
+                "sort_num" :0,
+                "option_value" : "自己"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "和同事",
+                "active_flag" :"y",
+                "sort_num" :1,
+                "option_value" : "和同事"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "和家人或亲戚",
+                "active_flag" :"n",
+                "sort_num" :2,
+                "option_value" : "和家人或亲戚"
+              }
+          ]
+        },
+        {
+          "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+          "question_group_id" : "f07574753d644908924f313f7cc0fc8f",
+          "question_group_name" : "顾客消费习惯及背景信息",
+          "question_group_value" : "我的顾客有哪些消费特征?",
+          "question_group_sort_num":3,
+          "question_name" : "年龄",
+          "question_value" : "请问您的年龄段？",
+          "sort_num" :3,
+          "active_flag" :"y",
+          "options" : [
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "20岁以下",
+                "active_flag" :"y",
+                "sort_num" :0,
+                "option_value" : "20岁以下"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "21-25岁",
+                "active_flag" :"y",
+                "sort_num" :1,
+                "option_value" : "21-25岁"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "26-30岁",
+                "active_flag" :"n",
+                "sort_num" :2,
+                "option_value" : "26-30岁"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "31-35岁",
+                "active_flag" :"n",
+                "sort_num" :3,
+                "option_value" : "31-35岁"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "36-40岁",
+                "active_flag" :"n",
+                "sort_num" :4,
+                "option_value" : "36-40岁"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "41-45岁",
+                "active_flag" :"n",
+                "sort_num" :5,
+                "option_value" : "41-45岁"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "46-50岁",
+                "active_flag" :"n",
+                "sort_num" :6,
+                "option_value" : "46-50岁"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "51岁以上",
+                "active_flag" :"n",
+                "sort_num" :7,
+                "option_value" : "51岁以上"
+              }
+          ]
+        },
+        {
+          "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+          "question_group_id" : "f07574753d644908924f313f7cc0fc8f",
+          "question_group_name" : "顾客消费习惯及背景信息",
+          "question_group_value" : "我的顾客有哪些消费特征?",
+          "question_group_sort_num":3,
+          "question_name" : "性别",
+          "question_value" : "请问您是？",
+          "active_flag" :"y",
+          "sort_num" :4,
+          "options" : [
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "先生",
+                "active_flag" :"y",
+                "sort_num" :0,
+                "option_value" : "先生"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "女士",
+                "active_flag" :"y",
+                "sort_num" :1,
+                "option_value" : "女士"
+              }
+          ]
+        },
+        {
+          "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+          "question_group_id" : "f07574753d644908924f313f7cc0fc8f",
+          "question_group_name" : "顾客消费习惯及背景信息",
+          "question_group_value" : "我的顾客有哪些消费特征?",
+          "question_group_sort_num":3,
+          "question_name" : "DIY消费习惯和背景信息",
+          "question_value" : "DIY消费习惯和背景信息",
+          "active_flag" :"y",
+          "sort_num" :4,
+          "options" : [
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "DYI选项",
+                "active_flag" :"y",
+                "sort_num" :0,
+                "option_value" : "DIY选项"
+              },
+              {
+                "option_id" : "optiongroupsddfwsdfsdfdsfsdfsdfdw",
+                "option_name" : "DIY选项2",
+                "active_flag" :"y",
+                "sort_num" :1,
+                "option_value" : "DIY选项2"
+              }
+          ]
+        }
+    ],
+      "filters":[
+    	{
+    		"id":"12917090a7074945b2edb5d7b965c42e",
+    		"name":"保存条件1",
+    		"period":"{'start_time':'2015/10/30','end_time':null}",
+    		"store" : "{'store_type':'store','store_id':['d36d8631aac6425d819bf46b0bd99d5c','12917090a7074945b2edb5d7b965c42e']}",    		
+    		"value":"{'questionid1':['optionid1','optionid2'],'questionid2':['optionid1','optionid2']}",
+    		"label":"{'问题1':['选项1','选项2'],'问题2':['选项1','选项2']}"
+    	},
+    	{
+    		"id":"54237090a7074945b2edb5d7b965c42e",
+    		"name":"保存条件2",
+    		"period":"{'start_time':'2015/10/30','end_time':null}",
+    		"store" : "{'store_type':'store','store_id':['d36d8631aac6425d819bf46b0bd99d5c','12917090a7074945b2edb5d7b965c42e']}",   		
+    		"value":"{'questionid1':['optionid1','optionid2'],'questionid2':['optionid1','optionid2']}",
+    		"label":"{'问题1':['选项1','选项2'],'问题2':['选项1','选项2']}"
+    	},
+    	{
+    		"id":"98767090a7074945b2edb5d7b965c42e",
+    		"name":"保存条件3",
+    		"period":"{'start_time':'2015/10/30','end_time':null}",
+    		"store" : "{'store_type':'store','store_id':['d36d8631aac6425d819bf46b0bd99d5c','12917090a7074945b2edb5d7b965c42e']}",  
+    		"value":"{'bad7aa2dd8a641f896d464260b3b7063':['bad7aa2dd8a641f896d464260b3b7063-8','bad7aa2dd8a641f896d464260b3b7063-9','bad7aa2dd8a641f896d464260b3b7063-10'],'f22f7b7f7c7842308a01060d24ea728b':['f22f7b7f7c7842308a01060d24ea728b-6','f22f7b7f7c7842308a01060d24ea728b-7'],'eea2ad0d30f149518ff13d3d132053d3':'eea2ad0d30f149518ff13d3d132053d3','22f407a71723406e9ac7f9e11055c9b2':'22f407a71723406e9ac7f9e11055c9b2','1ac9afe3ef6c40728673dee1b9c8d0c8':['334ca4c5ec1248e18e87c5938597f323','3e5b0a663f624606aeba8c2d69c452b8'],'a2dcda11b10449ee9f3e8f7fe7eb4e70':['334ca4c5ec1248e18e87c5938597f323','3e5b0a663f624606aeba8c2d69c452b8']}",
+    		"label":"{'总体满意度':['8','9','10'],'再购意愿':['6','7'],'未招呼领座':'未招呼领座','未及时送菜单':'未及时送菜单','就餐时间':['早餐','中餐'],'年龄':['20岁以下','31-35岁']}"
+    	}
+    ],
+    "dimensions":[
+    	{
+    		"id":"98767090a7074945b2edb5d7b965c42e",
+    		"name":"dimension1",
+    		"members": [
+		        	{
+		        		"id":"12917090a7074945b2edb5d7b965c42e",
+		        		"name":"保存条件1",
+			    		"period":"{'start_time':'2015/10/30','end_time':null}",
+			    		"store" : "{'store_type':'store','store_id':['d36d8631aac6425d819bf46b0bd99d5c','12917090a7074945b2edb5d7b965c42e']}",   		
+		        		"value":"{'questionid1':['optionid1','optionid2'],'questionid2':['optionid1','optionid2']}",
+		        		"label":"{'问题1':['选项1','选项2'],'问题2':['选项1','选项2']}"
+		        	},
+		        	{
+		        		"id":"54237090a7074945b2edb5d7b965c42e",
+		        		"name":"保存条件2",
+			    		"period":"{'start_time':'2015/10/30','end_time':null}",
+			    		"store" : "{'store_type':'store','store_id':['d36d8631aac6425d819bf46b0bd99d5c','12917090a7074945b2edb5d7b965c42e']}",    		
+		        		"value":"{'questionid1':['optionid1','optionid2'],'questionid2':['optionid1','optionid2']}",
+		        		"label":"{'问题1':['选项1','选项2'],'问题2':['选项1','选项2']}"
+		        	},
+		        	{
+		        		"id":"98767090a7074945b2edb5d7b965c42e",
+		        		"name":"保存条件3",
+			    		"period":"{'start_time':'2015/10/30','end_time':null}",
+			    		"store" : "{'store_type':'store','store_id':['d36d8631aac6425d819bf46b0bd99d5c','12917090a7074945b2edb5d7b965c42e']}",  
+		        		"value":"{'bad7aa2dd8a641f896d464260b3b7063':['bad7aa2dd8a641f896d464260b3b7063-8','bad7aa2dd8a641f896d464260b3b7063-9','bad7aa2dd8a641f896d464260b3b7063-10'],'f22f7b7f7c7842308a01060d24ea728b':['f22f7b7f7c7842308a01060d24ea728b-6','f22f7b7f7c7842308a01060d24ea728b-7'],'eea2ad0d30f149518ff13d3d132053d3':'eea2ad0d30f149518ff13d3d132053d3','22f407a71723406e9ac7f9e11055c9b2':'22f407a71723406e9ac7f9e11055c9b2','1ac9afe3ef6c40728673dee1b9c8d0c8':['334ca4c5ec1248e18e87c5938597f323','3e5b0a663f624606aeba8c2d69c452b8'],'a2dcda11b10449ee9f3e8f7fe7eb4e70':['334ca4c5ec1248e18e87c5938597f323','3e5b0a663f624606aeba8c2d69c452b8']}",
+		        		"label":"{'总体满意度':['8','9','10'],'再购意愿':['6','7'],'未招呼领座':'未招呼领座','未及时送菜单':'未及时送菜单','就餐时间':['早餐','中餐'],'年龄':['20岁以下','31-35岁']}"
+		        	}
+    		]    	
+    	}
+    ],
+    "archives":[
+    	{
+    		"name":"",
+    		"imagefile":"",
+    		"leftnav":"questionid",
+    		"filters":"",
+    		"dimensions":""
+    	}
+    ]
+    }

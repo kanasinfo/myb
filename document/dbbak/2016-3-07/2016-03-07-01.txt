@@ -1,0 +1,11 @@
+该补丁添加以下功能
+1：把qustnr_group表明修改为question_group
+question_group添加以下字段
+1）qustnr_templt_id：模板ID
+2）active_flag：是否为活动分组
+3）norm_calc_val :NORM 值
+4）norm_input_val ：NORM 值
+5)special_falg 特殊类型，针对于电话号码的
+
+question添加以下字段
+top_flag:该字段是否置顶

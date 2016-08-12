@@ -1,0 +1,179 @@
+﻿{
+  "_id" : ObjectId("566453018e11a61c9a42df62"),
+  "questionnaire_id" : "56640f088e11a61c9a42df58",
+  "qustnr_name" : "测试问卷",
+  "end_user_identity" : "13811123256",
+  "tenement_id" : "1212_sdfds_sddfw_sdfsdfdsfsdf_s",
+  "store_id" : "storesgrdssddfwsdfsdfdsfsdfsdfcs",
+  "store_name" : "门店3",
+  "created_time" : "2015-12-02 12:22:21",
+  "answers" : [{
+      "question_id" : "bad7aa2dd8a641f896d464260b3b7063",
+      "question_group_id" : "9b75c031d45647d3b8cee887fba3e634",
+      "question_group_name" : "顾客总体健康度",
+      "question_name" : "总体满意度",
+      "option_value" : 7
+	  }, {
+      "question_id" : "f22f7b7f7c7842308a01060d24ea728b",
+      "question_group_id" : "9b75c031d45647d3b8cee887fba3e634",	
+      "question_group_name" : "顾客总体健康度",
+      "question_name" : "再购意愿",
+      "option_value" : 4
+    }, {
+      "question_id" : "5ce948f174a440c0be20030b112ebbc0",
+      "question_group_id" : "9b75c031d45647d3b8cee887fba3e634",	
+      "question_group_name" : "顾客总体健康度",
+      "question_name" : "推荐意愿",
+      "option_value" : 4
+    }, {
+      "question_id" : "fcf21c3c05954e7a8c27193e7b0eaeec",
+      "question_group_id" : "9b75c031d45647d3b8cee887fba3e634",	
+      "question_group_name" : "顾客总体健康度",
+      "question_name" : "DIY总体指标",
+      "option_value" : 4
+    }, {
+      "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "904f327e83484031938860904bd47460",	
+      "question_group_name" : "顾客满意度驱动因素",
+      "question_name" : "卫生程度",
+      "option_value" : 3
+    }, {
+      "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "904f327e83484031938860904bd47460",	
+      "question_group_name" : "顾客满意度驱动因素",
+      "question_name" : "菜品口味",
+      "option_value" : 3
+    }, {
+      "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "904f327e83484031938860904bd47460",	
+      "question_group_name" : "顾客满意度驱动因素",
+      "question_name" : "菜品种类",
+      "option_value" : ''
+    }, {
+      "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "904f327e83484031938860904bd47460",	
+      "question_group_name" : "顾客满意度驱动因素",
+      "question_name" : "就餐环境",
+      "option_value" : 4
+    }, {
+      "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "904f327e83484031938860904bd47460",	
+      "question_group_name" : "顾客满意度驱动因素",
+      "question_name" : "服务态度",
+      "option_value" : 5
+    }, {
+      "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "904f327e83484031938860904bd47460",	
+      "question_group_name" : "顾客满意度驱动因素",
+      "question_name" : "备餐速度",
+      "option_value" : 5
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "904f327e83484031938860904bd47460",		
+      "question_group_name" : "顾客满意度驱动因素",
+      "question_name" : "结账速度",
+      "option_value" : 5
+    }, {
+      "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "904f327e83484031938860904bd47460",		
+      "question_group_name" : "顾客满意度驱动因素",
+      "question_name" : "DIY驱动因素",
+      "option_value" : 5
+    }, {
+      "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",	
+      "question_group_name" : "服务规范评价",
+      "question_name" : "未招呼领座",
+      "option_value" : 1
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",		
+      "question_group_name" : "服务规范评价",
+      "question_name" : "未及时送菜单",
+      "option_value" : 0
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",			
+      "question_group_name" : "服务规范评价",
+      "question_name" : "未倒水",
+      "option_value" : 0
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",			
+      "question_group_name" : "服务规范评价",
+      "question_name" : "未准备好餐具",
+      "option_value" : 1
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",			
+      "question_group_name" : "服务规范评价",
+      "question_name" : "未确认点单",
+      "option_value" : 1
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",			
+      "question_group_name" : "服务规范评价",
+      "question_name" : "未提示上餐时间",
+      "option_value" : 0
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",			
+      "question_group_name" : "服务规范评价",
+      "question_name" : "未报菜名",
+      "option_value" : 0
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",			
+      "question_group_name" : "服务规范评价",
+      "question_name" : "未及时响应",
+      "option_value" : 0
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",			
+      "question_group_name" : "服务规范评价",
+      "question_name" : "未道别",
+      "option_value" : 0
+    }, {
+	  "question_id" : "questsgrdssddfwsdfsdfdsfsdfssdcs",
+      "question_group_id" : "17e47e9fc66b45a09d80baeb766ba156",			
+      "question_group_name" : "服务规范评价",
+      "question_name" : "DIY服务规范",
+      "option_value" : 0
+    }, {
+      "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+      "question_group_id" : "f07574753d644908924f313f7cc0fc8f",	
+      "question_group_name" : "顾客消费习惯及背景信息",
+      "question_name" : "就餐时间",
+      "option_value" : "早餐"
+    }, {
+      "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+      "question_group_id" : "f07574753d644908924f313f7cc0fc8f",	
+      "question_group_name" : "顾客消费习惯及背景信息",
+      "question_name" : "新老顾客",
+      "option_value" : "第一次"
+    }, {
+      "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+      "question_group_id" : "f07574753d644908924f313f7cc0fc8f",	      
+	  "question_group_name" : "顾客消费习惯及背景信息",
+      "question_name" : "和谁一起",
+      "option_value" : "和同事"
+    }, {
+      "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+      "question_group_id" : "f07574753d644908924f313f7cc0fc8f",		
+      "question_group_name" : "顾客消费习惯及背景信息",
+      "question_name" : "年龄",
+      "option_value" : "21-25岁"
+    }, {
+      "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+      "question_group_id" : "f07574753d644908924f313f7cc0fc8f",		
+      "question_group_name" : "顾客消费习惯及背景信息",
+      "question_name" : "性别",
+      "option_value" : "先生"
+    }, {
+      "question_id" : "questsgrdssddwesdfsdfdsfsdfssdcs",
+      "question_group_id" : "f07574753d644908924f313f7cc0fc8f",		
+      "question_group_name" : "顾客消费习惯及背景信息",
+      "question_name" : "DIY消费习惯和背景信息",
+      "option_value" : "DYI选项"
+    }]
+}
