@@ -354,6 +354,7 @@
 	color:rgb(82,82,82);
 }
 .question_option_longitudinal {
+	padding-top:8px;
     margin-left: 100px;
     clear: both;
     height: auto !important;
@@ -375,6 +376,7 @@
     padding-bottom: 0px
 }
 .question_option ul {
+	margin-left:15px;
     margin-top:0px;
     padding: 0px;
     margin-bottom: 0px;
