@@ -300,6 +300,41 @@ jQuery(function($) {
 			}
 		}
 	})
+	
+	$("#myEditCheck").dialog(
+			{
+				autoOpen : false,
+				height : 330,
+				width : 600,
+				modal : true,
+				buttons : {
+					"保存" : function() {
+						if ($('#MyEditRediofrom').validationEngine(
+								'validate') == false)
+							return;
+						var groupId = $("#groupId").val();
+						var templId = $("#templId").val();
+						var questionName = $("#redioQuestionName").val();
+						var question = $("#redioQuestion").val();
+						var question_id = $("#question_id").val();
+						var questionEditCheckName = $("#questionEditCheckName").val();
+						var questionEditCheckVal = $("#questionEditCheckVal").val();
+						for(var i = 0;i<data1.questions.length;i++){
+							if(data1.questions[i].questionId==question_id){
+								data1.questions[i].questionName = redioEditQuestionName;
+								data1.questions[i].questionValue = redioEditQuestionValue;
+							}
+						}
+						$("#"+groupId+"_"+question_id).html(questionEditCheckName);
+						$("#editSpan_"+question_id).html(questionEditCheckVal);
+						$(this).dialog("close");
+					},
+					"关闭" : function() {
+						$(this).dialog("close");
+					}
+				}
+			}
+			)
 	$("#MyEditRedio").dialog(
 			{
 				autoOpen : false,
@@ -329,7 +364,6 @@ jQuery(function($) {
 						if(questionType==2){
 							$("#editSpan_"+question_id).html(redioEditQuestionValue);
 						}
-						
 						$(this).dialog("close");
 					},
 					"关闭" : function() {
@@ -932,25 +966,39 @@ jQuery(function($) {
 		} else if (type == 3) {
 			for (var i = 0; i < data1.questions.length; i++) {
 				if (data1.questions[i].questionId == questionId) {
-					$("#questionCheckName").val(data1.questions[i].questionName);
-					$("#questionCheckVal").val(data1.questions[i].questionValue);
-					for (var ii = 0; ii < data1.questions[i].options.length; ii++) {
-						var id = UUID.prototype.createUUID();
-						var html = "<tr name='delDiv' id='div_" + id + "'>";
-						html += "<td class='table_question'></td>"
-						html += "<td class='table_question_text_list'><input type='text' id="
-								+ id
-								+ " name='checkOption' data-validation-placeholder='输入不正确' class='validate[required] text-input table_question_text' value="
-								+ data1.questions[i].options[ii].optionName
-								+ " /><a onclick='delCheck(\""
-								+ id
-								+ "\")'>删除</a></td>";
-						html += "</tr>";
-						$("#tableListAll").append(html);
+					$("#option_List").empty();
+					if(templateFlag==true){
+						$("#questionEditCheckName").attr("disabled",true);
+						$("#questionEditCheckName").val(data1.questions[i].questionName);
+						$("#questionEditCheckVal").val(data1.questions[i].questionValue);
+						var html = "";
+						for (var ii = 0; ii < data1.questions[i].options.length; ii++) {
+							html=html+"<input type='checkbox' disabled style='margin-left:20px'>"+ data1.questions[i].options[ii].optionName;
+						}
+						$("#option_List").append(html);
+						$("#myEditCheck").dialog('option', 'title', question_group_name).dialog("open");
+					}else{
+						$("#questionCheckName").val(data1.questions[i].questionName);
+						$("#questionCheckVal").val(data1.questions[i].questionValue);
+						for (var ii = 0; ii < data1.questions[i].options.length; ii++) {
+							var id = UUID.prototype.createUUID();
+							var html = "<tr name='delDiv' id='div_" + id + "'>";
+							html += "<td class='table_question'></td>"
+							html += "<td class='table_question_text_list'><input type='text' id="
+									+ id
+									+ " name='checkOption' data-validation-placeholder='输入不正确' class='validate[required] text-input table_question_text' value="
+									+ data1.questions[i].options[ii].optionName
+									+ " /><a onclick='delCheck(\""
+									+ id
+									+ "\")'>删除</a></td>";
+							html += "</tr>";
+							$("#tableListAll").append(html);
+						}
+						$("#myCheck")
+								.dialog('option', 'title', question_group_name)
+								.dialog("open");
 					}
-					$("#myCheck")
-							.dialog('option', 'title', question_group_name)
-							.dialog("open");
+					
 				}
 			}
 		} else if(type=4){

@@ -163,7 +163,7 @@
                 <span style="margin-left: 115px;padding-top: 7.5px;position: absolute;color: rgb(82,82,82)"><strong>设置调查欢迎语</strong></span>
             </div>
             <div class="question_option">
-            	<textarea rows="3" cols="1" id ="welcome_msg" style="width: 615px;height: 80px;" <c:if test='${industry.activeFlag==false}'>disabled="disabled"</c:if> >${industry.welcomeMsg }</textarea>
+            	<textarea rows="3" cols="1" id ="welcome_msg" style="width: 615px;height: 70px;" <c:if test='${industry.activeFlag==false}'>disabled="disabled"</c:if> >${industry.welcomeMsg }</textarea>
             </div>
         </div>
         <div class="div_center">
@@ -172,7 +172,7 @@
                 <span style="margin-left: 115px;padding-top: 7.5px;position: absolute;color: rgb(82,82,82)"><strong>设置调查结后语</strong></span>
             </div>
             <div class="question_option">
-            	<textarea rows="3" cols="1" id ="end_welcome_msg" style="width: 615px;height: 80px;" <c:if test='${industry.endActiveFlag==false}'>disabled="disabled"</c:if> >${industry.endWelcomeMsg }</textarea>
+            	<textarea rows="3" cols="1" id ="end_welcome_msg" style="width: 615px;height: 70px;" <c:if test='${industry.endActiveFlag==false}'>disabled="disabled"</c:if> >${industry.endWelcomeMsg }</textarea>
             </div>
         </div>
         <div class="wrapper_button">
@@ -250,7 +250,6 @@
        				<td class="table_question">描述:</td>
        				<td class="table_question_background_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_background_text" id="questionCheckVal" /></td>
        			</tr>
-       			
        			<tr>
        				<td class="table_question">
        					<span>答案选项</span>
@@ -266,6 +265,28 @@
 		</div>
     </div>
     
+    <div id="myEditCheck">
+       	<div id="myOverAll_model_Check">
+       	<form action="" id="myEditCheckForm">
+			<table>
+				<tr>
+       				<td  class="table_question">名称:</td>
+       				<td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="questionEditCheckName" /></td>
+       			</tr>
+       			<tr>
+       				<td class="table_question">描述:</td>
+       				<td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="questionEditCheckVal" /></td>
+       			</tr>
+       			<tr>
+       			<td class="table_question">选项:</td>
+       				<td class="table_question_text" id="option_List">
+       					
+       				</td>
+       			</tr>
+       			</table>
+			</form>
+		</div>
+    </div>
     
      <div id="myOverAll">
 	    <div id="myOverAll_model_Check">

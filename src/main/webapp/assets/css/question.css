@@ -507,9 +507,8 @@ table>tbody>tr>td{
 }
 .table_question_text{
     margin-left: 5%;
-
     vertical-align:middle;
-    width:600px;
+    width:300px;
     text-align: left;
     height:20px;
 }
@@ -867,7 +866,7 @@ ul{
     padding-top: 2%;
 }
 input[type=text]{
-    width: 50%;
+    width: 70%;
 }
 .main_add_top_file>input{ vertical-align:middle; margin:0; padding:0}
 .file-box{ position:relative;width:100%}
