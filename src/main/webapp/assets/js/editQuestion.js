@@ -324,7 +324,12 @@ jQuery(function($) {
 								data1.questions[i].questionValue = redioEditQuestionValue;
 							}
 						}
+						var questionType = $("#questionType").val();
 						$("#"+groupId+"_"+question_id).html(redioEditQuestionName);
+						if(questionType==2){
+							$("#editSpan_"+question_id).html(redioEditQuestionValue);
+						}
+						
 						$(this).dialog("close");
 					},
 					"关闭" : function() {
@@ -398,20 +403,39 @@ jQuery(function($) {
 								var questionType = $("#questionType").val();
 								questionJson.options = optionData;
 								data1.questions.push(questionJson);
-//								onclick="selectOrunSelect('${question.key.questionGroupId}','${option.questionId}')" id="check_${option.questionId}"
-								var html = "<li id=" + question_id
+								var html = "";
+								if(MyRedioFlag==2){
+									 html = html +"<li id=" + question_id
 										+ ">" 
 										+"<input type='checkbox' onclick='selectOrunSelect(&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;)' id='check_"+question_id+"'/>"
 										+"<a href='javascript:void(0)' onclick='editquestion(&apos;"+questionType+"&apos;,&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;,&apos;"+questionJson.questionGroupName+"&apos;,"+false+")'>"
 										+"<span id="
 										+ groupId + "_" + question_id + ">"
 										+ question + "</span>"
-										+"</a>";
+										+"</a>"
+										+"<span style='margin-left: 20%; font-size:12px;color:rgb(204,204,204)' id='editSpan_"+question_id+"'>"+questionName+"</span>"
+										;
 								html = html
 										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion(&apos;"
 										+ question_id + "&apos;,&apos;"
 										+ questionName
 										+ "&apos;)'>删除</a></span></li>";
+								}else{
+									 html = html +"<li id=" + question_id
+									+ ">" 
+									+"<input type='checkbox' onclick='selectOrunSelect(&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;)' id='check_"+question_id+"'/>"
+									+"<a href='javascript:void(0)' onclick='editquestion(&apos;"+questionType+"&apos;,&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;,&apos;"+questionJson.questionGroupName+"&apos;,"+false+")'>"
+									+"<span id="
+									+ groupId + "_" + question_id + ">"
+									+ question + "</span>"
+									+"</a>";
+							html = html
+									+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion(&apos;"
+									+ question_id + "&apos;,&apos;"
+									+ questionName
+									+ "&apos;)'>删除</a></span></li>";
+								}
+								
 								for (var j = 0; j < data1.questions.length; j++) {
 									if (data1.questions[j].questionId == question_id) {
 										data1.questions.splice(j, 1);
@@ -987,8 +1011,7 @@ jQuery(function($) {
 			$("#MyRedio").dialog('option', 'title', question_group_name).dialog("open");
 		} else if (group_type == 2) {
 			$("#MyRedioFlag").val(2);
-			$("#MyRedio").dialog('option', 'title', question_group_name)
-					.dialog("open");
+			$("#MyRedio").dialog('option', 'title', question_group_name).dialog("open");
 		} else if (group_type == 3) {
 			$("#myCheck").dialog('option', 'title', question_group_name).dialog("open");
 		} else if (group_type == 4) {
