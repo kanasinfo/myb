@@ -128,7 +128,7 @@
 		           			<a href="javascript:void(0)" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}','${option.templateFlag}')">
 		           			 <span id="${question.key.questionGroupId}_${option.questionId}">${option.questionName}</span></a>
 		           			 <c:if test="${question.key.type ==0 }">
-	           			 		<span style="margin-left: 20%; font-size:12px;color:rgb(204,204,204)" id="editSpan_${question.key.questionGroupId}">${option.questionValue}</span>
+	           			 		<span style="margin-left: 20%; font-size:12px;color:rgb(204,204,204)" id="editSpan_${option.questionId}">${option.questionValue}</span>
 	           			 	</c:if>
 		           			 <c:if test="${option.templateFlag==false}">
 <%-- 			           			 <span style="padding-left:1px;"><a style="color: rgb(205,204,204)" data-toggle="modal" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}')">编辑</a></span> --%>
@@ -164,6 +164,15 @@
             	<textarea rows="3" cols="1" id ="welcome_msg" style="width: 615px;height: 80px;" <c:if test='${industry.activeFlag==false}'>disabled="disabled"</c:if> >${industry.welcomeMsg }</textarea>
             </div>
         </div>
+        <div class="div_center">
+            <div class="div_center_title">
+                <input type="checkbox" style="margin-left: 100px;margin-top: 10px;position: absolute;" onclick="selectEndWelcomeMsg(this)" <c:if test='${industry.endActiveFlag==true}'>checked="checked"</c:if>/>
+                <span style="margin-left: 115px;padding-top: 7.5px;position: absolute;color: rgb(82,82,82)"><strong>设置调查结后语</strong></span>
+            </div>
+            <div class="question_option">
+            	<textarea rows="3" cols="1" id ="end_welcome_msg" style="width: 615px;height: 80px;" <c:if test='${industry.endActiveFlag==false}'>disabled="disabled"</c:if> >${industry.endWelcomeMsg }</textarea>
+            </div>
+        </div>
         <div class="wrapper_button">
             <div>
                 <button class="wrapper_button_select" id="create_question">保存设置</button>
@@ -175,19 +184,6 @@
         </div>
     </div>
 </div>
-	<div id="MyScore">
-		<form action="" id="myScoreFrom" method="get">
-      	<div id="model_Score">
-      	<table>
-       			<tr>
-       				<td  class="table_question">名称:</td>
-       				<td class="table_question_name"><input data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="questionName" /></td>
-       			</tr>
-       		</table>
-    </div>
-    </form>
-   </div>
-	
    <div id="MyGroupRadio">
 		<form action="" id="MyGroupRediofrom">
        	<div id="model_redio" style="height: 100px;">
@@ -222,6 +218,9 @@
 	    </div>
 	    </form>
     </div>
+    
+    
+    
     <div id="myCheck">
        	<div id="model_Check">
        	<form action="" id="myCheckForm">
@@ -249,6 +248,8 @@
 			</div>
 		</div>
     </div>
+    
+    
      <div id="myOverAll">
 	    <div id="myOverAll_model_Check">
 	        <form action="" id="myCheckForm">

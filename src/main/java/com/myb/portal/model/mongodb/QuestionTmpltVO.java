@@ -51,6 +51,17 @@ public class QuestionTmpltVO {
 	private List<QuestionDimensions> dimensions;
 	private List<QuestionChartMapping> chartMapping;
 	private List<QuestionGroupVO> questionGroup;
+	//欢迎语
+	private Map<String, Object> welcome;
+	//设置结后语
+	private Map<String, Object> endWelcome;
+	
+	public Map<String, Object> getEndWelcome() {
+		return endWelcome;
+	}
+	public void setEndWelcome(Map<String, Object> endWelcome) {
+		this.endWelcome = endWelcome;
+	}
 	public List<QuestionGroupVO> getQuestionGroup() {
 		return questionGroup;
 	}
@@ -69,9 +80,6 @@ public class QuestionTmpltVO {
 	public void setFilters(List<QuestionFilter> filters) {
 		this.filters = filters;
 	}
-	//欢迎语
-	private Map<String, Object> welcome;
-	
 	public Map<String, Object> getWelcome() {
 		return welcome;
 	}

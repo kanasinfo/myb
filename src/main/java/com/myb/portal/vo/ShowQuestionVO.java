@@ -17,7 +17,24 @@ public class ShowQuestionVO {
 	private boolean activeFlag;
 	//欢迎语内容
 	private String welcomeMsg;
+	//欢迎结后语标识
+	private boolean endActiveFlag;
+	//欢迎结后语内容
+	private String endWelcomeMsg;
 	
+	
+	public boolean isEndActiveFlag() {
+		return endActiveFlag;
+	}
+	public void setEndActiveFlag(boolean endActiveFlag) {
+		this.endActiveFlag = endActiveFlag;
+	}
+	public String getEndWelcomeMsg() {
+		return endWelcomeMsg;
+	}
+	public void setEndWelcomeMsg(String endWelcomeMsg) {
+		this.endWelcomeMsg = endWelcomeMsg;
+	}
 	public String getTemplName() {
 		return templName;
 	}

@@ -66,7 +66,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 	MongoTemplate mongoTemplate;
 	@Autowired
 	MybStoreGroupRepository mybStoreGroupRepository;
-	
+
 	/**
 	 * delQuestion TODO(根据模板和问题主键ID删除相关问题)
 	 * 
@@ -246,7 +246,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 	 */
 	public List<MybQuestionGroup> queryQustnrGroup(String templateId) {
 		try {
-			if(StringUtils.isBlank(templateId)){
+			if (StringUtils.isBlank(templateId)) {
 				return null;
 			}
 			MybQuestionnaireTemplate template = new MybQuestionnaireTemplate();
@@ -256,15 +256,17 @@ public class QuestionsServiceImpl implements QuestionsService {
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
-	public MybQuestionnaireTemplate queryQuestionnaireTemplateByIndustryId(String subIndustryId){
-		return mybQuestionnaireTemplateRepository.findByindustryIdAndActiveFlag(subIndustryId, "Y");	
+
+	public MybQuestionnaireTemplate queryQuestionnaireTemplateByIndustryId(String subIndustryId) {
+		return mybQuestionnaireTemplateRepository.findByindustryIdAndActiveFlag(subIndustryId, "Y");
 	}
+
 	@Override
 	@Transactional
 	public AjaxReq createTempl(String sub_industry_id, String qustnr_name, String credit_amount, String industry,
-			List<MybQuestionGroup> listQustnrGroup,MybQuestionnaireTemplate listTmplt) {
+			List<MybQuestionGroup> listQustnrGroup, MybQuestionnaireTemplate listTmplt) {
 		AjaxReq aReq = new AjaxReq();
 		try {
 			// 存放页面展现所需数据
@@ -282,10 +284,15 @@ public class QuestionsServiceImpl implements QuestionsService {
 			welcome.put(Param.ACTIVE_FLAG, false);
 			welcome.put(Param.WELCOME_MSG, "");
 			questionTmpltVO.setWelcome(welcome);
+			Map<String, Object> endWelcome = new HashMap<String, Object>();
+			endWelcome.put(Param.ACTIVE_FLAG, false);
+			endWelcome.put(Param.WELCOME_MSG, "");
+			 questionTmpltVO.setEndWelcome(endWelcome);
+			// questionTmpltVO.setWelcome(endWelcome);
 			Map<String, MybQuestionGroup> map = new HashMap<String, MybQuestionGroup>();
 			List<QuestionGroupVO> listGroup = new ArrayList<QuestionGroupVO>();
 			// 把行业封装map
-			QuestionGroupVO questionGroup =null;
+			QuestionGroupVO questionGroup = null;
 			for (MybQuestionGroup mybQustnrGroup : listQustnrGroup) {
 				questionGroup = new QuestionGroupVO();
 				questionGroup.setQuestionGroupId(mybQustnrGroup.getId());
@@ -308,7 +315,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 				questionGroup.setOptionalNumber(mybQustnrGroup.getOptionalNumber());
 				questionGroup.setSelectQuestionCount(0);
 				listGroup.add(questionGroup);
-				map.put(mybQustnrGroup.getId(), mybQustnrGroup);	
+				map.put(mybQustnrGroup.getId(), mybQustnrGroup);
 			}
 			questionTmpltVO.setQuestionGroup(listGroup);
 			// 根据行业查询模板
@@ -344,8 +351,10 @@ public class QuestionsServiceImpl implements QuestionsService {
 							questionsVo.setBusinessType(mybQuestion.getBusinessType());
 							questionsVo.setFilterFlag(mybQuestion.isFilterFlag());
 							questionsVo.setChartTime(mybQuestion.getChartTime());
-							questionsVo.setNormCalculateValue(mybQuestion.getNormCalculateValue()==null?0:mybQuestion.getNormCalculateValue());
-							questionsVo.setNormInputValue(mybQuestion.getNormInputValue()==null?0:mybQuestion.getNormInputValue());
+							questionsVo.setNormCalculateValue(mybQuestion.getNormCalculateValue() == null ? 0
+									: mybQuestion.getNormCalculateValue());
+							questionsVo.setNormInputValue(
+									mybQuestion.getNormInputValue() == null ? 0 : mybQuestion.getNormInputValue());
 							questionsVo.setChartTimeDimnsn(mybQuestion.getChartTimeDimension());
 							questionsVo.setTopFlag(mybQuestion.getTopFlag());
 							questionsVo.setTemplateFlag(true);
@@ -403,7 +412,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 		dbfiled.put("qustnnrStatus", 1);
 		dbfiled.put("createdTime", 1);
 		dbfiled.put("updatedTime", 1);
-		query= new BasicQuery(dbObjec,dbfiled);
+		query = new BasicQuery(dbObjec, dbfiled);
 		query.with(new Sort(Direction.DESC, "updatedTime"));
 		// 获取总条数
 		long totalCount = this.mongoTemplate.count(query, QuestionTmpltVO.class);
@@ -458,12 +467,13 @@ public class QuestionsServiceImpl implements QuestionsService {
 		jbParent.put("Total", String.valueOf(totalPage));
 		return jbParent.toString();
 	}
+
 	/**
 	 * queryMongodbQuestionBytempletId TODO(根据模板主键查询数据)
 	 * 
 	 * @author wangzx
 	 * @return
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	public Map<String, Object> queryMongodbQuestionBytempletId(String id) throws UnsupportedEncodingException {
 		Map<String, Object> retunMap = new HashMap<String, Object>();
@@ -473,12 +483,12 @@ public class QuestionsServiceImpl implements QuestionsService {
 		Criteria criterg = Criteria.where("_id").is(id);
 		query.addCriteria(criterg);
 		QuestionTmpltVO questionTmpltVO = mongoTemplate.findOne(query, QuestionTmpltVO.class);
-		retunMap.put("data", java.net.URLEncoder.encode(JsonUtil.objectToJson(questionTmpltVO) , "UTF-8"));
+		retunMap.put("data", java.net.URLEncoder.encode(JsonUtil.objectToJson(questionTmpltVO), "UTF-8"));
 		Map<String, QuestionGroupVO> questionMap = new TreeMap<String, QuestionGroupVO>();
 		for (QuestionGroupVO mybQustnrGroup : questionTmpltVO.getQuestionGroup()) {
 			mybQustnrGroup.setCustomQuestionType(String.valueOf(Utils.getType(mybQustnrGroup.getCustomQuestionType())));
-			if(mybQustnrGroup.getActiveFlag()!=0){
-				questionMap.put(mybQustnrGroup.getQuestionGroupId(), mybQustnrGroup);	
+			if (mybQustnrGroup.getActiveFlag() != 0) {
+				questionMap.put(mybQustnrGroup.getQuestionGroupId(), mybQustnrGroup);
 			}
 		}
 		Map<String, List<QuestionsVo>> mapQuestion = new TreeMap<String, List<QuestionsVo>>();
@@ -498,6 +508,13 @@ public class QuestionsServiceImpl implements QuestionsService {
 		} else {
 			showQuestionVO.setActiveFlag(false);
 		}
+		Map<String, Object> mapEndWlcome = questionTmpltVO.getWelcome();
+		if (mapEndWlcome.get(Param.ACTIVE_FLAG).equals(true)) {
+			showQuestionVO.setActiveFlag(true);
+		} else {
+			showQuestionVO.setActiveFlag(false);
+		}
+		showQuestionVO.setEndWelcomeMsg(mapEndWlcome.get(Param.WELCOME_MSG).toString());
 		showQuestionVO.setWelcomeMsg(map.get(Param.WELCOME_MSG).toString());
 		showQuestionVO.setQustnrName(questionTmpltVO.getQustnrName());
 		showQuestionVO.setCreditAmount(questionTmpltVO.getCreditAmount());
@@ -522,22 +539,23 @@ public class QuestionsServiceImpl implements QuestionsService {
 		for (Entry<String, QuestionGroupVO> entry : questionMap.entrySet()) {
 			if (mapQuestion.get(entry.getKey()) != null) {
 				callMap.put(questionMap.get(entry.getKey()), mapQuestion.get(entry.getKey()));
-			}else{
+			} else {
 				callMap.put(questionMap.get(entry.getKey()), mapQuestion.get(entry.getKey()));
 			}
 		}
-		
-		List<Map.Entry<QuestionGroupVO, List<QuestionsVo>>> infoIds = new ArrayList<Map.Entry<QuestionGroupVO, List<QuestionsVo>>>(callMap.entrySet());
+
+		List<Map.Entry<QuestionGroupVO, List<QuestionsVo>>> infoIds = new ArrayList<Map.Entry<QuestionGroupVO, List<QuestionsVo>>>(
+				callMap.entrySet());
 		Collections.sort(infoIds, new Comparator<Map.Entry<QuestionGroupVO, List<QuestionsVo>>>() {
 			public int compare(Map.Entry<QuestionGroupVO, List<QuestionsVo>> o1,
 					Map.Entry<QuestionGroupVO, List<QuestionsVo>> o2) {
-						return String.valueOf(o1.getKey().getSortNumber()).compareTo(String.valueOf(o2.getKey().getSortNumber()));
-					}
-					}); 
+				return String.valueOf(o1.getKey().getSortNumber())
+						.compareTo(String.valueOf(o2.getKey().getSortNumber()));
+			}
+		});
 		retunMap.put("mapQuestion", infoIds);
 		return retunMap;
 	}
-	
 
 	/**
 	 * publishQuestion TODO(数据采集问题)
@@ -666,8 +684,8 @@ public class QuestionsServiceImpl implements QuestionsService {
 				aReq.setMessage("添加失败");
 				return aReq;
 			}
-			//更新数据
-//			groupRepository.updateQuestionGroupDisplayValByQuestionType(groupValue,questionGroupId);
+			// 更新数据
+			// groupRepository.updateQuestionGroupDisplayValByQuestionType(groupValue,questionGroupId);
 			Query query = new Query();
 			Criteria criterg = Criteria.where("id").is(templId);
 			query.addCriteria(criterg);
@@ -684,30 +702,32 @@ public class QuestionsServiceImpl implements QuestionsService {
 				questionVo = JsonUtil.jsonToObject(jbquestion.toString(), QuestionGroupVO.class);
 				listQuestionGroup.add(questionVo);
 			}
-			
+
 			for (int i = 0; i < jArray.size(); i++) {
 				jbquestion = jArray.getJSONObject(i);
 				QuestionsVo questionsVo = JsonUtil.jsonToObject(jbquestion.toString(), QuestionsVo.class);
-				if(null != jbquestion.get("options")){
-					List<Options> list = JsonUtil.jsonToList(jbquestion.getJSONArray("options").toString(), Options.class);
-					Collections.sort(list,new Comparator<Options>(){
-						 public int compare(Options arg0, Options arg1) {  
-				                return String.valueOf(arg0.getSortNumber()).compareTo(String.valueOf(arg1.getSortNumber()));  
-				            }  
+				if (null != jbquestion.get("options")) {
+					List<Options> list = JsonUtil.jsonToList(jbquestion.getJSONArray("options").toString(),
+							Options.class);
+					Collections.sort(list, new Comparator<Options>() {
+						public int compare(Options arg0, Options arg1) {
+							return String.valueOf(arg0.getSortNumber()).compareTo(String.valueOf(arg1.getSortNumber()));
+						}
 					});
 					questionsVo.setOptions(list);
 				}
-				if(null != jbquestion.get("activePeriod")){
-					List<ActivePeriod> list= JsonUtil.jsonToList(jbquestion.getJSONArray("activePeriod").toString(), ActivePeriod.class);
+				if (null != jbquestion.get("activePeriod")) {
+					List<ActivePeriod> list = JsonUtil.jsonToList(jbquestion.getJSONArray("activePeriod").toString(),
+							ActivePeriod.class);
 					questionsVo.setActivePeriod(list);
 				}
 				lsitquestion.add(questionsVo);
 			}
 			QuestionTmpltVO questionTmpltVO = JsonUtil.jsonToObject(data, QuestionTmpltVO.class);
-			Collections.sort(lsitquestion,new Comparator<QuestionsVo>(){
-				 public int compare(QuestionsVo arg0, QuestionsVo arg1) {  
-		                return String.valueOf(arg0.getSortNumber()).compareTo(String.valueOf(arg1.getSortNumber()));  
-		            }  
+			Collections.sort(lsitquestion, new Comparator<QuestionsVo>() {
+				public int compare(QuestionsVo arg0, QuestionsVo arg1) {
+					return String.valueOf(arg0.getSortNumber()).compareTo(String.valueOf(arg1.getSortNumber()));
+				}
 			});
 			questionTmpltVO.getQuestions().clear();
 			questionTmpltVO.setQuestions(lsitquestion);
@@ -725,6 +745,5 @@ public class QuestionsServiceImpl implements QuestionsService {
 		}
 		return aReq;
 	}
-	
 
 }

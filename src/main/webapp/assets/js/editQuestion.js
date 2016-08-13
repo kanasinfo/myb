@@ -62,10 +62,7 @@ jQuery(function($) {
 								data1.questions[i].questionValue = questionEditScoreVal;
 							}
 						}
-						alert(questionEditScoreVal);
-						alert(groupId);
-						alert($("editSpan_"+groupId).html());
-						$("#editSpan_"+groupId).html(questionEditScoreVal);
+						$("#editSpan_"+question_id).html(questionEditScoreVal);
 						$(this).dialog("close");
 					},
 					"关闭" : function() {
@@ -551,7 +548,16 @@ jQuery(function($) {
 			}
 		})
 	})
-
+	var selectEndWelcomeMsg = function(checkBox) {
+		$("#questionEditFlag").val(true);
+		if (checkBox.checked) {
+			data1.endWelcome.activeFlag = true;
+			$("#end_welcome_msg").attr("disabled", false);
+		} else {
+			data1.endWelcome.activeFlag = false;
+			$("#end_welcome_msg").attr("disabled", true);
+		}
+	}
 	var selectWelcomeMsg = function(checkBox) {
 		$("#questionEditFlag").val(true);
 		if (checkBox.checked) {
@@ -561,7 +567,6 @@ jQuery(function($) {
 			data1.welcome.activeFlag = false;
 			$("#welcome_msg").attr("disabled", true);
 		}
-
 	}
 	$("#basic_save").click(function() {
 		$("#basicType").val(0);
@@ -1046,8 +1051,6 @@ jQuery(function($) {
 			$("#redioQuestionName").attr('disabled', true);
 			$("#MyRedio").dialog('option', 'title', question_group_name)
 			.dialog("open");
-//			$("#MyScore").dialog('option', 'title', question_group_name)
-//					.dialog("open");
 		} else if (group_type == 1) {
 			$("#MyRedioFlag").val(1)
 			$("#redioQuestionName").val(displayValue);
@@ -1135,6 +1138,7 @@ jQuery(function($) {
 		
 		
 	}
+	window.selectEndWelcomeMsg = selectEndWelcomeMsg;
 	window.selectGroup = selectGroup;
 	window.editquestionTemplate = editquestionTemplate;
 	window.editGroupVale = editGroupVale;
