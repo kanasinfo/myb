@@ -41,6 +41,39 @@ jQuery(function($) {
 			})
 		}
 	});
+	
+	$("#myEditOverAll").dialog(
+			{
+				autoOpen : false,
+				height : 300,
+				width : 500,
+				modal : true,
+				buttons : {
+					"保存" : function() {
+						if ($('#myEditCheckForm').validationEngine(
+								'validate') == false)
+							return;
+						
+						var groupId = $("#groupId").val();
+						var questionEditScoreVal = $("#questionEditScoreVal").val();
+						var question_id = $("#question_id").val();
+						for(var i =0 ;i<data1.questions.length;i++){
+							if(data1.questions[i].questionId==question_id){
+								data1.questions[i].questionValue = questionEditScoreVal;
+							}
+						}
+						alert(questionEditScoreVal);
+						alert(groupId);
+						alert($("editSpan_"+groupId).html());
+						$("#editSpan_"+groupId).html(questionEditScoreVal);
+						$(this).dialog("close");
+					},
+					"关闭" : function() {
+						$(this).dialog("close");
+					}
+				}
+			})
+	
 	$("#myOverAll").dialog(
 					{
 						autoOpen : false,
@@ -131,8 +164,7 @@ jQuery(function($) {
 						}
 					})
 
-	$("#editTemplateDisplayVal")
-			.dialog(
+	$("#editTemplateDisplayVal").dialog(
 					{
 						autoOpen : false,
 						height : 180,
@@ -583,8 +615,7 @@ jQuery(function($) {
 		$("#create_question").removeAttr('disabled', true);
 	})
 
-	$("#saveRedio")
-			.on(
+	$("#saveRedio").on(
 					'shown.bs.modal',
 					function() {
 						var top = ($(document.body).height() - that.$element
@@ -752,6 +783,15 @@ jQuery(function($) {
 		}
 		if (a.length <= groupNumber) {
 			if ($("#check_" + id).prop("checked")) {
+				if(!$("#check_group_"+groupId).prop("checked")){
+					$("#check_group_"+groupId).attr('checked',true)
+					for(var j = 0;j<data1.questionGroup.length;j++){
+						if(data1.questionGroup[j].questionGroupId == groupid){
+							data1.questionGroup[j].select = true;
+						}
+					}
+				}
+				
 				for (var i = 0; i < data1.questions.length; i++) {
 					if (data1.questions[i].questionId == id) {
 						data1.questions[i].activeFlag = true;
@@ -764,6 +804,16 @@ jQuery(function($) {
 					}
 				}
 			} else {
+				if(a.length==0){
+					if($("#check_group_"+groupId).prop("checked")){
+						$("#check_group_"+groupId).attr('checked',false)
+						for(var j = 0;j<data1.questionGroup.length;j++){
+							if(data1.questionGroup[j].questionGroupId == groupid){
+								data1.questionGroup[j].select = false;
+							}
+						}
+					}
+				}
 				for (var i = 0; i < data1.questions.length; i++) {
 					if (data1.questions[i].questionId == id) {
 						data1.questions[i].activeFlag = false;
@@ -878,6 +928,8 @@ jQuery(function($) {
 								data1.questionGroup[i].displayValue = redioQredioGroupDesc;
 							}
 						}
+						$("#dispanVale_"+groupId).html(redioQredioGroupDesc);
+						
 						$(this).dialog("close");
 					},
 					"关闭" : function() {
@@ -895,22 +947,9 @@ jQuery(function($) {
 				$('#redioQredioGroupDesc').removeAttr("disabled");
 				$("#redioGroupName").val(data1.questionGroup[i].name);
 				$("#redioQredioGroupDesc").val(data1.questionGroup[i].displayValue);
-				$("#MyGroupRadio").dialog('option', 'title', question_group_name).dialog("open");
+				$("#MyGroupRadio").dialog('option', 'title', data1.questionGroup[i].name).dialog("open");
 			}
 		}
-		
-//		$("#questionEditFlag").val(true);
-//		$("#editQuestionTemplateType").val(editQuestionTemplateType);
-//		console.log(editQuestionTemplateType);
-//		$("#question_id").val(questionId);
-//		$("#groupId").val(groupId);
-//		for (var i = 0; i < data1.questions.length; i++) {
-//			if (data1.questions[i].questionId == questionId) {
-//				$("#questionTemplateVal").val(data1.questions[i].questionValue);
-//			}
-//		}
-//		$("#editTemplateDisplayVal").dialog('option', 'title',
-//				question_group_name).dialog("open");
 	}
 	var editquestion = function(type, groupId, questionId, question_group_name,templateFlag) {
 		$("#questionEditFlag").val(true);
@@ -965,11 +1004,10 @@ jQuery(function($) {
 		} else if(type=4){
 			for (var i = 0; i < data1.questions.length; i++) {
 				if (data1.questions[i].questionId == questionId) {
-					$("#questionScoreName").val(data1.questions[i].questionName);
-					$("#questionScoreVal").val(data1.questions[i].questionValue);
-					$("#radio"+data1.questions[i].options.length).attr('checked','true');
-					$("#myOverAll").dialog('option', 'title', question_group_name)
-					.dialog("open");
+					$("#questionEditScoreName").val(data1.questions[i].questionName);
+					$("#questionEditScoreVal").val(data1.questions[i].questionValue);
+					$("#myEditOverAllScore").html(data1.questions[i].options.length+"分");
+					$("#myEditOverAll").dialog('option', 'title', question_group_name).dialog("open");
 				}
 			}
 			
@@ -1055,19 +1093,50 @@ jQuery(function($) {
 		$("#group_span_" + groupId).css("display", "none");
 		$("#group_text_" + groupId).css("display", "block");
 	}
-	var saveGroupVale = function(groupId) {
-		$("#group_span_value_" + groupId).text($("#group_value").val());
-		for (var j = 0; j < data1.questionGroup.length; j++) {
-			if (groupId == data1.questionGroup[j].questionGroupId) {
-				data1.questionGroup[j].displayValue = $("#group_value").val();
+	var selectGroup = function(groupid){
+		alert(groupid);
+		if($("#check_group_"+groupid).prop("checked")){
+			$("#"+$("#add_"+groupid+" li input:checkbox")[0].id).attr('checked',true);
+			var array = $("#add_"+groupid+" li input:checkbox")[0].id.split("_");
+			//问题组选中
+			for(var j = 0;j<data1.questionGroup.length;j++){
+				if(data1.questionGroup[j].questionGroupId == groupid){
+					data1.questionGroup[j].select = true
+				}
 			}
+			//选中第一个问题
+			for(var i = 0;i<data1.questions.length;i++){
+				if(data1.questions[i].questionId=array[1]){
+					data1.questions[i].questionId.activeFlag = true;
+				}
+			}
+		}else{
+			$("#"+$("#add_"+groupid+" li input:checkbox")[0].id).attr('checked',false);
+			var array = $("#add_"+groupid+" li input:checkbox");
+			//所有的问题都不被选中
+			for(var i = 0;i<array.size();i++){
+				$("#"+$("#add_"+groupid+" li input:checkbox")[i].id).attr('checked',false);
+				for(var ii = 0;ii<data1.questions.length;ii++){
+					if(data1.questions[ii].questionId=array[1]){
+						data1.questions[ii].questionId.activeFlag = false;
+					}
+				}
+			}
+			
+			//问题组不被选中
+			for(var j = 0;j<data1.questionGroup.length;j++){
+				if(data1.questionGroup[j].questionGroupId == groupid){
+					data1.questionGroup[j].select = false;
+				}
+			}
+			
+			
 		}
-
-		$("#group_span_" + groupId).css("display", "block");
-		$("#group_text_" + groupId).css("display", "none");
+		
+		
 	}
+	window.selectGroup = selectGroup;
 	window.editquestionTemplate = editquestionTemplate;
-	window.saveGroupVale = saveGroupVale;
 	window.editGroupVale = editGroupVale;
 	window.questionTop = questionTop;
 	window.selectWelcomeMsg = selectWelcomeMsg;

@@ -29,7 +29,15 @@ public class QuestionGroupVO {
 	private Integer activeFlag;
 	private Integer optionalNumber;
 	private String businessType;
+	//当前问题组是否选中
+	private boolean select;
 	
+	public boolean isSelect() {
+		return select;
+	}
+	public void setSelect(boolean select) {
+		this.select = select;
+	}
 	public String getBusinessType() {
 		return businessType;
 	}

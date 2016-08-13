@@ -48,7 +48,6 @@
                 	<input type="button" class="basic_button" id="basic_edit" value="编辑"/> 
                 	<input type="button" class="basic_button" style="display: none" id="basic_save" value="保存"/> 
                 </div>
-                
                 <div class="form_row" id="form_row_id">
                 	<div class="column_left">选择行业</div>
                 	<div class="column" >
@@ -100,18 +99,19 @@
         <c:forEach var="question" items="${list}">
         <c:if test="${ question.key.filterFlag ==true}">
         <div class="div_center">
+        <c:if test="${question.key.type ==1 }">
             <div class="div_center_title">
                 <span style="margin-left: 100px;font-size:15px;padding-top: 10px;position: absolute;color: <c:if test="${question.key.type ==0}">rgb(204,204,204)</c:if>
                 <c:if test="${question.key.type ==1}">rgb(82,82,82)</c:if>">
                 	<c:if test="${question.key.type ==1}">
-                		<a href="javascript:void(0)" style="color: rgb(82,82,82)"  onclick="editquestionTemplate('${question.key.questionGroupId}')"><strong>${question.key.name}</strong></a>
+                		<input type="checkbox" id="check_group_${question.key.questionGroupId}" onclick="selectGroup('${question.key.questionGroupId}')"/><a href="javascript:void(0)" style="color: rgb(82,82,82)"  onclick="editquestionTemplate('${question.key.questionGroupId}')"><strong>${question.key.name}</strong></a>
                 	</c:if>
                 	<c:if test="${question.key.type ==0}">
                 		<strong>${question.key.name}</strong>
                 	</c:if>
-                
-                </span><span style="margin-left: 280px;padding-top: 13px;position: absolute;color: rgb(204,204,204)">最多选${question.key.optionalNumber}项</span>
+                </span><span style="margin-left: 280px;padding-top: 13px;position: absolute;color: rgb(204,204,204)" id="dispanVale_${question.key.questionGroupId}">${question.key.displayValue}</span>
             </div>
+            </c:if>
           	<c:if test="${question.key.type ==1 }">
             	<div class="question_option">
             </c:if>
@@ -128,7 +128,7 @@
 		           			<a href="javascript:void(0)" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}','${option.templateFlag}')">
 		           			 <span id="${question.key.questionGroupId}_${option.questionId}">${option.questionName}</span></a>
 		           			 <c:if test="${question.key.type ==0 }">
-	           			 		<span style="margin-left: 20%; font-size:12px;color:rgb(204,204,204)">${option.questionName}</span>
+	           			 		<span style="margin-left: 20%; font-size:12px;color:rgb(204,204,204)" id="editSpan_${question.key.questionGroupId}">${option.questionValue}</span>
 	           			 	</c:if>
 		           			 <c:if test="${option.templateFlag==false}">
 <%-- 			           			 <span style="padding-left:1px;"><a style="color: rgb(205,204,204)" data-toggle="modal" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}')">编辑</a></span> --%>
@@ -143,10 +143,13 @@
                 </ul>
                 </div>
                 <div class="clearfix"></div>
+                
+                <c:if test="${question.key.businessType !='groupOverview' }">
                 <div class="div_button" style="margin-top:20px;">
 	            	<button onclick="addquestion('${question.key.customQuestionType}','${question.key.questionGroupId}','${question.key.name}','${question.key.sortNumber}','${question.key.displayValue}')"></button>
-	                <span style="color:rgb(204,204,204)">添加自定义指标</span>
+	                <span style="color:rgb(204,204,204)">添加'${question.key.name}'自定义指标</span>
            		</div>
+           		</c:if>
             </div>
         </div>
         </c:if>
@@ -266,6 +269,27 @@
 	        </form>
 	    </div>
 	</div>
+	<div id="myEditOverAll">
+	    <div id="myOverAll_edit_model_Check">
+	        <form action="" id="myEditCheckForm">
+	            <table>
+	                <tr>
+	                    <td  class="table_question">名称:</td>
+	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="questionEditScoreName" disabled="disabled" /></td>
+	                </tr>
+	                <tr>
+	                    <td class="table_question">描述:</td>
+	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="questionEditScoreVal" /></td>
+	                </tr>
+	                <tr>
+	                    <td class="table_question">选项:</td>
+	                    <td class="table_question_text"><span class="table_question_text" id="myEditOverAllScore"></span></td>
+	                </tr>
+	            </table>
+	        </form>
+	    </div>
+	</div>
+	
 	
 	 <div id="delModelQuestion">
        	<div id="model_del">
