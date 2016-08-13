@@ -41,6 +41,7 @@
     	<input type="hidden" id="templId" name="templId" value="${templId}"/>
     	<input type="hidden" id="editQuestionTemplateType" name="editQuestionTemplateType"/>
     	<input type="hidden" id="questionEditFlag" name="questionEditFlag" value="false"/>
+    	<input type="hidden" id="questionType" name="questionType" value=""/>
     	<!-- 单选框赋值，分值类型还是是否类型 -->
     	<input type="hidden" id="MyRedioFlag" name="MyRedioFlag" value=""/>
         <div id="create_panel">
@@ -125,8 +126,9 @@
 	             		<c:if test="${option.filterFlag ==true}">
 	           			 <li id="${option.questionId}">
 		           			 <input type="checkbox" onclick="selectOrunSelect('${question.key.questionGroupId}','${option.questionId}')" id="check_${option.questionId}"<c:if test='${option.activeFlag==true}'>checked="checked"</c:if> />
-		           			<a href="javascript:void(0)" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}','${option.templateFlag}')">
-		           			 <span id="${question.key.questionGroupId}_${option.questionId}">${option.questionName}</span></a>
+		           			<a href="javascript:void(0)" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}',${option.templateFlag})">
+		           			 <span id="${question.key.questionGroupId}_${option.questionId}">${option.questionName}</span>
+		           			 </a>
 		           			 <c:if test="${question.key.type ==0 }">
 	           			 		<span style="margin-left: 20%; font-size:12px;color:rgb(204,204,204)" id="editSpan_${option.questionId}">${option.questionValue}</span>
 	           			 	</c:if>
@@ -218,7 +220,22 @@
 	    </div>
 	    </form>
     </div>
-    
+    <div id="MyEditRedio">
+		<form action="" id="MyEditRediofrom">
+       	<div id="model_redio" style="height: 100px;">
+       		<table>
+     				<tr>	
+	                    <td  class="table_question">名称:</td>
+	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="redioEditQuestionName" /></td>
+	                </tr>
+	                <tr>
+	                    <td class="table_question">描述:</td>
+	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="redioEditQuestionValue" /></td>
+	                </tr>
+       		</table>
+	    </div>
+	    </form>
+    </div>
     
     
     <div id="myCheck">

@@ -15,10 +15,8 @@ jQuery(function($) {
 					alert("请保存数据!");
 				} else {
 					var templateId = $("#templId").val();
-					window.location.href = "../../release/releaseQuestion/"
-							+ templateId + ".html";
+					window.location.href = "../../release/releaseQuestion/"+ templateId + ".html";
 				}
-
 			})
 	var delQuestion = function(id, name) {
 		var delName = "是否确认删除”";
@@ -103,7 +101,6 @@ jQuery(function($) {
 								questionJson.editFlag = 1;
 								questionJson.templateFlag = false;
 								var mathNumber =  $('input[name="questionScoreRadio"]:checked').val();
-								alert(mathNumber);
 								var optionData = [];
 								//获取分值类型
 								for(var i =1;i<=mathNumber;i++){
@@ -303,6 +300,39 @@ jQuery(function($) {
 			}
 		}
 	})
+	$("#MyEditRedio").dialog(
+			{
+				autoOpen : false,
+				height : 230,
+				width : 500,
+				modal : true,
+				buttons : {
+					"保存" : function() {
+						if ($('#MyEditRediofrom').validationEngine(
+								'validate') == false)
+							return;
+						var groupId = $("#groupId").val();
+						var templId = $("#templId").val();
+						var questionName = $("#redioQuestionName").val();
+						var question = $("#redioQuestion").val();
+						var question_id = $("#question_id").val();
+						var redioEditQuestionName = $("#redioEditQuestionName").val();
+						var redioEditQuestionValue = $("#redioEditQuestionValue").val();
+						for(var i = 0;i<data1.questions.length;i++){
+							if(data1.questions[i].questionId==question_id){
+								data1.questions[i].questionName = redioEditQuestionName;
+								data1.questions[i].questionValue = redioEditQuestionValue;
+							}
+						}
+						$("#"+groupId+"_"+question_id).html(redioEditQuestionName);
+						$(this).dialog("close");
+					},
+					"关闭" : function() {
+						$(this).dialog("close");
+					}
+				}
+			}
+			)
 	$("#MyRedio").dialog(
 					{
 						autoOpen : false,
@@ -336,7 +366,6 @@ jQuery(function($) {
 								questionJson.templateFlag = false;
 								//获取类型 0 1 2
 								var MyRedioFlag = $("#MyRedioFlag").val();
-								alert(MyRedioFlag);
 								var optionData = [];
 								//十分之题
 								if(MyRedioFlag==0){
@@ -366,17 +395,18 @@ jQuery(function($) {
 									optionData.push(option);
 								//text题
 								}
+								var questionType = $("#questionType").val();
 								questionJson.options = optionData;
 								data1.questions.push(questionJson);
+//								onclick="selectOrunSelect('${question.key.questionGroupId}','${option.questionId}')" id="check_${option.questionId}"
 								var html = "<li id=" + question_id
-										+ "><input type='checkbox' /><span id="
+										+ ">" 
+										+"<input type='checkbox' onclick='selectOrunSelect(&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;)' id='check_"+question_id+"'/>"
+										+"<a href='javascript:void(0)' onclick='editquestion(&apos;"+questionType+"&apos;,&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;,&apos;"+questionJson.questionGroupName+"&apos;,"+false+")'>"
+										+"<span id="
 										+ groupId + "_" + question_id + ">"
-										+ question + "</span>";
-								html = html
-										+ "<span style='padding-left:1px;'><a style='color: rgb(205,204,204)' onclick='editquestion(\""
-										+ $("#group_type").val() + "\",\""
-										+ $("#groupId").val() + "\",\""
-										+ question_id + "\")' >编辑</a></span>";
+										+ question + "</span>"
+										+"</a>";
 								html = html
 										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion(&apos;"
 										+ question_id + "&apos;,&apos;"
@@ -585,8 +615,6 @@ jQuery(function($) {
 		$("#basic_questionName").text(qustnr_name);
 		$("#qustnr_name").val(qustnr_name);
 		$("#credit_amount").val(credit_amount);
-		alert(data1.qustnrName);
-		alert(data1.creditAmount);
 		$.ajax({
 			url : '../../data/updateQuestion.json?R' + Math.random(),
 			data : {
@@ -667,8 +695,6 @@ jQuery(function($) {
 						data1.questions.push(questionJson);
 						var html = "<li><input type='checkbox' />"
 								+ questionName + "";
-						// onclick='editquestion(\""+$("#group_type").val()+"\",\""+$("#groupId").val()+"\",\""+question_id+"\")'
-						// >编辑</a></span>";
 						html = html
 								+ "<span style='padding-left:1px;'><a style='color: rgb(205,204,204)' onclick='editquestion(\""
 								+ $("#group_type").val() + "\",\""
@@ -681,59 +707,6 @@ jQuery(function($) {
 						$("#add_" + groupId).append(html);
 						$('#MyRedio').modal('hide');
 					})
-
-	$("#saveScore")
-			.click(
-					function() {
-						var groupId = $("#groupId").val();
-						var templId = $("#templId").val();
-						var questionName = $("#questionName").val();
-						var question = $("#question").val();
-						var option = "";
-						var questionJson = {};
-						var question_id = UUID.prototype.createUUID();
-						questionJson.questionId = question_id;
-						questionJson.questionGroupId = groupId;
-						questionJson.questionGroupName = $(
-								"#question_group_name").val();
-						questionJson.questionGroupSortNumber = $(
-								"#question_group_sort_num").val();
-						questionJson.questionName = questionName;
-						questionJson.questionValue = question;
-						questionJson.sortNumber = 2;
-						questionJson.activeFlag = true;
-						questionJson.templateFlag = false;
-						var optionData = [];
-						var html = "<li><input type='checkbox' />"
-								+ questionName + "";
-						html = html
-								+ "<span style='padding-left:1px;'><a style='color: rgb(205,204,204)' onclick='editquestion(\""
-								+ $("#group_type").val() + "\",\""
-								+ $("#groupId").val() + "\",\"" + question_id
-								+ "\")' >编辑</a></span>";
-						html = html
-								+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)'>删除</a></span></li>";
-						$("input[name='option']").each(function(i) {
-							var option = {};
-							option.optionId = UUID.prototype.createUUID();
-							option.activeFlag = "y";
-							option.sortNumber = i;
-							option.optionName = $(this).val();
-							option.optionValue = i + 1;
-							optionData.push(option);
-						})
-						questionJson.options = optionData;
-						var question_id = $("#question_id").val();
-						for (var j = 0; j < data1.questions.length; j++) {
-							if (data1.questions[j].questionId == question_id) {
-								data1.questions.splice(j, 1);
-								$("#" + question_id).remove();
-							}
-						}
-						$("#add_" + groupId).append(html);
-						data1.questions.push(questionJson);
-						$('#MyScore').modal('hide');
-					});
 
 	$("#create_question").click(function() {
 		if ($("#basicType").val() == 0) {
@@ -791,7 +764,7 @@ jQuery(function($) {
 				if(!$("#check_group_"+groupId).prop("checked")){
 					$("#check_group_"+groupId).attr('checked',true)
 					for(var j = 0;j<data1.questionGroup.length;j++){
-						if(data1.questionGroup[j].questionGroupId == groupid){
+						if(data1.questionGroup[j].questionGroupId == groupId){
 							data1.questionGroup[j].select = true;
 						}
 					}
@@ -813,7 +786,7 @@ jQuery(function($) {
 					if($("#check_group_"+groupId).prop("checked")){
 						$("#check_group_"+groupId).attr('checked',false)
 						for(var j = 0;j<data1.questionGroup.length;j++){
-							if(data1.questionGroup[j].questionGroupId == groupid){
+							if(data1.questionGroup[j].questionGroupId == groupId){
 								data1.questionGroup[j].select = false;
 							}
 						}
@@ -837,59 +810,6 @@ jQuery(function($) {
 		}
 
 	}
-	$("#saveCheck")
-			.click(
-					function() {
-						var groupId = $("#groupId").val();
-						var templId = $("#templId").val();
-						var questionName = $("#questionCheckName").val();
-						var question = $("#questionCheckVal").val();
-						var option = "";
-						var questionJson = {};
-						var question_id = UUID.prototype.createUUID();
-						questionJson.questionId = question_id;
-						questionJson.questionGroupId = groupId;
-						questionJson.questionGroupName = $(
-								"#question_group_name").val();
-						questionJson.questionGroupSortNumber = $(
-								"#question_group_sort_num").val();
-						questionJson.questionName = questionName;
-						questionJson.questionValue = question;
-						questionJson.sortNumber = 2;
-						questionJson.activeFlag = true;
-						questionJson.templateFlag = false;
-						var optionData = [];
-						var html = "<li><input type='checkbox' />"
-								+ questionName + "";
-						html = html
-								+ "<span style='padding-left:1px;'><a style='color: rgb(205,204,204)' onclick='editquestion(\""
-								+ $("#group_type").val() + "\",\""
-								+ $("#groupId").val() + "\",\"" + question_id
-								+ "\")' >编辑</a></span>";
-						html = html
-								+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)'>删除</a></span></li>";
-						$("input[name='checkOption']").each(function(i) {
-							var option = {};
-							option.optionId = UUID.prototype.createUUID();
-							option.activeFlag = "y";
-							option.sortNumber = i;
-							option.optionName = $(this).val();
-							option.optionValue = i + 1;
-							optionData.push(option);
-						})
-						questionJson.options = optionData;
-						var question_id = $("#question_id").val();
-						for (var j = 0; j < data1.questions.length; j++) {
-							if (data1.questions[j].questionId == question_id) {
-								data1.questions.splice(j, 1);
-								$("#" + question_id).remove();
-							}
-						}
-						$("#add_" + groupId).append(html);
-						data1.questions.push(questionJson);
-						$('#myCheck').modal('hide');
-					})
-
 	var delCheck = function(id) {
 		$("#div_" + id).remove();
 	}
@@ -960,24 +880,27 @@ jQuery(function($) {
 		$("#questionEditFlag").val(true);
 		$("#question_id").val(questionId);
 		$("#groupId").val(groupId);
-		$("#tableListAll tr").remove()
+		$("#tableListAll tr").remove();
+		$("#questionType").val(type);
+		alert(templateFlag);
 		if (type == 0|| type == 1||type == 2 ) {
 			for (var i = 0; i < data1.questions.length; i++) {
 				if (data1.questions[i].questionId == questionId) {
-					if(templateFlag=='false'){
-						$('#redioQuestion').attr('disabled',true);
-						$('#redioQuestionName').attr('disabled',true);
-						$('#redioQuestion').removeAttr("disabled");
-						$('#redioQuestionName').removeAttr("disabled");
-						$("#redioQuestion").val(data1.questions[i].questionName);
-						$("#redioQuestionName").val(data1.questions[i].questionValue);
-						$("#MyRedio").dialog('option', 'title', question_group_name).dialog("open");	
+					if(templateFlag==false){
+						$('#redioEditQuestionName').attr('disabled',true);
+						$('#redioEditQuestionValue').attr('disabled',true);
+						$('#redioEditQuestionName').removeAttr("disabled");
+						$('#redioEditQuestionValue').removeAttr("disabled");
+						$("#redioEditQuestionName").val(data1.questions[i].questionName);
+						$("#redioEditQuestionValue").val(data1.questions[i].questionValue);
+						$("#MyEditRedio").dialog('option', 'title', question_group_name).dialog("open");	
 					}else{
-						$('#redioQuestion').attr('disabled',true);
-						$('#redioQuestionName').attr('disabled',true);
-						$("#redioQuestion").val(data1.questions[i].questionName);
-						$("#redioQuestionName").val(data1.questions[i].questionValue);
-						$("#MyRedio").dialog('option', 'title', question_group_name).dialog("open");
+						$('#redioEditQuestionName').attr('disabled',true);
+						$('#redioEditQuestionValue').attr('disabled',true);
+						$('#redioEditQuestionValue').removeAttr("disabled");
+						$("#redioEditQuestionName").val(data1.questions[i].questionName);
+						$("#redioEditQuestionValue").val(data1.questions[i].questionValue);
+						$("#MyEditRedio").dialog('option', 'title', question_group_name).dialog("open");
 					}
 					
 				}
@@ -1023,6 +946,7 @@ jQuery(function($) {
 			question_group_sort_num, displayValue) {
 		$("#questionEditFlag").val(true);
 		$("#question_id").val('');
+		$("#questionType").val(group_type);
 		// questionScoreRadio
 		$("#questionScoreVal").val('');
 		$("#questionScoreName").val('');
@@ -1045,18 +969,22 @@ jQuery(function($) {
 		$("input[name='option']").each(function() {
 			$(this).val('');
 		})
+		alert(group_type);
 		if (group_type == 0) {
 			$("#MyRedioFlag").val(0);
-			$("#redioQuestionName").val(displayValue);
+			$("#redioQuestion").attr('disabled', true)
 			$("#redioQuestionName").attr('disabled', true);
+			$("#redioQuestion").removeAttr('disabled');
+			$("#redioQuestionName").removeAttr('disabled');
 			$("#MyRedio").dialog('option', 'title', question_group_name)
 			.dialog("open");
 		} else if (group_type == 1) {
 			$("#MyRedioFlag").val(1)
-			$("#redioQuestionName").val(displayValue);
+			$("#redioQuestion").attr('disabled', true)
 			$("#redioQuestionName").attr('disabled', true);
-			$("#MyRedio").dialog('option', 'title', question_group_name)
-					.dialog("open");
+			$("#redioQuestion").removeAttr('disabled');
+			$("#redioQuestionName").removeAttr('disabled');
+			$("#MyRedio").dialog('option', 'title', question_group_name).dialog("open");
 		} else if (group_type == 2) {
 			$("#MyRedioFlag").val(2);
 			$("#MyRedio").dialog('option', 'title', question_group_name)
@@ -1097,14 +1025,13 @@ jQuery(function($) {
 		$("#group_text_" + groupId).css("display", "block");
 	}
 	var selectGroup = function(groupid){
-		alert(groupid);
 		if($("#check_group_"+groupid).prop("checked")){
 			$("#"+$("#add_"+groupid+" li input:checkbox")[0].id).attr('checked',true);
 			var array = $("#add_"+groupid+" li input:checkbox")[0].id.split("_");
 			//问题组选中
 			for(var j = 0;j<data1.questionGroup.length;j++){
 				if(data1.questionGroup[j].questionGroupId == groupid){
-					data1.questionGroup[j].select = true
+					data1.questionGroup[j].select = true;
 				}
 			}
 			//选中第一个问题
