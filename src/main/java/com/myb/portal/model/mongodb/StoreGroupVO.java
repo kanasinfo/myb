@@ -9,8 +9,14 @@ public class StoreGroupVO {
 	private List<Store> store;
 	private String activeFlag;
 	private int sortNumber;
+	private List<String> downDate;
 	
-	
+	public List<String> getDownDate() {
+		return downDate;
+	}
+	public void setDownDate(List<String> downDate) {
+		this.downDate = downDate;
+	}
 	public String getId() {
 		return id;
 	}

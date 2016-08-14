@@ -1,5 +1,7 @@
 package com.myb.portal.model.mongodb;
 
+import java.util.List;
+
 public class Store {
 	private String id;
 	private String storeId;
@@ -12,8 +14,14 @@ public class Store {
 	private String managerEmail;
 	private Integer managerPhone;
 	private String managerWechatNumber;
+	private List<String> downDate;
 	
-	
+	public List<String> getDownDate() {
+		return downDate;
+	}
+	public void setDownDate(List<String> downDate) {
+		this.downDate = downDate;
+	}
 	public String getManagerName() {
 		return managerName;
 	}

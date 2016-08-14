@@ -649,6 +649,18 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 			Criteria criterg = Criteria.where("_id").is(questionId);
 			query.addCriteria(criterg);
 			QuestionTmpltVO questionTmpltVO = mongoTemplate.findOne(query, QuestionTmpltVO.class);
+			//封装数据结构
+			Map<String, Store> mapStore = new HashMap<String, Store>();
+			 for (Store s : questionTmpltVO.getStore()) {
+				if(s.getType()==0){
+					mapStore.put(s.getStoreId(), s);
+				}
+			};
+			Map<String, StoreGroupVO> mapStoreGroup = new HashMap<String, StoreGroupVO>();
+			 for (StoreGroupVO s : questionTmpltVO.getStoreGroup()) {
+				 mapStoreGroup.put(s.getStoreGroupId(), s);
+			};
+			
 			//判断是否是根据门店组发布 parentId 为null时  无门店组发布
 			if(StringUtils.isBlank(parentId)){
 				List<String> list = new ArrayList<String>();
@@ -670,10 +682,19 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 						store.setManagerPhone(mybStore.getManagerPhone());
 						store.setManagerWechatNumber(mybStore.getManagerWechatNumber());
 						store.setType(0);
+						if(mapStore.get(store.getStoreId())==null){
+							List<String> listDate = new ArrayList<String>();
+							listDate.add(Utils.getDate());
+							store.setDownDate(listDate);
+						}else{
+							store.getDownDate().add(Utils.getDate());
+						}
+						
 						questionTmpltVO.getStore().add(store);
 					}
 				}
 				questionsService.updateQuestion(questionId, JsonUtil.objectToJson(questionTmpltVO));
+				this.releaseQuestion(questionId);
 			}else{
 				//查询分组信息
 				MybStoreGroup group = mybStoreGroupRepository.findOne(parentId);
@@ -707,10 +728,18 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 						addStore.add(store);
 						questionTmpltVO.getStore().add(store);
 					}
+					if(mapStoreGroup.get(storogroup.getStoreGroupId())==null){
+						List<String> listDate = new ArrayList<String>();
+						listDate.add(Utils.getDate());
+						storogroup.setDownDate(listDate);
+					}else{
+						storogroup.getDownDate().add(Utils.getDate());
+					}
 					storogroup.setStore(addStore);
 				}
 				questionTmpltVO.getStoreGroup().add(storogroup); 
 				questionsService.updateQuestion(questionId, JsonUtil.objectToJson(questionTmpltVO));
+				this.releaseQuestion(questionId);
 			}
 			
 			
