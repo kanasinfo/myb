@@ -129,7 +129,7 @@ public class MybChartSUMMARYHEALTH extends MybChart{
 			ReleaseQuestionVo listId = mongoTemplate.findOne(query, ReleaseQuestionVo.class,"release_qustnnr");
 			//查询忠诚客户(8-10)
 			for (QuestionsVo q : listId.getQuestions()) {
-				if(q.getBusinessType().equals("qustRepurchase")||q.getBusinessType().equals("qustRecommendation")){
+				if(q.getBusinessType() != null && ("qustRepurchase".equals(q.getBusinessType())||"qustRecommendation".equals(q.getBusinessType()))){
 					qIds.add(q.getQuestionId());
 					loyalCriterias.add(Criteria.where("answers.questionIdValue").in(q.getQuestionId()+"_8",q.getQuestionId()+"_9",q.getQuestionId()+"_10"));
 					lossCriterias.add(Criteria.where("answers.questionIdValue").in(q.getQuestionId()+"_1",q.getQuestionId()+"_2",q.getQuestionId()+"_3",q.getQuestionId()+"_4",q.getQuestionId()+"_5"));

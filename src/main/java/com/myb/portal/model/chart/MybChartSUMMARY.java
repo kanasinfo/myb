@@ -132,7 +132,7 @@ public class MybChartSUMMARY extends MybChart{
 			
 			if(totalCount>0){
 				 aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),
-						 match(ct),unwind("$answers"),match(Criteria.where("answers.questionId").is("1")),
+						 match(ct),unwind("$answers"),match(Criteria.where("answers.questionId").is(questionId)),
 						 match(Criteria.where("answers.optionValue").in("8","9","10")),group("$answers.questionName").count().as("count"));
 				 results = mongoTemplate.aggregate(aggregation, "answer", TagCount.class);
 				 tagCount = results.getMappedResults();				 
@@ -168,7 +168,7 @@ public class MybChartSUMMARY extends MybChart{
 					 aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),
 							 match(ct),
 							 match(ca),
-							 unwind("$answers"),match(Criteria.where("answers.questionId").is("1")),
+							 unwind("$answers"),match(Criteria.where("answers.questionId").is(questionId)),
 							 match(Criteria.where("answers.optionValue").in("8","9","10")),group("$answers.questionName").count().as("count"));
 					 results = mongoTemplate.aggregate(aggregation, "answer", TagCount.class);
 					 tagCount = results.getMappedResults();				 
