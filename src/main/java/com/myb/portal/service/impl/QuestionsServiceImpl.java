@@ -31,6 +31,8 @@ import com.myb.portal.model.mongodb.Options;
 import com.myb.portal.model.mongodb.QuestionGroupVO;
 import com.myb.portal.model.mongodb.QuestionTmpltVO;
 import com.myb.portal.model.mongodb.QuestionsVo;
+import com.myb.portal.model.mongodb.Store;
+import com.myb.portal.model.mongodb.StoreGroupVO;
 import com.myb.portal.model.question.MybOption;
 import com.myb.portal.model.question.MybQuestion;
 import com.myb.portal.model.question.MybQuestionGroup;
@@ -693,16 +695,37 @@ public class QuestionsServiceImpl implements QuestionsService {
 			JSONObject jb = JSONObject.fromObject(data);
 			JSONArray jArray = jb.getJSONArray("questions");
 			JSONArray jaGroup = jb.getJSONArray("questionGroup");
+			JSONArray jaStore = jb.getJSONArray("store");
+			JSONArray jaStoreGroup = jb.getJSONArray("storeGroup");
 			JSONObject jbquestion = null;
 			QuestionGroupVO questionVo = null;
-			ActivePeriod activePeriod = null;
 			List<QuestionGroupVO> listQuestionGroup = new ArrayList<QuestionGroupVO>();
 			for (int i = 0; i < jaGroup.size(); i++) {
 				jbquestion = jaGroup.getJSONObject(i);
 				questionVo = JsonUtil.jsonToObject(jbquestion.toString(), QuestionGroupVO.class);
 				listQuestionGroup.add(questionVo);
 			}
-
+			//store json处理失败问题
+			List<Store> listStorep = new ArrayList<Store>();
+			Store store= null;
+			for (int i = 0; i < jaStore.size(); i++) {
+				jbquestion = jaStore.getJSONObject(i);
+				store= JsonUtil.jsonToObject(jbquestion.toString(), Store.class);
+				listStorep.add(store);
+			}
+			//处理storeGroup
+			List<StoreGroupVO> listStoreGroup = new ArrayList<StoreGroupVO>();
+			StoreGroupVO group = null;
+			for (int i = 0; i <jaStoreGroup.size() ; i++) {
+				jbquestion = jaStoreGroup.getJSONObject(i);
+				group = JsonUtil.jsonToObject(jbquestion.toString(), StoreGroupVO.class);
+				if (null != jbquestion.get("store")) {
+					List<Store> listStore = JsonUtil.jsonToList(jbquestion.getJSONArray("store").toString(), Store.class);
+					group.setStore(listStore);
+				}
+				listStoreGroup.add(group);
+			}
+			
 			for (int i = 0; i < jArray.size(); i++) {
 				jbquestion = jArray.getJSONObject(i);
 				QuestionsVo questionsVo = JsonUtil.jsonToObject(jbquestion.toString(), QuestionsVo.class);
@@ -733,6 +756,8 @@ public class QuestionsServiceImpl implements QuestionsService {
 			questionTmpltVO.setQuestions(lsitquestion);
 			questionTmpltVO.getQuestionGroup().clear();
 			questionTmpltVO.setQuestionGroup(listQuestionGroup);
+			questionTmpltVO.setStore(listStorep);
+			questionTmpltVO.setStoreGroup(listStoreGroup);
 			mongoTemplate.remove(query, QuestionTmpltVO.class);
 			mongoTemplate.save(questionTmpltVO);
 			aReq.setSuccess(true);

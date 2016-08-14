@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,8 @@ public class MybReleaseController {
 		mv.addObject("id", templId); // 用于头文件
 		//查询所有的group
 		mv.addObject("groupList",mybReleaseService.queryGroupByAccountid());
+		//查询所有分店
+		mv.addObject("storeList",mybReleaseService.queryStoreByGroupIdForList(templId));
 		mv.setViewName("release/releaseStore");
 		return mv;
 	}
@@ -109,10 +112,10 @@ public class MybReleaseController {
 	}
 	@RequestMapping(value="uploadXls",method=RequestMethod.POST)
 	@ResponseBody
-	public AjaxReq uploadXls(MultipartFile myfile){
+	public AjaxReq uploadXls(MultipartFile fileField,HttpServletRequest request){
 		AjaxReq ar = new AjaxReq();
 		try {
-			String fileName = myfile.getName();
+			String fileName = fileField.getOriginalFilename();
 			fileName = fileName.substring(fileName.lastIndexOf("."), fileName.length());
 			if(fileName==""){
 				ar.setSuccess(false);
@@ -123,7 +126,7 @@ public class MybReleaseController {
 				ar.setMessage("文件不正确，请输入正确格式。");
 				return ar;
 			}
-			InputStream input = myfile.getInputStream();
+			InputStream input = fileField.getInputStream();
 			mybReleaseService.uploadXls(input,ar);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -150,13 +153,13 @@ public class MybReleaseController {
 		}
 	}
 	@RequestMapping(value = "downGroupLoadExcel", method = RequestMethod.POST)
-	public void downGroupLoadExcel(String data,String questionId,String groupId,HttpServletRequest request,
+	public void downGroupLoadExcel(String parentId,String data,String questionId,String groupId,HttpServletRequest request,
 			HttpServletResponse response) {
 		try {
 			ServletOutputStream outputStream = response.getOutputStream();
 			request.getRequestURI();
 			String path = request.getRealPath("/");
-			AjaxReq ar = mybReleaseService.downGroupLoadExcel(data, questionId, groupId,path);
+			AjaxReq ar = mybReleaseService.downGroupLoadExcel(parentId,data, questionId, groupId,path);
 			InputStream fis = new BufferedInputStream(new FileInputStream(ar.getData().toString()));
 			if(ar.isSuccess()){
 				response.reset();// 不加这一句的话会出现下载错误

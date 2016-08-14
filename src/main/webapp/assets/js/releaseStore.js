@@ -1,10 +1,17 @@
 jQuery(function($){
+	var customStore = [];
 	$("#downloadCode").click(function(){
+		//判断是否选中门店分组
+		var parentId = $('option:selected').attr("id")
+		$("#parentId").val(parentId);
+		//判断可以下载的门店
 		var downLoadData = $("#downLoadData").val();
 		var downLoadQuestionId = $("#downLoadQuestionId").val();
 		var downLoadGroupId = $("#downLoadGroupId").val();
-		if(downLoadData!=''&&downLoadQuestionId!=''&&downLoadGroupId!=''){
+		if(downLoadData!=''&&downLoadQuestionId!=''){
 			$("#downLoadZipFrom").submit();
+		}else{
+			alert("请选中要下载的数据");
 		}
 	})
 	
@@ -95,17 +102,13 @@ jQuery(function($){
 			{
 				autoOpen : false,
 				height : 420,
-				width : 400,
+				width : 650,
 				modal : true,
 				buttons : {
 					"保存" : function() {
-						var store = [];
-						$("input[name='storeName']").each(function(data){
-							store.push($(this).val());
-						});
 						$.ajax({
 							url : '../addStore.json?R' + Math.random(),
-							data : {'store':JSON.stringify(store)},
+							data : {'store':JSON.stringify(customStore)},
 							async:false,
 							method : 'POST',
 							dataType : 'JSON',
@@ -145,6 +148,42 @@ jQuery(function($){
 					}
 				}
 			});
+	$("#MybAddSotre").dialog({
+		autoOpen : false,
+		height : 420,
+		width : 500,
+		modal : true,
+		buttons : {
+			"保存" : function() {
+				if ($('#MybAddSotreFrom').validationEngine(
+				'validate') == false)
+			return;
+				var json = {};
+				var storeName=$("#storeName").val();
+				var managerName=$("#managerName").val();
+				var managerEmail=$("#managerEmail").val();
+				var managerPhone=$("#managerPhone").val();
+				var managerNumber=$("#managerNumber").val();
+				var id = UUID.prototype.createUUID();
+				json.id = id;
+				json.storeName = storeName;
+				json.managerName = managerName;
+				json.managerEmail = managerEmail;
+				json.managerPhone = managerPhone;
+				json.managerNumber = managerNumber;
+				customStore.push(json);
+				var html ="<tr id="+id+"><td  class='main_add_list_talbe_td_left'>"+managerName+"</td>";
+				html+="<td class='main_add_list_talbe_td_right' ><a onclick='delCustomStore(\"" + id+ "\")'>删除</a></td>";
+				html+="</tr>";
+				$("#storeList").append(html);
+				$(this).dialog("close");
+			},
+			"关闭" : function() {
+				$(this).dialog("close");
+			}
+		}
+	}
+			)
 	$(".main_group").dialog(
 			{
 				autoOpen : false,
@@ -213,11 +252,12 @@ jQuery(function($){
 		$("#inputStore").dialog('option','title','添加分店/网店').dialog("open");
 	})
 	$("#addCustomStore").click(function(){
-		var id = UUID.prototype.createUUID();
-		var html ="<tr id="+id+"><td  class='main_add_list_talbe_td_left'><input name='storeName' type='text'/></td>";
-		html+="<td class='main_add_list_talbe_td_right' ><a onclick='delCustomStore(\"" + id+ "\")'>删除</a></td>";
-		html+="</tr>";
-		$("#storeList").append(html);
+		$("#storeName").val('');
+		$("#managerName").val('');
+		$("#managerEmail").val('');
+		$("#managerPhone").val('');
+		$("#managerNumber").val('');
+		$("#MybAddSotre").dialog('option', 'title', "添加门店").dialog("open");
 	})
 	$("#allStore").click(function(){
 		$('#store').empty();
@@ -248,9 +288,10 @@ jQuery(function($){
 	$("#submit").click(function(){
 		var pathName = $("#fileField").val();
 		var k = pathName.substr(pathName.indexOf("."))
-		if(pathName!=''&&pathName=='.xlsx'){
+		if(pathName!=''&&k=='.xlsx'){
 		$.ajaxFileUpload({
-			url:'../release/uploadXls.json?R' + Math.random(),
+			url:'../uploadXls.json?R' + Math.random(),
+			type:'POST',
 			secureuri:false,
 			fileElementId:'fileField',
 			dataType:'json',
@@ -452,6 +493,12 @@ jQuery(function($){
 	
 	
 	var delCustomStore = function(id){
+		var array = eval(customStore);
+		for(var i =0;i<array.length;i++){
+			if(array[i].id==id){
+				delete array[i];
+			}
+		}
 		$("#"+id).remove();
 	}
 	var delGroupById = function(id){

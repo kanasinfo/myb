@@ -7,8 +7,43 @@ public class Store {
 	private String address;
 	private String activeFlag;
 	private int sortNumber;
+	private int type;
+	private String managerName;
+	private String managerEmail;
+	private Integer managerPhone;
+	private String managerWechatNumber;
 	
 	
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public String getManagerEmail() {
+		return managerEmail;
+	}
+	public void setManagerEmail(String managerEmail) {
+		this.managerEmail = managerEmail;
+	}
+	public Integer getManagerPhone() {
+		return managerPhone;
+	}
+	public void setManagerPhone(Integer managerPhone) {
+		this.managerPhone = managerPhone;
+	}
+	public String getManagerWechatNumber() {
+		return managerWechatNumber;
+	}
+	public void setManagerWechatNumber(String managerWechatNumber) {
+		this.managerWechatNumber = managerWechatNumber;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
 	public String getId() {
 		return id;
 	}

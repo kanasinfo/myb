@@ -108,10 +108,22 @@ function loadPage(page,businessType) {
 	var qid = '';
 	var qstGrup = [];
 	var groupId = "";
-	
+ 	
+	//qustSatisfaction,qustRepurchase,qustRecommendation,qustCustomerHealth
+	if (page == 'Summary'){
+		qustBusinessType = 'qustSatisfaction';
+	}else	if (page == 'SummaryNPS'){
+		qustBusinessType = 'qustRecommendation';
+	}else	if (page == 'SummaryHEALTH'){
+		qustBusinessType = 'qustCustomerHealth';
+	}else	if (page == 'DetailedItem'){
+		qustBusinessType = 'qustSatisfaction';
+	}	if (page == 'Services'){
+		qustBusinessType = 'qustSatisfaction';
+	}
 	for (var i = 0; i < qGroup.length; i++) {
 		if(businessType == qGroup[i].businessType){
-			groupId = qGroup[i].questionGroupId;
+			groupId = qGroup[i].questionGroupId;			
 		}
 	}
 
@@ -124,6 +136,9 @@ function loadPage(page,businessType) {
 			qst.questionName = data[i].questionName;
 			qst.sortNumber = data[i].sortNumber;
 			qstGrup.push(qst);
+			if(qustBusinessType == data[i].businessType){
+				qid = data[i].questionId;
+			}
 		}
 	}
 	// console.log(qstGrup);

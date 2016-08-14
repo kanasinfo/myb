@@ -5,7 +5,10 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.myb.portal.model.account.MybStoreGroup;
+import com.myb.portal.model.mongodb.StoreList;
 import com.myb.portal.util.AjaxReq;
 
 /**
@@ -16,6 +19,13 @@ import com.myb.portal.util.AjaxReq;
  * @version 1.0
  */
 public interface MybReleaseService {
+	/**
+	 * queryStoreByGroupIdForList TODO(根据groupid查询所有的数据) 
+	 * @author wangzx
+	 * @param groupId
+	 * @return
+	 */
+	public List<StoreList> queryStoreByGroupIdForList(String templateId);
 	/**
 	 * releaseQuestion TODO(发布问卷) 
 	 * @author wangzx
@@ -116,6 +126,6 @@ public interface MybReleaseService {
 	 * @param questionId
 	 * @return
 	 */
-	public AjaxReq downGroupLoadExcel(String data,String questionId,String groupId,String classPath);
+	public AjaxReq downGroupLoadExcel( String parentId,String data,String questionId,String groupId,String classPath);
 	
 }

@@ -34,12 +34,16 @@ import com.myb.portal.model.mongodb.ActivePeriod;
 import com.myb.portal.model.mongodb.QuestionTmpltVO;
 import com.myb.portal.model.mongodb.QuestionsVo;
 import com.myb.portal.model.mongodb.ReleaseQuestionVo;
+import com.myb.portal.model.mongodb.Store;
 import com.myb.portal.model.mongodb.StoreGroupVO;
+import com.myb.portal.model.mongodb.StoreList;
 import com.myb.portal.repository.MybStoreGroupRepository;
 import com.myb.portal.repository.MybStoreRepository;
 import com.myb.portal.service.MybReleaseService;
+import com.myb.portal.service.QuestionsService;
 import com.myb.portal.shiro.ShiroDb;
 import com.myb.portal.util.AjaxReq;
+import com.myb.portal.util.JsonUtil;
 import com.myb.portal.util.Utils;
 import com.myb.portal.util.ZipCompressorByAnt;
 
@@ -55,7 +59,9 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 	@Autowired
 	MybStoreRepository mybStoreRepository;
 	@Autowired
-	MybStoreGroupRepository mybStoreGroupRepository; 
+	MybStoreGroupRepository mybStoreGroupRepository;
+	@Autowired
+	QuestionsService questionsService;  
 	@Autowired
 	EntityManager em;
 
@@ -159,33 +165,61 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 			for (MybStore mybStore : myblist) {
 				map.put(mybStore.getName(), mybStore);
 			}
+			req.setSuccess(true);
 			List<MybStore> list = new ArrayList<MybStore>();
 			XSSFWorkbook work = new XSSFWorkbook(input);
 			XSSFSheet sheet = work.getSheetAt(0);
 			MybStore mybStore = null;
-			for (Row row : sheet) {
-				for (Cell cell : row) {
-					if (map.get(cell.getStringCellValue()) == null) {
-						mybStore = new MybStore();
-						mybStore.setId(Utils.getUUid());
-						mybStore.setAccountId(accountId);
-						mybStore.setName(cell.getStringCellValue());
-						list.add(mybStore);
+			for (int i = 1; i < sheet.getPhysicalNumberOfRows(); i++) {
+				Cell cell = null;
+				Row row = sheet.getRow(i);
+				if(row.getPhysicalNumberOfCells()!=6){
+					req.setMessage("上传失败");
+					req.setSuccess(false);
+				}else{
+					mybStore = new MybStore();
+					mybStore.setId(Utils.getUUid());
+					mybStore.setAccountId(accountId);
+					//获取门店名称
+					cell = row.getCell(0);
+					mybStore.setName(cell.getStringCellValue());
+					//门店管理者名称
+					cell = row.getCell(1);
+					mybStore.setManagerName(cell.getStringCellValue());
+					//门店管理者电话
+					cell = row.getCell(2);
+					mybStore.setManagerPhone(Integer.parseInt(cell.getStringCellValue()));
+					//门店管理者Email
+					cell = row.getCell(3);
+					mybStore.setManagerEmail(cell.getStringCellValue());
+					//门店管理者微信号
+					cell = row.getCell(4);
+					mybStore.setManagerWechatNumber(cell.getStringCellValue());
+					//门店地址
+					cell = row.getCell(5);
+					mybStore.setAddress(cell.getStringCellValue());
+					list.add(mybStore);
+				}
+				
+			}
+			if(req.isSuccess()){
+				for (int j = 0; j < list.size(); j++) {
+					em.persist(list.get(j));
+					if (j % 30 == 0) {
+						em.flush();
+						em.clear();
 					}
-
 				}
+				work.close();
+				req.setMessage("上传成功");
+				req.setSuccess(true);
+				return req;
+			}else{
+				work.close();
+				req.setMessage("格式不正确");
+				req.setSuccess(false);
+				return req;
 			}
-			for (int j = 0; j < list.size(); j++) {
-				em.persist(list.get(j));
-				if (j % 30 == 0) {
-					em.flush();
-					em.clear();
-				}
-			}
-			work.close();
-			req.setMessage("上传成功");
-			req.setSuccess(true);
-			return req;
 		} catch (Exception e) {
 			req.setMessage("上传失败");
 			req.setSuccess(false);
@@ -220,10 +254,15 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 			MybStore mybStore = null;
 			for (int i = 0; i < ja.size(); i++) {
 				if(map.get(ja.get(i).toString())==null){
+					JSONObject jb = ja.getJSONObject(i);
 					mybStore = new MybStore();
 					mybStore.setId(Utils.getUUid());
 					mybStore.setAccountId(accountId);
-					mybStore.setName(ja.get(i).toString());
+					mybStore.setName(jb.getString("storeName"));
+					mybStore.setManagerName(jb.getString("managerName"));
+					mybStore.setManagerEmail(jb.getString("managerEmail"));
+					mybStore.setManagerPhone(jb.getInt("managerPhone"));
+					mybStore.setManagerWechatNumber(jb.getString("managerNumber"));;
 					list.add(mybStore);
 				}
 			}
@@ -517,6 +556,34 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 		return list;
 	}
 	/**
+	 * queryStoreByGroupIdForList TODO(根据groupid查询所有的数据) 
+	 * @author wangzx
+	 * @param groupId
+	 * @return
+	 */
+	@Transactional
+	public List<StoreList> queryStoreByGroupIdForList(String templateId){
+		List<StoreList> list = new ArrayList<StoreList>();
+		try {
+			String accountId = ShiroDb.getAccount().getId();
+			//如果groupid为空则查询全部
+			JSONObject jb = null;
+			JSONArray ja = new JSONArray();
+			jb = new JSONObject();
+			List<MybStore> myblist = mybStoreRepository.findByAccountIdOrderByStoreSortAsc(accountId);
+			StoreList storeList = null;
+			for (MybStore mybStore : myblist) {
+				storeList = new StoreList();
+				storeList.setStoreId(mybStore.getId());
+				storeList.setStoreName(mybStore.getName());
+				storeList.setUrl(Utils.ParseProperties("RELEASE_URL") + templateId+".html?storeId="+mybStore.getId());
+				list.add(storeList);
+			}
+		} catch (Exception e) {
+		}
+		return list;
+	}
+	/**
 	 * queryStoreByGroupId TODO(根据groupid查询所有的数据) 
 	 * @author wangzx
 	 * @param groupId
@@ -566,7 +633,7 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 	 * @param questionId
 	 * @return
 	 */
-	public AjaxReq downGroupLoadExcel(String data,String questionId,String groupId,String classPath){
+	public AjaxReq downGroupLoadExcel(String parentId,String data,String questionId,String groupId,String classPath){
 		AjaxReq ar = new AjaxReq();
 		try {
 			if(StringUtils.isBlank(data)){
@@ -577,10 +644,76 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 				ar.setMessage("下载失败");
 				return  ar;
 			}
-			if(StringUtils.isBlank(groupId)){
-				ar.setMessage("下载失败");
-				return  ar;
+			Query query = new Query();
+			ShiroDb.getAccount().getId();
+			Criteria criterg = Criteria.where("_id").is(questionId);
+			query.addCriteria(criterg);
+			QuestionTmpltVO questionTmpltVO = mongoTemplate.findOne(query, QuestionTmpltVO.class);
+			//判断是否是根据门店组发布 parentId 为null时  无门店组发布
+			if(StringUtils.isBlank(parentId)){
+				List<String> list = new ArrayList<String>();
+				JSONArray jaStoreId = JSONArray.fromObject(data);
+				for (int i = 0; i < jaStoreId.size() ; i++) {
+					String[] store = jaStoreId.getString(i).split("_");
+					list.add(store[0]);
+				}
+				//查询所有选中的门店
+				if(list.size()!=0){
+					List<MybStore> listStore = mybStoreRepository.findByidIn(list);
+					Store store = null;
+					for (MybStore mybStore : listStore) {
+						store = new Store();
+						store.setId(mybStore.getId());
+						store.setAddress(mybStore.getAccountId());
+						store.setManagerEmail(mybStore.getManagerEmail());
+						store.setManagerName(mybStore.getManagerName());
+						store.setManagerPhone(mybStore.getManagerPhone());
+						store.setManagerWechatNumber(mybStore.getManagerWechatNumber());
+						store.setType(0);
+						questionTmpltVO.getStore().add(store);
+					}
+				}
+				questionsService.updateQuestion(questionId, JsonUtil.objectToJson(questionTmpltVO));
+			}else{
+				//查询分组信息
+				MybStoreGroup group = mybStoreGroupRepository.findOne(parentId);
+				StoreGroupVO storogroup = new StoreGroupVO();
+				if(group!=null){
+					storogroup.setStoreGroupId(group.getId());
+					storogroup.setStoreGroupName(group.getName());
+				}
+				//查询分组以及下面的门店
+				List<String> list = new ArrayList<String>();
+				JSONArray jaStoreId = JSONArray.fromObject(data);
+				for (int i = 0; i < jaStoreId.size() ; i++) {
+					String[] store = jaStoreId.getString(i).split("_");
+					list.add(store[0]);
+				}
+				//查询所有选中的门店
+				if(list.size()!=0){
+					List<MybStore> listStore = mybStoreRepository.findByidIn(list);
+					List<Store> addStore = new ArrayList<Store>();
+					Store store = null;
+					for (MybStore mybStore : listStore) {
+						store = new Store();
+						store.setId(mybStore.getId());
+						store.setAddress(mybStore.getAccountId());
+						store.setManagerEmail(mybStore.getManagerEmail());
+						store.setManagerName(mybStore.getManagerName());
+						store.setManagerPhone(mybStore.getManagerPhone()==null?0:mybStore.getManagerPhone());
+						store.setManagerWechatNumber(mybStore.getManagerWechatNumber());
+						
+						store.setType(1);
+						addStore.add(store);
+						questionTmpltVO.getStore().add(store);
+					}
+					storogroup.setStore(addStore);
+				}
+				questionTmpltVO.getStoreGroup().add(storogroup); 
+				questionsService.updateQuestion(questionId, JsonUtil.objectToJson(questionTmpltVO));
 			}
+			
+			
 			String path = classPath+Utils.ParseProperties("QR_CODE_URL")+questionId;
 			String xlsxPath = classPath+Utils.ParseProperties("QR_CODE_URL")+questionId+"/门店统计.xlsx";
 			File file = new File(path);

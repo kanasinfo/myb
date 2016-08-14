@@ -30,8 +30,38 @@ public class MybStore extends AbstractModel<String>{
 	private String address ;
 	@Column(name="STORESORT",length=11)
 	private int storeSort ;
-	
-
+	@Column(name="manager_Name")
+	private String managerName;
+	@Column(name="manager_Email")
+	private String managerEmail;
+	@Column(name="manager_Phone")
+	private Integer managerPhone;
+	@Column(name="manager_wechat_number")
+	private String managerWechatNumber;
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public String getManagerEmail() {
+		return managerEmail;
+	}
+	public void setManagerEmail(String managerEmail) {
+		this.managerEmail = managerEmail;
+	}
+	public Integer getManagerPhone() {
+		return managerPhone;
+	}
+	public void setManagerPhone(Integer managerPhone) {
+		this.managerPhone = managerPhone;
+	}
+	public String getManagerWechatNumber() {
+		return managerWechatNumber;
+	}
+	public void setManagerWechatNumber(String managerWechatNumber) {
+		this.managerWechatNumber = managerWechatNumber;
+	}
 	@ManyToMany(mappedBy="mybStore")
 	private Set<MybStoreGroup> mybStoreGroup;
 	public Set<MybStoreGroup> getMybStoreGroup() {
