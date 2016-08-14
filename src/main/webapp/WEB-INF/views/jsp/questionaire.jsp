@@ -61,7 +61,7 @@
 							<c:forEach var="question" items="${group.value}">
 								<c:if test="${question.activeFlag ==true }">
 									<c:choose>
-										<c:when test="${question.questionType=='com.myb.questiontype.Degree'}">
+										<c:when test="${question.questionType=='com.myb.questiontype.Degree'||question.questionType=='com.myb.questiontype.Score'}">
 											<div class="row" style="padding:0 10px;">
 												${question.questionValue}
 											</div>
@@ -122,7 +122,7 @@
 										    </label>
 										    </div>
 										</c:when>
-								<c:when test="${question.questionType=='com.myb.questiontype.Degree'}">
+								<c:when test="${question.questionType=='com.myb.questiontype.Degree'||question.questionType=='com.myb.questiontype.Score'}">
 									<div class="btn-group" data-toggle="buttons">
 										<c:forEach var="option" begin="1" end="10">
 									   		<label class="btn btn-default" onclick="selectRadio('${question.questionId}','${option}')" >
