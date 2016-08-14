@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Properties;
@@ -89,6 +90,11 @@ public abstract class Utils {
 		jb.put("endUserIdentity", vo.getIndustry());
 		jb.put("tenementId", vo.getTenementId());
 		jb.put("storeId", storeId);
+		Calendar calendar = Calendar.getInstance();
+		jb.put("year", calendar.get(Calendar.YEAR));
+		jb.put("quarter", Utils.quarter(calendar.get(Calendar.MONTH)));
+		jb.put("month", calendar.get(Calendar.MONTH));
+		jb.put("day", calendar.get(Calendar.DATE));
 		for (Store s : vo.getStore()) {
 			if(storeId.equals(s.getStoreId())){
 				jb.put("storeName", s.getStoreName());		
@@ -118,6 +124,19 @@ public abstract class Utils {
 			// TODO: handle exception
 		}
 		return null;
+	}
+	public static int quarter(int month){
+		int res = 0;
+		if(month>=1&&month<=3){
+			res = 1;
+		}else if(month>=4&&month<=6){
+			res = 2;
+		}else if(month>=7&&month<=9){
+			res = 3;
+		}else if(month>=10&&month<=12){
+			res = 4;
+		}
+		return res;
 	}
 	
 }

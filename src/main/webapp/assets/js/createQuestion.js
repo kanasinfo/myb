@@ -1,5 +1,52 @@
 jQuery(function(){
 	$("#submit_form").validationEngine();
+	$("#create_question").click(function(){
+		var credit_amount = $("#credit_amount").val();
+		var qustnr_name = $("#qustnr_name").val();
+		var amount = 0;
+		//检查可以样本数量
+		$.ajax({
+			url:'../main/queryAmount.json?r='+Math.random(),
+			method:'get',
+			dataType:'json',
+			success:function(data){
+				if(data.success){
+					amount=data.data;
+				}else{
+//					alert(data.message);
+				}
+			},
+			error:function(){
+				
+			}
+		})
+		if(credit_amount<=amount){
+			$("#submit_form").submit();	
+		}else{
+			alert("样本数量大于可用样本数量，请刷新查看最新样本数量");
+		}
+		
+		
+	});
+	//刷新可用样本数
+	$("#refurbish").click(function(){
+		$.ajax({
+			url:'../main/queryAmount.json?r='+Math.random(),
+			method:'get',
+			dataType:'json',
+			success:function(data){
+				if(data.success){
+					$("#amount").html(data.data);
+				}else{
+//					alert(data.message);
+				}
+			},
+			error:function(){
+			}
+			
+		
+		})
+	})
 	$("#select_industry").change(function(){ 
 		var parentId = $(this).children('option:selected').attr("id");
 		//查询下面模板值
@@ -90,11 +137,6 @@ jQuery(function(){
 		})
 		
 	}); 
-	$("#create_question").click(function(){
-		var credit_amount = $("#credit_amount").val();
-		var qustnr_name = $("#qustnr_name").val();
-		$("#submit_form").submit();
-	});
 	$(document).on('change','#select_industry_templ',function(){ 
 		var parentId = $('#select_industry_templ option:selected').attr("id");
 		$("#sub_industry_id").val($(this).children('option:selected').attr("id"));

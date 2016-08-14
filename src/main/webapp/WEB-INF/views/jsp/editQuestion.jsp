@@ -86,7 +86,7 @@
                 	<div class="column_left">设定样本量</div>
                 	<div class="column_right">
 	                	<span style="color: rgb(-91,99,109)"  class="warpper_center_right_span"><span id="basic_credit_amount">${industry.creditAmount }</span>
-	                		<input type="text" name="credit_amount" id="credit_amount" value="${industry.creditAmount }" style="width:50px;display: none"/>
+	                		<input type="text" name="credit_amount" id="credit_amount" value="${industry.creditAmount }" style="width:50px;display: none"/></span><span style="margin-left: 10px;text-align: center; color: rgb(110,164,5)">账户可用样本量:&nbsp;&nbsp;<span id="amount">${amount}</span><input type="button" style="border: 0;background-color: transparent;color: rgb(110,164,5)" id="refurbish" value="刷新"/></span>
 	               		</span>
                 	</div>
                 </div>
@@ -137,7 +137,9 @@
 			           			 <span style="padding-left:2px;color: rgb(82,82,82);margin-left: 8%;"><a style="color: rgb(82,82,82);font-size:12px;" onclick="delQuestion('${option.questionId}','${option.questionName}')">删除</a></span>
 		           			 </c:if>
 		           			 <c:if test="${option.templateFlag==true&& question.key.name eq '顾客消费习惯及背景调查'}">
-		           			 	<span style="padding-left:1px;"><a id="top_${option.questionId}" class="<c:if test="${option.topFlag==0}">question_top_onSelect</c:if><c:if test="${option.topFlag==1}">question_top_select</c:if>" data-toggle="modal" onclick="questionTop('${option.questionId}','${option.topFlag}')" style="color:red">置顶</a></span>
+		           			 	<span style="padding-left:1px;"><input type="button" id="top_${option.questionId}" class="<c:if test="${option.topFlag==0}">question_top_onSelect</c:if>
+		           			 	<c:if test="${option.topFlag==1}">question_top_select</c:if>"
+		           			 	 data-toggle="modal" onclick="questionTop('${option.questionId}','${option.topFlag}')" style="background-color:transparent;border:0" value="置顶"/></span>
 		           			 </c:if>
 	           			 </li>
 	             		</c:if>
@@ -145,7 +147,6 @@
                 </ul>
                 </div>
                 <div class="clearfix"></div>
-                
                 <c:if test="${question.key.businessType !='groupOverview' }">
                 <div class="div_button" style="margin-top:20px;">
 	            	<button onclick="addquestion('${question.key.customQuestionType}','${question.key.questionGroupId}','${question.key.name}','${question.key.sortNumber}','${question.key.displayValue}')"></button>

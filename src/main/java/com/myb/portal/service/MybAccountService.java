@@ -31,4 +31,10 @@ public interface MybAccountService {
 	 * @return
 	 */
 	public AjaxReq queryGroupByAccountId();
+	/**
+	 * queryAmount TODO(查询可用样本数) 
+	 * @author wangzx
+	 * @return
+	 */
+	public int queryAmount();
 }

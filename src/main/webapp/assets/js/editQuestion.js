@@ -1,6 +1,22 @@
 jQuery(function($) {
 	var data = decodeURIComponent($("#data").val());
 	var data1 = JSON.parse(data);
+	$("#refurbish").click(function(){
+		$.ajax({
+			url:'../queryAmount.json?r='+Math.random(),
+			method:'get',
+			dataType:'json',
+			success:function(data){
+				if(data.success){
+					$("#amount").html(data.data);
+				}else{
+//					alert(data.message);
+				}
+			},
+			error:function(){
+			}
+		})
+	})
 	$("#preview_question").click(function() {
 		data1.welcome.welcomeMsg = $("#welcome_msg").val();
 		openPostWindow("../../answer/previewAnswer.html", data1, "target");
@@ -14,8 +30,16 @@ jQuery(function($) {
 				} else if (questionEditFlag == 'true') {
 					alert("请保存数据!");
 				} else {
-					var templateId = $("#templId").val();
-					window.location.href = "../../release/releaseQuestion/"+ templateId + ".html";
+					var number = $("input:checkbox:checked").size();
+					alert(number);
+					if(number==0){
+						alert("没有选中任何问题！");
+					}else{
+
+						var templateId = $("#templId").val();
+						window.location.href = "../../release/releaseQuestion/"+ templateId + ".html";	
+					}
+					
 				}
 			})
 	var delQuestion = function(id, name) {
@@ -39,7 +63,6 @@ jQuery(function($) {
 			})
 		}
 	});
-	
 	$("#myEditOverAll").dialog(
 			{
 				autoOpen : false,

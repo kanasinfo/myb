@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.myb.portal.service.MybAccountService;
 import com.myb.portal.service.MybIndustryService;
 import com.myb.portal.service.QuestionsService;
+import com.myb.portal.util.AjaxReq;
 
 /**
  * <p>Title: MybMainController</p>
@@ -30,6 +33,8 @@ public class MybMainController {
 	MybIndustryService mybIndustryService;
 	@Autowired
 	QuestionsService questionsService;
+	@Autowired
+	MybAccountService mybAccountService;
 	
 
 	@RequestMapping(value="home",method=RequestMethod.GET)
@@ -102,8 +107,25 @@ public class MybMainController {
 	@RequestMapping(value="createQuestion",method=RequestMethod.GET)
 	public ModelAndView newQuestion(ModelAndView mv){
 		mv.addObject("industry",  mybIndustryService.queryIndustry());
+		//查询用户可用样本数
+		mv.addObject("amount", mybAccountService.queryAmount());
 		mv.setViewName("createQuestion");
 		return mv;
+	}
+	/**
+	 * queryAmount TODO(查询可用样本数量) 
+	 * @author wangzx
+	 * @return
+	 */
+	@RequestMapping(value="queryAmount",method=RequestMethod.GET)
+	@ResponseBody
+	public AjaxReq queryAmount(){
+		AjaxReq ar = new AjaxReq();
+		int amount = mybAccountService.queryAmount();
+		ar.setSuccess(true);
+		ar.setData(amount);
+		return ar;
+			
 	}
 	/**
 	 * newQuestion TODO(查询所有行业)
@@ -121,6 +143,7 @@ public class MybMainController {
 		mv.addObject("id", templId);
 		mv.addObject("industry",  map.get("template"));
 		mv.addObject("data",map.get("data"));
+		mv.addObject("amount", mybAccountService.queryAmount());
 		mv.addObject("list",   map.get("mapQuestion"));
 		mv.setViewName("editQuestion");
 		return mv;

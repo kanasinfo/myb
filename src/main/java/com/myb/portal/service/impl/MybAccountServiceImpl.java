@@ -44,7 +44,17 @@ public class MybAccountServiceImpl implements MybAccountService {
 	private MybStoreGroupRepository mybStoreGroupRepository;
 	@Autowired
 	MybStoreRepository mybStoreRepository;
-
+	public int queryAmount(){
+		int amount = 0;
+		try {
+			String accountId = ShiroDb.getAccount().getId();
+			MybAccount mybAccount = mybAccountRepository.findOne(accountId);
+			amount = mybAccount.getCreaditAmount();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return amount;
+	}
 	/**
 	 * registerAccount TODO(用户注册)
 	 * 

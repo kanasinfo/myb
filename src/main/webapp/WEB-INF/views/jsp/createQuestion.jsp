@@ -59,7 +59,7 @@
                 <div class="form_row">
                 	<div class="column_left">设定样本量</div>
                 	<div class="column_right">
-                		<span  class="warpper_center_right_span"><input type="text" data-validation-placeholder="输入不正确" class="validate[required,custom[integer]] text-input" name="credit_amount" id="credit_amount" style="width:50px;" value=""/></span>
+                		<span  class="warpper_center_right_span"><input type="text" data-validation-placeholder="输入不正确" class="validate[required,custom[integer]] text-input" name="credit_amount" id="credit_amount" style="width:50px;" value=""/></span><span style="margin-left: 10px;text-align: center; color: rgb(110,164,5)">账户可用样本量:&nbsp;&nbsp;<span id="amount">${amount}</span><input type="button" style="border: 0;background-color: transparent;color: rgb(110,164,5)" id="refurbish" value="刷新"/></span>
                 	</div>
                 </div>
         	</div>
