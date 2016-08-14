@@ -91,7 +91,15 @@
 			                    </tr>
 			                    </thead>
 			                   <tbody id="mainListTbody">
-			                   
+								<c:if test="${storeList!=null }">
+									<c:forEach var="sotre" items="${storeList }">
+					                   <tr>
+						                    <td class="table_left"><input name="mainCheckBox" value="${sotre.storeId }_${sotre.storeName }" type="checkbox"/>${sotre.storeName }</td>
+											<td class="table_center"><input type="text" value="${sotre.url }"/></td>
+											<td class="table_right"><img src="${ctx }/assets/images/towcodeDemo.png" style="width: 25px;height: 25px"/></td>
+										</tr>
+									</c:forEach>
+								</c:if>
 			                   </tbody>
 			                </table>
                     </div>
@@ -121,6 +129,7 @@
         	<input type="hidden" id="downLoadData" name="data" value=""/>
         	<input type="hidden" id="downLoadQuestionId" name="questionId" value="${templId }"/>
         	<input type="hidden" id="downLoadGroupId" name="groupId" value=""/>
+        	<input type="hidden" id="parentId" name="parentId" value=""/>
         </form>
         
         <div class="clearfix" style="height:10px;"></div>
@@ -180,7 +189,35 @@
             </div>
         </div>
     </div>
-
+    
+    <div id="MybAddSotre">
+		<form action="" id="MybAddSotreFrom">
+       	<div id="model_redio" style="height: 100px;">
+       		<table>
+     				<tr>	
+	                    <td  class="table_question">分店名称:</td>
+	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="storeName" /></td>
+	                </tr>
+	                <tr>
+	                    <td class="table_question">管理者姓名:</td>
+	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="managerName" /></td>
+	                </tr>
+	                <tr>
+	                    <td class="table_question">管理者E-mail:</td>
+	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="managerEmail" /></td>
+	                </tr>
+	                <tr>
+	                    <td class="table_question">管理者手机:</td>
+	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required,custom[integer]] text-input table_question_text" maxlength="11" id="managerPhone" /></td>
+	                </tr>
+	                <tr>
+	                    <td class="table_question">管理者微信号:</td>
+	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="managerNumber" /></td>
+	                </tr>
+       		</table>
+	    </div>
+	    </form>
+    </div>
     <div class="main_add" id="inputStore">
         <div class="main_add_top">
             <span>批量导入</span>
@@ -192,13 +229,13 @@
         </div>
         <div class="main_add_context">
             <span>上传须知:上传列表标准格式为如下图所示,文件格式为.xlsx</span>
+            <span>如果没有模板，请先下载模板：<a>下载</a></span>
             <img src="${ctx }/assets/images/storeDemo.png"/>
         </div>
         <div class="main_add_botton">
             <span>手动添加</span>
             <div class="main_add_list">
                <table id="storeList">
-					
                </table>
             </div>
             <button id="addCustomStore">+</button>
