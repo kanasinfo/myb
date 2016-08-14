@@ -45,8 +45,13 @@
 	
 	<c:if test="${list !=null}">
 		<c:forEach var="group" items="${list}">
+		<!-- 是否显示大帽子 和当前问题组下是否有选中问题
+		select or activeFlag  ??
+		selectQuestionCount ???
+		-->
+		
 		<c:if test="${group.key.activeFlag==1}">
-			<c:if test="${group.key.type==1&&!group.key.filterFlag==false&&group.key.selectQuestionCount!=0}">
+			<c:if test="${group.key.type==1&&!group.key.filterFlag==false}">
 				<div class="row ask">
 					<div class="block"></div>${group.key.displayValue}
 				</div>
@@ -56,6 +61,21 @@
 							<c:forEach var="question" items="${group.value}">
 								<c:if test="${question.activeFlag ==true }">
 									<c:choose>
+										<c:when test="${question.questionType=='com.myb.questiontype.Degree'}">
+											<div class="row" style="padding:0 10px;">
+												${question.questionValue}
+											</div>
+											<div class="btn-group" data-toggle="buttons">
+												<c:forEach var="option" begin="1" end="10">
+											   		<label class="btn btn-default" onclick="selectRadio('${question.questionId}','${option}')" >
+											   		<input type="radio" id="${question.questionId}_${option }" name="${question.questionId}"   onclick="selectRadio('${question.questionId}','${option}')"  value="${option}">${option}</label>
+											   	</c:forEach>
+											</div>
+											<div class="row" style="padding:0 10px;">
+												<div class="maxValue" style="float:right;">非常满意</div>
+												<div class="minValue" style="float:left;">非常不满意</div>
+											</div>
+										</c:when>
 										<c:when test="${question.questionType=='com.myb.questiontype.Judge'}">
 											<label class="btn btn-default" onclick="selectCheck('${question.questionId}')" >
 										       <input type="checkbox" id="${question.questionId}" value="${option.optionValue }" name="${question.questionId}" onclick="selectCheck('${question.questionId}')" />
@@ -85,7 +105,7 @@
 					</div>
 				</div>
 			</c:if>
-			<c:if test="${group.key.type==0&&!group.key.filterFlag==false&&group.key.selectQuestionCount!=0}">
+			<c:if test="${group.key.type==0&&!group.key.filterFlag==false}">
 				<c:forEach var="question" items="${group.value}">
 					<c:if test="${question.activeFlag ==true }">
 					<div class="row ask">
