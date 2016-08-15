@@ -31,7 +31,6 @@ jQuery(function($) {
 					alert("请保存数据!");
 				} else {
 					var number = $("input:checkbox:checked").size();
-					alert(number);
 					if(number==0){
 						alert("没有选中任何问题！");
 					}else{
@@ -215,93 +214,6 @@ jQuery(function($) {
 							}
 						}
 					})
-	$("#MyScore")
-			.dialog(
-					{
-						autoOpen : false,
-						height : 230,
-						width : 420,
-						modal : true,
-						buttons : {
-							"保存" : function() {
-								if (jQuery('#myScoreFrom').validationEngine('validate') == false)
-									return;
-								var groupId = $("#groupId").val();
-								var templId = $("#templId").val();
-								var questionName = $("#questionName").val();
-								var question = $("#question").val();
-								var option = "";
-								var questionJson = {};
-								var question_id = $("#question_id").val();
-								if (question_id == '') {
-									question_id = UUID.prototype.createUUID();
-								}
-								questionJson.questionId = question_id;
-								questionJson.filterFlag = true;
-								questionJson.questionGroupId = groupId;
-								questionJson.questionGroupName = $("#question_group_name").val();
-								questionJson.questionGroupSortNumber = $("#question_group_sort_num").val();
-								questionJson.questionName = questionName;
-								questionJson.questionValue = questionName;
-								questionJson.sortNumber = 2;
-								questionJson.activeFlag = true;
-								questionJson.editFlag = 1;
-								questionJson.templateFlag = false;
-								var optionData = [];
-								var html = "<li id=" + question_id+ "><input type='checkbox' /><span id="
-										+ groupId + "_" + question_id + ">"
-										+ questionName + "</span>";
-								html = html
-										+ "<span style='padding-left:1px;'><a style='color: rgb(205,204,204)' onclick='editquestion(\""
-										+ $("#group_type").val() + "\",\""
-										+ $("#groupId").val() + "\",\""
-										+ question_id + "\")' >编辑</a></span>";
-								html = html
-										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion(&apos;"
-										+ question_id + "&apos;,&apos;"
-										+ questionName
-										+ "&apos;)'>删除</a></span></li>";
-								for (var i = 0; i < 10; i++) {
-									var option = {};
-									option.optionId = UUID.prototype
-											.createUUID();
-									option.activeFlag = "y";
-									option.sortNumber = i;
-									option.optionName = $(this).val();
-									option.optionValue = i + 1;
-									optionData.push(option);
-								}
-								questionJson.options = optionData;
-								for (var j = 0; j < data1.questions.length; j++) {
-									if (data1.questions[j].questionId == question_id) {
-										data1.questions.splice(j, 1);
-									}
-								}
-								for (var i = 0; i < data1.questionGroup.length; i++) {
-									if (data1.questionGroup[i].questionGroupId == groupId) {
-										questionJson.chartOneDimnsn = data1.questionGroup[i].chartOneDimnsn;
-										questionJson.chartMultiDimnsn = data1.questionGroup[i].chartMultiDimnsn;
-										questionJson.chartStore = data1.questionGroup[i].chartStore;
-										questionJson.chartTime = data1.questionGroup[i].chartTime;
-										questionJson.chartTimeDimnsn = data1.questionGroup[i].chartTimeDimnsn;
-										questionJson.questionType = data1.questionGroup[i].customQuestionType
-									}
-								}
-								var textVla = $("#" + groupId + "_" + question_id).text();
-								if (textVla == '') {
-									$("#add_" + groupId).append(html);
-								} else {
-									$("#" + groupId + "_" + question_id).text(
-											questionName)
-								}
-								data1.questions.push(questionJson);
-								$(this).dialog("close");
-							},
-							"关闭" : function() {
-								$(this).dialog("close");
-							}
-						}
-					});
 	$("#delModelQuestion").dialog({
 		autoOpen : false,
 		height : 220,
@@ -549,6 +461,7 @@ jQuery(function($) {
 									question_id = UUID.prototype.createUUID();
 								}
 								questionJson.questionId = question_id;
+								var questionType = $("#questionType").val();
 								questionJson.filterFlag = true;
 								questionJson.questionGroupId = groupId;
 								questionJson.questionGroupName = $(
@@ -558,24 +471,38 @@ jQuery(function($) {
 								questionJson.questionName = questionName;
 								questionJson.questionValue = question;
 								questionJson.sortNumber = 2;
-								questionJson.activeFlag = true;
+								questionJson.activeFlag = false;
 								questionJson.templateFlag = false;
 								questionJson.editFlag = 1;
 								var optionData = [];
-								var html = "<li id=" + question_id
-										+ "><input type='checkbox' /><span id="
-										+ groupId + "_" + question_id + ">"
-										+ questionName + "</span>";
+								var html ="<li id=" + question_id
+									+ ">" 
+									+"<input type='checkbox' onclick='selectOrunSelect(&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;)' id='check_"+question_id+"'/>"
+									+"<a href='javascript:void(0)' onclick='editquestion(&apos;"+questionType+"&apos;,&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;,&apos;"+questionJson.questionGroupName+"&apos;,"+false+")'>"
+									+"<span id="
+									+ groupId + "_" + question_id + ">"
+									+ question + "</span>"
+									+"</a>"
+									+"<span style='margin-left: 20%; font-size:12px;color:rgb(204,204,204)' id='editSpan_"+question_id+"'>"+questionName+"</span>"
+									;
+								html = html+"<span style='padding-left:1px;'>"
+									+"<input type='button' value='置顶' style='background-color:transparent;border:0' onclick='questionTop(&apos;"+question_id+"&apos;,"+1+")'" 
+									+"data-toggle='modal' class='question_top_select' id='top_"+question_id+"'>";
+									+"</span>"
 								html = html
-										+ "<span style='padding-left:1px;'><a style='color: rgb(205,204,204)' onclick='editquestion(\""
-										+ $("#group_type").val() + "\",\""
-										+ groupId + "\",\"" + question_id
-										+ "\")' >编辑</a></span>";
-								html = html
-										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion("
-										+ question_id + "&apos;,&apos;"
-										+ questionName
-										+ "&apos;)'>删除</a></span></li>";
+									+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204);font-size:12px;' onclick='delQuestion(&apos;"
+									+ question_id + "&apos;,&apos;"
+									+ questionName
+									+ "&apos;)'>删除</a></span></li>";
+//								var html = "<li id=" + question_id
+//										+ "><input type='checkbox' /><span id="
+//										+ groupId + "_" + question_id + ">"
+//										+ questionName + "</span>";
+//								html = html
+//										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion("
+//										+ question_id + "&apos;,&apos;"
+//										+ questionName
+//										+ "&apos;)'>删除</a></span></li>";
 								$("input[name='checkOption']").each(
 										function(i) {
 											var option = {};
@@ -737,56 +664,6 @@ jQuery(function($) {
 						var scrollY = document.documentElement.scrollTop
 								|| document.body.scrollTop; // 滚动条解决办法
 						var top = (window.screen.height / 4) + scrollY - 120; // 滚动条解决办法
-					})
-	$("#saveRedio")
-			.click(
-					function() {
-						var groupId = $("#groupId").val();
-						var templId = $("#templId").val();
-						var questionName = $("#redioQuestionName").val();
-						var question = $("#redioQuestion").val();
-						var questionJson = {};
-						var question_id = UUID.prototype.createUUID();
-						questionJson.questionId = question_id;
-						questionJson.questionGroupId = groupId;
-						questionJson.questionGroupName = $(
-								"#question_group_name").val();
-						questionJson.questionGroupSortNumber = $(
-								"#question_group_sort_num").val();
-						questionJson.questionName = questionName;
-						questionJson.questionValue = question;
-						questionJson.sortNumber = 2;
-						questionJson.activeFlag = true;
-						questionJson.templateFlag = false;
-						var optionData = [];
-						var option = {};
-						option.optionId = UUID.prototype.createUUID();
-						option.activeFlag = "y";
-						option.sortNumber = "1";
-						option.optionName = "是";
-						option.optionValue = "1";
-						optionData.push(option);
-						option.optionId = UUID.prototype.createUUID();
-						option.activeFlag = "y";
-						option.sortNumber = "2";
-						option.optionName = "否";
-						option.optionValue = "2";
-						optionData.push(option);
-						questionJson.options = optionData;
-						data1.questions.push(questionJson);
-						var html = "<li><input type='checkbox' />"
-								+ questionName + "";
-						html = html
-								+ "<span style='padding-left:1px;'><a style='color: rgb(205,204,204)' onclick='editquestion(\""
-								+ $("#group_type").val() + "\",\""
-								+ $("#groupId").val() + "\",\"" + question_id
-								+ "\")' >编辑</a></span>";
-						html = html
-								+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion(&apos;"
-								+ question_id + "&apos;,&apos;" + questionName
-								+ "&apos;)'>删除</a></span></li>";
-						$("#add_" + groupId).append(html);
-						$('#MyRedio').modal('hide');
 					})
 
 	$("#create_question").click(function() {
@@ -963,7 +840,6 @@ jQuery(function($) {
 		$("#groupId").val(groupId);
 		$("#tableListAll tr").remove();
 		$("#questionType").val(type);
-		alert(templateFlag);
 		if (type == 0|| type == 1||type == 2 ) {
 			for (var i = 0; i < data1.questions.length; i++) {
 				if (data1.questions[i].questionId == questionId) {
@@ -1009,7 +885,7 @@ jQuery(function($) {
 							html += "<td class='table_question'></td>"
 							html += "<td class='table_question_text_list'><input type='text' id="
 									+ id
-									+ " name='checkOption' data-validation-placeholder='输入不正确' class='validate[required] text-input table_question_text' value="
+									+ " name='checkOption' data-validation-placeholder='输入不正确' class='validate[required] text-input table_question_text_list' value="
 									+ data1.questions[i].options[ii].optionName
 									+ " /><a onclick='delCheck(\""
 									+ id
@@ -1064,7 +940,6 @@ jQuery(function($) {
 		$("input[name='option']").each(function() {
 			$(this).val('');
 		})
-		alert(group_type);
 		if (group_type == 0) {
 			$("#MyRedioFlag").val(0);
 			$("#redioQuestion").attr('disabled', true)
@@ -1130,7 +1005,7 @@ jQuery(function($) {
 			}
 			//选中第一个问题
 			for(var i = 0;i<data1.questions.length;i++){
-				if(data1.questions[i].questionId=array[1]){
+				if(data1.questions[i].questionId==array[1]){
 					data1.questions[i].questionId.activeFlag = true;
 				}
 			}
