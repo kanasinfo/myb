@@ -65,9 +65,9 @@
 											<div class="row" style="padding:0 10px;">
 												${question.questionValue}
 											</div>
-											<div class="btn-group" data-toggle="buttons" style="text-align:center;">
+											<div class="btn-group" data-toggle="buttons">
 												<c:forEach var="option" begin="1" end="10">
-											   		<label class="btn btn-default" onclick="selectRadio('${question.questionId}','${option}')" style="width:auto;float:left">
+											   		<label class="btn btn-default" onclick="selectRadio('${question.questionId}','${option}')" >
 											   		<input type="radio" id="${question.questionId}_${option }" name="${question.questionId}"   onclick="selectRadio('${question.questionId}','${option}')"  value="${option}">${option}</label>
 											   	</c:forEach>
 											</div>
