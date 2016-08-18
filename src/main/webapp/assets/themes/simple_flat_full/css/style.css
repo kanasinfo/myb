@@ -1,0 +1,1812 @@
+/* CSS Document */
+
+/*
+	Theme Name: Healthy.
+	Description: Healthy Multi-purpose Business HTML Template
+	Version: 1.0
+	Author: begha
+	Website: http://7oroof.com/ ( Designer ) , http://2code.info/ ( Developer )
+*/	
+/* -------------------------------------------- */
+/*             TABLE OF CONTENTS
+/* -------------------------------------------- */
+/*  01 	-	General & Basic Styles				*/
+/*  02 	-	Document Setup	       				*/
+/*  03 	-	Header Info, Social Share & Search	*/
+/*	04	-	Logo & Navigation					*/
+/*	05	-	Bootstrap Carousel Slider			*/
+/*	06	-	Features Section					*/
+/*	07	-	Services Section					*/
+/*	08	-	Make An Appointment Section			*/
+/*	09	-	Latest Blog Section					*/
+/*	10	-	Doctor Section						*/
+/*	11	-	Testimonial Section					*/
+/*	12	-	Newslatter Section					*/
+/*	13	-	Footer Section						*/
+/*	14	-	Pagination Section					*/
+/*	15	-	Home2 Page						*/
+/*	16	-	Home3 Page						*/
+/*	17	-	Home4 Page						*/
+/*	18	-	Home5 Page						*/
+/*	19	-	Home6 Page						*/
+/*	20	-	Home7 Page						*/
+/*	21	-	Home8 Page						*/
+/*	22	-	Home9 Page						*/
+/*	23	-	Home10 Page						*/
+/*	24	-	Progress Section					*/
+/*	25	-	Client Testimonial Section			*/
+/*	26	-	Panel Section						*/
+/*	27	-	Services Pages						*/
+/*	28	-	Doctor Pages						*/
+/*	29	-	Blog Pages							*/
+/*	30	-	Contact Page						*/
+/*	31	-	Element Page						*/
+/*	32	-	404 Error page						*/
+/*	33	-	Testimonials page					*/
+/*	34	-	Color Customize Section				*/
+
+/*----------------------------------------------------------
+	1. CSS Reset
+------------------------------------------------------------*/
+
+/*
+	color
+	#68a74e
+#68a74e
+#68a74e
+#58973e
+
+
+#3b94de
+
+*/
+
+
+html { overflow-x:hidden; }
+
+body {
+	font-family:Arial, Open Sans;
+	color:#707070;
+	font-size:16px;
+	line-height:22px;
+}
+
+p{
+	font-family: 'Open Sans', sans-serif;
+	font-size:12px;
+	line-height:21px;
+	font-weight:400;
+	padding-bottom:22px;
+	margin-top:10px;
+}
+h1{
+	font-family: 'Open Sans', sans-serif;
+	font-size:36px;
+	line-height:76px;
+	font-weight:700;
+	margin:0px;
+	padding-bottom:8px;
+}
+h2{
+	font-family: 'Open Sans', sans-serif;
+	font-size:51px;
+	line-height:57px;
+	padding-bottom:10px;
+	font-weight:bold;
+	margin:0px;
+}
+h3{
+	font-family: Open Sans, 'sans-serif';
+	font-size:19px;
+	line-height:30px;
+	padding-bottom:6px;
+	font-weight:300;
+	margin:0px;
+}
+h4{
+	font-family: Open Sans, 'sans-serif';
+	font-size:18px;
+	line-height:40px;
+	padding-bottom:6px;
+	font-weight:700;
+	margin:0px;
+	color:#303030;
+}
+
+h5{
+	font-family: Open Sans, 'sans-serif';
+	font-size:16px;
+	line-height:24px;
+	padding-bottom:6px;
+	font-weight:400;
+	margin:0px;
+}
+hr{margin-top:5px;margin-bottom:5px;}
+.header{
+	overflow:hidden;
+	color:#303030;
+	font-weight:bold;
+	font-size:18px;
+}
+.sub-header h5{
+	color:#68a74e;
+	font-weight:bold;
+	margin-top:20px;
+	margin-bottom:10px;
+}
+.header h3{
+	overflow:hidden;
+	color:#303030;
+	font-weight:bold;
+	font-size:18px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+a, a:visited {
+	color:#68a74e;
+	-webkit-transition:background .2s ease, background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+	-moz-transition:background .2s ease, background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+	-ms-transition:background .2s ease, background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+	-o-transition:background .2s ease, background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+	transition:background .2s ease, background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out, outline .2s ease;
+}
+a:hover {
+	color:#303030;
+	text-decoration:none;
+}
+.btn-primary, input[type="button"], input[type="submit"], input[type="reset"], button{
+	color:#FFF !important;
+	font-size:13px;
+	text-align:center;
+	background-color:#68a74e;
+	padding: 6px 12px;
+	border:0px;
+	outline:none;
+	border-radius:0px;
+	-webkit-transition:background-color .2s ease;
+	-moz-transition:background-color .2s ease;
+	-ms-transition:background-color .2s ease;
+	-o-transition:background-color .2s ease;
+	transition:background-color .2s ease;
+}
+.btn-default,button{
+	color:#FFF !important;
+	font-size:13px;
+	text-align:center;
+	background-color:#303030;
+	padding: 6px 12px;
+	border:0px;
+	outline:none;
+	border-radius:0px;
+	-webkit-transition:background-color .2s ease;
+	-moz-transition:background-color .2s ease;
+	-ms-transition:background-color .2s ease;
+	-o-transition:background-color .2s ease;
+	transition:background-color .2s ease;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary{background-color:#303030;}
+.btn-default:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary{background-color:#565656;}
+	/*-- Back To Top Start--*/
+	
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    display:none;
+	bottom:0px;
+    width:56px;
+    height:48px;
+	color:#FFF !important;
+	font-size:24px;
+	line-height:52px;
+	text-align:center;
+	background:#68a74e;
+	z-index:400;
+	-moz-border-radius:5px 5px 0px 0px;
+	-webkit-border-radius:5px 5px 0px 0px;
+	border-radius:5px 5px 0px 0px;
+}
+.back-to-top:hover { background-color:#505050; }
+/*-- Back To Top End--*/
+
+/*----------------------------------------------------
+	2. Document Setup
+------------------------------------------------------*/
+	.container {
+		max-width: 1100px;
+	}
+	#header {
+		background-color:#fff;
+		border-top: 4px solid #68a74e;
+	}
+	#header {
+		z-index:999999;
+		position: relative;
+	}
+	#header .header-info {
+		color:#68a74e;
+		font-size:11px;
+		line-height:36px;
+	}
+	#header .header-info span i {
+		color:#68a74e;
+		margin-right:8px;
+	}
+	#header .social { float:left; }
+	.social a {
+		float:left;
+		width:27px;
+		height:27px;
+		color:white;
+		font-size:11px;
+		text-align:center;
+		padding:7px 0px;
+		background: #68a74e;
+		margin-right: 5px;
+		margin-top: 5px;
+		line-height: 16px;
+	}
+	.social a:hover {
+		color:#FFF;
+	}
+		.social a.link-facebook:hover {
+		background-color:#4862a3;
+	}
+	.social a.link-rss:hover {
+		background-color:#F5992C;
+	}
+	.social a.link-twitter:hover {
+		background-color:#34a8d3;
+	}
+	.social a.link-google-plus:hover {
+		background-color:#e15b45;
+	}
+	.social a.link-linkedin:hover {
+		background-color:#0077b5;
+	}
+	.social a.link-instagram:hover {
+		background-color:#3c6c94;
+	}
+	.social a.link-pinterest:hover {
+		background-color:#cc1e25;
+	}
+	.social .tooltip.footer {
+		margin-top:1px;
+	}
+	.language-swcher{
+		padding-top: 3px;
+	}
+	.language-swcher .form-control{
+		border-radius: 0px;
+		color: white;
+		font-size: 11px;
+		background-color:#545454;
+		border: 0px;
+		width:100%;
+		height:27px;
+		margin-top: 2px;
+	}
+	#header-top{
+		border-bottom:1px solid #d9d9d9;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	#header-top .fa-left{
+		margin-left: 10px;
+	}
+
+	/*-- Header Search Start--*/	
+	.top-social-bar {
+		position: relative;
+		left: 80px;
+	}
+	.top-social-bar  .header-search .input-group-btn > .btn{
+		z-index: 9999;
+		left: -3px;
+	}
+	.top-social-bar form[role="search"] {
+		position: absolute;
+		top: 3px;
+		right: -4px;
+		width: 0px;
+		padding: 0px;
+		margin: 2px;
+		z-index: 0;
+	}
+	.top-social-bar form[role="search"] button,
+	.top-social-bar form[role="search"] input {
+		padding: 8px 12px;
+		border-radius: 0px;
+		border-width: 0px;
+		color: rgb(119, 119, 119);
+		background-color: rgb(248, 248, 248);
+		border-color: rgb(231, 231, 231);
+		box-shadow: none;
+		outline: none;
+	}
+	.top-social-bar form[role="search"] input {
+		padding: 16px 12px;
+		font-size: 14pt;
+		font-style: italic;
+		color: rgb(160, 160, 160);
+		box-shadow: none;
+	}
+	.top-social-bar .btn-default i{
+		font-size:11px;
+		line-height:32px;
+	}
+	.top-social-bar .btn-default{
+		width:27px;
+		height:27px;
+		padding: 0px!important;
+		margin: 0px!important;
+		background-color:#68a74e!important;
+	}
+	.top-social-bar form[role="search"] input {
+		padding: 25px 12px;
+		opacity: 0;
+		display: none;
+	}
+	.top-social-bar form[role="search"].active {
+		width: 119%;
+		top:2px;
+		left:-2px;
+		-webkit-transition: border linear .2s, box-shadow linear .2s, width 0.7s ease 0s;
+		-moz-transition: border linear .2s, box-shadow linear .2s, width 0.7s ease 0s;
+		-o-transition: border linear .2s, box-shadow linear .2s, width 0.7s ease 0s;
+		transition: border linear .2s, box-shadow linear .2s, width 0.7s ease 0s;
+	}
+	.header-searchform[role="search"].active button,
+	.top-social-bar form[role="search"].active input {
+		display: table-cell;
+		opacity: 1;
+	}
+	.top-social-bar form[role="search"].active input {
+		width: 100%;
+		text-align: start;
+		padding-left:15px!important;
+	}
+	.top-social-bar form[role="search"].active button[type="submit"] {
+		background-color: rgb(231, 231, 231);
+	}
+	.top-social-bar .form-control{
+		height:29px;
+	}
+
+/*----------------------------------------------------
+	3. Header Info, Social Share & Search
+------------------------------------------------------*/
+
+	.logo a{
+	}
+	.logo strong{
+		color:#303030;
+	}
+
+.select-nav {
+	display:none;
+	overflow:hidden;
+	background:#f0f0f0 url(../images/arrow-nav-menu-responsive.png) no-repeat right center;
+	border:1px solid #e0e0e0;
+	margin:0px 5px 30px;
+}
+	.select-nav select {
+		width:100%;
+		color:#4a4a4a;
+		background-color:#f0f0f0;
+		padding:11px 15px;
+		margin:0px;
+	    border:0px;
+	}
+
+
+	#navigation {
+		position:relative;
+		height:100px;
+		-webkit-transition:all .3s ease;
+		-moz-transition:all .3s ease;
+		-ms-transition:all .3s ease;
+		-o-transition:all .3s ease;
+		transition:all .3s ease;
+		-webkit-box-shadow: 0px 6px 5px 0px rgba(44, 50, 50, 0.75);
+		-moz-box-shadow:    0px 6px 5px 0px rgba(44, 50, 50, 0.75);
+		box-shadow:         0px 6px 5px 0px rgba(44, 50, 50, 0.75);
+		z-index:99999;
+	}
+	#navigation .navigation-wrap {
+		position:absolute;
+		top:0px;
+		left:0px;
+		width:100%;
+		background-color:#FFF;
+		z-index:400;
+	}
+	#navigation .logo {
+		float:left;
+		padding:25px 0px 25px 20px;
+		-webkit-transition:all .3s ease;
+		-moz-transition:all .3s ease;
+		-ms-transition:all .3s ease;
+		-o-transition:all .3s ease;
+		transition:all .3s ease;
+	}
+	#navigation .logo img {
+		
+		-webkit-transition:all .3s ease;
+		-moz-transition:all .3s ease;
+		-ms-transition:all .3s ease;
+		-o-transition:all .3s ease;
+		transition:all .3s ease;
+	}
+	#navigation .menu {
+		float:right;
+		font-family:Lato, Arial, sans-serif;
+		font-size:15px;
+		line-height:16px;
+		text-transform:uppercase;
+		margin:0px;
+	}
+	#navigation .menu li {
+		list-style-type:none;
+		position:relative;
+		float:left;
+	}
+	#navigation .menu > li:first-child { padding-left:0px; }
+	#navigation .menu > li:last-child { padding-right:0px; }
+	#navigation .menu > li a {
+		float:left;
+		color:#303030;
+		text-transform: capitalize;
+	}
+	#navigation .menu > li a i {
+		color:#d0d0d0;
+		font-size:10px;
+		margin-left:6px;
+		-webkit-transition:color .2s ease;
+		-moz-transition:color .2s ease;
+		-ms-transition:color .2s ease;
+		-o-transition:color .2s ease;
+		transition:color .2s ease;
+	}
+	#navigation .menu > li > a {
+		font-weight:bold;
+		padding: 41px 13px;
+		border-top:3px solid #FFF;
+		font-family:Open Sans, serif;
+		-webkit-transition:all .3s ease;
+		-moz-transition:all .3s ease;
+		-ms-transition:all .3s ease;
+		-o-transition:all .3s ease;
+		transition:all .3s ease;
+	}
+	#navigation .menu > li > a:hover, #navigation .menu > li.current > a { border-top:3px solid #68a74e;  background: #d9d9d9;}
+	#navigation .menu > li ul {
+		visibility:hidden;
+		position:absolute;
+		top:100%;
+		left:0px;
+		float:left;
+		width:180px;
+		font-family:Open Sans, serif;
+		font-size:13px;
+		text-transform:none;
+		background-color: #68a74e;
+		opacity: 0.7;
+		padding:0px;
+		z-index:1000;
+		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		filter:alpha(opacity=0);
+		-webkit-transition:opacity .2s ease-in-out;
+		-moz-transition:opacity .2s ease-in-out;
+		-ms-transition:opacity .2s ease-in-out;
+		-o-transition:opacity .2s ease-in-out;
+		transition:opacity .2s ease-in-out;
+	}
+	#navigation .menu > li:hover > ul, #navigation .menu > li > ul > li:hover > ul {
+		visibility:visible;
+		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter:alpha(opacity=100);
+		opacity:0.7;
+	}
+	#navigation .menu > li ul li {
+		width:100%;
+	}
+	#navigation .menu > li ul li a {
+		width:100%;
+		color:#fff;
+		padding:10px 20px;
+	}
+	#navigation .menu > li > ul > li > a i {
+		float:right;
+		color:#b0b0b0;
+		margin:4px -5px 0px 0px;
+	}
+	#navigation .menu > li ul li a:hover, #navigation .menu > li ul li.current a {
+		background-color: #303030;
+		opacity: 1;
+		color: white;
+	}
+	#navigation .menu > li > ul > li > ul {
+		top:-1px;
+		left:100%;
+		margin:0px;
+	}
+	#navigation .menu > li > ul > li > ul ul { display:none; }	
+	#navigation.stickit, #navigation.stickit-end { height:115px; }
+		#navigation.stickit .navigation-wrap, #navigation.stickit-end .navigation-wrap {
+			position:fixed;
+			background-color:rgba(255,255,255,.95);
+			-moz-box-shadow:0px 1px 6px 0px rgba(0, 0, 0, .12);
+			-webkit-box-shadow:0px 1px 6px 0px rgba(0, 0, 0, .12);
+			box-shadow:0px 1px 6px 0px rgba(0, 0, 0, .12);
+		}
+	#navigation.stickit .logo, #navigation.stickit-end .logo { padding:15px 0px; }
+	#navigation.stickit .logo img, #navigation.stickit-end .logo img { height:40px; }
+	#navigation.stickit .menu > li > a, #navigation.stickit-end .menu > li > a {padding: 27px 13px 30px;}	
+	
+
+/*----------------------------------------------------
+	4. Logo & Navigation End
+------------------------------------------------------*/
+
+.carousel-indicators .active {background-color: #2980b9;}
+
+.carousel-inner img {width: 100%;max-height: 460px;}
+
+.carousel-control {width: 0;}
+
+.slideshow .carousel-control .left,
+.slideshow .carousel-control .right {
+	opacity: 1;
+	filter: alpha(opacity=100);
+	background-image: none;
+	background-repeat: no-repeat;
+	text-shadow: none;
+}
+
+.slideshow .carousel-control .left span {
+	padding: 15px;
+	position:relative;
+	left:50%;
+}
+#carousel-example-generic .carousel-control .right span {
+	padding: 15px;
+}
+
+#carousel-example-generic .carousel-control .fa-angle-left,
+#carousel-example-generic .carousel-control .icon-prev{
+	position: absolute;
+	top: 70%;
+	z-index: 5;
+	left: -245px !important;
+	display: inline-block;
+	background:#000000;
+	width: 27px;
+	height: 65px;
+	line-height: 68px;
+	font-size:13px;
+	color:#fff;
+}
+#carousel-example-generic .carousel-control .fa-angle-right,
+#carousel-example-generic .carousel-control .icon-next {
+	position: absolute;
+	top: 47%;
+	z-index: 5;
+	display: inline-block;
+	width: 27px;
+	height: 65px;
+	background:#000000;
+	left: -246px;
+	line-height: 70px;
+	font-size:13px;
+}
+
+
+#carousel-example-generic .carousel-control .left span,
+#carousel-example-generic.carousel-control .right span {background-color: #000;}
+
+#carousel-example-generic.carousel-control .left span:hover,
+#carousel-example-generic.carousel-control .right span:hover {opacity: .7;filter: alpha(opacity=70);}
+
+/* Carousel Header Styles */
+.header-text {
+    position: absolute;
+    top: 45%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    color: #fff;
+}
+
+.header-text h2 {
+    font-size: 20px;
+	border-bottom: 1px solid white;
+	line-height: 35px;
+	margin-bottom: 16px;
+}
+.header-text2 h2 {
+    font-size: 35px;
+	line-height: 35px;
+	margin-bottom: 16px;
+	color:#303030;
+	text-transform: none;
+}
+.header-text2{
+    position: absolute;
+    top: 45%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    color: #fff;
+}
+.header-text2 p {
+    font-size: 20px;
+	line-height: 35px;
+	color:#fff;
+	background:#68a74e;
+	float: left;
+}
+.header-text p{
+    font-size:13px;
+	margin-top: -10px;
+}
+
+.slider-header-text{
+	background-color: #000000;
+	opacity: 0.8;
+	padding:10px 20px;
+	width: 430px;
+	height: 145px;
+	float:left;
+}
+.fixed .header-text{top: 40%;left: 3.8%;}
+	/*-- Slider Text with bg End--*/
+.slider-header{position: relative;top: -130px;}
+.slider-header h1{color:#303030;font-size:35px;}
+.slider-header p{color:#fff;font-size:20px;background-color:#68a74e;width: 33%;padding: 10px;margin-bottom: 14px;}
+/*----------------------------------------------------
+	5. Bootstrap Carousel End
+------------------------------------------------------*/
+
+#features, .features{background:#ECECEC; text-align:center; padding-top:12px;padding-bottom:25px;}
+#healthy_home_page_three .features{background:none;}
+.features-main .header h2{
+	font-size:19px; 
+	font-family: Open Sans;
+	text-transform: capitalize;
+	color:#68a74e;
+	font-weight:bold;
+}
+.features-main .header p{font-size:15px;color:#434342;margin:0px;padding:0px;}
+
+/*----------------------------------------------------
+	6. Features Section End
+------------------------------------------------------*/
+
+.services-main .item i{
+	display:inline-block;
+	width:60px;
+	height:60px;
+	font-size:27px;
+	line-height:56px;
+	color:#FFF;
+	background-color:#68a74e;
+	border:3px solid #FFF;
+	-moz-border-radius:48px;
+	-webkit-border-radius:48px;
+	border-radius:48px;
+	-moz-box-shadow:0 0 0 3px #f0f0f0;
+	-webkit-box-shadow:0 0 0 3px #f0f0f0;
+	box-shadow:0 0 0 3px #f0f0f0;
+	-webkit-transition:all .2s ease;
+	-moz-transition:all .2s ease;
+	-ms-transition:all .2s ease;
+	-o-transition:all .2s ease;
+	transition:all .2s ease;
+	text-align: center;
+	margin-top: 24px;
+}
+.services-main .item:hover i {
+	color:#68a74e;
+	background-color:#FFF;
+	border:3px solid #68a74e;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+}
+.services-main .item h4 {font-weight:700; color:#303030; margin: 20px 0px 0px;font-size:17px;}
+.services-main .item p { margin:20px 0px 0px;text-align:justify; }
+.item-section .pull-right{width:70%;}
+.clearfix{height:50px;}
+/*----------------------------------------------------
+	7. Services Section End
+------------------------------------------------------*/
+	
+.app-bg{background:#F0F0F0; padding: 28px 29px 100px 10px; border-right:4px solid #68a74e;}
+.appointment-main .btn-section{margin-top: 20px;}
+.appointment-main .pull-left{padding-left: 15px; width:75%;}
+.appointment-main .pull-left h3{color:#68a74e; font-weight:bold;text-transform: none;}
+
+.header .view{float:right; margin-top: -52px;font-size: 12px;font-weight: 700;}
+.header .view:after{float:right; margin-top: -60px;font-size: 12px;font-weight: 700;}
+.sectionsbd{border-top:2px solid #d9d9d9;}
+.item-coments{float:left;border:8px solid #f0f0f0;height: 170px;}
+.item .sub-header{float:left;}
+.item-coments .pull-right{
+	position: relative;
+	top: -155px;
+	left: 0px;
+	background: #303030;
+	padding: 33px 16px;
+	text-align: center;
+}
+.counter-tab div{ color: white; font-size: 12px;}
+#healthy_home_page_section #appointment-form{background-color: #68a74e;opacity: 0.8;margin-top:-150px}
+/*----------------------------------------------------
+	8. Make An Appointment Section End
+------------------------------------------------------*/
+	
+.latestblog-main .member .header{border-bottom: 1px solid #e4e4e4;}
+.latestblog-main .header h5{color:#68a74e; font-weight:bold;}
+.latestblog-main .header h3{font-weight:bold; text-transform:none;}
+/*----------------------------------------------------
+	9. Latest Blog Section End
+------------------------------------------------------*/
+	
+.doctor-main .sub-header h3{text-transform:none;}
+.doctor-main .sub-header{border-bottom: 2px solid #e4e4e4;}
+.doctor-main .header p{font-size:13px; color:#303030;}
+	
+	/*------Doctor End------*/
+	
+.member-app {margin-top:10px;}
+.member-app .btn-primary{padding: 5px 9px; background:#cccccc; font-size:12px; }
+.btn-primary:hover{background:#303030;}
+.member-app .btn-section {position:relative;top:5px;left:3px;float:left;}
+.member-app .link-facebook {background:#cccccc;}
+.member-app .link-twitter {background:#cccccc;}
+	
+/*----------------------------------------------------
+	10. Doctor Section End
+------------------------------------------------------*/
+
+.testimonials-main .header{margin:0px; }
+.testimonials-main .author strong{color:#68a74e;font-size:16px;}
+.testimonials-main .author small{color:#303030;font-size:12px;}
+
+/* carousel */
+
+/* Control buttons  */
+.testimonials-main #quote-carousel .carousel-control{
+	background: none;
+	color: #222;
+	font-size: 2.3em;
+	text-shadow: none;
+	margin-top: 30px;
+}
+.testimonials-main #quote-carousel  blockquote{background-color:#f0f0f0;}
+/* Previous button  */
+.testimonials-main #quote-carousel .carousel-control.left{
+	top: 55%;
+	left: 86%;
+	background: #68a74e;
+	line-height: 15px;
+	width: 28px;
+	height: 28px;
+	opacity: 1;
+}
+.testimonials-main #quote-carousel .carousel-inner .item p{padding-left: 15px;}
+.testimonials-main #quote-carousel .author{margin-top: 20px;}
+/* Next button  */
+.testimonials-main #quote-carousel .carousel-control.right{
+	right: 1px !important;
+	top: 55%;
+	background: #68a74e;
+	line-height: 15px;
+	width:28px;
+	height: 28px;
+	opacity:1;
+}
+.testimonials-main #quote-carousel .carousel-control:hover{background-color:#1f1f1f; color:white;}
+.testimonials-main #quote-carousel .carousel-control .fa{color: white;font-size: 18px;}
+/* Changes the position of the indicators */
+.testimonials-main #quote-carousel .carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: 0px;
+	margin-right: -19px;
+}
+/* Changes the color of the indicators */
+.testimonials-main #quote-carousel .carousel-indicators li{background: #c0c0c0;}
+.testimonials-main #quote-carousel .carousel-indicators .active {background: #333333;}
+/* End carousel */
+
+.item blockquote {border-left: none; margin: 0;}
+
+.item blockquote img {margin-top: 3px;}
+
+.item blockquote p:before {
+	content: "\f10d";
+	font-family: 'Fontawesome';
+	float: left;
+	margin-right: 10px;
+}
+
+/*----------------------------------------------------
+	11. Testimonial Section End
+------------------------------------------------------*/
+	
+.newsletter-main .form-control{
+	background-color:#f0f0f0;
+	border: 0px;
+	color: #707070;
+	font-size: 12px;
+	height: 40px;
+	border-radius:0px;
+}
+.newsletter-main .btn-default{width: 100%;background-color: #68a74e;height: 40px;border-radius:0px;font-size:13px;}
+.newsletter-main .btn-default:hover{background-color: #1f1f1f;}
+.newsletter-main p{margin-top:10px}
+
+/*----------------------------------------------------
+	12. Newslatter Section End
+------------------------------------------------------*/
+	
+/* ========================= Footrer ========================= */
+
+	address p{margin:0px; padding:0px;font-size:12px;font-weight:700;line-height: 26px;}
+	address p.text-default {font-size:11px; font-weight:700;color:#68a74e !important;}
+	#footer{
+	color:#909090;
+	background-color:#303030;
+	padding:20px 0px 0px 30px;
+	border-top:4px solid #68a74e;
+	}
+	#footer .header h4 {
+		color:#FFF;
+	}
+	#footer a { color:#707070; font-size:12px;font-weight:700;}
+	#footer a:hover { color:#57b9e1; }
+	#footer figure { position:relative; }
+	#footer figure .figure-overlay {
+		position:absolute;
+		top:0px;
+		right:0px;
+		footer:0px;
+		left:0px;
+		background:url(../images/base-figure-overlay-footer.png) repeat;
+		-webkit-transition:opacity .2s ease-in-out;
+		-moz-transition:opacity .2s ease-in-out;
+		-ms-transition:opacity .2s ease-in-out;
+		-o-transition:opacity .2s ease-in-out;
+		transition:opacity .2s ease-in-out;
+	}
+	#footer .widget form { padding-top:10px; }
+	#footer .widget ul {
+		padding:0px;
+		margin-left:0px;
+	}
+	#footer .widget ul li {
+		list-style-type:none;
+		line-height: 24px;
+	}
+	#footer-bottom{background-color:#303030;border-top: 1px solid gray;padding: 20px 0px 0px 20px;}
+	#footer-bottom p{font-size:11px;color:#fff;}
+	#footer-bottom .text-default {color:#68a74e;}
+	
+/* Tweets */
+	.widget .etrybiz_tweets_widget { margin:0px; }
+	.widget .etrybiz_tweets_widget li {
+		position:relative;
+		padding:15px 0px 15px 50px;
+		min-height:95px;
+	}
+	#bottom .widget .etrybiz_tweets_widget li {
+		padding-top:15px;
+		padding-bottom:15px;
+	}
+	.widget .etrybiz_tweets_widget li .etrybiz {
+		position:absolute;
+		top:19px;
+		left:0px;
+		width:36px;
+	}
+	.widget .etrybiz_tweets_widget li .etrybiz { top:4px; }
+	.widget .etrybiz_tweets_widget li .etrybiz img { width:100%; }
+	.widget .etrybiz_tweets_widget li .etrybiz a {
+		display:block;
+		height:36px;
+		font-size:13px;
+		line-height:36px;
+		text-align:center;
+		background-color:#57b9e1;
+	}
+	.widget .etrybiz_tweets_widget li .etrybiz a:hover {
+		color:#FFF !important;
+		background-color:#73cef3;	
+	}
+	#bottom .widget .etrybiz_tweets_widget li .etrybiz img { border:0px; }
+	.widget .etrybiz_tweets_widget li p { margin:0px; margin-top:-15px;line-height: 16px;padding-bottom:0px;}
+	.widget .etrybiz_tweets_widget li .date {
+		font-family:Lato, Open San, Arial, sans-serif;
+		font-size:10px;
+		line-height:0px;
+		text-transform:uppercase;
+		font-weight:700;
+		margin-top: 12px;
+	}
+	.widget .etrybiz_tweets_widget li.loading {
+		padding:0px;
+		min-height:0px;
+	}
+	#bottom .widget .etrybiz_tweets_widget li.loading { border:0px; }
+
+/*----------------------------------------------------
+	13. Footer Section End
+------------------------------------------------------*/
+	
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+	background-color:#68a74e;
+	border:0px;
+	border-radius:0px;
+	font-size:13px;
+}
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus{background-color:#68a74e;color:#fff;border-radius:0px;}
+.pagination > li > a, .pagination > li > span{padding: 4px 10px;background-color:#cccccc;color:#fff;margin-left: 5px;border-radius:0px;}
+.pagination > li:last-child > a, .pagination > li:last-child > span{border-radius:0px;}
+.pagination > li > a{padding: 3px 10px;border-radius:0px;font-size:13px;}
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus{background-color:#1f1f1f;color:#fff;font-size:13px;}
+/*----- Pagination Section End------*/
+
+/*----------------------------------------------------
+	14. Pagination Section End
+------------------------------------------------------*/
+/* ========================= Home 2 Start ========================= */
+.slider-two-header-text{
+	background-color: #000000;
+	opacity: 0.8;
+	padding:10px 20px;
+	width: 430px;
+	height: 145px;
+	float:left;
+}
+#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right,
+#carousel-example-generic .carousel-control .icon-next{top: 45%;left: -688px;}
+#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left,
+#carousel-example-generic .carousel-control .icon-prev{left: 662px !important;top: 215px;}
+	/*-- Slider Two End--*/
+	
+#healthy_home_page_two #features{background:none;}
+	/*------ Features End ------*/
+#healthy_home_page_two .services-main{text-align:center;}
+#healthy_home_page_two .services-main p{text-align:center;}
+	/*------ Service End ------*/
+#healthy_home_page_two .appointment-main{background:#f0f0f0;padding-top: 20px;}
+.healthy_home_page_section #header {margin:0px;}
+#healthy_home_page_two #header {margin:0px;}
+
+
+/*----------------------------------------------------
+	15. Home2 Page End
+------------------------------------------------------*/
+.slider-three-header-text{
+	background-color: #68a74e;
+	opacity: 0.8;
+	width: 830px;
+	height: 65px;
+	text-align: center;
+	margin-left: 40px;
+	padding: 10px 10px;
+}
+.slider-three-header-text h4{color:#fff;font-weight:600;font-size:20px;}
+#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left,
+#carousel-example-generic .carousel-control .icon-prev{top: 45%;left: 222px !important;}
+#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right,
+#carousel-example-generic .carousel-control .icon-next{top: 45%;left: -246px;}
+	/*-- Slider Section End --*/
+
+#healthy_home_page_three  .services-main .item i{background:black;}
+#healthy_home_page_three  #features, .features{background:none;}
+#healthy_home_page_three .services-main .item:hover i{background:white;color:black;border: 3px solid black;}
+#healthy_home_page_three  .services-main .item h4{color:#68a74e;}
+#healthy_home_page_three  .services-main .header .view{margin-top: -34px;}
+#healthy_home_page_three  .services-main .header h3{margin-bottom:0px;}
+#healthy_home_page_three   #header {margin:0px;}
+	/*-- Services End--*/
+	
+/*----------------------------------------------------
+	16. Home3 Page End
+------------------------------------------------------*/
+
+.featureabout-main small{font-size:13px;color:#707070; text-align:justify;}
+.featureabout-main p i{margin-right:5px; font-size:13px;}
+.featureabout-main p {padding:0px;}
+.featureabout-main hr {margin:0px;}
+/*-- FeatureAbout End --*/
+.aboutus-bg{background-color:#f0f0f0;padding: 20px;text-align: center;}
+.aboutus-bg h2{font-size:19px; font-weight:bold; text-transform:none;color:#68a74e;}
+/*--AboutUs End --*/
+#healthy_home_page_four #testimonials .carousel-control.left{left: 93%;top: 66%;}
+#healthy_home_page_four #testimonials .carousel-control.right{top:66%; right:0px!important;}
+#healthy_home_page_four .appointment-block{margin-top: -120px;opacity:0.8;}
+.aboutus .btn-primary{float:none;}
+#aboutus .btn-primary{float:none;}
+#healthy_home_page_four .item blockquote img{margin-top: 19px;}
+#healthy_home_page_four  #header {margin:0px;}
+
+/*----------------------------------------------------
+	17. Home4 Page End
+------------------------------------------------------*/
+.slider-five-header-text{
+	background-color: #fff;
+	padding:10px 20px;
+	width: 430px;
+	height: 145px;
+	float:left;
+}
+#healthy_home_page_five .header-text h2 {
+	font-size: 20px;
+	border-bottom: 1px solid #303030;
+	line-height: 35px;
+	margin-bottom: 16px;
+	color:#68a74e;
+}
+#healthy_home_page_five .header-text p{color:#303030;}
+	/*-- Home Slider Five End--*/
+#fixed_healthy_home_page5 #services div.item{background-color:#68a74e;height: 300px;}
+#fixed_healthy_home_page5 #services .services-main .item i{background:#f0f0f0;border:0px;border-radius:0px;width: 55px;height: 55px;font-size: 35px;line-height: 60px;margin-left: 15px;color:#68a74e;}
+#fixed_healthy_home_page5 #services .services-main .item:hover i{color:#000;}
+#fixed_healthy_home_page5 #services .item p{float:left;padding: 20px;color: #fff;font-size: 13px;}
+#fixed_healthy_home_page5 #services .btn-section{float:right;position: relative;left: -12px;}
+#fixed_healthy_home_page5 #services .btn-custom{background-color:#303030;border:1px solid #fff}
+	/*-- Services Seciton End--*/
+	
+.healthy_home_page5 #testimonials .carousel-control.left{left: 93%;top: 66%;}
+.healthy_home_page5 #testimonials .carousel-control.right{top:66%; right:0px!important;}
+#healthy_home_page_five .item blockquote img{margin-top: 19px;}
+#healthy_home_page_five  #header {margin:0px;}
+/*-- Testimonial Section End--*/
+
+/*----------------------------------------------------
+	18. Home5 Page End
+------------------------------------------------------*/
+
+.servicesitem{background-color:#68a74e;height: 245px;float:left;}
+.servicesitem i {
+	background: #68a74e;
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	font-size: 20px;
+	line-height: 54px;
+	margin-top: 15px;
+	color: #fff;
+	border-radius: 48px;
+	border: 3px solid #fff;
+	font-weight: 700;
+}
+.servicesitem:hover i{color:#000;border: 3px solid #303030;}
+.servicesitem p{margin:0px;float:left;padding: 10px 20px;color: #fff;font-size: 13px;}
+	/*-- Services Section End--*/
+.healthy_home_page6 .header-text .slider-header{top: -70px;}
+.healthy_home_page6 .services-main .col-md-3{padding-right: 10px;padding-left: 10px;}
+.healthy_home_page6 #appointment-form{background-color: #68a74e;}
+.healthy_home_page6  #header {margin:0px;}
+	/*-- Appointment Section End--*/
+
+/*----------------------------------------------------
+	19. Home6 Page End
+------------------------------------------------------*/
+
+.healthy_home_page7 .services-main .col-md-3{padding-right: 10px;padding-left: 10px;}
+.healthy_home_page7 .servicesitem i{position: relative;top: -10px;margin-top: -30px;}
+.healthy_home_page7 #appointment-form{background-color:#68a74e;}
+.healthy_home_page7 #header {margin:0px;}
+
+
+/*----------------------------------------------------
+	20. Home7 Page End
+------------------------------------------------------*/
+.healthy_home_page8 #carousel-example-generic .carousel-control .fa-angle-right,
+#carousel-example-generic .carousel-control .icon-next{top: 45%;left: -688px;}
+.healthy_home_page8 #carousel-example-generic .carousel-control .fa-angle-left,
+#carousel-example-generic .carousel-control .icon-prev{left: 662px !important;top: 215px;}
+	/*-- Eight Page Slider Carousel End --*/
+	
+.healthy_home_page8 #features, .features{background:none;}
+.healthy_home_page8 .servicesitem .pull-left{margin-left: 10px;margin-top: 16px;}
+.healthy_home_page8 .servicesitem .item-section i{text-align:center;}
+.healthy_home_page8 .servicesitem .btn-section{float:right;margin-right: 20px;}
+.healthy_home_page8 #aboutus {background-color:#f0f0f0;}
+.healthy_home_page8 .servicesitem h4{margin-left:1px;margin-top:36px;}
+.healthy_home_page8 .servicesitem{height: 270px;}
+.healthy_home_page8 #header {margin:0px;}
+.btn-section-center{text-align:center;}
+/*-- Eight Page Services, Feature & Aboutus End--*/
+
+	/*--- Appointment Block ---*/
+.appointment-block h3{color:#fff;font-weight:bold;text-align:center;}
+.appointment-block {padding: 10px 0px 24px 40px; bottom: 0px; z-index: 999; width:100%;background-color:#68a74e;}
+.appointment-block .red p, #appointment-contact-form input[type="submit"] {background:#303030;font-size:13px; text-align:center}
+.appointment-block .red p{font-size:19px}
+#appointment-contact-form{margin-top:20px;}
+#appointment-contact-form input[type="text"], #appointment-contact-form textarea{color:#5e5b5b;width:100%; font-size:12px;font-weight:bold;height: 30px;padding: 12px;background-color:#f2f2f3;border: 0px;}
+#appointment-contact-form input .datepicker{position:none;}
+#appointment-contact-form .btn-default:hover{background-color:#565656;}
+	
+	/*-- Appointment Contact Form Start --*/
+element.style {
+	position: relative;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	left: auto;
+}
+/*-- Appointment Contact Form End --*/
+	/*---- Fixed Home8 Start ----*/
+#fixed_healthy_home_page8 #aboutus {background:none;}
+
+/*----------------------------------------------------
+	21. Home8 Page End
+------------------------------------------------------*/
+.servicesnine{border:2px solid #e4e4e4;padding: 10px;}
+#healthy_home_page_nine .services-main .col-md-3{padding-right: 8px;padding-left: 8px;}
+.servicesnine h4{font-size:17px;}
+.servicesnine p{color:#68a74e;font-size:13px;}
+.servicesnine i{
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	font-size: 27px;
+	line-height: 56px;
+	color: #FFF;
+	background-color: #68a74e;
+	border: 3px solid #FFF;
+	-moz-border-radius: 48px;
+	-webkit-border-radius: 48px;
+	border-radius: 48px;
+	-moz-box-shadow: 0 0 0 3px #f0f0f0;
+	-webkit-box-shadow: 0 0 0 3px #f0f0f0;
+	box-shadow: 0 0 0 3px #f0f0f0;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-ms-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+	text-align: center;
+}
+	/*-- Services Item End --*/
+#aboutus{background-color:#68a74e;}
+.healthy_home_page9 .aboutus-bg{background:none;}
+.healthy_home_page9 .aboutus-main h2{color:#fff;}
+.healthy_home_page9 .btn-section{float:none;}
+.healthy_home_page9  #features{background:none;}
+.healthy_home_page9 #header {margin:0px;}
+#healthy_home_page_nine #appointment-form{margin-top: -119px;background-color: #68a74e;opacity:0.8;}
+	/*-- AboutUs 9 End--*/
+
+/*----------------------------------------------------
+	22. Home9 Page End
+------------------------------------------------------*/
+#features-none{text-align:center;}
+.latestblog-main .blogitem{margin-top: 30px;}
+.healthy_home_page10 .latestblog-main .item-coments{margin-bottom: 20px;}
+.healthy_home_page10 .header-text h2 {
+	font-size: 20px;
+	border-bottom: 1px solid #303030;
+	line-height: 35px;
+	margin-bottom: 16px;
+	color: #68a74e;
+}
+.healthy_home_page10 .header-text p {color: #303030;}
+.healthy_home_page10  #header {margin:0px;}
+
+
+/*----------------------------------------------------
+	23. Home10 Section End
+------------------------------------------------------*/
+
+/* ========================= About Us Page Start ========================= */
+
+.about-us{background-color:#f0f0f0;padding:20px;}
+.about-us-main h2{font-size:19px;color:#68a74e;font-weight:bold;}
+.about-us-main p{font-size:13px;}
+	/*--- Header Section End --*/
+	
+.history-main h3{color:#383838; font-weight:700;margin-top: 10px;}
+.skill-main h3{color:#383838; font-weight:700;margin-top: 10px;}
+
+	/*--- Our History End --*/
+	
+.progress {
+    position: relative;
+	height: 25px;
+	background-color:#303030;
+}
+.progress > .progress-type {
+	position: absolute;
+	left: 0px;
+	font-weight: 800;
+	padding: 3px 30px 2px 10px;
+	color: rgb(255, 255, 255);
+	background-color: rgba(25, 25, 25, 0.2);
+}
+.progress > .progress-completed {
+	position: absolute;
+	right: 0px;
+	font-weight: 800;
+	padding: 3px 10px 2px;
+	left: 95px;
+	color: white;
+}
+	/*-- Skill section End --*/
+/*----------------------------------------------------
+	24. Progress Section End
+------------------------------------------------------*/
+
+.healthy_about_us_page #testimonials #quote-carousel .left{top: 64%;left: 93%;}
+.healthy_about_us_page #testimonials #quote-carousel .right{top: 64%;right: 4px !important;}
+
+/*-- Testimonial Section End --*/
+
+.testimonials-second-main #quote-carousel .carousel-control.left {
+	top: 80%;
+	left: 93%;
+	background: #68a74e;
+	width: 28px;
+	height: 28px;
+	opacity: 1;
+	line-height: 28px;
+	color:#fff;
+}
+.testimonials-second-main .author strong{color: #68a74e;font-size: 16px;}
+.testimonials-second-main .author small {color: #303030;font-size: 12px;}
+.testimonials-second-main #quote-carousel blockquote{background-color: #f0f0f0;}
+.testimonials-second-main #quote-carousel .carousel-inner .item p{padding-left: 15px;}
+.testimonials-second-main #quote-carousel .author{margin-top: 20px;}
+/* Next button  */
+.testimonials-second-main #quote-carousel .carousel-control.right{
+	right: 1px !important;
+	top: 80%;
+	background: #68a74e;
+	width:28px;
+	height: 28px;
+	opacity:1;
+	line-height: 28px;
+	color:#fff;
+}
+/*----------------------------------------------------
+	25. Client Testimonial Section End
+------------------------------------------------------*/
+.clickable{ cursor: pointer;}
+
+.clickable i{
+    background: rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    padding: 6px 12px;
+	top:-8px;
+	font-size: 11px;
+	font-weight:bold;
+}
+.panel-title{font-size:15px;font-weight:700;}
+.panel-collapsed i{background-color:#303030;}
+.panel-heading span{
+    margin-top: -23px;
+    font-size: 15px;
+    margin-right: -9px;
+}
+a.clickable { color: inherit; }
+a.clickable:hover { text-decoration:none; }
+.panel-primary{border-color:#fff;border:0px;}
+.panel-heading{border-radius:0px;}
+.panel-body{padding:0px;}
+.panel-content{background-color:#f2f2f3;font-size: 13px;text-align: justify;padding:15px;margin-top: 7px;}
+.popover-content{background-color:#f2f2f3;border-top: 2px solid #68a74e;font-size: 13px;text-align: justify;}
+.popover .arrow{
+	z-index: 1010;
+	display: block;
+	background-image:url(../images/arrow.png);
+	border:0px;
+}
+.cl-test{margin-top:-8px;font-size:13px;}
+.arrow-tx img{
+	position: relative;
+	top: -4px;
+	left: 15px;
+}
+/*----------------------------------------------------
+	26. Panel Section End
+------------------------------------------------------*/
+/* ========================= About Us Page End ========================= */
+
+
+/* ========================= Medical Services Page Start ========================= */
+.section_rop{background-color:#f0f0f0;padding:20px;}
+.section_rop h2{font-size:19px;color:#68a74e;font-weight:bold;}
+.section_rop p{font-size:13px;}
+.healthy_madical_services_page  #features{background:#fff;}
+.healthy_madical_services_page #aboutus {background-color:#f0f0f0;}
+.media-carousel 
+{
+  margin-bottom: 0;
+  padding: 0 40px 30px 40px;
+  margin-top: 30px;
+}
+.servicescol h4{
+font-weight: 700;
+margin-top: 15px;
+line-height: 30px;
+font-size: 17px;
+}
+.servicescol p {
+margin: 0px;
+float: left;
+padding: 10px 20px;
+color: #fff;
+font-size: 13px;
+}
+.servicescol{float:left;background-color:#68a74e;height:200px;}
+.servicescol i{
+background-color:#f0f0f0;
+display: inline-block;
+width: 55px;
+height: 55px;
+font-size: 25px;
+line-height: 52px;
+margin-top: 24px;
+color: #68a74e;
+border-radius:0px;
+border: 3px solid #fff;
+text-align: center;
+margin-left: 11px;
+}
+.servicescol:hover i{color:#000;border: 3px solid #303030;}
+
+/* Previous button  */
+.media-carousel .carousel-control.left{
+	  left: -12px;
+	  background-image: none;
+	  background: none repeat scroll 0 0 #222222;
+	  border: 4px solid #FFFFFF;
+	  border-radius: 23px 23px 23px 23px;
+	  height: 40px;
+	  width : 40px;
+	  margin-top: 30px
+}
+/* Next button  */
+.media-carousel .carousel-control.right{
+	right: -12px !important;
+	background-image: none;
+	background: none repeat scroll 0 0 #222222;
+	border: 4px solid #FFFFFF;
+	border-radius: 23px 23px 23px 23px;
+	height: 40px;
+	width : 40px;
+	margin-top: 30px
+}
+/* Changes the position of the indicators */
+.media-carousel .carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: 0px;
+	margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.media-carousel .carousel-indicators li {background: #c0c0c0;}
+.media-carousel .carousel-indicators .active{background: #333333;}
+
+/* End carousel */
+
+.services-col-item .btn-default{border-radius:0px;}
+.services-col-item  img{border: 8px solid #f0f0f0;}
+.services-threecol-main  .black h5{color:#303030;}
+	/*-- Services Col Item End--*/
+.healthy_madical_services_page .container-fluid{padding:0px;}
+.healthy_madical_services_page #Carousel{border:8px solid #f0f0f0;}
+.healthy_madical_services_page .pull-right p{margin:0px;font-size:13px;color:#707070;text-align:justify;}
+.healthy_madical_services_page .servicepost-main h4{line-height:60px;}
+.healthy_madical_services_page .carousel-control {
+    height: 27px;
+	width: 27px;
+    background:#000000;
+    margin-top: 90px;
+	font-size:13px;
+	line-height: 28px;
+	opacity:1;
+}
+.healthy_madical_services_page .carousel-control.right {
+	right: 40px;
+	color:#fff;
+	top: 50px;
+}
+.healthy_madical_services_page .carousel-control.left {
+	left: 68%;
+	top: 50px;
+	color:#fff;
+}
+.healthy_madical_services_page .carousel-control.left:hover {background:#68a74e;}
+.healthy_madical_services_page .carousel-control.right:hover {background:#68a74e;}
+/*-- Carousel End--*/
+
+.servicescol-one-main .btn-section{margin-right:10px;}
+.healthy_madical_services_col3 .btn-section{margin-right:10px;}
+.servicesitem h4{font-weight: 700;margin-top: 13px;line-height: 30px;font-size:17px;}
+	/*-- Services Single page End--*/
+
+.blogShort h4{color:#303030; font-weight:700;}
+.blogShort .pull-left{border:8px solid #f0f0f0;margin-top: 16px;margin-right: 10px;}
+/* ========================= Services Page End ========================= */
+/*----------------------------------------------------
+	27. Services Section End
+------------------------------------------------------*/
+
+/* ========================= Doctor Pages Start ========================= */
+
+.meetmember-main .pull-left{width:210px;}
+.meetmember-main .pull-right{width:210px;}
+.meetmember-main .social a{margin-top:7px;}
+.meetmember-main .link-facebook{background-color:#cccccc;}
+.meetmember-main .link-twitter{background-color:#cccccc;}kground-color:#68a74e;border-radius:0px;border-color:#68a74e;float:right;}
+.meetmember-main hr{margin:0px;}
+.meetmember-main .member-app .btn-section{top: 6px;}
+.meetmember-main .pull-right{margin-left:5px;}
+.sub-title h5{font-weight:700;line-height:30px;}
+.sub-title p{font-size:13px;color:#303030;}
+.btn-section{float:right;}
+#header-top .input-group .form-control:first-child{
+	background-color:#f0f0f0;
+	border:0px;
+	padding: 0px;
+	width: 99%;
+	transition: border linear .2s, 
+	box-shadow linear .2s, width 0.7s ease 0s;
+}
+.right-side-bar .input-group .form-control:first-child{background-color:#f0f0f0;border:0px;padding: 20px;width: 115%;border-radius: 0px;}
+.input-group-btn > .btn{z-index:9999;left: -8px;}
+
+	/*-- Doctor Page End --*/
+	
+#meetmembercol .btn-custom{padding:9px 2px;}
+#meetmembercol .member-details p{padding-bottom:0px!important;}
+/* ========================= Doctor Pages End ========================= */
+
+/* ========================= Doctor Single Page Start ========================= */
+
+.doctor-sinlge-main .link-facebook{background-color:#cccccc;}
+.doctor-sinlge-main .link-twitter{background-color:#cccccc;}
+.doctor-sinlge-main .btn-custom{background-color:#cccccc;padding: 10px 10px;font-size: 12px;margin-left: 3px;}
+.doctor-sinlge-main .btn-custom:hover{background-color:#303030;}
+.doctor-sinlge-main .doctor-body-text{text-align:justify; font-size:13p;}
+.doctor-sinlge-main .member-app .btn-primary{padding: 5px 19px;}
+
+	/* --- Col2 & col 4 Start--*/
+.healthy_doctor_page_2col .member-app .btn-primary{padding: 6px 14px; background:#cccccc; font-size:12px; }
+.healthy_doctor_page_2col .member-app .btn-primary:hover{background:#303030;}
+.healty_doctor_page_4columns .member-app .btn-primary{padding: 6px 12px; background:#cccccc; font-size:12px; }
+.healty_doctor_page_4columns .member-app .social a{margin-left:0px!important;margin-right:5px!important;}
+.healty_doctor_page_4columns .member-app .btn-primary:hover{background:#303030;}
+.healthy_doctor_page_2col .member-app .social a{margin-left:0px!important;margin-right:5px!important;}
+	/* -- Col2 & Col4 End--*/
+
+	/*-- Right SideBar Start --*/
+	
+.right-side-bar .sectionsbd{margin-top:30px;}
+.right-side-bar .sectionsbd h4{color:#383838;font-weight:700;line-height:40px;}
+.right-side-bar a{color:#707070;font-size:15px;}
+.right-side-bar hr{margin-top:2px;margin-bottom:10px;}
+	/*-- Right SideBar End --*/
+/* ========================= Doctor Single Page End ========================= */
+
+/*----------------------------------------------------
+	28. Doctor Section End
+------------------------------------------------------*/
+
+/* ========================= Blog Page Start ========================= */
+
+.healthy_blog_page .item-coments{border: 8px solid #f0f0f0;height:174px;}
+.healthy_blog_page .item-coments .pull-right{top: -158px;padding: 35px 16px;}
+.healthy_blog_page h5{font-weight:bold;line-height:40px;}
+.healthy_blog_page .lead{margin:0px;font-size:12px;font-weight:bold;}
+.healthy_blog_page article{font-size:13px;color:#707070;}
+.healthy_blog_page .btn-section-blog{float:right;margin-top:10px;border-radius:0px;}
+.healthy_blog_page .blog-itme{margin-top:70px;}
+
+/* ========================= Blog Page End ========================= */
+.com_content_view_featured .badge{background:none;color:#383838;}
+.tag-widgets{font-size:12px;}
+.scsh{font-size:12px; color:#dd250d;font-weight:700;margin-left:10px;}
+.mobile-social-share ul {
+    float: right;
+    list-style: none outside none;
+    margin: 0;
+    min-width: 61px;
+    padding: 0;
+}
+#socialShare .dropdown-menu > li > a {padding: 11px 14px 6px 15px;}
+#socialShare .dropdown-menu {background:none;min-width:0px;}
+.share {
+    min-width: 17px;
+}
+
+.mobile-social-share li {
+    display: block;
+    font-size: 18px;
+    list-style: none outside none;
+    margin-bottom: 3px;
+    margin-left: 4px;
+    margin-top: 3px;
+}
+
+.btn-share {
+    background-color: #BEBEBE;
+    border-color: #CCCCCC;
+    color: #333333;
+}
+
+.btn-twitter {
+    background-color: #3399CC !important;
+    width: 51px;
+    color:#FFFFFF!important;
+}
+
+.btn-facebook {
+    background-color: #3D5B96 !important;
+    width: 51px;
+    color:#FFFFFF!important;
+}
+
+.btn-facebook {
+    background-color: #3D5B96 !important;
+    width: 51px;
+    color:#FFFFFF!important;
+}
+
+.btn-google {
+    background-color: #DD3F34 !important;
+    width: 51px;
+    color:#FFFFFF!important;
+}
+
+.btn-linkedin {
+    background-color: #1884BB !important;
+    width: 51px;
+    color:#FFFFFF!important;
+}
+
+.btn-pinterest {
+    background-color: #CC1E2D !important;
+    width: 51px;
+    color:#FFFFFF!important;
+}
+
+.btn-mail { background-color: #FFC90E !important;width: 51px;color:#FFFFFF!important;}
+
+.caret {
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-top: 4px solid;
+    display: inline-block;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    width: 0;
+}
+
+#socialShare > a{padding: 2px 7px 1px 8px;}
+/*-- Social Share End --*/
+
+/*--- Comments ---*/
+.healthyblog-main .comments .pull-right{width:88%;}
+.healthyblog-main .com_child .pull-right{width:86%;}
+.healthyblog-main .btn-section{margin-right: 17px;margin-top: 15px;}
+#healthy_blog_single_page .healthyblog-main .btn-section{margin-right: 17px;margin-top: -30px;}
+.comments .color{color: #383838;font-weight:700;}
+.comment_list{list-style: none;overflow: hidden;margin: 0;}
+.com_item:first-child{margin-top: 0;padding-top: 0;}
+.com_item{padding-top: 25px;float: left;width: 100%;}
+.com_main{padding-bottom: 0;margin: 0;height: 160px;}
+.sing-post img{width: 60px;height: 60px;}
+.user_name>a{ font-size: 14px; color:#68a74e;}
+.com_date{ font-size: 11px; color:#383838}
+.com_meta .btn-section-right{margin-top: -40px;}
+.com_meta{background-color:#f0f0f0;padding:10px;}
+p.com_text{ font-size: 13px; color:#707070;padding:0px;}
+.com_reply{width: 100%;float: left;margin-top: -5px;}
+.com_reply a.button{background: rgb(134,134,134);font-family:}
+.com_item .com_child{list-style: none;padding: 25px 0 0 75px;}
+
+/*--- Search Form ---*/
+.contact_title{color:#383838;font-weight:700;}
+.contact_form{margin-top: 20px;}
+.contact_form input[type="text"], .contact_form textarea{color:#68a74e;height: 35px;background: #f0f0f0;border: 1px solid #d9d9d9;font-size: 13px;width: 100%;padding: 20px;}
+.contact_form textArea{height: 135px;}
+.contact_form div.small-4.columns, .contact_form div.large-4.columns{padding-left:0; margin-top:10px}
+.contact_form div.small-4.columns:first-child, .contact_form div.large-4.columns:first-child{padding-left:1.250em}
+
+/* ========================= Blog Post Single Post End ========================= */
+
+.healthy_blog_page_col2 .item-coments{border: 8px solid #f0f0f0;height:171px;}
+.btn-section-blog{float:right;border-radius:0px;}
+/* ========================= Blog Page 2Columns End ========================= */
+
+.healthy_blog_page_col3 .item-coments{border: 8px solid #f0f0f0;height:171px;}
+/* ========================= Blog Page 2Columns End ========================= */
+
+/*----------------------------------------------------
+	29. Blog Pages End
+------------------------------------------------------*/
+
+/* ========================= Contact Us Page Start ========================= */
+
+.contact-form-main h5{color:#68a74e;font-weight:bold;}
+.contact-form-main address p{font-weight:normal;}
+.cont-info{margin-top:20px;}
+.contact-form-main p .text-primary{font-size:11px;font-weight:800;}
+
+.healthy_Contact_page  form { margin:0px;}
+.healthy_Contact_page  form input[type="text"], 
+.page-contact form input[type="password"], 
+.page-contact form input[type="email"] {
+	width:100%;
+	background:#f0f0f0;
+	padding:10px;
+	border: 0px;
+}
+.text-area{margin-top:10px;}
+.healthy_Contact_page  form textarea {
+	width:100%;
+	margin-bottom:20px;
+	background:#f0f0f0;
+	border:0px;
+}
+.healthy_Contact_page  form input[type="submit"] { margin:0px; }
+.healthy_Contact_page  form .alert {
+	padding-top:10px;
+	padding-bottom:10px;
+	margin:20px 0px 0px;
+}
+.healthy_Contact_page  form .alert .close { top:1px; }
+.healthy_Contact_page .contact-map {
+	height:430px;
+	background-color:#f0f0f0;
+	border:8px solid #e4e4e4;
+}
+.healthy_Contact_page .address-notes {
+	font-family:Merriweather, serif;
+	color:#57b9e1;
+	font-size:11px;
+	line-height:16px;
+	text-align:right;
+	font-weight:700;
+	margin:6px 0px 0px;
+}
+.required {
+	color: #eb6042;
+}
+
+/* ========================= Contact Us Page End ========================= */
+
+/*----------------------------------------------------
+	30. Contact Page End
+------------------------------------------------------*/
+
+#healthy_home_pages .services-main{text-align:center;}
+#healthy_home_pages .services-main p{text-align:center;}
+#healthy_home_pages .sectionshome{text-align:start;}
+#healthy_home_pages .sectionshome p{text-align:justify;}
+#healthy_home_pages .servicesseven .servicesitem i{margin-top:-20px;}
+#healthy_home_pages .pull-right .servicesitem i{margin-left:20px!important;}
+#healthy_home_pages .btn-section{margin-right:10px;}
+#healthy_home_pages #fullwidth h5{font-size:15px;font-weight:bold;color:#383838;}
+#healthy_home_pages #fullwidth p{font-size:13px;color:#707070;}
+#healthy_home_pages #fullwidth h1{font-size:22px;color:#383838;font-weight:bold;line-height:15px;}
+#healthy_home_pages #fullwidth h2{font-size:20px;color:#383838;font-weight:bold;line-height:15px;}
+#healthy_home_pages #fullwidth h3{font-size:20px;color:#383838;font-weight:bold;line-height:15px;}
+#healthy_home_pages #fullwidth h4{font-size:18px;color:#383838;font-weight:bold;line-height:15px;}
+#healthy_home_pages #fullwidth h5{font-size:16px;color:#383838;font-weight:bold;line-height:15px;}
+#healthy_home_pages #fullwidth h6{font-size:14px;color:#383838;font-weight:bold;line-height:15px;}
+
+/* =========================Element Page End ========================= */
+
+/*----------------------------------------------------
+	31. Element Section End
+------------------------------------------------------*/
+
+/* ========================= 404 Error Page Start ========================= */
+
+.error_bg{
+background: #68a74e;
+border-radius: 50%;
+padding: 100px;
+width:400px;
+height:400px;
+margin-left: 27%;
+margin-bottom: 10%;
+margin-top:40px;
+}
+.error_bg h1{padding: 50px 10px;font-size:110px;color:#fff;font-weight:bold;}
+.error_text h2{color:#68a74e;font-size:40px;}
+.error_text h4{color:#707070;font-size:24px;}
+
+/* ========================= 404 Error Page End ========================= */
+
+/*----------------------------------------------------
+	32.404 Error page End
+------------------------------------------------------*/
+.testimonials-main-sew .item blockquote{background: #eee;padding: 30px;margin-bottom: 15px;margin-top: 10px;}
+/* ========================= Testimonials Page End ========================= */
+
+/*----------------------------------------------------
+	33. Testimonials page End
+------------------------------------------------------*/
+
+
+/* ========================= Customize ========================= */
+
+#customize {
+	position:fixed;
+	top:101px;
+	left:0;
+	color:#FFF;
+	text-transform:uppercase;
+	z-index:99999;
+	text-align:center;
+}
+	#customize .popup-open {
+		float:left;
+		width:44px;
+		height:44px;
+		background:#333 url(../images/icon-customizer.png) no-repeat center center;
+		-moz-border-radius:0px 4px 4px 0px;
+		-webkit-border-radius:0px 4px 4px 0px;
+		border-radius:0px 4px 4px 0px;
+		-webkit-transition:background-color .2s ease;
+		-moz-transition:background-color .2s ease;
+		-ms-transition:background-color .2s ease;
+		-o-transition:background-color .2s ease;
+		transition:background-color .2s ease;
+	}
+	#customize .popup-open:hover {
+		background-color:#505050;
+		cursor:pointer;
+	}
+	#customize .colors {
+		display:none;
+		width:84px;
+		background-color:#333;
+		float:left;
+		overflow:hidden;
+		padding-bottom:10px;
+	}
+		#customize .colors h5 {
+			margin:0px;
+			color:#FFF;
+			line-height:16px;
+			cursor:pointer;
+			padding:15px 0px;
+			font-size:12px;
+			font-weight:700;
+		}
+		#customize .colors a {
+			display:inline-block;
+			width:28px;
+			height:28px;
+			margin:1px;
+			border:1px solid #FFF;
+			-webkit-transition:opacity .2s ease-in-out;
+			-moz-transition:opacity .2s ease-in-out;
+			-ms-transition:opacity .2s ease-in-out;
+			-o-transition:opacity .2s ease-in-out;
+			transition:opacity .2s ease-in-out;
+		}
+		#customize .colors a:hover {
+			 -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+			 filter:alpha(opacity=70);
+			 opacity:0.7;
+		}
+/* ========================= End ========================= */
+
+/*----------------------------------------------------
+	34. Color Customize Section End
+------------------------------------------------------*/

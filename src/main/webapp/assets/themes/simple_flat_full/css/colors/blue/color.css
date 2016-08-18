@@ -1,0 +1,49 @@
+a, a:visited {color:#000080;}
+a:hover {color:#303030;text-decoration:none;}
+.top-social-bar .btn-default{background:#000080!important;}
+.language-swcher .form-control{background:#000080;}
+.btn-primary, input[type="button"], input[type="submit"], input[type="reset"], button{background:#000080;}
+.member-app .btn-primary:hover{background: #000080;}
+.newsletter-main .btn-default{background: #000080;}
+/*-- Home Page One Start --*/
+#header {border-top: 4px solid #000080;}
+#header .header-info span i{color: #000080;}
+#header .header-info{color: #000080;}
+.social a{background:#000080;color:#fff;}
+#header form input[type="submit"]{background-color:#000080;}
+	/*-- Header Top End--*/
+#navigation .menu > li > a:hover, #navigation .menu > li.current > a{border-top: 3px solid #000080;}
+.features-main .header h2{color: #000080;}
+.services-main .item i{background-color:#000080;}
+.appointment-main .pull-left h3{color: #000080;}
+.btn-custom, input[type="button"], input[type="submit"], input[type="reset"], button{background-color:#000080;}
+.app-bg{border-right: 4px solid #000080;}
+.navbar-default .navbar-brand{color:#000080;}
+.sub-header h5{color:#000080;}
+.testimonials-main #quote-carousel .carousel-control.right{background:#000080;}
+.testimonials-main #quote-carousel .carousel-control.left{background:#000080;}
+.testimonials-main .author strong{color:#000080;}
+address p.text-default{color:#000080!important;}
+#footer-bottom .text-default{color:#000080;}
+.services-main .item:hover i {color:#000080;border:3px solid #000080;}
+.testimonials-second-main #quote-carousel .carousel-control.right{background: #000080;}
+.testimonials-second-main #quote-carousel .carousel-control.left{background: #000080;}
+.testimonials-second-main .author strong{color:#000080;}
+.panel-primary > .panel-heading{background: #000080;}
+.progress-bar-info{background: #000080;}
+.popover-content{border-top: 2px solid #000080;}
+.header h2{color:#000080;}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, 
+.pagination > .active > span:focus{background: #000080;}
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus{background: #000080;}
+.navbar-default .navbar-nav li .dropdown-menu li a.active{border:0px;}
+.error_bg{background: #000080;}
+.error_text h2{color: #000080;}
+.right-side-bar a{color: #000080;}
+.contact-form-main h5{color: #000080;}
+.contact-form-main address p{color: #000080;}
+#footer{border-top: 4px solid #000080;}
+.footer-bottom .text-default{color: #000080;}
+.healthy_home_balck .language-swcher .form-control {background:#000080;}
+
+/*-- Home Page One End--*/

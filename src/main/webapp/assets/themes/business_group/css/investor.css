@@ -1,0 +1,102 @@
+.red,.red a{ color:#ff0000;}
+.green,.green a{ color:#00c400}
+.gray,.gray a{ color:#999}
+/**/
+.other-topimg{ background-color:#a3d6d0;}
+.other-topimg,.other-topimg li{width: 100%;height:320px; overflow: hidden; position:relative;}
+.other-topimg li{ float:left;}
+.other-topimg li img{position: absolute;	top: 0;	left: 50%; margin-left:-960px;}
+.img-top-bg{ background:url(../image/bg03.png) repeat left top; position:absolute; left:0; top:0; display:block; _display:none;/*for ie6*/ z-index:1; width:100%; height:320px;}
+/*公司治理、股票信息 直接控股上市公司*/
+.investor-direholdlist{ width:100%; overflow:hidden; padding:25px 0;}
+.investor-direholdlist ul{ overflow:hidden; width:780px;}
+.investor-direholdlist .item{ background-color:#fff; float:left; display:inline; border:1px solid #f99d32; width:237px; height:201px; overflow:hidden;margin:0 19px 25px 0;}
+.investor-direholdlist .item .pic{ width:237px; height:147px; overflow:hidden; }
+.investor-direholdlist .item .conts{ background-color:#f99d32; width:100%; height:54px; line-height:54px; overflow:hidden; color:#fff;}
+.investor-direholdlist .item .conts a{ color:#fff;}
+.investor-direholdlist .item  h3{ float:left; padding-left:13px; font-size:18px; font-weight:normal;}
+.investor-direholdlist .item  h3 a{  font-size:18px; font-weight:normal;}
+.investor-direholdlist .item p{ float:right; padding-right:13px; font-family:Arial; font-size:14px; line-height:56px;}
+/*公司治理、股票信息 间接控股上市公司*/
+.investor-indirehold-t,.investor-indirehold-b{ color:#000;  font-size:12px;}
+.investor-indirehold-t{ padding:25px 0;}
+.investor-indirehold-t-table{ border:1px solid #e6dfda;}
+.investor-indirehold table{  border:0; width:100%; border-collapse: collapse; border-spacing:0;}
+.investor-indirehold-t .tablesty{ background-color:#ede8e4;}
+.investor-indirehold-t .td_tit{ background-color:#f0eae7; height:30px; text-align:left;}
+.investor-indirehold-t .td_tit .tit{ font-weight:bold; color:#000; padding-left:10px;}
+.investor-indirehold-t .td_tit .date{ color:#999; padding-left:15px;}
+.investor-indirehold-t .td_cont{ background-color:#fff;}
+.td_cont .h1{ font-size:20px;}
+.investor-indirehold-t .td_cont table{  border-collapse: separate; border-spacing:2px;}
+.investor-indirehold-t .td_cont td{ background-color:#f3f1ee; height:28px; text-align:center;}
+.investor-indirehold-t .td_cont .tit{ text-align:right;}
+.investor-indirehold-t .td_cont .table03{ text-align:left; padding-left:5px;}
+.investor-indirehold-t .btm{ overflow:hidden; width:100%; padding:10px 0;}
+.investor-indirehold-t .btm ul{ float:right;}
+.investor-indirehold-t .btm li{ float:left; display:inline; padding-left:15px;line-height:27px;}
+.investor-indirehold-t .btn_bg01{ background:url(../image/btn_bg.gif) repeat-x left top; float:left; border:1px solid #e2dcd9; height:25px; padding:0 15px; line-height:25px; color:#67554b; font-weight:bold;}
+.investor-indirehold-b .tablesty{ background-color:#f0eae7; border-collapse: separate; border-spacing:1px; line-height:2.0em;margin-top:20px; color:#333}
+.investor-indirehold-b tr{ background-color:#f7f5f4;}
+.investor-indirehold-b .tr_bg th,.investor-indirehold-b .tr_bg td{ background-color:#f3f1ee;}
+.investor-indirehold-b th{ height:28px;}
+.investor-indirehold-b .tit{ background-color:#f0eae7;text-align:left; height:30px; padding-left:10px;}
+.investor-indirehold-b .td_1{ text-align:right; width:140px;}
+.investor-indirehold-b .td_2{ text-align:left; padding-left:10px; width:auto;}
+/*投资公告 直接控股上市公司*/
+.investor-anndirholdlist .item{ width:100%; padding:15px 0 20px; font-size:14px;}
+.investor-anndirholdlist .item-t,.investor-anndirholdlist .item-c li{background: url(../image/hr02.gif) repeat-x 0 bottom;}
+.investor-anndirholdlist .item-t{  width:100%; padding-bottom:10px; overflow:hidden; line-height:30px;}
+.investor-anndirholdlist .item-t .tit{ background:url(../image/i15.gif) no-repeat left 10px; padding-left:20px; font-size:20px; color:#6d5a54; font-weight:bold;}
+.investor-anndirholdlist .item-t .more a{ color:#f99d32;}
+.investor-anndirholdlist .item-t .more{ padding-top:5px; line-height:25px;}
+.investor-anndirholdlist .item-c li{ position:relative; width:100%; height:48px; line-height:48px;}
+.investor-anndirholdlist .item-c li a{ font-size:14px;}
+.investor-anndirholdlist .item-c .datebox{ position:absolute; right:0; top:15px; font-size:10px; font-family:Arial; line-height:18px;}
+.investor-anndirholdlist .item-c li a{ background:url(../image/i10.gif) no-repeat left 9px; padding-left:8px;}
+.investor-anndirholdlist .item-c li a:hover{ background-image: url(../image/i09.gif);}
+.investor-anndirholdlist .item-c li .datebox a{ background:none;}
+.investor-anndirholdlist .item-c .datebox img{ vertical-align:middle; }
+.investor-anndirholdlist .item-c .datebox .date{ padding-left:25px;}
+
+/*业绩报告 直接控股上市公司*/
+.investor-resdirholdlist .item{ border-bottom:1px solid #dbd4cd; padding:15px 0 20px; margin-bottom:15px;}
+.investor-resdirholdlist .item-t{background: url(../image/hr02.gif) repeat-x 0 bottom;}
+.investor-resdirholdlist .item-t{  width:100%; padding-bottom:10px; overflow:hidden; line-height:30px;}
+.investor-resdirholdlist .item-t .tit{ background:url(../image/i15.gif) no-repeat left 10px; padding-left:20px; font-size:20px; color:#6d5a54; font-weight:bold;}
+.investor-resdirholdlist .item-t .more a{ color:#f99d32;}
+.investor-resdirholdlist .item-t .more{ padding-top:5px; line-height:25px;}
+.investor-resdirholdlist .item-c{ padding-top:20px;}
+.investor-resdirholdlist .item-c,.investor-resdirholdlist .item-c .cont{  width:100%;overflow:hidden;}
+.investor-resdirholdlist .item-c ul{ width:780px;}
+.investor-resdirholdlist .item-c li{ float:left; display:inline; width:177px; height:280px; overflow:hidden; padding-right:15px;}
+.investor-resdirholdlist .item-c .pic{ width:177px; height:235px; padding-bottom:10px; overflow:hidden;}
+
+/*企业理念*/
+.responsibility_concept .item { border-bottom:1px solid #dbd4cd; padding:25px 0; line-height:1.8em;}
+.responsibility_concept .item .tit{background:url(../image/hr02.gif) repeat-x left bottom; padding-bottom:10px; font-size:20px; font-weight:bold; color:#f99d33;}
+.responsibility_concept .item .tit span{ background:url(../image/i14.gif) no-repeat left 5px; display:block; padding-left:20px; font-size:16px;}
+.responsibility_concept .conts{ width:100%; padding-top:15px; overflow:hidden;}
+.responsibility_concept .conts .pic{ padding:7px 20px 5px 0;}
+.responsibility_concept .conts h3{  padding:0px 0 10px;font-size:18px; color:#6d5a54; font-weight:normal;}
+
+/*人才理念*/
+.talented_structure .item { border-bottom:1px solid #dbd4cd; padding:25px 0; line-height:1.8em;}
+.talented_structure .item .tit{background:url(../image/hr02.gif) repeat-x left bottom; padding-bottom:10px; font-size:20px; font-weight:bold; color:#f99d33;}
+.talented_structure .item .tit span{ background:url(../image/i14.gif) no-repeat left 5px; display:block; padding-left:20px; font-size:16px;}
+.talented_structure .conts{ width:100%; padding-top:15px; overflow:hidden;}
+.talented_structure .conts .pic{ padding:7px 20px 5px 0;}
+.talented_structure .conts h3{  padding:0px 0 10px;font-size:18px; color:#6d5a54; font-weight:normal;}
+
+
+/*榜样人物*/
+.talented_example dl{background:url(../image/hr02.gif) repeat-x left bottom; width:100%; overflow:hidden; padding:20px 0; line-height:1.8em;}
+.talented_example dt{ float:left; width:100px;}
+.talented_example dt img{ display:block;}
+.talented_example dd{ float:right; width:630px;}
+.talented_example h3{ position: relative; margin-top:-3px; padding-bottom:3px; font-size:14px;}
+.talented_example .more{ padding-top:8px;}
+
+/*投资者咨询*/
+.advisory{margin:38px 0 0;}
+.advisory h2{color:#F90;font-size:18px;font-weight:normal;line-height:2em;}
