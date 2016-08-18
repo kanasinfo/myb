@@ -385,8 +385,11 @@ public class MybProReportServiceImpl implements MybProReportService {
 			}
 			Query query = new Query();
 			Criteria criterg = Criteria.where("_id").is(id);
-			query.addCriteria(criterg);
+			query.addCriteria(criterg);			
 			Update update = new Update();
+			update.unset("savedDimnTab");
+			mongoTemplate.updateMulti(query, update,  ReleaseQuestionVo.class);
+			update = new Update();
 			update.addToSet("savedDimnTab", data);
 			mongoTemplate.updateMulti(query, update, ReleaseQuestionVo.class);
 			ajaxReq.setSuccess(true);

@@ -721,7 +721,7 @@ function buildTempFilterTopNav() {
 			html = html.substr(0,html.length-1);
 			}
 		html += "' ><span class='filtertextspan'  onclick='_topFilterClick(this);'>"+ fName +"</span><button class='close' type='button'  onclick='_topFilterRemove(this);'>×</button></div></li>";
-		$(".tempfilter").html(html);
+		//$(".tempfilter").html(html);
 	}
 }
 
