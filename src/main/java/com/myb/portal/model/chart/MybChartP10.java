@@ -133,7 +133,7 @@ public class MybChartP10 extends MybChart {
 			option.append("data : [{type : 'max', name: '最大值'},{type : 'min', name: '最小值'}]},");
 			option.append("markLine : {data : [{type : 'average', name: '平均值'}]}}]}");
 			JSONObject rspjb = new JSONObject();
-			rspjb.put("type", "pie");
+			rspjb.put("type", "line");
 			rspjb.put("title", questionName);
 			rspjb.put("chartlegend", chartLegend.toString());
 			rspjb.put("option", option.toString());

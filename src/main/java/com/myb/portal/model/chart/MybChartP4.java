@@ -156,9 +156,9 @@ public class MybChartP4 extends MybChart{
 			.append("%</span>的顾客对<span class=\"store\">"
 					+ custName
 					+ "</span>表示满意（8-10分）， <span class=\"unsatisfied\">"
-					+ (oneOrfive/count)*100
+					+ new Double(oneOrfive*100/count)
 					+"%</span>的顾客表示不满意（1-5分），其余<span class=\"neutral\">"
-					+(sixOrseven/count)*100
+					+new Double(sixOrseven*100/count)
 					+"%</span>的顾客态度中立；<br> "
 					+ "2、与行业水平相比，<span class=\"store\">"
 					+ custName
