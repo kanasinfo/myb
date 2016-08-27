@@ -5,6 +5,7 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.matc
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.unwind;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,9 +14,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.Field;
+import org.springframework.data.mongodb.core.aggregation.Fields;
 import org.springframework.data.mongodb.core.query.Criteria;
 
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
 import com.myb.portal.model.chart.result.TagCount;
+import com.myb.portal.model.chart.result.TwoDimnCount;
 import com.myb.portal.util.AjaxReq;
 
 import net.sf.json.JSONArray;
@@ -45,51 +51,87 @@ public class MybChartP13 extends MybChart{
 			Map<String, List<Criteria>> fdmp = new HashMap<String, List<Criteria>>();						
 			MybChartUtils.packDimensionsFilter("", filter, fdmp);	
 			Criteria ct = new Criteria().andOperator(fdmp.get("filterOnly").toArray(new Criteria[fdmp.get("filterOnly").size()]));
+			String yName = JSONObject.fromObject(dimension).getString("dateType");
 
-			
-			Aggregation aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),
+			List<Criteria> criterias =null;
+			Criteria criteria = null;
+			BasicDBList listAll = null;
+			BasicDBList list = null;
+			Aggregation aggregation = null;			
+			Field[] fields = new Field[2];			
+			Field x = Fields.field("x","$year");
+			fields[0] = x;			
+			Field y = Fields.field("y","$"+yName);
+			fields[1] = y;			
+			aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),
 					unwind("$answers"), match(Criteria.where("answers.questionId").is(questionId)),
-					group("$answers.optionValue").count().as("count"));
-			AggregationResults<TagCount> results = mongoTemplate.aggregate(aggregation, "answer", TagCount.class);
-			List<TagCount> tagCount = results.getMappedResults();
-			StringBuffer legendStr = new StringBuffer("[");
+					group(Fields.from(fields)).count().as("count"));
+			AggregationResults<TwoDimnCount> results2= mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
+			listAll = (BasicDBList)results2.getRawResults().get("result");	
+
+			criterias = new ArrayList<Criteria>();				
+			criterias.add(Criteria.where("answers.questionIdValue").in(questionId+"_8",questionId+"_9",questionId+"_10"));
+			criteria = new Criteria().andOperator(criterias.toArray(new Criteria[criterias.size()]));
+			
+			aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),match(criteria),
+					unwind("$answers"), match(Criteria.where("answers.questionId").is(questionId)),
+					group(Fields.from(fields)).count().as("count"));
+			
+			AggregationResults<TwoDimnCount> results= mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
+			list = (BasicDBList)results.getRawResults().get("result");
 			JSONObject jb = null;
 			JSONArray ja = new JSONArray();
-			for (int i = 0; i < tagCount.size(); i++) {
-				TagCount t = tagCount.get(i);
-				jb = new JSONObject();
-				jb.put("name", t.get_id());
-				legendStr.append("'"+t.get_id()+"',");
-				jb.put("value", t.getCount());			
-				ja.add(jb);
-			}
-		
+			JSONObject jbt = null;
+			Integer tmpCnt = 0;
+			Integer tmpTotalCnt = 0;
+			JSONArray xName= new JSONArray();			
+			JSONArray xValue = new JSONArray();			
+			
+				for(int i = 0; i < listAll.size(); i ++){  
+		            BasicDBObject obj = (BasicDBObject)listAll.get(i);
+		            String xStr = "";
+		            String yStr = "";
+		            tmpTotalCnt =(Integer)obj.get("count");
+	            	jb = JSONObject.fromObject(obj.get("_id"));				    		
+		    		xStr = jb.getString("x");
+		    		yStr =  jb.getString("y");	
+		    		for(int j = 0; j < list.size(); j ++ ){
+		    			jb = JSONObject.fromObject(((BasicDBObject)list.get(j)).get("_id"));	
+		    			if(xStr.equals(jb.getString("x")) && yStr.equals(jb.getString("y"))){
+		    				tmpCnt = (Integer)((BasicDBObject)list.get(j)).get("count");
+		    			};
+		    		}
+		    		xName.add(yStr);
+		    		xValue.add((tmpCnt*100)/tmpTotalCnt);		    		
+				}
+						
+			StringBuffer legendStr = new StringBuffer("[");			
+			
 			legendStr.substring(0, legendStr.length()-1);
 			legendStr.append("]");
 
-			/**
-			 * No comments ;
-			 * 
-			 */
+			
+
 			StringBuffer comments = new StringBuffer("");
 			StringBuffer chartLegend = new StringBuffer("");
-			StringBuffer option =new StringBuffer("{title : {text: '',subtext: ''},tooltip : {trigger: 'axis'},");
-			option.append("legend: {data:['','','']},");
+			StringBuffer option =new StringBuffer("{tooltip : {trigger: 'axis'},legend: {data:"+xValue+"},");
 			option.append("toolbox: {show : true,feature : {mark : {show: true},dataView : {show: true, readOnly: false},");
-			option.append("magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},restore : {show: true},saveAsImage : {show: true}}},");
-			option.append("calculable : true,xAxis : [{type : 'category',boundaryGap : false,data : ['周一','周二','周三','周四','周五','周六','周日']}],");
-			option.append("yAxis : [{type : 'value'}],");
-			option.append("series : [{name:'',type:'line',smooth:true,itemStyle: {normal: {areaStyle: {type: 'default'}}},data:[10, 12, 21, 54, 260, 830, 710]},");
-			option.append("{name:'',type:'line',smooth:true,itemStyle: {normal: {areaStyle: {type: 'default'}}},data:[30, 182, 434, 791, 390, 30, 10]},");
-			option.append("{name:'',type:'line',smooth:true,itemStyle: {normal: {areaStyle: {type: 'default'}}},data:[1320, 1132, 601, 234, 120, 90, 20]}]}");
+			option.append("magicType : {show: true, type: ['line', 'bar']},restore : {show: true},saveAsImage : {show: true}}},");
+			option.append("calculable : true,");
+			option.append("xAxis : [{type : 'category',boundaryGap : false,data : "+xName+"}],");
+			option.append("yAxis : [{type : 'value',min:0,max:100,axisLabel : {formatter: '{value} %'}}],");
+			option.append("series : [{name:'',type:'line',data:"+xValue+",markPoint : {");
+			option.append("data : [{type : 'max', name: '最大值'},{type : 'min', name: '最小值'}]},");
+			option.append("markLine : {data : [{type : 'average', name: '平均值'}]}}]}");
 			JSONObject rspjb = new JSONObject();
-			rspjb.put("type", "pie");
+			rspjb.put("type", "line");
 			rspjb.put("title", questionName);
 			rspjb.put("chartlegend", chartLegend.toString());
 			rspjb.put("option", option.toString());
 			rspjb.put("comments", comments.toString());
 			aReq.setSuccess(true);
-			aReq.setData(rspjb);
+			aReq.setData(rspjb);			
+			
 		} catch (Exception e){
 			e.printStackTrace();
 			aReq.setSuccess(false);
