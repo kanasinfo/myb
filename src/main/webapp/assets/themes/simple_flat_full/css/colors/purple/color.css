@@ -1,0 +1,49 @@
+a, a:visited {color:#7344b0;}
+a:hover {color:#303030;text-decoration:none;}
+.top-social-bar .btn-default{background:#7344b0!important;}
+.language-swcher .form-control{background:#7344b0;}
+.btn-primary, input[type="button"], input[type="submit"], input[type="reset"], button{background:#7344b0;}
+.member-app .btn-primary:hover{background: #7344b0;}
+.newsletter-main .btn-default{background: #7344b0;}
+/*-- Home Page One Start --*/
+#header {border-top: 4px solid #7344b0;}
+#header .header-info span i{color: #7344b0;}
+#header .header-info{color: #7344b0;}
+.social a{background:#7344b0;color:#fff;}
+#header form input[type="submit"]{background-color:#7344b0;}
+	/*-- Header Top End--*/
+#navigation .menu > li > a:hover, #navigation .menu > li.current > a{border-top: 3px solid #7344b0;}
+.features-main .header h2{color: #7344b0;}
+.services-main .item i{background-color:#7344b0;}
+.appointment-main .pull-left h3{color: #7344b0;}
+.btn-custom, input[type="button"], input[type="submit"], input[type="reset"], button{background-color:#7344b0;}
+.app-bg{border-right: 4px solid #7344b0;}
+.navbar-default .navbar-brand{color:#7344b0;}
+.sub-header h5{color:#7344b0;}
+.testimonials-main #quote-carousel .carousel-control.right{background:#7344b0;}
+.testimonials-main #quote-carousel .carousel-control.left{background:#7344b0;}
+.testimonials-main .author strong{color:#7344b0;}
+address p.text-default{color:#7344b0!important;}
+#footer-bottom .text-default{color:#7344b0;}
+.services-main .item:hover i {color:#7344b0;border:3px solid #7344b0;}
+.testimonials-second-main #quote-carousel .carousel-control.right{background: #7344b0;}
+.testimonials-second-main #quote-carousel .carousel-control.left{background: #7344b0;}
+.testimonials-second-main .author strong{color:#7344b0;}
+.panel-primary > .panel-heading{background: #7344b0;}
+.progress-bar-info{background: #7344b0;}
+.popover-content{border-top: 2px solid #7344b0;}
+.header h2{color:#7344b0;}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, 
+.pagination > .active > span:focus{background: #7344b0;}
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus{background: #7344b0;}
+.navbar-default .navbar-nav li .dropdown-menu li a.active{border:0px;}
+.error_bg{background: #7344b0;}
+.error_text h2{color: #7344b0;}
+.right-side-bar a{color: #7344b0;}
+.contact-form-main h5{color: #7344b0;}
+.contact-form-main address p{color: #7344b0;}
+#footer{border-top: 4px solid #7344b0;}
+.footer-bottom .text-default{color: #7344b0;}
+.healthy_home_balck .language-swcher .form-control {background:#7344b0;}
+
+/*-- Home Page One End--*/

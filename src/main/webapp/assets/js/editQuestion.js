@@ -1,6 +1,24 @@
 jQuery(function($) {
 	var data = decodeURIComponent($("#data").val());
 	var data1 = JSON.parse(data);
+	$("#basic_Reset_edit").click(function(){
+		window.location.reload();
+	})
+	$("#editButon").click(function(){
+		$("#editButon").css('display','none');
+		$("#editQuestion").val(1);
+		$("input[type='checkbox']").each(function(i) {
+			$(this).removeAttr('disabled',false);
+		})
+		$(".div_button>button").removeAttr('disabled',false);
+		$("#span_top>input[type='button']").removeAttr('disabled',false);
+		$(".div_center_title>checkbox").removeAttr('disabled',false);
+		$("#cancelButon").css('display','');
+	})
+	$("#cancelButon").click(function(){
+		window.location.reload();
+	})
+	
 	$("#refurbish").click(function(){
 		$.ajax({
 			url:'../queryAmount.json?r='+Math.random(),
@@ -647,6 +665,7 @@ jQuery(function($) {
 		$("#basicType").val(0);
 		$("#basic_edit").css('display', 'none');
 		$("#basic_save").css('display', '');
+		$("#basic_Reset_edit").css('display', '');
 		$("#basic_credit_amount").css('display', 'none');
 		$("#basic_questionName").css('display', 'none');
 		$("#qustnr_name").css('display', '');

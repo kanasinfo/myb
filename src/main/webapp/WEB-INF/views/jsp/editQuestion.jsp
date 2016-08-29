@@ -42,12 +42,14 @@
     	<input type="hidden" id="editQuestionTemplateType" name="editQuestionTemplateType"/>
     	<input type="hidden" id="questionEditFlag" name="questionEditFlag" value="false"/>
     	<input type="hidden" id="questionType" name="questionType" value=""/>
+    	<input type="hidden" id="editQuestion" name="editQuestion" value="0"></input>
     	<!-- 单选框赋值，分值类型还是是否类型 -->
     	<input type="hidden" id="MyRedioFlag" name="MyRedioFlag" value=""/>
         <div id="create_panel">
                 <div id="title">基本设置
                 	<input type="button" class="basic_button" id="basic_edit" value="编辑"/> 
-                	<input type="button" class="basic_button" style="display: none" id="basic_save" value="保存"/> 
+                	<input type="button" class="basic_button" style="display: none" id="basic_Reset_edit" value="取消"/>
+                	<input type="button" class="basic_Save_button" style="display: none" id="basic_save" value="保存"/> 
                 </div>
                 <div class="form_row" id="form_row_id">
                 	<div class="column_left">选择行业</div>
@@ -93,8 +95,9 @@
         	</div>
         </form>
          <div class="clear_div" id="clear_div">
-            <span>问卷设置
-            </span>
+            <span>问卷设置</span>
+            <input type="button" id="editButon"  name="editButon" value="编辑"/>
+            <input type="button" id="cancelButon" style="display: none" name="cancelButon" value="取消"/>
         </div>
        <c:if test="${list !=null }">
         <c:forEach var="question" items="${list}">
@@ -105,7 +108,7 @@
                 <span style="margin-left: 100px;font-size:15px;padding-top: 10px;position: absolute;color: <c:if test="${question.key.type ==0}">rgb(204,204,204)</c:if>
                 <c:if test="${question.key.type ==1}">rgb(82,82,82)</c:if>">
                 	<c:if test="${question.key.type ==1}">
-                		<input type="checkbox" id="check_group_${question.key.questionGroupId}" onclick="selectGroup('${question.key.questionGroupId}')"/><a href="javascript:void(0)" style="color: rgb(82,82,82)"  onclick="editquestionTemplate('${question.key.questionGroupId}')"><strong>${question.key.name}</strong></a>
+                		<input type="checkbox" disabled="disabled" checked="<c:if test="${question.key.select }">checked</c:if>" id="check_group_${question.key.questionGroupId}" onclick="selectGroup('${question.key.questionGroupId}')"/><a href="javascript:void(0)" style="color: rgb(82,82,82)"  onclick="editquestionTemplate('${question.key.questionGroupId}')"><strong>${question.key.name}</strong></a>
                 	</c:if>
                 	<c:if test="${question.key.type ==0}">
                 		<strong>${question.key.name}</strong>
@@ -125,7 +128,7 @@
 	             	<c:forEach var="option" items="${question.value}">
 	             		<c:if test="${option.filterFlag ==true}">
 	           			 <li id="${option.questionId}">
-		           			 <input type="checkbox" onclick="selectOrunSelect('${question.key.questionGroupId}','${option.questionId}')" id="check_${option.questionId}"<c:if test='${option.activeFlag==true}'>checked="checked"</c:if> />
+		           			 <input type="checkbox" disabled="disabled" onclick="selectOrunSelect('${question.key.questionGroupId}','${option.questionId}')" id="check_${option.questionId}"<c:if test='${option.activeFlag==true}'>checked="checked"</c:if> />
 		           			<a href="javascript:void(0)" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}',${option.templateFlag})">
 		           			 <span id="${question.key.questionGroupId}_${option.questionId}">${option.questionName}</span>
 		           			 </a>
@@ -137,7 +140,7 @@
 			           			 <span style="padding-left:2px;color: rgb(82,82,82);margin-left: 8%;"><a style="color: rgb(82,82,82);font-size:12px;" onclick="delQuestion('${option.questionId}','${option.questionName}')">删除</a></span>
 		           			 </c:if>
 		           			 <c:if test="${option.templateFlag==true&& question.key.name eq '顾客消费习惯及背景调查'}">
-		           			 	<span style="padding-left:1px;"><input type="button" id="top_${option.questionId}" class="<c:if test="${option.topFlag==0}">question_top_onSelect</c:if>
+		           			 	<span style="padding-left:1px;" id="span_top"><input type="button" disabled="disabled" id="top_${option.questionId}" class="<c:if test="${option.topFlag==0}">question_top_onSelect</c:if>
 		           			 	<c:if test="${option.topFlag==1}">question_top_select</c:if>"
 		           			 	 data-toggle="modal" onclick="questionTop('${option.questionId}','${option.topFlag}')" style="background-color:transparent;border:0" value="置顶"/></span>
 		           			 </c:if>
@@ -149,7 +152,7 @@
                 <div class="clearfix"></div>
                 <c:if test="${question.key.businessType !='groupOverview' }">
                 <div class="div_button" style="margin-top:20px;">
-	            	<button onclick="addquestion('${question.key.customQuestionType}','${question.key.questionGroupId}','${question.key.name}','${question.key.sortNumber}','${question.key.displayValue}')"></button>
+	            	<button disabled="disabled" onclick="addquestion('${question.key.customQuestionType}','${question.key.questionGroupId}','${question.key.name}','${question.key.sortNumber}','${question.key.displayValue}')"></button>
 	                <span style="color:rgb(204,204,204)">添加'${question.key.name}'自定义指标</span>
            		</div>
            		</c:if>
@@ -160,7 +163,7 @@
         </c:if>
         <div class="div_center">
             <div class="div_center_title">
-                <input type="checkbox" style="margin-left: 100px;margin-top: 10px;position: absolute;" onclick="selectWelcomeMsg(this)" <c:if test='${industry.activeFlag==true}'>checked="checked"</c:if>/>
+                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 10px;position: absolute;" onclick="selectWelcomeMsg(this)" <c:if test='${industry.activeFlag==true}'>checked="checked"</c:if>/>
                 <span style="margin-left: 115px;padding-top: 7.5px;position: absolute;color: rgb(82,82,82)"><strong>设置调查欢迎语</strong></span>
             </div>
             <div class="question_option">
@@ -169,7 +172,7 @@
         </div>
         <div class="div_center">
             <div class="div_center_title">
-                <input type="checkbox" style="margin-left: 100px;margin-top: 10px;position: absolute;" onclick="selectEndWelcomeMsg(this)" <c:if test='${industry.endActiveFlag==true}'>checked="checked"</c:if>/>
+                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 10px;position: absolute;" onclick="selectEndWelcomeMsg(this)" <c:if test='${industry.endActiveFlag==true}'>checked="checked"</c:if>/>
                 <span style="margin-left: 115px;padding-top: 7.5px;position: absolute;color: rgb(82,82,82)"><strong>设置调查结后语</strong></span>
             </div>
             <div class="question_option">

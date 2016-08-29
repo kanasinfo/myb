@@ -1,0 +1,50 @@
+
+/**/
+.other-topimg{ background-color:#a3d6d0;}
+.other-topimg,.other-topimg li{width: 100%;height:320px; overflow: hidden; position:relative;}
+.other-topimg li{ float:left;}
+.other-topimg li img{position: absolute;	top: 0;	left: 50%; margin-left:-960px;}
+.img-top-bg{ background:url(../image/bg03.png) repeat left top; position:absolute; left:0; top:0; display:block; _display:none;/*for ie6*/ z-index:1; width:100%; height:320px;}
+/*品牌产品*/
+.business-brandpro-t{ padding-bottom:50px;}
+.business-brandpro-c{ background:url(../image/hr02.gif) repeat-x left top;}
+.business-brandpro-c dl{ background:url(../image/hr02.gif) repeat-x left bottom; width:100%; overflow:hidden; padding:15px 0;}
+.business-brandpro-c dt{ float:left; width:100px; padding-top:28px; font-size:18px; color:#000; font-weight:bold;}
+.business-brandpro-c dd{ float:right; border-left:1px solid #dbd4cd;width:650px; overflow:hidden;}
+.business-brandpro-c ul{ width:670px; overflow:hidden;}
+.business-brandpro-c li,.business-brandpro-c li img{ float:left; display:inline;}
+.business-brandpro-c li{ padding:5px 1px 5px 0 ;}
+/*品牌活动*/
+.business-brandactivlist dl{background:url(../image/hr02.gif) repeat-x left bottom; width:100%; overflow:hidden; padding:20px 0; line-height:1.8em;}
+.business-brandactivlist dt{ float:left; width:100px;}
+.business-brandactivlist dt img{ display:block;}
+.business-brandactivlist dd{ float:right; width:630px;}
+.business-brandactivlist h3{ position: relative; margin-top:-3px; padding-bottom:3px; font-size:14px;}
+.business-brandactivlist h3 a{ font-size:14px;}
+.business-brandactivlist .more{ padding-top:8px;}
+
+
+/*品牌故事*/
+.businessservices_story{}
+.businessservices_story dl{padding:20px 0; line-height:1.8em; width:100%; overflow:hidden;}
+.businessservices_story dt img{ display:block;}
+.businessservices_story dt{float:left;width:260px;}
+.businessservices_story dd{float:right;width:490px;}
+.businessservices_story h3{background:url(../image/businessservices_06.gif) no-repeat left 5px; display:block; padding-left:20px;font-size:20px;color:#575656;margin:20px 0;}
+
+/*在线商务*/
+.businessservices_shopping{margin-top:25px;line-height:1.8em;}
+
+/*****品牌故事改版******/
+.temp{width:755px;}
+.story_h p,.story_banner p{margin-bottom:20px;line-height:190%;font-size:14px;color:#333;}
+.story_b{background:url(../image/wei_line.png) repeat-y 460px top;padding-bottom:20px;}
+.stroy_wrap{background:url(../image/wei_anchor.png) no-repeat 449px top;position:relative;}
+.stroy_wrap>div{position:relative;}
+.story_title{width:275px;position:absolute;left:480px;top:50px;line-height:180%;}
+.story_ico{background:url(../image/wei_spot.png) no-repeat left center;position:absolute;padding-left:20px;left:455px;top:50%;color:#f7a400;}
+.story_time{position:absolute;left:480px;top:5px;color:#f7a400;font-size:16px;}
+.time_cont{color:#333;font-size:14px;}
+.story_blank{height:200px;}
+.story_bot_ico{height:11px;width:12px;top:0px;left:455px;background:url(../image/wei_spot.png) no-repeat left top;position:absolute;}
+.story_banner{position:relative;padding-top:50px;}

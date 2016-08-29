@@ -1,0 +1,25 @@
+.healthy_home_balck{background-color:#434445!important;}
+.healthy_home_balck p{color:#bababa;}
+.healthy_home_balck #navigation .navigation-wrap{background:rgba(67,68,69,0.9);}
+.healthy_home_balck #navigation .menu li  a{color:#fff;border-top: 3px solid #525354;}
+.healthy_home_balck #navigation .menu ul li  a{color:#fff;border:0px;}
+#navigation .menu > li > a:hover, #navigation .menu > li.current > a{background:#525354;border-top: 3px solid #3b94de;}
+.healthy_home_balck #header{background: rgba(67,68,69,0.9)}
+.healthy_home_balck .services-main .item h4{color:#fff;}
+.healthy_home_balck .services-main .item h4{color:#fff;}
+.healthy_home_balck .app-bg{background-color:#525354;}
+.healthy_home_balck .latestblog-main .header h3{color:#fff;}
+.healthy_home_balck .header h3{color:#fff;}
+.healthy_home_balck .member-app .btn-primary{background: #616161;}
+.healthy_home_balck .member-app .link-facebook{background: #616161;}
+.healthy_home_balck .member-app .link-twitter{background: #616161;}
+.healthy_home_balck  #features{background-color:#525354;}
+.healthy_home_balck  .features-main .header p{color:#7e7d7d;}
+.healthy_home_balck  #header {margin:0px;}
+.healthy_home_balck .language-swcher .form-control {background:#3b95df;}
+.healthy_home_balck .testimonials-main #quote-carousel blockquote{background: #525354!important;}
+.healthy_home_balck .testimonials-main .author small{color:#7e7d7d;}
+.healthy_home_balck .newsletter-main .form-control{background: #525354;}
+#footer-bottom  .text-default{color:#3b95df;}
+.healthy_home_balck .widget address.text-default{color:#3b95df!important;}
+.healthy_home_balck #footer-bottom .pull-left p{color:#fff!important;}

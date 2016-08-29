@@ -1,0 +1,79 @@
+.red,.red a{ color:#ff0000;}
+.green,.green a{ color:#00c400}
+.gray,.gray a{ color:#999}
+.publicbtn{ background:url(../image/btn.gif) no-repeat left top; display:block; border:0; width:132px; height:49px;overflow:hidden; line-height:9999px; text-indent:-9999px;  cursor:pointer;}
+.btn_search{ background-position:0 0;}
+.btn_search:active{ background-position:0 -106px;}
+.btn_reset{ background-position:-147px 0;}
+.btn_submit{background-position:0 -51px;}
+.btn_submit:active{background-position:-147px -51px;}
+/**/
+.other-topimg{ background-color:#a3d6d0;}
+.other-topimg,.other-topimg li{width: 100%;height:320px; overflow: hidden; position:relative;}
+.other-topimg li{ float:left;}
+.other-topimg li img{position: absolute;	top: 0;	left: 50%; margin-left:-960px;}
+.img-top-bg{ background:url(../image/bg03.png) repeat left top; position:absolute; left:0; top:0; display:block; _display:none;/*for ie6*/ z-index:1; width:100%; height:320px;}
+/**/
+.textsty{ background-color:#fff; border:1px solid #dbd4cd; padding-left:15px; color:#333; font-size:14px;}
+.text01,.text02{height:47px; line-height:47px;}
+.text01{ width:370px; }
+.text02{ width:260px;}
+.textarea01{ width:656px; height:195px; overflow:auto; overflow-x:hidden;}
+/**/
+.exchange-down-publiclist{ width:100%; overflow:hidden; padding:20px 0 0;}
+.exchange-down-publiclist ul{ width:780px;}
+.exchange-down-publiclist .item{ display: inline; float:left; width:177px; height:320px; overflow:hidden; padding-right:15px;}
+.exchange-down-publiclist .item .pic{width:177px; height:144px; overflow:hidden; padding-bottom:10px;}
+.exchange-down-publiclist .tit{ display:block; height:130px;}
+.exchange-down-publiclist  .org{ font-weight: bold;}
+.exchange-down-publiclist .title{
+	background: url(../image/i14.gif) no-repeat scroll left center;
+    display: block;
+    font-size: 16px;
+	height:30px;
+	border-bottom:dotted 1px #CCC;
+    padding-left: 20px;
+	margin-bottom:20px;
+	line-height:30px;
+	clear:both;
+	}
+/**/
+.exchange-suggemain{ padding:20px 0;}
+.exchange-suggemain ul{ overflow:hidden; width:100%;}
+.exchange-suggemain li{ float:left; width:100%; padding-bottom:7px;}
+.exchange-suggemain  li .tit{ width:82px; font-size:14px; line-height:49px;}
+.exchange-suggemain  li .tit .gray{ font-size:12px;}
+.exchange-suggemain  li.li-textarea .tit{ width:auto;}
+.exchange-suggemain  li.li-textarea .inputbox{ padding-left:82px;}
+.exchange-suggemain  .tip{ background-color:#fee7cb; border:1px solid #f5d2a8; height:27px; padding:9px 15px 0; margin:5px 0 0 10px; }
+.exchange-suggemain  .tip img{ display:inline-block; vertical-align:middle; margin-right:3px;}
+.exchange-suggemain .button{ padding:20px 0 0 82px; width:600px; overflow:hidden;}
+.exchange-suggemain .button .publicbtn{ float:left; display:inline; margin-right:15px;}
+/**/
+.exchange-searchmain{padding:20px 0;}
+.exchange-searchmain .bar{ width:100%; padding-bottom:10px; line-height:47px; font-size:14px;}
+.exchange-searchmain .bar .tit{ width:82px;}
+.exchange-searchmain .bar .textbox{ width:387px;}
+.exchange-searchmain .bar .inputbox{ width:672px;}
+.exchange-searchmain .bar .dats-sta .inputbox,.exchange-searchmain .bar .date-end .inputbox{ width:280px; position:relative;}
+.exchange-searchmain .bar .dats-sta,.exchange-searchmain .bar .date-end{ width:362px;}
+.exchange-searchmain .bar .hot{ width:100%; padding-top:5px; line-height:20px; font-size:12px;}
+.exchange-searchmain .bar .hot a{  margin-right:5px;color:#ff6600;}
+.exchange-searchmain .searchall{ background:#fff; position:relative;border:1px solid #dbd4cd; width:247px;height:47px; margin-left:6px; padding:0 15px;}
+.exchange-searchmain .searchall .on{ background: url(../image/i18.gif) no-repeat right 20px; position:relative; display:block; padding-top:2px; line-height:43px;font-size:14px; z-index:2;}
+.exchange-searchmain .searchall-hover .on{ background-image:url(../image/i18_h.gif);}
+.exchange-searchmain .searchall-down{background:url(../image/bg04.gif) no-repeat left top;position:absolute; left:-1px; top:0px; display:none; width:279px; padding-top:49px;z-index:1; line-height:25px; font-size:12px;}
+.exchange-searchmain .searchall-down dl{ background-color:#fff;border:1px solid #dbd4cd; width:277px;}
+.exchange-searchmain .searchall-hover .searchall-down{ display:block;}
+.exchange-searchmain .searchall-down li{ float:left; display:inline; width:85px; margin-left:5px; padding:3px 0;}
+.exchange-searchmain .searchall-down  dt{ padding:8px 0 3px 15px;}
+.exchange-searchmain .searchall-down  dd{ overflow:hidden; width:270px; padding:0 0 10px 7px;}
+.exchange-searchmain .searchall-down li a{ float:left; padding:0 3px;}
+.exchange-searchmain .searchall-down li a:hover,.exchange-searchmain .searchall-down li.cur a{ background-color:#f99d32; color:#fff;}
+.exchange-searchmain .radiobox{ float:left; padding-top:13px;}
+.exchange-searchmain .radiobox li{ display: inherit; float:left; margin-right:25px;}
+.has-js .label_radio{ background: url(../image/radio.gif) no-repeat left 2px;padding-left:26px; display: block; cursor: pointer; line-height:20px;}
+.has-js label.r_on    {background-position:left -60px; }
+.has-js .label_radio input  { position: absolute; left: -9999px; }
+.exchange-searchmain .ui-datepicker-trigger{ position:absolute; right:16px; top:16px;display:block; cursor:pointer; }
+.exchange-searchmain .button{ padding:15px 0 0 82px; width:600px; overflow:hidden;}

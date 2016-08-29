@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -17,6 +18,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.mongodb.BasicDBObject;
 import com.myb.portal.model.mongodb.Options;
+import com.myb.portal.model.mongodb.QuestionGroupVO;
 import com.myb.portal.model.mongodb.QuestionTmpltVO;
 import com.myb.portal.model.mongodb.QuestionsVo;
 import com.myb.portal.model.mongodb.Store;
@@ -103,16 +105,25 @@ public abstract class Utils {
 		BasicDBObject time = new BasicDBObject("ts", new Date());
 		jb.put("createdTime",time);
 	}
-	public static void packageAnserQuestion(QuestionsVo questionsVo,JSONArray ja){
+	public static void packageAnserQuestion(QuestionsVo questionsVo,JSONArray ja,Map<String, QuestionGroupVO> questionMap){
 		JSONObject jb = new JSONObject();
-		jb.put("questionIdValue", "");
+		if(questionMap.get(questionsVo.getQuestionGroupId())!=null&&questionMap.get(questionsVo.getQuestionGroupId()).getCustomQuestionType().equals("com.myb.questiontype.Judge")){
+			jb.put("questionIdValue", questionsVo.getQuestionId()+"_false");
+			jb.put(questionsVo.getQuestionId()+"_optionValue", "false");
+			jb.put("optionValue", "false");
+		}else{
+			jb.put("questionIdValue", "");
+			jb.put("optionValue", "");
+			jb.put(questionsVo.getQuestionId()+"_optionValue", "");
+		}
 		jb.put("businessType", questionsVo.getBusinessType());
 		jb.put("questionId", questionsVo.getQuestionId());
 		jb.put("questionGroupId", questionsVo.getQuestionGroupId());
 		jb.put("questionGroupName", questionsVo.getQuestionGroupName());
 		jb.put("questionName", questionsVo.getQuestionName());
+			
 		jb.put("optionValue", "");
-		jb.put(questionsVo.getQuestionId()+"_optionValue", "");
+		
 		ja.add(jb);
 	}
 	public static String ParseProperties(String key){

@@ -1,0 +1,2221 @@
+/*------------------------------------------------------------------------------*/
+/*                    width : 320px - 480px
+/*------------------------------------------------------------------------------*/
+@media screen and (max-width: 320px), (min-device-width: 320px) and (max-device-width: 480px) and (orientation : portrait) {
+	.top-social-bar{left: -8px!important;}
+	#header .header-info{text-align:center;}
+	#navigation .logo{float:none;text-align:center;}
+	#navigation{height: 165px;}
+	.select-nav{clear:left;}
+	.stickit{display:none;}
+	.stickit-end{display:block;}
+	.header-text{top: 8%;}
+	.header-text h2{font-size:8px;line-height: 2px;}
+	.header-text p{font-size:6px;line-height: 7px;}
+	.slider-header-text{width: 160px;height: 60px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 30px;
+		line-height: 30px;
+		width: 15px;
+		top: 3px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 30px;
+		line-height: 30px;
+		width: 15px;
+		top: 36px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	.services-main .col-xs-6{width:100%;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -33px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 340px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main .col-xs-6{width:100%;}
+	.newsletter-main{margin-top:20px;}
+	.doctor-main .col-xs-6{width:100%;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	#testimonials-newsletter .col-xs-6{width:100%;}
+	.testimonials-main .item blockquote img{margin-left:80px!important;}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 70%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 70%!important;left: 78%!important;}
+	.testimonials-main #quote-carousel blockquote{height: 155px!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 105%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+	}
+	#footer-bottom .pull-right{float:left!important;}
+	.item-coments {height:165px!important;}
+	.item-coments .pull-right{top: -149px!important;padding: 30px 16px!important;}
+	.counter-tab div{font-size: 13px;line-height: 22px;}
+	.back_top{display:none;}
+	#footer .col-xs-6{width:100%;}
+	/*--Home One End --*/
+	
+	.slider-two-header-text{width: 150px;height: 62px;padding:10px 10px;}
+	#healthy_home_page_two .header-text{top:3%;}
+	#healthy_home_page_two  #carousel-example-generic{margin:0px;}
+	#healthy_home_page_two .header-text p{line-height: 7px;}
+	#healthy_home_page_two .appointment-main .btn-section{top:-13px;left:-55px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 33px!important;left: 176px !important;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right,
+	#carousel-example-generic .carousel-control .icon-next{left: -127px !important;top: 2px!important;}
+	/*-- Home2 End--*/
+	
+	.slider-three-header-text{width: 240px;height: 30px;margin-left: 13px;}
+	.slider-three-header-text h4{font-size: 9px;margin-top: -4px;line-height: 10px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	#healthy_home_page_four .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: 30px;}
+	.slider-header h1{font-size: 14px;line-height: 8px;padding:0px;}
+	.slider-header p{line-height: 0px;font-size: 7px;width: 40%;padding: 6px;}
+	.aboutus-bg h2{line-height: 38px;}
+	/*-- Home4 End--*/
+	
+	#healthy_home_page_five .header-text h2{
+		line-height: 10px;
+		margin-bottom: 14px;
+		font-size: 13px;
+	}
+	.slider-five-header-text{
+		width: 180px;
+		height: 60px;
+		padding: 10px 10px;
+	}
+	#healthy_home_page_five .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	/*-- Home5 End--*/
+	
+	.healthy_home_page6 .header-text{top: 115%;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	.healthy_home_page8  #carousel-example-generic{margin:0px;}
+	.healthy_home_page8 .slider-two-header-text{height: 59px;}
+	.healthy_home_page8 .services-main .col-xs-6{margin-bottom:20px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .header-text h2{
+		font-size: 14px;
+		line-height: 6px;
+		margin-bottom: 14px;
+	}
+	/*-- Home10 End--*/
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{left: 80px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 91%;left: 77%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 91%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	#medicalser .col-xs-6{width:100%;}
+	/*-- Services End--*/
+	
+	.servicescol-one-main .col-xs-6{width:100%;}
+	.servicescol-one-main .col-sm-6{margin-bottom:20px;}
+	.servicepost-content .col-xs-6{width:100%;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	/*-- Services Col1 End--*/
+	
+	.services-threecol-main .col-xs-6{width:100%;margin-bottom:20px;}
+	 /*-- Services Col3 End--*/
+	 
+	.healthy_404_error_page .section_rop h2{font-size: 16px;line-height: 40px;}
+	.error_bg{
+		width: 200px;
+		height: 200px;
+		margin-left: 15%;
+	}
+	.error_bg h1{
+		padding: 0px;
+		font-size: 38px;
+		position: relative;
+		top: -40px;
+		left: -34px;
+	}
+	.error_text h2{font-size: 34px;}
+	.error_text h4{font-size: 15px;}
+	/*-- 404 End--*/
+	
+	#meetmember .col-xs-6{width:100%;}
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	.meetmember-main .pull-right{width:100%;}
+	/*-- Doctor Col2 End--*/
+	
+	#meetmembercol .col-xs-6{width:100%;}
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	.healthyblog-main .col-xs-7{width:100%;}
+	.healthyblog-main .col-xs-5{width:100%;}
+	.healthy_blog_page .item-coments .pull-right{
+		top: -70px!important;
+		padding: 0px 6px!important;
+		height: 70px;
+	}
+	.healthy_blog_page .item-coments{height: 86px!important;	}
+	.healthy_blog_page .counter-tab div{font-size: 9px;line-height: 17px;}
+	.healthyblog-main .comments .pull-right{width:100%;}
+	.contact_form{margin-bottom:20px;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .col-xs-6{width:100%;margin-bottom:20px;}
+	#blogcolpost .item-coments .pull-right{top: -149px!important;padding: 20px 16px!important;}
+	#blogcolpost .counter-tab div {font-size: 13px;line-height: 27px;}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	/*-- Blog Col2 End--*/
+	
+	.contact-form-main .col-xs-7{width:100%;}
+	.contact-form-main .col-xs-5{width:100%;}
+	.contact-form-main .right-side-bar{margin-top:20px;}
+	.contact-f form .col-xs-6{width:100%;margin-bottom:20px;}
+	/*-- Contact End--*/
+	
+	.client-testmonials .col-xs-6{width:100%;}
+	.client-testmonials .item blockquote img{left: 54px;position: relative;}
+	/*-- Testmonials End--*/
+	
+}
+/*------------------------------------------------------------------------------*/
+/*                    width : 321px -375px
+/*------------------------------------------------------------------------------*/
+
+@media screen and (min-width: 321px) and (max-width:375px){
+	#header .header-info{text-align:center;}
+	.top-social-bar{left:0px;}
+	#navigation .logo{float:none;text-align:center;}
+	.select-nav{clear:left;}
+	#navigation{height: 169px;}
+	.stickit{display:none;}
+	.stickit-end{display:block;}
+	.header-text{top: 6%;}
+	.header-text h2{font-size: 11px;line-height: 0px;}
+	.header-text p{font-size: 9px;line-height: 8px;}
+	.slider-header-text{width: 198px;height: 69px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 30px;
+		line-height: 30px;
+		width: 15px;
+		top: 6px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 30px;
+		line-height: 30px;
+		width: 15px;
+		top: 44px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	.services-main .col-xs-6{width:100%;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -54px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 288px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main .col-xs-6{width:100%;}
+	.newsletter-main{margin-top: 20px;}
+	.doctor-main .col-xs-6{width:100%;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	#testimonials-newsletter .col-xs-6{width:100%;}
+	.testimonials-main .item blockquote img{margin-left:80px!important;}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 70%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 70%!important;left: 78%!important;}
+	.testimonials-main #quote-carousel blockquote{height: 155px!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 100%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+		position:none;
+	}
+	#footer-bottom .pull-right{float:left!important;}
+	.item-coments{height: 185px!important;}
+	.item-coments .pull-right{top: -169px!important;padding: 41px 16px!important;}
+	#footer .col-xs-6{width:100%;}
+	/*-- Home One End--*/
+	
+	.slider-two-header-text{width: 200px;height: 70px;}
+	#healthy_home_page_two .appointment-main .btn-section{top:-10px;left:-74px;}
+	#healthy_home_page_two #quote-carousel .carousel-control.left{left:80%;}
+	#healthy_home_page_two .appointment-main .btn-section{top:-13px;left:-55px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 45px!important;left: 227px !important;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right,
+	#carousel-example-generic .carousel-control .icon-next{left: -131px !important;}
+	/*-- Home Two End--*/
+	
+	.slider-three-header-text{width: 295px;height: 30px;margin-left: 13px;}
+	.slider-three-header-text h4{font-size: 10px;margin-top: -4px;line-height: 10px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: 30px;}
+	.slider-header h1{
+		font-size: 20px;
+		line-height: 11px;
+		padding:0px;
+	}
+	.slider-header p {
+		line-height: 5px;
+		font-size: 9px;
+		width: 43%;
+		padding: 7px;
+	}
+	.aboutus-bg h2{line-height: 38px;font-size: 18px;}
+	#healthy_home_page_four .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	/*-- Home4 End--*/
+	
+	#healthy_home_page_five .header-text h2{font-size: 16px;line-height: 7px;}
+	.slider-five-header-text{width: 230px;height: 71px;}
+	#healthy_home_page_five .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	/*-- Home5 End--*/
+	
+	.healthy_home_page6 .header-text {top: 95%;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	.healthy_home_page8 .services-main .col-xs-6{margin-bottom:20px;}
+	.healthy_home_page8 #carousel-example-generic{margin:0px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .header-text h2{
+		font-size: 14px;
+		line-height: 6px;
+		margin-bottom: 14px;
+	}
+	/*-- Home10 End--*/
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{left: 80px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 91%;left: 80%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 91%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	#medicalser .col-xs-6{width:100%;}
+	/*-- Services End--*/
+	
+	.servicescol-one-main .col-xs-6{margin-bottom:20px;width:100%;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	.healthy_madical_services_page .carousel-control.left{left: 75%;top: 75px;}
+	.healthy_madical_services_page .carousel-control.right{top: 75px;right: 30px;}
+	.healthy_madical_services_page .servicescol{height:180px;}
+	/*-- Services Col1 End--*/
+	
+	.services-threecol-main .col-xs-6{width:100%;margin-bottom:20px;}
+	 /*-- Services Col3 End--*/
+	
+	.healthy_404_error_page .section_rop h2{font-size: 16px;line-height: 40px;}
+	.error_bg{
+		width: 200px;
+		height: 200px;
+		margin-left: 18%;
+	}
+	.error_bg h1{
+		padding: 0px;
+		font-size: 38px;
+		position: relative;
+		top: -40px;
+		left: -34px;
+	}
+	.error_text h2{font-size: 34px;}
+	.error_text h4{font-size: 15px;}
+	/*-- 404 End--*/
+	
+	#meetmember .col-xs-6{width:100%;}
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	.meetmember-main .pull-right{width:100%;}
+	/*-- Doctor Col2 End--*/
+	
+	#meetmembercol .col-xs-6{width:100%;}
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	.healthyblog-main .col-xs-7{width:100%;}
+	.healthyblog-main .col-xs-5{width:100%;}
+	.healthy_blog_page .item-coments .pull-right{
+		top: -85px!important;
+		padding: 0px 6px!important;
+	}
+	.healthy_blog_page .item-coments{height:100px!important;	}
+	.healthy_blog_page .counter-tab div{font-size: 10px;line-height: 21px;}
+	.healthyblog-main .comments .pull-right{width:100%;}
+	.contact_form{margin-bottom:20px;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .col-xs-6{width:100%;margin-bottom:20px;}
+	#blogcolpost .item-coments .pull-right {
+		top: -169px!important;
+		padding: 21px 16px!important;
+	}
+	#blogcolpost .counter-tab div {font-size: 15px;line-height: 32px;}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	/*-- Blog Col2 End--*/
+	
+	.contact-form-main .col-xs-7{width:100%;}
+	.contact-form-main .col-xs-5{width:100%;}
+	.contact-form-main .right-side-bar{margin-top:20px;}
+	.contact-f form .col-xs-6{width:100%;margin-bottom:20px;}
+	/*-- Contact End--*/
+	
+	.client-testmonials .col-xs-6{width:100%;}
+	.client-testmonials .item blockquote img{left: 80px;position: relative;}
+	/*-- Testmonials End--*/
+	
+}
+/*------------------------------------------------------------------------------*/
+/*                    width : 376px - 384px
+/*------------------------------------------------------------------------------*/
+@media screen and (min-width: 376px) and (max-width:384px){
+	#header .header-info{text-align:center;}
+	.top-social-bar{left:0px;}
+	#navigation .logo{float:none;text-align:center;}
+	.select-nav{clear:left;}
+	#navigation{height: 169px;}
+	.stickit{display:none;}
+	.stickit-end{display:block;}
+	.header-text{top: 6%;}
+	.header-text h2{font-size: 12px;line-height: 0px;}
+	.header-text p{font-size: 10px;line-height: 8px;}
+	.slider-header-text{width: 200px;height: 73px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 35px;
+		line-height: 40px;
+		width: 15px;
+		top: 6px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 35px;
+		line-height: 40px;
+		width: 15px;
+		top: 44px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	.item-coments{height: 185px!important;}
+	.item-coments .pull-right{top: -170px!important;padding: 41px 16px!important;}
+	.services-main .col-xs-6{width:100%;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -66px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 280px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main  .col-xs-6{width:100%;}
+	.newsletter-main{margin-top: 20px;}
+	.doctor-main .col-xs-6{width:100%;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	#testimonials-newsletter .col-xs-6{width:100%;}
+	.testimonials-main .item blockquote img{margin-left:110px!important;}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 70%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 70%!important;left: 82%!important;}
+	.testimonials-main #quote-carousel blockquote{height: 155px!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 100%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+		margin-left:20px;
+	}
+	#footer-bottom .pull-right{float:left!important;clear: left;}
+	#footer .header{color:#fff;}
+	#footer .col-xs-6{width:100%;}
+	/*-- Home End--*/
+	
+	.slider-two-header-text{width: 210px;height: 72px;}
+	#healthy_home_page_two .header-text h2{line-height:0px;}
+	#healthy_home_page_two .appointment-main .btn-section{left: -75px;top: -10px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 42px!important;left: 241px !important;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right,
+	#carousel-example-generic .carousel-control .icon-next{left: -126px !important;top: 5px!important;}
+	/*-- Home Two End--*/
+	
+	.slider-three-header-text{width: 300px;height: 35px;margin-left: 13px;}
+	.slider-three-header-text h4{font-size: 13px;margin-top: -4px;line-height: 13px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	#healthy_home_page_four .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: 30px;}
+	.slider-header h1{
+		font-size: 20px;
+		line-height: 11px;
+		padding:0px;
+	}
+	.slider-header p {
+		line-height: 5px;
+		font-size: 9px;
+		width: 43%;
+		padding: 7px;
+	}
+	.aboutus-bg h2{line-height: 38px;font-size: 18px;}
+	/*-- Home4 End--*/
+	
+	#healthy_home_page_five .header-text h2{font-size: 16px;line-height: 7px;}
+	.slider-five-header-text{width: 230px;height: 71px;}
+	#healthy_home_page_five .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	/*-- Home5 End--*/
+	
+	.healthy_home_page6 .header-text{top: 98%;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	.healthy_home_page8 .services-main .col-xs-6{margin-bottom:20px;}
+	.healthy_home_page8 #carousel-example-generic{margin:0px;}
+	.healthy_home_page8 .servicesitem{height: 235px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .header-text h2{
+		font-size: 14px;
+		line-height: 6px;
+		margin-bottom: 14px;
+	}
+	/*-- Home10 End--*/
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{left: 110px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 91%;left: 80%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 91%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	#medicalser .col-xs-6{width:100%;}
+	/*-- Services End--*/
+	
+	.servicescol-one-main .col-xs-6{width:100%;margin-bottom:20px;}
+	.servicepost-content .col-xs-6{width:100%;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	.healthy_madical_services_page .carousel-control.left{left: 75%;top: 75px;}
+	.healthy_madical_services_page .carousel-control.right{top: 75px;right: 30px;}
+	.healthy_madical_services_page .servicescol{height:180px;}
+	/*-- Services Col1 End--*/
+	
+	.services-threecol-main .col-xs-6{width:100%;margin-bottom:20px;}
+	 /*-- Services Col3 End--*/
+	
+	.healthy_404_error_page .section_rop h2{font-size: 16px;line-height: 40px;}
+	.error_bg{
+		width: 200px;
+		height: 200px;
+		margin-left: 20%;
+	}
+	.error_bg h1{
+		padding: 0px;
+		font-size: 38px;
+		position: relative;
+		top: -40px;
+		left: -34px;
+	}
+	.error_text h2{font-size: 34px;}
+	.error_text h4{font-size: 15px;}
+	/*-- 404 End--*/
+	
+	#meetmember .col-xs-6{width:100%;}
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	.meetmember-main .pull-right{width:100%;}
+	/*-- Doctor Col2 End--*/
+	
+	#meetmembercol .col-xs-6{width:100%;}
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	.healthyblog-main .col-xs-7{width:100%;}
+	.healthyblog-main .col-xs-5{width:100%;}
+	.healthy_blog_page .item-coments .pull-right{
+		top: -85px!important;
+		padding: 0px 6px!important;
+	}
+	.healthy_blog_page .item-coments{height:100px!important;	}
+	.healthy_blog_page .counter-tab div{font-size: 10px;line-height: 21px;}
+	.healthyblog-main .comments .pull-right{width:100%;}
+	.contact_form{margin-bottom:20px;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .col-xs-6{width:100%;margin-bottom:20px;}
+	#blogcolpost .item-coments .pull-right {
+		top: -169px!important;
+		padding: 21px 16px!important;
+	}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	#blogcolpost .counter-tab div {font-size: 15px;line-height: 32px;}
+	/*-- Blog Col2 End--*/
+	
+	.contact-form-main .col-xs-7{width:100%;}
+	.contact-form-main .col-xs-5{width:100%;}
+	.contact-form-main .right-side-bar{margin-top:20px;}
+	.contact-f form .col-xs-6{width:100%;margin-bottom:20px;}
+	/*-- Contact End--*/
+	
+	.client-testmonials .col-xs-6{width:100%;}
+	.client-testmonials .item blockquote img{left: 80px;position: relative;}
+	/*-- Testmonials End--*/
+	
+}
+
+/*------------------------------------------------------------------------------*/
+/*                    width : 385px - 414px
+/*------------------------------------------------------------------------------*/
+@media screen and (min-width: 385px) and (max-width:414px){
+	#header .header-info{text-align:center;}
+	.top-social-bar{left:0px;}
+	#navigation .logo{float:none;text-align:center;}
+	.select-nav{clear:left;}
+	#navigation{height: 169px;}
+	.stickit{display:none;}
+	.stickit-end{display:block;}
+	.header-text{top: 7%;}
+	.header-text h2{font-size: 13px;line-height: 8px;}
+	.header-text p{font-size: 8px;line-height: 9px;}
+	.slider-header-text{width: 220px;height: 75px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 35px;
+		line-height: 40px;
+		width: 15px;
+		top: 6px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 35px;
+		line-height: 40px;
+		width: 15px;
+		top: 44px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	.item-coments{height: 185px!important;}
+	.item-coments .pull-right{top: 0px!important;padding: 41px 16px!important;}
+	.services-main .col-xs-6{width:100%;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -66px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 264px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main .col-xs-6{width:100%;}
+	.newsletter-main{margin-top:20px;}
+	.doctor-main .col-xs-6{width:100%;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	#testimonials-newsletter .col-xs-6{width:100%;}
+	.testimonials-main .item blockquote img{margin-left:110px!important;}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 70%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 70%!important;left: 82%!important;}
+	.testimonials-main #quote-carousel blockquote{height: 155px!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 100%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+		margin-left:20px;
+	}
+	#footer-bottom .pull-right{float:left!important;clear: left;}
+	#footer .header{color:#fff;}
+	#footer .col-xs-6{width:100%;}
+	/*-- Home One End--*/
+	
+	.slider-two-header-text{width: 211px;height: 78px;}
+	#healthy_home_page_two .appointment-main .btn-section{top:-10px;left:-100px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{left: 240px !important;top: 48px!important;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 7%!important;left: -157px;}
+	/*-- Home Two End--*/
+	
+	.slider-three-header-text{width: 332px;height: 35px;margin-left: 13px;}
+	.slider-three-header-text h4{font-size: 12px;line-height: 14px;margin-top: -5px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: 30px;}
+	.slider-header h1{
+		font-size: 20px;
+		line-height: 11px;
+		padding:0px;
+	}
+	.slider-header p {
+		line-height: 5px;
+		font-size: 11px;
+		width: 46%;
+		padding: 7px;
+	}
+	.aboutus-bg h2{line-height: 38px;font-size: 18px;}
+	#healthy_home_page_four .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	/*-- Home4 End--*/
+	
+	#healthy_home_page_five .header-text h2{font-size: 16px;line-height: 7px;}
+	.slider-five-header-text{width: 230px;height: 77px;}
+	#healthy_home_page_five .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	/*-- Home5 End--*/
+	
+	.healthy_home_page6 .header-text{top: 95%;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	.healthy_home_page8 .services-main .col-xs-6{margin-bottom:20px;}
+	.healthy_home_page8 #carousel-example-generic{margin:0px;}
+	.healthy_home_page8 .servicesitem{height: 235px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .header-text h2{
+		font-size: 14px;
+		line-height: 6px;
+		margin-bottom: 14px;
+	}
+	/*-- Home10 End--*/
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{left: 110px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 91%;left: 80%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 91%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	#medicalser .col-xs-6{width:100%;}
+	/*-- Services End--*/
+	
+	.servicescol-one-main .col-xs-6{width:100%;margin-bottom:20px;}
+	.servicepost-content .col-xs-6{width:100%;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	.healthy_madical_services_page .carousel-control.left{top: 95px;left: 77%;}
+	.healthy_madical_services_page .carousel-control.right{top: 95px;right: 30px;}
+	.healthy_madical_services_page .servicescol{height:180px;}
+	/*-- Services Col1 End--*/
+	
+	.services-threecol-main .col-xs-6{width:100%;margin-bottom:20px;}
+	 /*-- Services Col3 End--*/
+	
+	.healthy_404_error_page .section_rop h2{font-size: 16px;line-height: 40px;}
+	.error_bg{
+		width: 200px;
+		height: 200px;
+		margin-left: 20%;
+	}
+	.error_bg h1{
+		padding: 0px;
+		font-size: 38px;
+		position: relative;
+		top: -40px;
+		left: -34px;
+	}
+	.error_text h2{font-size: 34px;}
+	.error_text h4{font-size: 15px;}
+	/*-- 404 End--*/
+	
+	#meetmember .col-xs-6{width:100%;}
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	.meetmember-main .pull-right{width:100%;}
+	/*-- Doctor Col2 End--*/
+	
+	#meetmembercol .col-xs-6{width:100%;}
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	.healthyblog-main .col-xs-7{width:100%;}
+	.healthyblog-main .col-xs-5{width:100%;}
+	.healthy_blog_page .item-coments .pull-right{
+		top: -96px!important;
+		padding: 0px 6px!important;
+	}
+	.healthy_blog_page .item-coments{height:112px!important;	}
+	.healthy_blog_page .counter-tab div{font-size: 12px;line-height: 24px;}
+	.healthyblog-main .comments .pull-right{width:100%;}
+	.contact_form{margin-bottom:20px;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .col-xs-6{width:100%;margin-bottom:20px;}
+	#blogcolpost .item-coments .pull-right {
+		top: -169px!important;
+		padding: 21px 16px!important;
+	}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	#blogcolpost .counter-tab div {font-size: 15px;line-height: 32px;}
+	/*-- Blog Col2 End--*/
+	
+	.contact-form-main .col-xs-7{width:100%;}
+	.contact-form-main .col-xs-5{width:100%;}
+	.contact-form-main .right-side-bar{margin-top:20px;}
+	.contact-f form .col-xs-6{width:100%;margin-bottom:20px;}
+	/*-- Contact End--*/
+	
+	.client-testmonials .col-xs-6{width:100%;}
+	.client-testmonials .item blockquote img{left: 90px;position: relative;}
+	/*-- Testmonials End--*/
+	
+}
+/*------------------------------------------------------------------------------*/
+/*                    width : 414px - 480px
+/*------------------------------------------------------------------------------*/
+@media screen and (min-width: 415px) and (max-width:480px){
+	#header .header-info{text-align:center;}
+	.top-social-bar{left:0px;}
+	#navigation .logo{float:none;text-align:center;}
+	.select-nav{clear:left;}
+	#navigation{height: 169px;}
+	.stickit{display:none;}
+	.stickit-end{display:block;}
+	.slider-header-text{width: 300px;height: 86px;}
+	.header-text{top: 10%;}
+	.header-text h2{line-height: 10px;margin-bottom: 11px;font-size: 18px;}
+	.header-text p{font-size: 12px;line-height: 13px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 35px;
+		line-height: 40px;
+		width: 15px;
+		top: 12px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 35px;
+		line-height: 40px;
+		width: 15px;
+		top: 58px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	.item-coments{height: 185px!important;}
+	.item-coments .pull-right{top: 0px!important;padding: 41px 16px!important;}
+	.services-main .col-xs-6{width:100%;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -114px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 233px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main .col-xs-6{width:100%;}
+	.newsletter-main{margin-top: 20px;}
+	.doctor-main .col-xs-6{width:100%;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	#testimonials-newsletter .col-xs-6{width:100%;}
+	.testimonials-main .item blockquote img{margin-left:165px!important;}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 70%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 70%!important;left: 86%!important;}
+	.testimonials-main #quote-carousel blockquote{height: 155px!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 100%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+		position:none;
+	}
+	.newsletter-main{margin-top: 20px;}
+	#footer-bottom .pull-right{float:left!important;clear: left;}
+	#footer .header{color:#fff;}
+	#footer .col-xs-6{width:100%;}
+	/*-- Home End--*/
+	
+	.slider-two-header-text{width: 290px;height: 90px;}
+	#healthy_home_page_two .header-text h2{font-size: 19px;}
+	.appointment-main .pull-left h3{font-size: 15px;}
+	#healthy_home_page_two .appointment-main .btn-section{top:-10px;left: -137px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 63px!important;left: 323px !important;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right,
+	#carousel-example-generic .carousel-control .icon-next{left: -151px !important;top: 11px!important;}
+	/*-- Home2 End--*/
+	
+	.slider-three-header-text{width: 408px;height: 36px;margin-left: 11px;}
+	.slider-three-header-text h4{font-size: 14px;margin-top: -8px;line-height: 16px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	#healthy_home_page_four .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: 30px;}
+	.slider-header h1{
+		font-size: 22px;
+		line-height: 30px;
+		padding:0px;
+	}
+	.slider-header p {
+		line-height: 5px;
+		font-size: 13px;
+		width: 46%;
+		padding: 7px;
+	}
+	.aboutus-bg h2{line-height: 38px;font-size: 18px;}
+	/*-- Home4 End--*/
+	
+	#healthy_home_page_five .header-text h2{font-size: 16px;line-height: 7px;}
+	.slider-five-header-text{width: 240px;height: 85px;}
+	#healthy_home_page_five .header-text p{font-size: 10px;line-height: 11px;}
+	#healthy_home_page_five .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	/*-- Home5 End--*/
+	
+	.healthy_home_page6 .header-text .slider-header{top: 0px;}
+	.healthy_home_page6 .header-text{top:34%;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	.healthy_home_page8 .services-main .col-xs-6{margin-bottom:20px;}
+	.healthy_home_page8 #carousel-example-generic{margin:0px;}
+	.healthy_home_page8 .servicesitem{height: 215px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .header-text h2{
+		font-size: 14px;
+		line-height: 6px;
+		margin-bottom: 14px;
+	}
+	.healthy_home_page10 .slider-five-header-text{width: 265px;height: 90px;}
+	/*-- Home10 End--*/
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{left: 160px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 88%;left: 85%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 88%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	#medicalser .col-xs-6{width:100%;}
+	/*-- Services End--*/
+	
+	.servicescol-one-main .col-xs-6{margin-bottom:20px;}
+	.servicescol-one-main .col-md-4:nth-child(3){display:none;}
+	.servicescol-one-main .servicescol h4{font-size: 15px;margin-left: 15px;margin-top: -63px;}
+	.servicepost-content .col-xs-6{width:100%;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	.healthy_madical_services_page .carousel-control.left{top: 137px;left: 80%;}
+	.healthy_madical_services_page .carousel-control.right{top: 137px;right: 30px;}
+	.healthy_madical_services_page .servicescol{height:180px;}
+	/*-- Services Col1 End--*/
+	
+	.services-threecol-main .col-xs-6{width:100%;margin-bottom:20px;}
+	 /*-- Services Col3 End--*/
+	 
+	
+	.healthy_404_error_page .section_rop h2{font-size: 22px;line-height: 40px;}
+	.error_bg{
+		width: 230px;
+		height: 230px;
+		margin-left: 22%;
+	}
+	.error_bg h1{
+		padding: 0px;
+		font-size: 60px;
+		position: relative;
+		top: -25px;
+		left: -39px;
+	}
+	.error_text h2{font-size: 38px;}
+	.error_text h4{font-size: 22px;}
+	/*-- 404 End--*/
+	
+	#meetmember .col-xs-6{width:100%;}
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	#meetmembercol .col-xs-6{width:100%;}
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	
+	.healthyblog-main .col-xs-7{width:100%;}
+	.healthyblog-main .col-xs-5{width:100%;}
+	.healthy_blog_page .item-coments .pull-right{
+		top: -85px!important;
+		padding: 0px 6px!important;
+	}
+	.healthy_blog_page .item-coments{height:112px!important;	}
+	.healthy_blog_page .counter-tab div{font-size: 12px;line-height: 24px;}
+	.healthyblog-main .comments .pull-right{width:100%;}
+	.contact_form{margin-bottom:20px;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .col-xs-6{width:100%;margin-bottom:20px;}
+	#blogcolpost .item-coments .pull-right {
+		top: -169px!important;
+		padding: 21px 16px!important;
+	}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	#blogcolpost .counter-tab div {font-size: 15px;line-height: 32px;}
+	/*-- Blog Col2 End--*/
+	
+	.contact-form-main .col-xs-7{width:100%;}
+	.contact-form-main .col-xs-5{width:100%;}
+	.contact-form-main .right-side-bar{margin-top:20px;}
+	.contact-f form .col-xs-6{width:100%;margin-bottom:20px;}
+	/*-- Contact End--*/
+	
+	.client-testmonials .col-xs-6{width:100%;}
+	.client-testmonials .item blockquote img{left: 145px;position: relative;}
+	/*-- Testmonials End--*/
+	
+	
+}
+/*------------------------------------------------------------------------------*/
+/*                    width : 481px - 568px
+/*------------------------------------------------------------------------------*/
+@media screen and (min-width: 481px) and (max-width:568px){
+	#header .header-info{text-align:center;}
+	.top-social-bar{left:0px;}
+	#navigation .logo{float:none;text-align:center;}
+	.select-nav{clear:left;}
+	#navigation{height: 169px;}
+	.stickit{display:none;}
+	.stickit-end{display:block;}
+	.header-text{top: 7%;}
+	.header-text h2{font-size: 18px;line-height: 15px;}
+	.header-text p{line-height: 14px;}
+	.slider-header-text{width: 300px;height: 106px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 40px;
+		line-height: 44px;
+		width: 15px;
+		top: 12px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 40px;
+		line-height: 44px;
+		width: 15px;
+		top: 70px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	.item-coments{height: 149px!important;}
+	.item-coments .pull-right{top: -132px!important;padding: 22px 16px!important;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -150px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 240px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main .col-md-4:nth-child(3){display:none;}
+	.newsletter-main{margin-top: 20px;}
+	.doctor-main .col-xs-6:nth-child(2) .memberet{margin:0px;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	#testimonials-newsletter .col-xs-6{width:100%;}
+	.testimonials-main .item blockquote img{position:relative;left:200px;}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 65%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 65%!important;left: 87%!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 100%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+	}
+	#footer .header{color:#fff;}
+	#footer .col-md-3:nth-child(3){clear:left;}
+	/*-- Home End--*/
+	
+	.slider-two-header-text{width: 290px;height: 105px;}
+	#healthy_home_page_two .appointment-main .btn-section{top:-10px;left: -180px;}
+	#healthy_home_page_two .appointment-main .btn-section{top:-13px;left:-55px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 73px!important;left: 323px !important;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right,
+	#carousel-example-generic .carousel-control .icon-next{left: -228px !important;top: 9px!important;}
+	/*-- Home2 End--*/
+	
+	.slider-three-header-text{width: 483px;height: 42px;margin-left: 11px;}
+	.slider-three-header-text h4{font-size: 15px;margin-top: -7px;line-height: 18px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	#healthy_home_page_four .testimonials-main #quote-carousel .carousel-control.left{top: 78%!important;}
+	#healthy_home_page_four .testimonials-main #quote-carousel .carousel-control.right{top: 78%!important;}
+	
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: 30px;}
+	.slider-header h1{
+		font-size: 25px;
+		line-height: 40px;
+		padding:0px;
+	}
+	.slider-header p {
+		line-height: 5px;
+		font-size: 14px;
+		width: 42%;
+		padding: 11px;
+	}
+	.aboutus-bg h2{line-height: 38px;}
+	/*-- Home4 End--*/
+	
+	.slider-five-header-text{width: 350px;height: 110px;}
+	#healthy_home_page_five .header-text{top:5%;}
+	#healthy_home_page_five .header-text p{font-size: 11px;}
+	#healthy_home_page_five .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.left{top: 78%!important;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.right{top: 78%!important;}
+	/*-- Home5 End--*/
+	
+	.healthy_home_page6 .header-text .slider-header{top: 30px;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	.healthy_home_page8 #carousel-example-generic{margin:0px;}
+	.healthy_home_page8 .col-md-4:nth-child(3){display:none;}
+	.healthy_home_page8 .servicesitem .btn-section{margin-top:-12px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .header-text h2{
+		font-size: 20px;
+		line-height: 18px;
+		margin-bottom: 12px;
+	}
+	.healthy_home_page10 .header-text p{line-height: 17px;}
+	/*-- Home10 End--*/
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{left: 198px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 88%;left: 88%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 88%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	/*-- Services End--*/
+	
+	.servicescol-one-main .col-xs-6{margin-bottom:20px;}
+	.servicescol-one-main .btn-section{position:relative;top:-20px;}
+	.servicescol-one-main .col-md-4:nth-child(3){display:none;}
+	.servicepost-content .col-xs-6{width:100%;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	.healthy_madical_services_page .carousel-control.left{top: 180px;left: 83%;}
+	.healthy_madical_services_page .carousel-control.right{top: 180px;right: 30px;}
+	/*-- Services Col1 End--*/
+	
+	.row .services-threecol-main .col-md-4:nth-child(3){display:none;}
+	.servicescol{height: 185px;}
+	.services-threecol-main .col-xs-6{margin-bottom:20px;}
+	 /*-- Services Col3 End--*/
+	
+	
+	.healthy_404_error_page .section_rop h2{font-size: 22px;line-height: 40px;}
+	.error_bg{
+		width: 230px;
+		height: 230px;
+		margin-left: 26%;
+	}
+	.error_bg h1{
+		padding: 0px;
+		font-size: 60px;
+		position: relative;
+		top: -25px;
+		left: -39px;
+	}
+	.error_text h2{font-size: 38px;}
+	.error_text h4{font-size: 22px;}
+	/*-- 404 End--*/
+	
+	#meetmember .col-xs-6{width:100%;}
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	.meetmember-main .pull-right{width:285px;}
+	/*-- Doctor Col2 End--*/
+	
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	
+	.healthyblog-main .col-xs-7{width:100%;}
+	.healthyblog-main .col-xs-5{width:100%;}
+	.healthy_blog_page .item-coments .pull-right{top: -138px!important;padding: 21px 16px!important;}
+	.healthy_blog_page .item-coments{height:154px!important;	}
+	.healthy_blog_page .counter-tab div{font-size: 12px;line-height: 24px;}
+	.contact_form{margin-bottom:20px;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .counter-tab div{line-height: 22px;}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	.healthyblogcol2-main .row .col-xs-6 .row:nth-child(3n+1){display:none;}
+	.healthyblogcol2-main .clearfix:nth-child(2){height:0px;}
+	/*-- Blog Col2 End--*/
+	
+	.blog-threecol-main .col-md-4:nth-child(3){display:none;}
+	/*-- Blog Col3 End--*/
+	
+	.contact-form-main .col-xs-7{width:100%;}
+	.contact-form-main .col-xs-5{width:100%;}
+	.contact-form-main .right-side-bar{margin-top:20px;}
+	.contact-f form .col-xs-6{width:100%;margin-bottom:20px;}
+	/*-- Contact End--*/
+	
+	.client-testmonials .item blockquote img{left: 54px;position: relative;}
+	/*-- Testmonials End--*/
+	
+	
+}
+/*------------------------------------------------------------------------------*/
+/*                    width :569px - 600px
+/*------------------------------------------------------------------------------*/
+@media screen and (min-width: 569px) and (max-width:600px){
+	#header .header-info{text-align:center;}
+	.top-social-bar{left:0px;}
+	#navigation .logo{float:none;text-align:center;}
+	.select-nav{clear:left;}
+	#navigation{height: 169px;}
+	.stickit{display:none;}
+	.stickit-end{display:block;}
+	.slider-header-text{width: 320px;height:100px;}
+	.header-text{top:17%;}
+	.header-text h2{font-size: 15px;line-height:5px;}
+	.header-text p{font-size:11px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 40px;
+		line-height: 44px;
+		width: 15px;
+		top: 22px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 40px;
+		line-height: 44px;
+		width: 15px;
+		top: 82px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	.item-coments{height: 158px!important;}
+	.item-coments .pull-right{top: -141px!important;padding: 26px 16px!important;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -172px;top: -10px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 210px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main .col-md-4:nth-child(3){display:none;}
+	.doctor-main .col-xs-6:nth-child(2) .memberet{margin:0px;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	.testimonials-main .item blockquote img{position:relative;left:83px;}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 68%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 68%!important;left: 75%!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 100%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+		position:none;
+	}
+	#footer .header{color:#fff;}
+	#footer .col-md-3:nth-child(3){clear:left;}
+	/*-- Home End--*/
+	
+	.slider-two-header-text{width: 307px;height: 95px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		left: 340px !important;
+		top: 77px!important;
+	}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{
+		left:-243px !important;
+		top: 17%!important;
+	}
+	#healthy_home_page_two .header-text h2{line-height: 20px;}
+	#healthy_home_page_two .header-text p{line-height:13px;}
+	#healthy_home_page_two .appointment-main .btn-section{left: -192px;top: -10px;}
+	/*-- Home Two End--*/
+	
+	.slider-three-header-text{width: 514px;height: 40px;margin-left: 13px;}
+	.slider-three-header-text h4{font-size: 17px;margin-top: -7px;line-height: 18px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	#healthy_home_page_four .testimonials-main #quote-carousel .carousel-control.left{top: 74%!important;}
+	#healthy_home_page_four .testimonials-main #quote-carousel .carousel-control.right{top: 74%!important;left: 88%!important;}
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: 30px;}
+	.slider-header h1{
+		font-size: 25px;
+		line-height: 40px;
+		padding:0px;
+	}
+	.slider-header p {
+		line-height: 5px;
+		font-size: 14px;
+		width: 42%;
+		padding: 11px;
+	}
+	.aboutus-bg h2{line-height: 38px;}
+	/*-- Home4 End--*/
+	
+	.slider-five-header-text{width: 350px;height: 110px;}
+	#healthy_home_page_five .header-text{top:5%;}
+	#healthy_home_page_five .header-text p{font-size: 11px;}
+	#healthy_home_page_five .header-text h2{line-height: 18px;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.left{top: 74%!important;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.right{top: 74%!important;left: 88%!important;}
+	
+	/*-- Home5 End--*/
+	
+	
+	.healthy_home_page6 .header-text{top: 70%;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	.healthy_home_page8 .services-main .col-xs-6{margin-bottom:20px;}
+	.healthy_home_page8 .services-main .col-md-4:nth-child(3){display:none;}
+	.healthy_home_page8 #carousel-example-generic{margin:0px;}
+	.healthy_home_page8 .servicesitem{height: 290px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .header-text h2{
+		font-size: 20px;
+		line-height: 18px;
+		margin-bottom: 12px;
+	}
+	.healthy_home_page10 .header-text{top: 7%;}
+	.healthy_home_page10 .header-text p{font-size: 13px;line-height: 17px;}
+	/*-- Home10 End--*/
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{left: 213px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 88%;left: 88%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 88%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	/*-- Services End--*/
+	
+	.servicescol-one-main .col-xs-6{margin-bottom:20px;}
+	.servicescol-one-main .btn-section{position:relative;top:-20px;}
+	.servicescol-one-main .col-md-4:nth-child(3){display:none;}
+	.servicepost-content .col-xs-6{width:100%;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	.healthy_madical_services_page .carousel-control.left{top: 180px;left: 83%;}
+	.healthy_madical_services_page .carousel-control.right{top: 180px;right: 30px;}
+	.servicescol{height:180px;}
+	/*-- Services Col1 End--*/
+	
+	.row .services-threecol-main .col-md-4:nth-child(3){display:none;}
+	.services-threecol-main .col-xs-6{margin-bottom:20px;}
+	/*-- Services Col3 End--*/
+	
+	.row .services-threecol-main .col-md-4:nth-child(3){display:none;}
+	.servicescol{height: 185px;}
+	.services-threecol-main .col-xs-6{margin-bottom:20px;}
+	 /*-- Services Col3 End--*/
+	
+	
+	.healthy_404_error_page .section_rop h2{font-size: 22px;line-height: 40px;}
+	.error_bg{
+		width: 250px;
+		height: 250px;
+		margin-left: 26%;
+	}
+	.error_bg h1{
+		padding: 0px;
+		font-size: 70px;
+		position: relative;
+		top: -18px;
+		left: -36px;
+	}
+	.error_text h2{font-size: 38px;}
+	.error_text h4{font-size: 22px;}
+	/*-- 404 End--*/
+	
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	.meetmember-main .pull-right{width:100%;}
+	/*-- Doctor Col2 End--*/
+	
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	
+	.healthyblog-main .col-xs-7{width:100%;}
+	.healthyblog-main .col-xs-5{width:100%;}
+	.healthy_blog_page .item-coments .pull-right{top: -146px!important;padding: 21px 16px!important;}
+	.healthy_blog_page .item-coments{height:162px!important;	}
+	.healthy_blog_page .counter-tab div{font-size: 12px;line-height: 26px;}
+	.contact_form{margin-bottom:20px;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .counter-tab div{line-height: 22px;}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	.healthyblogcol2-main .row .col-xs-6 .row:nth-child(3n+1){display:none;}
+	.healthyblogcol2-main .clearfix:nth-child(2){height:0px;}
+	/*-- Blog Col2 End--*/
+	
+	.blog-threecol-main .counter-tab div {
+		font-size: 14px;
+		line-height: 22px;
+	}
+	.blog-threecol-main .col-md-4:nth-child(3){display:none;}
+	/*-- Blog Col3 End--*/
+	
+	.contact-form-main .col-xs-7{width:100%;}
+	.contact-form-main .col-xs-5{width:100%;}
+	.contact-form-main .right-side-bar{margin-top:20px;}
+	.contact-f form .col-xs-6{width:100%;margin-bottom:20px;}
+	/*-- Contact End--*/
+	
+	.client-testmonials .item blockquote img{left: 54px;position: relative;}
+	/*-- Testmonials End--*/
+	
+}
+/*------------------------------------------------------------------------------*/
+/*                    width :601px - 667px
+/*------------------------------------------------------------------------------*/
+@media screen and (min-width: 601px) and (max-width:667px){
+	#header .header-info{text-align:center;}
+	.top-social-bar{left:0px;}
+	#navigation .logo{float:none;text-align:center;}
+	.select-nav{clear:left;}
+	#navigation{height: 169px;}
+	.stickit{display:none;}
+	.stickit-end{display:block;}
+	.slider-header-text{width: 320px;height:100px;}
+	.header-text{top:17%;}
+	.header-text h2{font-size: 15px;line-height:5px;}
+	.header-text p{font-size:11px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 40px;
+		line-height: 44px;
+		width: 15px;
+		top: 22px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 40px;
+		line-height: 44px;
+		width: 15px;
+		top: 82px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	.item-coments{height: 177px!important;}
+	.item-coments .pull-right{top: -161px!important;padding: 36px 16px!important;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -213px;top: -10px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 210px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main .col-md-4:nth-child(3){display:none;}
+	.doctor-main .col-xs-6:nth-child(2) .memberet{margin:0px;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	.testimonials-main .item blockquote img{position:relative;left:83px;}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 65%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 65%!important;left: 78%!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 100%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+		position:none;
+	}
+	#footer .header{color:#fff;}
+	#footer .col-md-3:nth-child(3){clear:left;}
+	/*-- Home End--*/
+	
+	.slider-two-header-text{width: 330px;height: 110px;}
+	#healthy_home_page_two .header-text p{line-height:17px;font-size:13px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{left: 367px !important;top: 95px!important;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 18%!important;left: -283px;}
+	/*-- Home Two End--*/
+	
+	.slider-three-header-text{width: 579px;height: 40px;margin-left: 13px;}
+	.slider-three-header-text h4{font-size: 14px;line-height: 18px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	#healthy_home_page_four  .testimonials-main #quote-carousel .carousel-control.left{top: 79%!important;left: 89%!important;}
+	#healthy_home_page_four  .testimonials-main #quote-carousel .carousel-control.right{top: 79%!important;}
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: 30px;}
+	.slider-header h1{
+		font-size: 25px;
+		line-height: 45px;
+		padding:0px;
+	}
+	.slider-header p {
+		line-height: 5px;
+		font-size: 13px;
+		width: 33%;
+		padding: 12px;
+	}
+	.aboutus-bg h2{line-height: 38px;font-size: 18px;}
+	/*-- Home4 End--*/
+	
+	.slider-five-header-text{width: 315px;height: 120px;}
+	#healthy_home_page_five .header-text h2{line-height: 25px;}
+	#healthy_home_page_five .header-text{top: 10%;}
+	#healthy_home_page_five .testimonials-main .item blockquote img{left: 245px;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.left{top: 79%!important;left: 89%!important;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.right{top: 79%!important;}
+	/*-- Home5 End--*/
+	
+	.healthy_home_page6 .header-text{top: 68%;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	
+	.healthy_home_page8 .services-main .col-xs-6{margin-bottom:20px;}
+	.healthy_home_page8 .services-main .col-md-4:nth-child(3){display:none;}
+	.healthy_home_page8 #carousel-example-generic{margin:0px;}
+	.healthy_home_page8 .servicesitem{height: 268px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .slider-five-header-text{height: 128px;}
+	.healthy_home_page10 .header-text{top: 7%;}
+	.healthy_home_page10 .header-text p{font-size: 13px;}
+	.healthy_home_page10 .header-text h2{
+		font-size: 20px;
+		line-height: 18px;
+		margin-bottom: 12px;
+	}
+	/*-- Home10 End--*/
+	
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{left: 240px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 88%;left:90%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 88%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	/*-- Services End--*/
+	
+	.servicescol-one-main .col-xs-6{margin-bottom:20px;}
+	.servicescol-one-main .btn-section{position:relative;top:0px;}
+	.servicescol-one-main .col-md-4:nth-child(3){display:none;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	.healthy_madical_services_page .carousel-control.left{top: 78px;left: 72%;}
+	.healthy_madical_services_page .carousel-control.right{top: 78px;right: 30px;}
+	.servicescol{height:180px;}
+	.healthy_madical_services_page #Carousel{margin-top: 20px;}
+	/*-- Services Col1 End--*/
+	
+	.row .services-threecol-main .col-md-4:nth-child(3){display:none;}
+	.services-threecol-main .col-xs-6{margin-bottom:20px;}
+	/*-- Services Col3 End--*/
+	
+	
+	.healthy_404_error_page .section_rop h2{font-size: 22px;line-height: 40px;}
+	.error_bg{
+		width: 250px;
+		height: 250px;
+		margin-left: 28%;
+	}
+	.error_bg h1{
+		padding: 0px;
+		font-size: 70px;
+		position: relative;
+		top: -18px;
+		left: -36px;
+	}
+	.error_text h2{font-size: 38px;}
+	.error_text h4{font-size: 22px;}
+	/*-- 404 End--*/
+	
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	.meetmember-main .pull-right{width:100%;}
+	/*-- Doctor Col2 End--*/
+	
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	.healthyblog-main .col-xs-7{width:100%;}
+	.healthyblog-main .col-xs-5{width:100%;}
+	.healthy_blog_page .item-coments{height: 181px!important;}
+	.healthy_blog_page .item-coments .pull-right{top: -163px!important;padding: 21px 16px!important;}
+	.healthy_blog_page .counter-tab div {
+		font-size: 14px;
+		line-height: 30px;
+	}
+	.contact_form{margin-bottom:20px;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .counter-tab div{line-height: 22px;}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	.healthyblogcol2-main .row .col-xs-6 .row:nth-child(3n+1){display:none;}
+	.healthyblogcol2-main .clearfix:nth-child(2){height:0px;}
+	/*-- Blog Col2 End--*/
+	
+	.blog-threecol-main .counter-tab div {
+		font-size: 14px;
+		line-height: 22px;
+	}
+	.blog-threecol-main .col-md-4:nth-child(3){display:none;}
+	/*-- Blog Col3 End--*/
+	
+	.client-testmonials .item blockquote img{left: 54px;position: relative;}
+	/*-- Testmonials End--*/
+	
+	
+}
+/*------------------------------------------------------------------------------*/
+/*                    width : 668px - 736px
+/*------------------------------------------------------------------------------*/
+@media screen and (min-width: 668px) and (max-width:736px){
+	#header .header-info{text-align:center;}
+	.top-social-bar{left:1px;}
+	#navigation .logo{float:none;text-align:center;}
+	.select-nav{clear:left;display:block;}
+	#navigation{height: 169px;}
+	.stickit{display:none;}
+	.stickit-end{display:block;}
+	.header-text{top: 14%;}
+	.slider-header-text{height: 130px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 50px;
+		line-height: 44px;
+		width: 20px;
+		top: 23px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 50px;
+		line-height: 44px;
+		width: 20px;
+		top: 102px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	.item-coments{height: 185px!important;}
+	.item-coments .pull-right{top: -169px!important;padding: 41px 16px!important;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -238px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 190px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main .col-md-4:nth-child(3){display:none;}
+	.doctor-main .col-xs-6:nth-child(2) .memberet{margin:0px;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	.testimonials-main .item blockquote img{position:relative;left: 93px;}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 65%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 65%!important;left: 81%!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 100%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+	}
+	#footer .header{color:#fff;}
+	#footer .col-md-3:nth-child(3){clear:left;}
+	/*-- Home End--*/
+	
+	.slider-two-header-text{height: 120px;}
+	#healthy_home_page_two .header-text h2{line-height: 20px;font-size: 13px;}
+	#healthy_home_page_two .appointment-main .btn-section{top:-10px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 13%!important;left: -247px;line-height: 50px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{left: 472px !important;top: 92px!important;line-height: 52px;}
+	/*-- Home Two End--*/
+	
+	.slider-three-header-text{width: 648px;height: 50px;margin-left: 13px;}
+	.slider-three-header-text h4{font-size: 21px;line-height: 21px;margin-top: -5px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	#healthy_home_page_four .testimonials-main #quote-carousel .carousel-control.left{top: 72%!important;left: 91%!important;}
+	#healthy_home_page_four .testimonials-main #quote-carousel .carousel-control.right{top: 72%!important;}
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: 30px;}
+	.slider-header h1{
+		font-size: 30px;
+		line-height: 50px;
+		padding:0px;
+	}
+	.slider-header p {
+		line-height: 5px;
+		font-size: 16px;
+		width: 37%;
+		padding: 16px;
+	}
+	.aboutus-bg h2{line-height: 38px;font-size: 18px;}
+	/*-- Home4 End--*/
+	
+	#healthy_home_page_five .testimonials-main .item blockquote img{left: 245px;}
+	#healthy_home_page_five .header-text{top:10%;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.left{top: 72%!important;left: 91%!important;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.right{top: 72%!important;}
+	.slider-five-header-text{width: 430px;height: 132px;}
+	/*-- Home5 End--*/
+	
+	.healthy_home_page6 .header-text{top: 60%;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	.healthy_home_page8 .services-main .col-xs-6{margin-bottom:20px;}
+	.healthy_home_page8 .services-main .col-md-4:nth-child(3){display:none;}
+	.healthy_home_page8 #carousel-example-generic{margin:0px;}
+	.healthy_home_page8 .servicesitem{height: 235px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .slider-five-header-text{width: 379px;height: 120px;}
+	.healthy_home_page10 .header-text{top: 11%;}
+	.healthy_home_page10 .header-text p{font-size: 14px;}
+	.healthy_home_page10 .header-text h2{
+		font-size: 23px;
+		line-height: 21px;
+		margin-bottom: 16px;
+	}
+	/*-- Home10 End--*/
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{left: 270px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 88%;left:90%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 88%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	/*-- Services End--*/
+	
+	.servicescol-one-main .col-xs-6{margin-bottom:20px;}
+	.servicescol-one-main .col-md-4:nth-child(3){display:none;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	.healthy_madical_services_page .carousel-control.left{top: 93px;left: 75%;}
+	.healthy_madical_services_page .carousel-control.right{top: 93px;right: 30px;}
+	.servicescol{height:180px;}
+	.healthy_madical_services_page #Carousel{margin-top: 20px;}
+	/*-- Services Col1 End--*/
+	
+	.row .services-threecol-main .col-md-4:nth-child(3){display:none;}
+	.services-threecol-main .col-xs-6{margin-bottom:20px;}
+	/*-- Services Col3 End--*/
+	
+	
+	.healthy_404_error_page .section_rop h2{font-size: 22px;line-height: 40px;}
+	.error_bg{
+		width: 300px;
+		height: 300px;
+		margin-left: 28%;
+	}
+	.error_bg h1{
+		padding: 0px;
+		font-size: 70px;
+		position: relative;
+		top: 6px;
+		left: -13px;
+	}
+	.error_text h2{font-size: 38px;}
+	.error_text h4{font-size: 22px;}
+	/*-- 404 End--*/
+	
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	.meetmember-main .pull-right{width:100%;}
+	/*-- Doctor Col2 End--*/
+	
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	.healthy_blog_page .item-coments .pull-right{top: -102px!important;padding: 15px 16px!important;}
+	.healthy_blog_page .item-coments{height: 118px!important;	}
+	.healthy_blog_page .counter-tab div{font-size: 10px;line-height: 18px;}
+	.contact_form{margin-bottom:20px;}
+	.healthyblog-main .comments .pull-right{width:82%;}
+	.healthyblog-main .com_child .pull-right{width:78%;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .counter-tab div{line-height: 22px;}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	.healthyblogcol2-main .row .col-xs-6 .row:nth-child(3n+1){display:none;}
+	.healthyblogcol2-main .clearfix:nth-child(2){height:0px;}
+	/*-- Blog Col2 End--*/
+	
+	.blog-threecol-main .col-md-4:nth-child(3){display:none;}
+	.blog-threecol-main .item-coments .pull-right{
+		top: -169px!important;
+		padding: 33px 16px!important;
+	}
+	.blog-threecol-main .counter-tab div{
+		font-size: 14px;
+		line-height: 26px!important;
+	}
+	.blog-threecol-main .item-coments {height: 185px!important;}
+	/*-- Blog Col3 End--*/
+	
+	.client-testmonials .item blockquote img{left:80px;position: relative;}
+	/*-- Testmonials End--*/
+	
+	
+}
+/*------------------------------------------------------------------------------*/
+/*                    width : 767px
+/*------------------------------------------------------------------------------*/
+@media (max-width: 767px) {
+	.select-nav { display:block; }
+	#navigation .menu {
+		display: none;
+	}
+	.stickit-end{display:block;}
+}
+
+/*------------------------------------------------------------------------------*/
+/*                    width : 737px - 768px
+/*------------------------------------------------------------------------------*/
+@media screen and (min-width: 737px) and (max-width:768px){
+	#header .header-info{text-align:center;}
+	.top-social-bar{left:65px;}
+	#navigation{height: 100px;}
+	.slider-header-text{
+		width: 368px;
+		height: 100px;
+	}
+	.header-text{top: 35%;}
+	.header-text h2{font-size:18px;line-height:7px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		height: 40px;
+		line-height: 44px;
+		width: 15px;
+		top: 118px!important;
+		left: -50px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		height: 40px;
+		line-height: 44px;
+		width: 15px;
+		top: 58px!important;
+		left: -50px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	
+	.item-coments{height: 185px!important;}
+	.item-coments .pull-right{top: -169px!important;padding: 41px 16px!important;}
+	.appointment-main .btn-section{margin:0px;position: relative;left: -238px;}
+	.appointment-main .pull-left{width: 100%!important;text-align: center;}
+	.app-bg{height: 190px!important;}
+	.latestblog-main .btn-section{margin-bottom:15px;}
+	.latestblog-main .col-md-4:nth-child(3){display:none;}
+	.doctor-main .col-xs-6:nth-child(2) .memberet{margin:0px;}
+	.doctor-main .memberet{margin-top: 20px;}
+	.doctor-main .sub-header p{padding:0px;margin:0px;}
+	.testimonials-main .item blockquote img{position:relative;left:-15px;top: 0px}
+	.testimonials-main #quote-carousel .carousel-control.right{top: 56%!important;}
+	.testimonials-main #quote-carousel .carousel-control.left{top: 56%!important;left: 82%!important;}
+	.testimonials-main #quote-carousel .carousel-inner .item p{
+		width: 100%!important;
+		top:0px!important;
+		float:none!important;
+		padding:0px!important;
+		position:none;
+	}
+	#footer{padding:0px;}
+	#footer .header{color:#fff;}
+	/*--Home End --*/
+	
+	.slider-two-header-text{width: 345px;height: 118px;}
+	#healthy_home_page_two .header-text{top:20%;}
+	#healthy_home_page_two #carousel-example-generic{margin:0px;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		left: 385px !important;
+		top: 99px !important;
+		height: 52px;
+		line-height: 52px;
+		width: 20px;
+	}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{
+		top: 20%!important;
+		left: -366px;
+		height: 52px;
+		line-height: 52px;
+		width: 20px;
+	}
+	#healthy_home_page_two .appointment-main .btn-section{left: -278px;top:-10px;}
+	/*-- Home Two End--*/
+	
+	.slider-three-header-text{width: 676px;height: 40px;margin-left: 13px;}
+	.slider-three-header-text h4{font-size: 17px;line-height: 18px;}
+	#healthy_home_page_three .header-text{top: 27%;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{top: 27%!important;left:15px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 27%!important;left: -26px;}
+	/*-- Home3 End--*/
+	
+	#appointment-form{margin-top:20px;}
+	.ent-name{margin-bottom: 10px;}
+	.ent-ph{margin-bottom: 10px;}
+	.ent-dt{margin-bottom: 10px;clear: left;}
+	#healthy_home_page_four .appointment-block{margin:0px;}
+	#healthy_home_page_four .testimonials-main #quote-carousel .carousel-control.left{top: 63%!important;left: 91%!important;}
+	#healthy_home_page_four .testimonials-main #quote-carousel .carousel-control.right{top: 63%!important;}
+	.appointment-block h3{position: relative;left: -20px;}
+	.appointment-block .red p, #appointment-contact-form input[type="submit"]{position: relative;left: 20px;}
+	.slider-header{position: relative;top: -15px;}
+	.slider-header h1{
+		font-size: 30px;
+		line-height: 50px;
+		padding:0px;
+	}
+	.slider-header p {
+		line-height: 5px;
+		font-size: 16px;
+		width: 37%;
+		padding: 16px;
+	}
+	.aboutus-bg h2{line-height: 38px;font-size: 18px;}
+	/*-- Home4 End--*/
+	
+	.slider-five-header-text{width: 350px;height: 133px;}
+	#healthy_home_page_five .header-text{top:13%;}
+	#healthy_home_page_five .header-text p{font-size: 13px;}
+	#healthy_home_page_five .header-text h2{line-height: 18px;font-size: 22px;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.left{top: 63%!important;left: 91%!important;}
+	#healthy_home_page_five .testimonials-main #quote-carousel .carousel-control.right{top: 63%!important;}
+	/*-- Home5 End--*/
+	
+	
+	.healthy_home_page6 .header-text{top: 63%;}
+	.healthy_home_page6 .services-main .col-md-3{margin-top:20px;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page7 .services-main .col-md-3{margin-top:45px;}
+	/*-- Home7 End--*/
+	
+	.healthy_home_page8 .services-main .col-xs-6{margin-bottom:20px;}
+	.healthy_home_page8 .services-main .col-md-4:nth-child(3){display:none;}
+	.healthy_home_page8 #carousel-example-generic{margin:0px;}
+	.healthy_home_page8 .servicesitem{height: 235px;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine #appointment-form{margin:0px;margin-top:20px;}
+	#healthy_home_page_nine .servicesnine{margin-bottom: 20px;}
+	/*-- Home9 End--*/
+	
+	.healthy_home_page10 .slider-five-header-text{width: 379px;height: 120px;}
+	.healthy_home_page10 .header-text{top: 15%;}
+	.healthy_home_page10 .header-text p{font-size: 14px;}
+	.healthy_home_page10 .header-text h2{
+		font-size: 23px;
+		line-height: 21px;
+		margin-bottom: 16px;
+	}
+	/*-- Home10 End--*/
+	
+	.about-us-main p{padding:0px;}
+	.healthy_about_us_page .testimonials-main #quote-carousel blockquote{overflow: hidden;}
+	.testimonials-second-main .item blockquote img{top: 30px;position: relative;}
+	.testimonials-second-main #quote-carousel .carousel-control.left{top: 88%;left:91%;}
+	.testimonials-second-main #quote-carousel .carousel-control.right{top: 88%;}
+	/*-- About End--*/
+	
+	.section_rop p{padding:0px;}
+	
+	
+	/*-- Services End--*/
+	
+	
+	.servicescol-one-main .col-xs-6{margin-bottom:20px;}
+	.servicescol-one-main .col-md-4:nth-child(3){display:none;}
+	.healthy_madical_services_page .pull-right p{margin-top:15px;}
+	.healthy_madical_services_page .carousel-control.left{top: 93px;left: 75%;}
+	.healthy_madical_services_page .carousel-control.right{top: 93px;right: 30px;}
+	.servicescol{height:180px;}
+	.healthy_madical_services_page #Carousel{margin-top: 20px;}
+	/*-- Services Col1 End--*/
+	
+	.row .services-threecol-main .col-md-4:nth-child(3){display:none;}
+	.services-threecol-main .col-xs-6{margin-bottom:20px;}
+	/*-- Services Col3 End--*/
+	
+	
+	.healthy_404_error_page .col-xs-12{width:100%;}
+	.error_bg{margin-left: 20%;}
+	/*-- 404 End--*/
+	
+	.member-details{float:left;}
+	/*-- Doctor Single End--*/
+	
+	.meetmember-main .pull-right{width:100%;}
+	/*-- Doctor Col2 End--*/
+	
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	#meetmembercol .meetmember-main .col-xs-6{margin-bottom:20px;}
+	/*-- Doctor Col4 End--*/
+	
+	.healthy_blog_page .item-coments .pull-right{top: -122px!important;padding: 15px 16px!important;}
+	.healthy_blog_page .item-coments{height: 140px!important;}
+	.healthy_blog_page .counter-tab div{font-size: 12px;line-height: 23px;}
+	.contact_form{margin-bottom:20px;}
+	.healthyblog-main .comments .pull-right{width:85%;}
+	.healthyblog-main .com_child .pull-right{width:82%;}
+	/*-- Blog Single End--*/
+	
+	#blogcolpost .counter-tab div{line-height: 22px;}
+	.blog-twocol-main .item .sub-header{margin-bottom:20px;}
+	.healthyblogcol2-main .row .col-xs-6 .row:nth-child(3n+1){display:none;}
+	.healthyblogcol2-main .clearfix:nth-child(2){height:0px;}
+	.blog-twocol-main .item-coments .pull-right{top: -1px!important;padding: 41px 16px!important;}
+	/*-- Blog Col2 End--*/
+	
+	.blog-threecol-main .item-coments .pull-right{
+		top: -117px!important;
+		padding: 18px 16px!important;
+	}
+	.blog-threecol-main .counter-tab div {
+		font-size: 12px;
+		line-height: 20px;
+	}
+	.blog-threecol-main .item-coments {height: 134px!important;}
+	/*-- Blog Col3 End--*/
+	
+	.client-testmonials .item blockquote img{left:-16px;position: relative;}
+	/*-- Testmonials End--*/
+	
+	
+	
+	
+	
+	
+}
+/*------------------------------------------------------------------------------*/
+/*                    width : 769px - 1024px
+/*------------------------------------------------------------------------------*/
+@media screen and (min-width: 769px) and (max-width:1024px){
+	.top-social-bar{left:65px;}
+	.header-text{top:30%;}
+	#navigation{height: 100px;}
+	#carousel-example-generic .carousel-control .fa-angle-right, #carousel-example-generic .carousel-control .icon-next{
+		top: 147px!important;
+		left: -60px;
+	}
+	#carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{
+		top: 68px!important;
+		left: -60px!important;
+	}
+	.features-main .header h2{
+		line-height: 33px;
+	}
+	#footer .header{color:#fff;}
+	/*--Home End --*/
+	
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{left: 502px !important;}
+	#healthy_home_page_two #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{left: -505px;top: 65%!important;}
+	/*--Home2 End --*/
+	
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{left: 55px !important;}
+	#healthy_home_page_three #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 30%!important;left: -77px;}
+	/*-- Home3 End--*/
+	
+	.healthy_home_page6 .header-text{top: 63%;}
+	/*-- Home6 End--*/
+	
+	.healthy_home_page8 #carousel-example-generic .carousel-control .fa-angle-right, 
+	#carousel-example-generic .carousel-control .icon-next{top: 65%!important;left: -507px;}
+	.healthy_home_page8 #carousel-example-generic .carousel-control .fa-angle-left, 
+	#carousel-example-generic .carousel-control .icon-prev{left: 499px !important;}
+	/*-- Home8 End--*/
+	
+	#healthy_home_page_nine .header-text{top: 50%!important;}
+	#healthy_home_page_nine .slider-header h1{line-height: 39px;}
+	/*-- Home9 End--*/
+}

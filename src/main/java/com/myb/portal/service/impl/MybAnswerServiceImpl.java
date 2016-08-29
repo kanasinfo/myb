@@ -69,13 +69,13 @@ public class MybAnswerServiceImpl implements MybAnswerService{
 						listOption = JsonUtil.jsonToList(jsonQuestion.getJSONArray("options").toString(), Options.class);
 						if (mapQuestion.get(questionsVo.getQuestionGroupId()) != null) {
 							questionsVo.setQuestionType(questionsVo.getQuestionType());
-							Utils.packageAnserQuestion(questionsVo, ja);
+							Utils.packageAnserQuestion(questionsVo, ja,questionMap);
 							questionsVo.setOptions(listOption);
 							mapQuestion.get(questionsVo.getQuestionGroupId()).add(questionsVo);
 						} else {
 							List<QuestionsVo> list2 = new ArrayList<QuestionsVo>();
 							questionsVo.setQuestionType(questionsVo.getQuestionType());
-							Utils.packageAnserQuestion(questionsVo, ja);
+							Utils.packageAnserQuestion(questionsVo, ja,questionMap);
 							questionsVo.setOptions(listOption);
 							list2.add(questionsVo);
 							mapQuestion.put(questionsVo.getQuestionGroupId(), list2);
@@ -149,12 +149,12 @@ public class MybAnswerServiceImpl implements MybAnswerService{
 			for (QuestionsVo questionsVo : questionTmpltVO.getQuestions()) {
 				if (mapQuestion.get(questionsVo.getQuestionGroupId()) != null) {
 					questionsVo.setQuestionType(questionsVo.getQuestionType());
-					Utils.packageAnserQuestion(questionsVo, ja);
+					Utils.packageAnserQuestion(questionsVo, ja,questionMap);
 					mapQuestion.get(questionsVo.getQuestionGroupId()).add(questionsVo);
 				} else {
 					List<QuestionsVo> list2 = new ArrayList<QuestionsVo>();
 					questionsVo.setQuestionType(questionsVo.getQuestionType());
-					Utils.packageAnserQuestion(questionsVo, ja);
+					Utils.packageAnserQuestion(questionsVo, ja,questionMap);
 					list2.add(questionsVo);
 					mapQuestion.put(questionsVo.getQuestionGroupId(), list2);
 				}
