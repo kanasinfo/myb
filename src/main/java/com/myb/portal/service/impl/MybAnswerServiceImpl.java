@@ -1,5 +1,10 @@
 package com.myb.portal.service.impl;
 
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.match;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.unwind;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,8 +19,11 @@ import java.util.TreeMap;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.myb.portal.exception.ServiceException;
@@ -24,6 +32,8 @@ import com.myb.portal.model.mongodb.Options;
 import com.myb.portal.model.mongodb.QuestionGroupVO;
 import com.myb.portal.model.mongodb.QuestionTmpltVO;
 import com.myb.portal.model.mongodb.QuestionsVo;
+import com.myb.portal.model.mongodb.ReleaseOnlyOneAnwser;
+import com.myb.portal.model.mongodb.ReleaseOnlyOneAnwserData;
 import com.myb.portal.service.MybAnswerService;
 import com.myb.portal.util.AjaxReq;
 import com.myb.portal.util.JsonUtil;
@@ -199,25 +209,96 @@ public class MybAnswerServiceImpl implements MybAnswerService{
 	public AjaxReq addAnswer(String data) {
 		AjaxReq ar = new AjaxReq();
 		try {
-			ar.setSuccess(true);
-			ar.setMessage("谢谢评价");
 			JSONObject jb = JSONObject.fromObject(data);
-			MybAnswerVo mybanswer = new MybAnswerVo();
-			mybanswer.setTenementId(jb.getString("tenementId"));
-			mybanswer.setQustnrName(jb.getString("qustnrName"));
-			mybanswer.setEndUserIdentity(jb.getString("endUserIdentity"));
-			mybanswer.setQuestionnaireId(jb.getString("questionnaireId"));
-			mybanswer.setCreatedDate(new Date());
-			mybanswer.setAnswers(jb.getJSONArray("answers"));
-			mongoTemplate.save(mybanswer,"answer");
+			Query query = new Query();
+			Criteria criterg = Criteria.where("_id").is(jb.getString("questionnaireId"));
+			query.addCriteria(criterg);
+			QuestionTmpltVO questionTmpltVO = mongoTemplate.findOne(query, QuestionTmpltVO.class,"release_qustnnr");
+			if(questionTmpltVO.getCreditAmount()<=0){
+				ar.setSuccess(true);
+				ar.setMessage("谢谢评价");
+				return ar;
+			}else{
+				ar.setSuccess(true);
+				ar.setMessage("谢谢评价");
+				MybAnswerVo mybanswer = new MybAnswerVo();
+				mybanswer.setTenementId(jb.getString("tenementId"));
+				mybanswer.setQustnrName(jb.getString("qustnrName"));
+				mybanswer.setEndUserIdentity(jb.getString("endUserIdentity"));
+				mybanswer.setQuestionnaireId(jb.getString("questionnaireId"));
+				mybanswer.setCreatedDate(new Date());
+				mybanswer.setAnswers(jb.getJSONArray("answers"));
+				mongoTemplate.save(mybanswer,"answer");
+			}
+			
 		} catch (Exception e) {
 			ar.setMessage("提交失败，请稍后重试");
 		}
 		return ar;
 	}
 	
-	public MybAnswerServiceImpl() {
-		// TODO Auto-generated constructor stub
+	public AjaxReq checkUrl(String questionId,String id){
+		AjaxReq ar = new AjaxReq();
+		try {
+			if(StringUtils.isBlank(questionId)){
+				ar.setSuccess(false);
+				return ar;
+			}
+			if(StringUtils.isBlank(id)){
+				ar.setSuccess(false);
+				return ar;
+			}
+			Aggregation aggregation =newAggregation(match(Criteria.where("questionId").is(questionId)),unwind("listDate"),match(Criteria.where("listDate._id").is(id)));
+			AggregationResults<ReleaseOnlyOneAnwserData>  data= mongoTemplate.aggregate(aggregation, "releaseCount", ReleaseOnlyOneAnwserData.class);
+			List<ReleaseOnlyOneAnwserData> ans = data.getMappedResults();
+			for (int i = 0; i < ans.size(); i++) {
+				if(ans.get(i).isSuccess()==false){
+					ar.setSuccess(true);
+					ar.setData(ans.get(i));
+				}else{
+					ar.setSuccess(false);
+				}
+			}
+			ar.setSuccess(true);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return ar;
 	}
-
+	/**
+	 * 
+	 * updateUrl TODO(把当前连接置为已经使用) 
+	 * @author wangzx
+	 * @param questionId
+	 * @param id
+	 * @return
+	 */
+	public AjaxReq updateUrl(String questionId,String id){
+		AjaxReq ar = new AjaxReq();
+		try {
+			if(StringUtils.isBlank(questionId)){
+				ar.setSuccess(false);
+				return ar;
+			}
+			if(StringUtils.isBlank(id)){
+				ar.setSuccess(false);
+				return ar;
+			}
+			Query queryQustnnr = new Query();
+			Criteria critergQustnnr = Criteria.where("questionId").is(questionId);
+			queryQustnnr.addCriteria(critergQustnnr);
+			ReleaseOnlyOneAnwser dataAnwser= mongoTemplate.findOne(queryQustnnr, ReleaseOnlyOneAnwser.class);
+			mongoTemplate.remove(queryQustnnr,ReleaseOnlyOneAnwserData.class);
+			for (ReleaseOnlyOneAnwserData release : dataAnwser.getListDate()) {
+				if(release.getId().equals(id)){
+					release.setSuccess(true);
+				}
+			}
+			mongoTemplate.save(dataAnwser);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return ar;
+		
+	}
 }

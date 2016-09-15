@@ -180,7 +180,26 @@ public class MybReleaseController {
 			e.printStackTrace();
 		}
 	}
-	
+	@RequestMapping(value = "downOnlyONeLoadExcel", method = RequestMethod.POST)
+	public void downOnlyONeLoadExcel(String questionId,String downCount,HttpServletRequest request,
+			HttpServletResponse response) {
+		try {
+			ServletOutputStream outputStream = response.getOutputStream();
+			request.getRequestURI();
+			String path = request.getRealPath("/");
+			AjaxReq ar =new AjaxReq();
+			response.reset();// 不加这一句的话会出现下载错误
+			response.setCharacterEncoding("UTF-8");  
+	        response.setContentType("application/zip");     
+	        response.setHeader("Content-Disposition", "attachment; filename=文件调查连接");// 设定输出文件头
+			mybReleaseService.downOnlyONeLoadExcel(questionId, path,downCount,outputStream,ar);
+			outputStream.flush();
+			outputStream.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+//	mybReleaseService.downOnlyONeLoadExcel(String questionId, String classPath,String downCount,FileOutputStream outputStream,AjaxReq ar)
 	@RequestMapping(value="addStore",method = RequestMethod.POST)
 	@ResponseBody
 	public AjaxReq addStore(String store){

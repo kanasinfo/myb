@@ -45,8 +45,6 @@ public class MybChartD1 extends MybChart{
 			Map<String, List<Criteria>> fdmp = new HashMap<String, List<Criteria>>();						
 			MybChartUtils.packDimensionsFilter("", filter, fdmp);	
 			Criteria ct = new Criteria().andOperator(fdmp.get("filterOnly").toArray(new Criteria[fdmp.get("filterOnly").size()]));
-
-			
 			Aggregation aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),
 					unwind("$answers"), match(Criteria.where("answers.questionId").is(questionId)),
 					group("$answers.optionValue").count().as("count"));

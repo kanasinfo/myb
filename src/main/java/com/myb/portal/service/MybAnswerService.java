@@ -2,6 +2,7 @@ package com.myb.portal.service;
 
 import java.util.Map;
 
+import com.myb.portal.model.mongodb.ReleaseOnlyOneAnwserData;
 import com.myb.portal.util.AjaxReq;
 
 /**
@@ -32,4 +33,21 @@ public interface MybAnswerService {
 	 * @return
 	 */
 	public Map<String, Object> previewQuestion(String data);
+	/**
+	 * checkUrl TODO(验证当前连接是否有效) 
+	 * @author wangzx
+	 * @param questionId
+	 * @param id
+	 * @return
+	 */
+	public AjaxReq checkUrl(String questionId,String id);
+	/**
+	 * 
+	 * updateUrl TODO(把当前连接置为已经使用) 
+	 * @author wangzx
+	 * @param questionId
+	 * @param id
+	 * @return
+	 */
+	public AjaxReq updateUrl(String questionId,String id);
 }

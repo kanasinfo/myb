@@ -26,22 +26,26 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import com.myb.portal.model.account.MybTransHistory;
 import com.myb.portal.model.mongodb.ActivePeriod;
 import com.myb.portal.model.mongodb.Options;
 import com.myb.portal.model.mongodb.QuestionGroupVO;
 import com.myb.portal.model.mongodb.QuestionTmpltVO;
 import com.myb.portal.model.mongodb.QuestionsVo;
+import com.myb.portal.model.mongodb.ReleaseQuestionVo;
 import com.myb.portal.model.mongodb.Store;
 import com.myb.portal.model.mongodb.StoreGroupVO;
 import com.myb.portal.model.question.MybOption;
 import com.myb.portal.model.question.MybQuestion;
 import com.myb.portal.model.question.MybQuestionGroup;
 import com.myb.portal.model.question.MybQuestionnaireTemplate;
+import com.myb.portal.repository.MybAccountRepository;
 import com.myb.portal.repository.MybQuestionGroupRepository;
 import com.myb.portal.repository.MybQuestionRepository;
 import com.myb.portal.repository.MybQuestionnaireTemplateRepository;
 import com.myb.portal.repository.MybStoreGroupRepository;
 import com.myb.portal.repository.MybStoreRepository;
+import com.myb.portal.repository.MybTransHistoryRepository;
 import com.myb.portal.service.QuestionsService;
 import com.myb.portal.shiro.ShiroDb;
 import com.myb.portal.util.AjaxReq;
@@ -68,6 +72,10 @@ public class QuestionsServiceImpl implements QuestionsService {
 	MongoTemplate mongoTemplate;
 	@Autowired
 	MybStoreGroupRepository mybStoreGroupRepository;
+	@Autowired
+	MybTransHistoryRepository mybTransHistoryRepository;
+	@Autowired
+	MybAccountRepository mybAccountRepository;
 
 	/**
 	 * delQuestion TODO(根据模板和问题主键ID删除相关问题)
@@ -258,7 +266,6 @@ public class QuestionsServiceImpl implements QuestionsService {
 			e.printStackTrace();
 		}
 		return null;
-
 	}
 
 	public MybQuestionnaireTemplate queryQuestionnaireTemplateByIndustryId(String subIndustryId) {
@@ -271,6 +278,19 @@ public class QuestionsServiceImpl implements QuestionsService {
 			List<MybQuestionGroup> listQustnrGroup, MybQuestionnaireTemplate listTmplt) {
 		AjaxReq aReq = new AjaxReq();
 		try {
+			String accountId = ShiroDb.getAccount().getId();
+			//主用户减去已选择样本数
+			mybAccountRepository.updateAmountById(Integer.parseInt(credit_amount),accountId );
+			//记录交易
+			MybTransHistory trans = new MybTransHistory();
+			trans.setId(Utils.getUUid());
+			trans.setCreatedTime(new Date());
+			trans.setCreditAmount(Integer.parseInt(credit_amount));
+			trans.setAccountId(accountId);
+			trans.setTransAmount(Integer.parseInt(credit_amount));
+			trans.setQuestionId(listTmplt.getId());
+			trans.setTransTime(new Date());
+			mybTransHistoryRepository.save(trans);
 			// 存放页面展现所需数据
 			QuestionTmpltVO questionTmpltVO = new QuestionTmpltVO();
 			questionTmpltVO.setQustnrTmpltId(listTmplt.getId());
@@ -278,7 +298,6 @@ public class QuestionsServiceImpl implements QuestionsService {
 			questionTmpltVO.setQustnrName(qustnr_name);
 			questionTmpltVO.setCreditAmount(Integer.parseInt(credit_amount));
 			questionTmpltVO.setQustnnrStatus(2);
-			String accountId = ShiroDb.getAccount().getId();
 			questionTmpltVO.setTenementId(accountId);
 			questionTmpltVO.setCreatedTime(new Date());
 			questionTmpltVO.setUpdatedTime(new Date());
@@ -655,6 +674,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 			update.set("qustnrName", qustnr_name);
 			update.set("creditAmount", credit_amount);
 			mongoTemplate.updateMulti(query, update, QuestionTmpltVO.class);
+			mongoTemplate.updateMulti(query, update, ReleaseQuestionVo.class);
 			ajaxReq.setSuccess(true);
 		} catch (Exception e) {
 			ajaxReq.setSuccess(false);
@@ -759,6 +779,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 			questionTmpltVO.setStore(listStorep);
 			questionTmpltVO.setStoreGroup(listStoreGroup);
 			mongoTemplate.remove(query, QuestionTmpltVO.class);
+			this.updateBasicQuestionById(templId, jb.getString("qustnrName"), jb.getInt("creditAmount"));
 			mongoTemplate.save(questionTmpltVO);
 			aReq.setSuccess(true);
 			aReq.setMessage("操作成功");
