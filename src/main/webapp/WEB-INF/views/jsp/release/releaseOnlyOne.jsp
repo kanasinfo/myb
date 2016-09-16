@@ -19,7 +19,6 @@
 <script type="text/javascript" src="${ctx}/assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="${ctx}/assets/jquery-validation/js/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8"></script>
 <script src="${ctx}/assets/jquery-validation/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-<script src="${ctx}/assets/js/ZeroClipboard.js"></script>
 <title>我的问卷</title>
 
 </head>
@@ -60,9 +59,9 @@
                     </div>
                     <div class="release_center_center_text">
                         <span>输入链接数:</span>
-                        <input type="text" style="height: 20px;width: 17%"/> <span>${creditAmount}</span>
+                        <input type="text" id="selectDownLoadCount" style="height: 20px;width: 17%"/> <span>${creditAmount}</span>
                     </div>
-                    <div class="release_center_center_download"> <button>下载链接</button></div>
+                    <div class="release_center_center_download"> <button id="dowanOnlyOne">下载链接</button></div>
                 </div>
                 <div class="clearfix" style="height:10px;background-color: rgb(243,243,243)"></div>
                 <div id="release_botton">
@@ -86,26 +85,33 @@
         </div>
     </div>
     </div>
-        <form action="${ctx}/page/release/downLoad.html" method="post" id="downLoadFrom" enctype="application/x-www-form-urlencoded">
-        	<input type="hidden" id="id" name="id" value="${templateId }"/>
+<%--      <form action="${ctx}/page/release/downGroupLoadExcel.html" method="post" id="downLoadZipFrom" enctype="application/x-www-form-urlencoded"> --%>
+<!--         	<input type="hidden" id="downLoadData" name="data" value=""/> -->
+<%--         	<input type="hidden" id="downLoadQuestionId" name="questionId" value="${templId }"/> --%>
+<!--         	<input type="hidden" id="downLoadGroupId" name="groupId" value=""/> -->
+<!--         	<input type="hidden" id="parentId" name="parentId" value=""/> -->
+<!--         </form> -->
+        <form action="${ctx}/page/release/downOnlyONeLoadExcel.html" method="post" id="downLoadFrom" enctype="application/x-www-form-urlencoded">
+        	<input type="hidden" id="questionId" name="questionId" value="${templId }"/>
+        	<input type="hidden" id="downCount" name="downCount" value=""/>
         </form>
     <div class="clearfix" style="height:10px;"></div>
 	<jsp:include page="../include/footer.jsp" />
 	<script type="text/javascript">
-		jQuery(function($){
-			$("#downBtn").click(function(){
-				$("#downLoadFrom").submit();
-			})
-			$('#copyName').zclip({ 
-			    path: '../js/ZeroClipboard.swf', 
-			    copy: function(){//复制内容 
-			      return $('#urlName').val(); 
-			    }, 
-			    afterCopy: function(){//复制成功 
-			      $("<span id='msg'/>").insertAfter($('#copy_input')).text('复制成功'); 
-			    } 
-			  }); 
-		})
+    </script>
+    <script type="text/javascript">
+    	jQuery(function($){
+    	$("#dowanOnlyOne").click(function(){
+		//判断是否选中门店分组
+		var downCount = $("#selectDownLoadCount").val();
+		if($.trim(downCount)==null){
+			alert("请输入下载连接数");
+		}else{
+			 $("#downCount").val(downCount);
+			 $("#downLoadFrom").submit();
+		}
+	})
+    	})
     </script>
     
 </body>
