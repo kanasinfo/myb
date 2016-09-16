@@ -43,43 +43,6 @@ public class MybChartD4 extends MybChart{
 				aReq.setMessage("数据不正确");
 				return aReq;
 			}
-//
-//			Map<String, List<Criteria>> fdmp = new HashMap<String, List<Criteria>>();						
-//			MybChartUtils.packDimensionsFilter("", filter, fdmp);	
-//			Criteria ct = new Criteria().andOperator(fdmp.get("filterOnly").toArray(new Criteria[fdmp.get("filterOnly").size()]));
-//			Aggregation aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),
-//					unwind("$answers"), match(Criteria.where("answers.questionId").is(questionId)),
-//					group("$answers.optionValue").count().as("count"));
-//			AggregationResults<TagCount> results = mongoTemplate.aggregate(aggregation, "answer", TagCount.class);
-//			List<TagCount> tagCount = results.getMappedResults();
-//			StringBuffer legendStr = new StringBuffer("[");
-//			JSONObject jb = null;
-//			JSONArray ja = new JSONArray();
-//			for (int i = 0; i < tagCount.size(); i++) {
-//				TagCount t = tagCount.get(i);
-//				jb = new JSONObject();
-//				jb.put("name", t.get_id());
-//				legendStr.append("'"+t.get_id()+"',");
-//				jb.put("value", t.getCount());			
-//				ja.add(jb);
-//			}
-//		
-//			legendStr.substring(0, legendStr.length()-1);
-//			legendStr.append("]");
-//			JSONArray jaGroup = JSONArray.fromObject(questionGroup);
-//			JSONArray groupName = new JSONArray();
-//			JSONObject jbQuestion = null;
-//			for (int i = 0; i < jaGroup.size(); i++) {
-//				jbQuestion = jaGroup.getJSONObject(i);
-//				groupName.add( jbQuestion.getString("questionName"));
-//						
-//			}
-//			JSONArray jaYname= new JSONArray();
-//			jaYname.add("坐标");
-//			JSONArray yName = JSONObject.fromObject(dimension).getJSONArray("options");
-//			for (int i = 0; i < yName.size(); i++) {
-//				jaYname.add(yName.getJSONObject(i).get("optionName"));
-//			}
 			Map<String, List<Criteria>> fdmp = new HashMap<String, List<Criteria>>();	
 			MybChartUtils.packDimensionsFilter("", filter, fdmp);	
 			Criteria ct =null;
