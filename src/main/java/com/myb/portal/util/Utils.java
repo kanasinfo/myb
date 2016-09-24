@@ -94,8 +94,8 @@ public abstract class Utils {
 		jb.put("storeId", storeId);
 		Calendar calendar = Calendar.getInstance();
 		jb.put("year", calendar.get(Calendar.YEAR));
-		jb.put("quarter", Utils.quarter(calendar.get(Calendar.MONTH)));
-		jb.put("month", calendar.get(Calendar.MONTH));
+		jb.put("quarter", Utils.quarter(calendar.get(Calendar.MONTH)+1));
+		jb.put("month", calendar.get(Calendar.MONTH)+1);
 		jb.put("day", calendar.get(Calendar.DATE));
 		for (Store s : vo.getStore()) {
 			if(storeId.equals(s.getStoreId())){

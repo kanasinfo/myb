@@ -228,6 +228,10 @@ public class MybAnswerServiceImpl implements MybAnswerService{
 				mybanswer.setQuestionnaireId(jb.getString("questionnaireId"));
 				mybanswer.setCreatedDate(new Date());
 				mybanswer.setAnswers(jb.getJSONArray("answers"));
+				mybanswer.setMonth(jb.getString("month"));
+				mybanswer.setYear(jb.getString("year"));
+				mybanswer.setDay(jb.getString("day"));
+				mybanswer.setQuarter(jb.getString("quarter"));
 				mongoTemplate.save(mybanswer,"answer");
 			}
 			
