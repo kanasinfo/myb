@@ -78,7 +78,7 @@
 					<div class="summarydata" style="display:none">
 					 <div style="width:33%;float:left;" id="" class="firstColumn chart-main">
 					   <div style="height:115px">
-						   <div style="float:left;width:50%;height:115px;" class="overviewChart" >df</div>
+						   <div style="float:left;width:50%;height:115px;" class="overviewChart" > </div>
 						   <div style="float:left;width:50%;height:115px;" class="overviewLegend"></div>
 					   </div>
 					   <div style="height:110px">
@@ -87,7 +87,7 @@
 					  </div>
 					 <div style="width:33%;float:left;" id="" class="secondColumn chart-main">
 				     <div style="height:115px">
-						   <div style="float:left;width:50%;height:115px;" class="recommendChart" >df</div>
+						   <div style="float:left;width:50%;height:115px;" class="recommendChart" > </div>
 						   <div style="float:left;width:50%;height:115px;" class="recommendLegend"></div>
 					   </div>
 					   
@@ -99,7 +99,7 @@
 					 <div style="width:33%;float:left;" id="" class="secondColumn chart-main">
 	
 					   <div style="height:115px">
-						   <div style="float:left;width:50%;height:115px;" class="healthChart" >df</div>
+						   <div style="float:left;width:50%;height:115px;" class="healthChart" > </div>
 						   <div style="float:left;width:50%;height:115px;" class="healthLegend"></div>
 					   </div>	
 						<div style="height:110px">
