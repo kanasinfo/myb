@@ -1,5 +1,7 @@
 jQuery(function($){
 	var customStore = [];
+//	<input type="hidden" id="id" name="id" value="${templateId }"/>
+//    	<input type="hidden" id="downCount" name="downCount" value=""/>
 	$("#downloadCode").click(function(){
 		//判断是否选中门店分组
 		var parentId = $('option:selected').attr("id")
