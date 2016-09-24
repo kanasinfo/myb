@@ -11,6 +11,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -154,14 +156,15 @@ public class MybChartP8 extends MybChart{
 			            	xStr =(String)obj.get("_x");				            	
 			            	yStr = (String)obj.get("_id");	
 			            }else{
-				    		jb = JSONObject.fromObject(obj.get("_id"));
-				    		if((String)jb.get("x") != null && (String)jb.get("y") != null){
+				    		jb = JSONObject.fromObject(obj.get("_id"));				    		
+				    		if(((List<String>)jb.get("x")).size()>0 && ((List<String>)jb.get("y")).size() >0){
 				    			xStr =((List<String>)jb.get("x")).get(0);
 					    		yStr =((List<String>)jb.get("y")).get(0);	
 				    		}				    		
 			            }
-	    		
-			            if(!"".equals(yStr) && !"".equals(xStr)){
+			            Pattern pattern = Pattern.compile("[0-9]*"); 
+			            Matcher isNum = pattern.matcher(yStr);
+			            if(!"".equals(yStr) && isNum.matches() && !"".equals(xStr)){
 							if (Integer.parseInt(yStr) > 7 && groups[k].equals(yStr) && name.equals(xStr)) {
 								gFlag = true;
 								satisfied += tmpCnt;

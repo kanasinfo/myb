@@ -57,16 +57,22 @@ public class MybProReportServiceImpl implements MybProReportService {
 			ReleaseQuestionVo ReleaseQuestionVo = mongoTemplate.findOne(query, ReleaseQuestionVo.class);
 			MybQuestionnaireTemplate m = new MybQuestionnaireTemplate();
 			m.setId(ReleaseQuestionVo.getQustnrTmpltId());
-			List<MybQuestion> list = mybQuestionRepository.findByquestionTemplate(m);
-			Map<String, MybQuestion> map = new HashMap<String, MybQuestion>();
-			for (MybQuestion mybQuestion : list) {
-				map.put(mybQuestion.getId(), mybQuestion);
-			}
-			for (QuestionsVo questionsVo : ReleaseQuestionVo.getQuestions()) {
-				if(map.get(questionsVo.getQuestionId())!=null){
-					questionsVo.setNormCalculateValue(map.get(questionsVo.getQuestionId()).getNormCalculateValue()==null?0:map.get(questionsVo.getQuestionId()).getNormCalculateValue());
-					questionsVo.setNormInputValue(map.get(questionsVo.getQuestionId()).getNormInputValue()==null?0:map.get(questionsVo.getQuestionId()).getNormInputValue());
+			try {
+				List<MybQuestion> list = mybQuestionRepository.findByquestionTemplate(m);
+				Map<String, MybQuestion> map = new HashMap<String, MybQuestion>();
+				for (MybQuestion mybQuestion : list) {
+					map.put(mybQuestion.getId(), mybQuestion);
 				}
+				for (QuestionsVo questionsVo : ReleaseQuestionVo.getQuestions()) {
+					if(map.get(questionsVo.getQuestionId())!=null){
+						questionsVo.setNormCalculateValue(map.get(questionsVo.getQuestionId()).getNormCalculateValue()==null?0:map.get(questionsVo.getQuestionId()).getNormCalculateValue());
+						questionsVo.setNormInputValue(map.get(questionsVo.getQuestionId()).getNormInputValue()==null?0:map.get(questionsVo.getQuestionId()).getNormInputValue());
+					}
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				ajaxReq.setSuccess(true);
+				ajaxReq.setData(JsonUtil.objectToJsonObject(ReleaseQuestionVo));
 			}
 			ajaxReq.setSuccess(true);
 			ajaxReq.setData(JsonUtil.objectToJsonObject(ReleaseQuestionVo));
