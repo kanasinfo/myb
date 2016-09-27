@@ -47,7 +47,7 @@ public class MybChartD2 extends MybChart{
 			}
 
 			Map<String, List<Criteria>> fdmp = new HashMap<String, List<Criteria>>();						
-			MybChartUtils.packDimensionsFilter(dimension, filter, fdmp);	
+			MybChartUtils.packDimensionsFilter("", filter, fdmp);	
 			Criteria ct =null;
 			if(fdmp.get("filterOnly") != null){
 				ct = new Criteria().andOperator(fdmp.get("filterOnly").toArray(new Criteria[fdmp.get("filterOnly").size()]));
