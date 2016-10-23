@@ -17,7 +17,23 @@ public class MybAnswerVo {
 	private String quarter;
 	private String month;
 	private String day;
+	private String storeId;
+	private int status;
 	
+	
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public String getStoreId() {
+		return storeId;
+	}
+	public void setStoreId(String storeId) {
+		this.storeId = storeId;
+	}
 	public String getYear() {
 		return year;
 	}

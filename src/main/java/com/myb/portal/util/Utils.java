@@ -3,6 +3,7 @@ package com.myb.portal.util;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,6 +32,22 @@ public abstract class Utils {
 	public final static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	public static String getDate(){
 		return format.format(new Date());
+	}
+	public static Date getDateTime(int d){
+		Calendar calendar=Calendar.getInstance();   
+		calendar.setTime(new Date()); 
+		System.out.println(calendar.get(Calendar.MONTH));
+		calendar.set(Calendar.MONTH,calendar.get(Calendar.MONTH)-d);
+		System.out.println(calendar.getTime());
+		SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(s.format(calendar.getTime()));
+		try {
+			return s.parse(s.format(calendar.getTime()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
 	}
 	public static Integer getType(String className){
 		try {
@@ -92,6 +109,7 @@ public abstract class Utils {
 		jb.put("endUserIdentity", vo.getIndustry());
 		jb.put("tenementId", vo.getTenementId());
 		jb.put("storeId", storeId);
+		jb.put("status", 0);
 		Calendar calendar = Calendar.getInstance();
 		jb.put("year", calendar.get(Calendar.YEAR));
 		jb.put("quarter", Utils.quarter(calendar.get(Calendar.MONTH)+1));

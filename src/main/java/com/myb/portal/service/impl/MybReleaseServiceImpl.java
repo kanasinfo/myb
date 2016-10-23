@@ -41,6 +41,8 @@ import com.myb.portal.model.mongodb.ReleaseQuestionVo;
 import com.myb.portal.model.mongodb.Store;
 import com.myb.portal.model.mongodb.StoreGroupVO;
 import com.myb.portal.model.mongodb.StoreList;
+import com.myb.portal.model.mongodb.WarningOptionVo;
+import com.myb.portal.model.mongodb.WarningVo;
 import com.myb.portal.repository.MybStoreGroupRepository;
 import com.myb.portal.repository.MybStoreRepository;
 import com.myb.portal.service.MybReleaseService;
@@ -100,13 +102,40 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 		// 保存到发布中
 		questionTmpltVO.setQustnnrId(id);
 		mongoTemplate.save(questionTmpltVO, "release_qustnnr");
+		//保存预警条件
+		//查询是否已经保存预警条件
+		
+		Query queryWarning  = Query.query(Criteria.where("questionTemplId").is(id));
+		WarningVo  w = mongoTemplate.findOne(queryWarning, WarningVo.class);
+		if(w==null){
+			WarningVo vo = new WarningVo();
+			vo.setQuestionTemplId(id);
+			List<WarningOptionVo> list = new ArrayList<WarningOptionVo>();
+			WarningOptionVo wo = null;
+			 wo = new WarningOptionVo();
+			 wo.setWarningId("978f781726f1482b88842fc8c39b7c05");
+			 wo.setWarningName("忠诚顾客");
+			 wo.setWarningFlag("1");
+			 list.add(wo);
+			 wo = new WarningOptionVo();
+			 wo.setWarningId("e829052aa51041afb8e6b99a1015b9ef");
+			 wo.setWarningName("不稳定顾客");
+			 wo.setWarningFlag("1");
+			 list.add(wo);
+			 wo = new WarningOptionVo();
+			 wo.setWarningId("97a98f94261f4e5e8e53ef74b6b2ff1d");
+			 wo.setWarningName("流失顾客");
+			 wo.setWarningFlag("1");
+			 list.add(wo);
+			vo.setWarningOptionVo(list);
+			mongoTemplate.save(vo);	
+		}
 		// 生成URL连接
 		gridFSPhotoUtils.saveFile(Utils.ParseProperties("RELEASE_URL") + id + ".html", id,
 				questionTmpltVO.getQustnrName());
 		map.put("imgurl", gridFSPhotoUtils.getFileById(id));
 		return map;
 	}
-
 	public String getQRurl(String id) {
 		String url = Utils.ParseProperties("RELEASE_URL") + id + ".html";
 		return url;
@@ -513,7 +542,13 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 				}
 			}
 			MybStoreGroup myb = mybStoreGroupRepository.findByAccountIdAndId(accountId, groupId);
-			myb.setMybStore(store);
+			if(myb==null){
+				myb = new MybStoreGroup();
+				myb.setMybStore(store);
+			}else{
+				myb.setMybStore(store);	
+			}
+			
 			mybStoreGroupRepository.save(myb);
 			ar.setMessage("保存成功！");
 			ar.setSuccess(true);
