@@ -1,15 +1,21 @@
 jQuery(function($){
 	var customStore = [];
+	var storeId = [];
 //	<input type="hidden" id="id" name="id" value="${templateId }"/>
 //    	<input type="hidden" id="downCount" name="downCount" value=""/>
 	$("#downloadCode").click(function(){
 		//判断是否选中门店分组
 		var parentId = $('option:selected').attr("id")
 		$("#parentId").val(parentId);
-		//判断可以下载的门店
-		var downLoadData = $("#downLoadData").val();
 		var downLoadQuestionId = $("#downLoadQuestionId").val();
 		var downLoadGroupId = $("#downLoadGroupId").val();
+		$(":checkbox:checked","#mainListTbody").each(function(){
+			storeId.push($(this).attr('value'));
+		})
+		alert(storeId);
+		//获取选中数据
+		$("#downLoadData").val(JSON.stringify(storeId));
+		var downLoadData = $("#downLoadData").val();
 		if(downLoadData!=''&&downLoadQuestionId!=''){
 			$("#downLoadZipFrom").submit();
 		}else{
@@ -321,12 +327,6 @@ jQuery(function($){
 				$(this).prop("checked",false);
 			});	
 		}
-		var id = [];
-		$(":checkbox:checked","#mainListTbody").each(function(){
-			id.push($(this).attr('value'));
-		})
-		//获取选中数据
-		$("#downLoadData").val(JSON.stringify(id));
 	})
 	$("#delCheckbox").click(function(){
 		var id = [];

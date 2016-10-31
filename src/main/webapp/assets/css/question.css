@@ -1138,5 +1138,6 @@ text-decoration:none;
     margin: 10px 0px 0px 2%; list-style: none;
 }
 .wapper_main_context_botton>ul>li{
-    float: left;width: 150px;height: 30px;color: rgb(180,180,180)
+    float: left;width: 150px;height: 30px;color: rgb(180,180,180);
+    margin-left:11%;
 }
