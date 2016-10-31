@@ -839,7 +839,7 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 						listDate.add(Utils.getDate());
 						storogroup.setDownDate(listDate);
 					} else {
-						storogroup.getDownDate().add(Utils.getDate());
+//						storogroup.getDownDate().add(Utils.getDate());
 					}
 					storogroup.setStore(addStore);
 				}
