@@ -321,18 +321,19 @@ public class MybChartUtils {
 	
 	public static void main(String[] args) {
 		try {
-			String ss = new String(Files.readAllBytes(Paths.get("/Users/william/Desktop/1.txt")));
-			String dimn = new String(Files.readAllBytes(Paths.get("/Users/william/Desktop/2.txt")));
-			System.out.println(ss);
-			List<Criteria> list = new ArrayList<Criteria>();
-			packFilter(ss, list);
-			System.out.println("111111111111111111111");
-			Map<String, List<Criteria>> mp = new HashMap();
-			packDimensions(dimn, mp);
-			System.out.println("222222222222222222222");
-			Map<String, List<Criteria>> fdmp = new HashMap();
-			packDimensionsFilter(dimn, ss, fdmp);
-			
+//			String ss = new String(Files.readAllBytes(Paths.get("/Users/william/Desktop/1.txt")));
+//			String dimn = new String(Files.readAllBytes(Paths.get("/Users/william/Desktop/2.txt")));
+//			System.out.println(ss);
+//			List<Criteria> list = new ArrayList<Criteria>();
+//			packFilter(ss, list);
+//			System.out.println("111111111111111111111");
+//			Map<String, List<Criteria>> mp = new HashMap();
+//			packDimensions(dimn, mp);
+//			System.out.println("222222222222222222222");
+//			Map<String, List<Criteria>> fdmp = new HashMap();
+//			packDimensionsFilter(dimn, ss, fdmp);
+//			String a = "storegroup";
+//			System.out.println(a.replaceAll("group", "Group"));
 						
 		} catch (Exception e) {
 			e.printStackTrace();

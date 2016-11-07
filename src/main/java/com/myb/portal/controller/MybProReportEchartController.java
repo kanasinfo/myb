@@ -25,7 +25,8 @@ public class MybProReportEchartController {
 			@RequestParam("dimensiontype") String dimensionType, String dimension,
 			@RequestParam(value = "questionGroup", required = false) String questionGroup,
 			@RequestParam(value = "questionName", required = false) String questionName,
-			@RequestParam(value = "specialQuestions", required = false) String specialQuestions) {		
+			@RequestParam(value = "specialQuestions", required = false) String specialQuestions,
+			@RequestParam(value = "store", required = false) String store) {		
 		try {
 			MybChart chart = (MybChart) Class.forName("com.myb.portal.model.chart.MybChart" + page.toUpperCase())
 					.newInstance();
@@ -38,6 +39,7 @@ public class MybProReportEchartController {
 			chart.setQuestionGroup(questionGroup);
 			chart.setQuestionName(questionName);
 			chart.setSpecialQuestions(specialQuestions);
+			chart.setStore(store);
 			return mybProReportEcharService.getData(chart);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e1) {
 
@@ -52,7 +54,8 @@ public class MybProReportEchartController {
 			@RequestParam(value = "questionnaire_id", required = true) String questionnaireId,
 			@RequestParam(value = "groupId", required = false) String groupId,
 			@RequestParam(value = "question_id", required = false) String questionId, String page, String filter,
-			@RequestParam(value = "questionGroup", required = false) String questionGroup) {
+			@RequestParam(value = "questionGroup", required = false) String questionGroup,
+			@RequestParam(value = "store", required = false) String store) {
 		try {
 			MybChart chart = (MybChart) Class.forName("com.myb.portal.model.chart.MybChart" + page.toUpperCase())
 					.newInstance();
@@ -61,6 +64,7 @@ public class MybProReportEchartController {
 			chart.setQuestionId(questionId);
 			chart.setQuestionnaireId(questionnaireId);
 			chart.setQuestionGroup(questionGroup);
+			chart.setStore(store);
 			return mybProReportEcharService.getData(chart);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e1) {
 

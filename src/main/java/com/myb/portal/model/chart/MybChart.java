@@ -16,15 +16,14 @@ public abstract class MybChart {
 	protected String questionGroup;
 	protected String questionName;
 	protected String specialQuestions;
-
-
+	protected String store;
 
 	public MybChart(){
 		
 	}
 	
 	public MybChart(String questionnaireId, String groupId, String questionId,String filter,
-			String dimensionType, String dimension,String dataSourcesId, double normInputValue,String questionGroup,String questionName, String specialQuestions){
+			String dimensionType, String dimension,String dataSourcesId, double normInputValue,String questionGroup,String questionName, String specialQuestions, String store){
 		this.questionId=questionId;
 		this.questionnaireId=questionnaireId;
 		this.groupId=groupId;
@@ -36,6 +35,7 @@ public abstract class MybChart {
 		this.questionGroup=questionGroup;
 		this.questionName=questionName;
 		this.specialQuestions=specialQuestions;
+		this.store = store;
 	}
 	
 	public abstract AjaxReq getData(MongoTemplate mongoTemplate);
@@ -128,4 +128,11 @@ public abstract class MybChart {
 		this.specialQuestions = specialQuestions;
 	}
 	
+	public String getStore() {
+		return store;
+	}
+
+	public void setStore(String store) {
+		this.store = store;
+	}
 }
