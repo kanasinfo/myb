@@ -6,9 +6,12 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.newA
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.unwind;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -73,14 +76,86 @@ public class MybChartD8 extends MybChart {
 						questionjb = questionJa.getJSONObject(i);
 						mapQuestionId.put(questionjb.getString("questionId"), questionjb.getString("questionName"));
 					}
-					String comments = "";
+					StringBuffer comments = new StringBuffer();
 					// 分解store
 					this.findStore(ct, returnJa, mapQuestionId, storeIds, questionnaireId, mongoTemplate);
+					//解析commons数据
+					Map<String, Double> mapCommons = new HashMap<String, Double>();
+					List<Double> commons = new ArrayList<Double>();
+					JSONObject jbCommons =new JSONObject();
+					//每个都大于5
+					int gtFive = 0;
+					//每项指标都小于5
+					int ltFive= 0 ;
+					
+					JSONArray jaData = null;
+					for (int i = 0; i < returnJa.size(); i++) {
+						jbCommons = returnJa.getJSONObject(i);
+						jaData = jbCommons.getJSONArray("data");
+						for (int j2 = 0; j2 < jaData.size(); j2++) {
+							commons.add(jaData.getDouble(j2));
+						}
+						Collections.sort(commons);
+						double maxMin = commons.get(0)-commons.get(commons.size());
+						if(maxMin>=5){
+							++gtFive;
+						}else if(maxMin<5){
+							++ltFive;
+						}
+						mapCommons.put(jbCommons.getString("questionName"), maxMin);
+					}
+					//判断当前指标情况
+					comments.append("比较各家门店的服务环节满意度，发现 ");
+					 List<Map.Entry<String,Double>> list = new ArrayList<Map.Entry<String,Double>>(mapCommons.entrySet());
+				        //然后通过比较器来实现排序
+				        Collections.sort(list,new Comparator<Map.Entry<String,Double>>() {
+				            //升序排序
+				            public int compare(Entry<String, Double> o1,Entry<String, Double> o2) {
+				                return o1.getValue().compareTo(o2.getValue());
+				            }
+				        });
+				        int i = 0;
+					if(ltFive==0){
+						//每个指标都大于5
+						comments.append("各服务环节在门店间的表现差异非常大;");
+						JSONArray jaCommonsDate = new JSONArray();
+						for (Entry<String, Double> entry : mapCommons.entrySet()) {
+							if(i<=3){
+								++i;
+								jaCommonsDate.add(entry.getValue());
+							}
+						}
+						comments.append("其中，差异最大的指标是："+jaCommonsDate.toString());
+					}else if(gtFive==0){
+						//每个指标都小于5
+						comments.append("各服务环节在门店间的表现差异比较大;");
+						JSONArray jaCommonsDate = new JSONArray();
+						for (Entry<String, Double> entry : mapCommons.entrySet()) {
+							if(i<=3){
+								++i;
+								jaCommonsDate.add(entry.getValue());
+							}
+						}
+						comments.append("其中，差异最大的指标是："+jaCommonsDate.toString());
+					}else if(gtFive>=storeIds.size()){
+						//半数及以上指标大于5
+						comments.append("各服务环节在门店间的表现差异比较小;");
+						JSONArray jaCommonsDate = new JSONArray();
+						for (Entry<String, Double> entry : mapCommons.entrySet()) {
+							if(i<=3){
+								++i;
+								jaCommonsDate.add(entry.getValue());
+							}
+						}
+						comments.append("其中，差异最大的指标是："+jaCommonsDate.toString());
+					}else if(gtFive<storeIds.size()){
+						//半数指标小于5
+						comments.append("各服务环节在门店间的表现无显著差异");
+					}
 					JSONObject rspjb = new JSONObject();
 					JSONObject jbTable = new JSONObject();
 					jbTable.put("total", jbTotal);
 					jbTable.put("data", returnJa.toString());
-
 						
 					rspjb.put("type", "table");
 					rspjb.put("title", "按门店纬度比较顾客对各服务环节的体验满意度如何？");
@@ -89,8 +164,6 @@ public class MybChartD8 extends MybChart {
 					rspjb.put("comments", comments.toString());
 					aReq.setSuccess(true);
 					aReq.setData(rspjb);
-					
-					
 					
 				} else if ("storeGroup".equals(jbStore.getString("store_type"))) {
 					List<String> storeIds = new ArrayList<String>();
@@ -117,16 +190,87 @@ public class MybChartD8 extends MybChart {
 						questionjb = questionJa.getJSONObject(i);
 						mapQuestionId.put(questionjb.getString("questionId"), questionjb.getString("questionName"));
 					}
-					String comments = "";
+					StringBuffer comments = new StringBuffer();
 					// 分解store
 					this.findStoreGroup(ct, returnJa, mapQuestionId, map, questionnaireId, mongoTemplate);
+					//解析commons数据
+					Map<String, Double> mapCommons = new HashMap<String, Double>();
+					List<Double> commons = new ArrayList<Double>();
+					JSONObject jbCommons =new JSONObject();
+					//每个都大于5
+					int gtFive = 0;
+					//每项指标都小于5
+					int ltFive= 0 ;
+					
+					JSONArray jaData = null;
+					for (int i = 0; i < returnJa.size(); i++) {
+						jbCommons = returnJa.getJSONObject(i);
+						jaData = jbCommons.getJSONArray("data");
+						for (int j2 = 0; j2 < jaData.size(); j2++) {
+							commons.add(jaData.getDouble(j2));
+						}
+						Collections.sort(commons);
+						double maxMin = commons.get(0)-commons.get(commons.size());
+						if(maxMin>=5){
+							++gtFive;
+						}else if(maxMin<5){
+							++ltFive;
+						}
+						mapCommons.put(jbCommons.getString("questionName"), maxMin);
+					}
+					//判断当前指标情况
+					comments.append("比较各家门店的服务环节满意度，发现 ");
+					 List<Map.Entry<String,Double>> list = new ArrayList<Map.Entry<String,Double>>(mapCommons.entrySet());
+				        //然后通过比较器来实现排序
+				        Collections.sort(list,new Comparator<Map.Entry<String,Double>>() {
+				            //升序排序
+				            public int compare(Entry<String, Double> o1,Entry<String, Double> o2) {
+				                return o1.getValue().compareTo(o2.getValue());
+				            }
+				        });
+				        int i = 0;
+					if(ltFive==0){
+						//每个指标都大于5
+						comments.append("各服务环节在门店间的表现差异非常大;");
+						JSONArray jaCommonsDate = new JSONArray();
+						for (Entry<String, Double> entry : mapCommons.entrySet()) {
+							if(i<=3){
+								++i;
+								jaCommonsDate.add(entry.getValue());
+							}
+						}
+						comments.append("其中，差异最大的指标是："+jaCommonsDate.toString());
+					}else if(gtFive==0){
+						//每个指标都小于5
+						comments.append("各服务环节在门店间的表现差异比较大;");
+						JSONArray jaCommonsDate = new JSONArray();
+						for (Entry<String, Double> entry : mapCommons.entrySet()) {
+							if(i<=3){
+								++i;
+								jaCommonsDate.add(entry.getValue());
+							}
+						}
+						comments.append("其中，差异最大的指标是："+jaCommonsDate.toString());
+					}else if(gtFive>=storeIds.size()){
+						//半数及以上指标大于5
+						comments.append("各服务环节在门店间的表现差异比较小;");
+						JSONArray jaCommonsDate = new JSONArray();
+						for (Entry<String, Double> entry : mapCommons.entrySet()) {
+							if(i<=3){
+								++i;
+								jaCommonsDate.add(entry.getValue());
+							}
+						}
+						comments.append("其中，差异最大的指标是："+jaCommonsDate.toString());
+					}else if(gtFive<storeIds.size()){
+						//半数指标小于5
+						comments.append("各服务环节在门店间的表现无显著差异");
+					}
 					aReq.setSuccess(true);
 					JSONObject rspjb = new JSONObject();
 					JSONObject jbTable = new JSONObject();
 					jbTable.put("total", jbTotal);
 					jbTable.put("data", returnJa.toString());
-					
-					
 					rspjb.put("type", "table");
 					rspjb.put("title", "按门店纬度比较顾客对各服务环节的体验满意度如何？");
 					rspjb.put("chartlegend", "");
