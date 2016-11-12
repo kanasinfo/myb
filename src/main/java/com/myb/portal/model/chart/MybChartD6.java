@@ -97,7 +97,7 @@ public class MybChartD6 extends MybChart {
 							commons.add(jaData.getDouble(j2));
 						}
 						Collections.sort(commons);
-						double maxMin = commons.get(0)-commons.get(commons.size());
+						double maxMin = commons.get(0)-commons.get(commons.size()-1);
 						if(maxMin>=5){
 							++gtFive;
 						}else if(maxMin<5){
@@ -168,7 +168,7 @@ public class MybChartD6 extends MybChart {
 					
 					
 					
-				} else if ("storeGroup".equals(jbStore.getString("store_type"))) {
+				} else if ("storeGroup".equals(jbStore.getString("storeType"))) {
 					List<String> storeIds = new ArrayList<String>();
 					JSONArray ja = JSONArray.fromObject(jbStore.getJSONArray("storeGroup"));
 					Map<String, List<String>> map = new HashMap<String, List<String>>();

@@ -23,8 +23,15 @@ reportGlobal.savedDimns = [];
 // For recording status
 reportGlobal.savedFilterDimensions = "";
 reportGlobal.specialQuestions = "";
-reportGlobal.store = "";
-reportGlobal.storeGroup = "";
+reportGlobal.storeSelected = {
+	"storeType": 'nostore',
+	"store": [],
+	"storeGroup": []
+};
+reportGlobal.period = {
+	start_time: null,
+	end_time: null
+}
 reportGlobal.P52 = {};
 reportGlobal.P52.labelTop = {
 	normal: {
@@ -180,6 +187,7 @@ function startInits() {
 		.width(
 			$('.middle-center.ui-layout-pane.ui-layout-pane-center')
 			.width() * 0.9);
+	$('.table-main').hide();	
 }
 
 function _initSampleFilter() {
@@ -192,16 +200,14 @@ function _initSampleFilter() {
 	};
 	var store = {
 		storeType: "",
-		storeId: [""],
-		storeName: [""]
+		store: [""],
+		storeGroup: [""]
 	};
 	reportGlobal.samplefilter = {};
 	reportGlobal.samplefilter.filter_id = uuid(32, 16);
 	reportGlobal.samplefilter.period = JSON.stringify(period);
 	reportGlobal.samplefilter.store = JSON.stringify(store);
 	reportGlobal.samplefilter.value = JSON.stringify(value);
-	reportGlobal.store = {};
-	reportGlobal.storeGroup = {};
 }
 
 function _initDimnDialog() {
@@ -275,10 +281,7 @@ function newsamplegroup(dom) {
 	$(dom)
 		.parent()
 		.before(
-			' <li><span onclick="_leftDimnGroupClick(this);" class="dimnSGtextspan" id="SG' +
-			rn + '" >自定义样品组0' + ($('.dimn-left-nav').find('ul li').length - 1) +
-			'</span> <button onclick="dimn_remove_samplegroup(this);" type="button" class="close">×</button></li>'
-		);
+			' <li><span onclick="_leftDimnGroupClick(this);" class="dimnSGtextspan" id="SG' + rn + '" >自定义样品组0' + ($('.dimn-left-nav').find('ul li').length - 1) + '</span> <button onclick="dimn_remove_samplegroup(this);" type="button" class="close">×</button></li>');
 	$(dom).parent().prev().addClass("active");
 	$(dom).parent().next().height($(dom).parent().next().height() - 35);
 	// Redraw the content pane
@@ -378,11 +381,8 @@ function _loadSavedDimnsnList(jsondata) {
 		// v++;
 		// }
 
-		if (qdata[i]['activeFlag'] && qdata[i]['questionType'] ==
-			'com.myb.questiontype.SingleSelect') {
-			html += "<li><input name='dimnsncheck' type='checkbox' value='" + qdata[i][
-				'questionId'
-			] + "' />" + qdata[i]['questionName'] + "</li>";
+		if (qdata[i]['activeFlag'] && qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
+			html += "<li><input name='dimnsncheck' type='checkbox' value='" + qdata[i]['questionId'] + "' />" + qdata[i]['questionName'] + "</li>";
 		}
 	}
 	if (reportGlobal.selectedStoreType == 'store') {
@@ -400,8 +400,7 @@ function _loadSavedDimnsnList(jsondata) {
 			.first()
 			.parent()
 			.html(
-				'<li><input type="checkbox" value="storegroup" name="dimnsncheck">门店组</li>'
-			);
+				'<li><input type="checkbox" value="storegroup" name="dimnsncheck">门店组</li>');
 	} else if (reportGlobal.selectedStoreType == 'nostore') {
 		$('.dimensions-dropdown-div-left').children().first().hide();
 	} else {
@@ -413,10 +412,7 @@ function _loadSavedDimnsnList(jsondata) {
 	html = "";
 	if (qdata && qdata.length > 0) {
 		for (var i = 0; i < qdata.length; i++) {
-			html += "<li><input name='dimnsncheck' type='checkbox' value='" + qdata[i][
-					'dimensionId'
-				] + "' />" + qdata[i]['name'] +
-				"<span class='dimensions-edit-span' onclick='editdimension(this)'>编辑</span><span class='dimensions-delete-span' onclick='deletedimension(this)'>删除</span></li>";
+			html += "<li><input name='dimnsncheck' type='checkbox' value='" + qdata[i]['dimensionId'] + "' />" + qdata[i]['name'] + "<span class='dimensions-edit-span' onclick='editdimension(this)'>编辑</span><span class='dimensions-delete-span' onclick='deletedimension(this)'>删除</span></li>";
 		}
 		$('.dimensions-dropdown-div-right').html(html);
 		$('.dimensions-dropdown-div-left').css("width", "40%");
@@ -461,11 +457,7 @@ function _loadSavedDimnsnDialog(mdata) {
 		$('.newsmplbtn')
 			.parent()
 			.before(
-				' <li><span onclick="_leftDimnGroupClick(this);" class="dimnSGtextspan" id="' +
-				reportGlobal.dimensionstemp["members"][i]["memberId"] + '" >' +
-				reportGlobal.dimensionstemp["members"][i]["name"] +
-				'</span> <button onclick="dimn_remove_samplegroup(this);" type="button" class="close">×</button></li>'
-			);
+				' <li><span onclick="_leftDimnGroupClick(this);" class="dimnSGtextspan" id="' + reportGlobal.dimensionstemp["members"][i]["memberId"] + '" >' + reportGlobal.dimensionstemp["members"][i]["name"] + '</span> <button onclick="dimn_remove_samplegroup(this);" type="button" class="close">×</button></li>');
 		// $(dom).parent().prev().addClass("active");
 		$('.newsmplbtn').parent().next().height(
 			$('.newsmplbtn').parent().next().height() - 35);
@@ -524,8 +516,7 @@ function _loadSelectedOptions(so) {
 		'checked', true);
 	for (var i = 0; i < sf.store.storeId.length; i++) {
 		$(
-			'#' + sf.store.storeType + 'dialog input[id="' + sf.store.storeId[i] +
-			'"]').prop('checked', true);
+			'#' + sf.store.storeType + 'dialog input[id="' + sf.store.storeId[i] + '"]').prop('checked', true);
 	}
 
 	for (var v in sf.value) {
@@ -560,6 +551,50 @@ function _saveTempDimnsnName(id, name) {
 	}
 }
 
+function _saveStoreSelected() {
+	var storeSelected = [];
+	var storegroupSelected = [];
+	var storeTmp = {};
+	$('#' + $('input[name="storeradio"]:checked').val() + 'dialog input:checked')
+		.each(
+			function() {
+				if ("storegroup" == $(
+						'input[name="storeradio"]:checked').val() && $(this).attr('id') != 'all') {
+					var storeGroupTmp = {
+						'storeGroupId': '',
+						'storeGroupName': '',
+						'store': []
+					};
+					for (var i = 0; i < reportGlobal.jsondata.storeGroup.length; i++) {
+						if ($(this).attr('id') == reportGlobal.jsondata.storeGroup[i].storeGroupId) {
+							storeGroupTmp.storeGroupId = $(this).attr('id');
+							storeGroupTmp.storeGroupName = $(this).val();
+							for (var j = 0; j < reportGlobal.jsondata.storeGroup[i].store.length; j++) {
+								if (reportGlobal.jsondata.storeGroup[i].store[j].storeId != '') {
+									storeTmp = {};
+									storeTmp.storeId = reportGlobal.jsondata.storeGroup[i].store[j].storeId;
+									storeTmp.storeName = reportGlobal.jsondata.storeGroup[i].store[j].storeName;
+									storeGroupTmp.store.push(storeTmp);
+								}
+							}
+							storegroupSelected.push(storeGroupTmp);
+						}
+					}
+				} else if ($(this).attr('id') != '' && $(this).attr('id') != 'all') {
+					storeTmp = {};
+					storeTmp.storeId = $(this).attr('id');
+					storeTmp.storeName = $(this).val();
+					storeSelected.push(storeTmp);
+				}
+			})
+	var store = {
+		"storeType": $('input[name="storeradio"]:checked').val(),
+		"store": storeSelected,
+		"storeGroup": storegroupSelected
+	};
+	return store;
+}
+
 function _saveDimnsnFilters(id, name, saveflag) {
 	var dmnsnid = $('.dimension-name input').attr('id');
 	// To save the time period of the filter.
@@ -573,20 +608,8 @@ function _saveDimnsnFilters(id, name, saveflag) {
 		"end_time": end_time == null ? '' : end_time.format('yyyy/MM/dd')
 	};
 	// To save the store option and selected stores of the filter.
-	var storeId = [];
-	var storeName = [];
-	$(
-		'#' + $('input[name="storeradio"]:checked').val() + 'dialog input:checked').each(
-		function() {
-			storeId.push($(this).attr('id'));
-			storeName.push($(this).val());
-		})
-	var store = {
-		"storeType": $('.dimension-dialog input[name="storeradio"]:checked')
-			.val(),
-		"storeId": storeId,
-		"storeName": storeName
-	};
+
+	var store = _saveStoreSelected();
 	var inputs = $('.dimension-dialog .questionaire input:checked');
 	var vsltd = {};
 	var nsltd = {};
@@ -648,8 +671,7 @@ function _saveDimnsnFilters(id, name, saveflag) {
 					reportGlobal.jsondata["dimensions"].splice(i, 1,
 						reportGlobal.dimensionstemp);
 					findmatchedflag = true;
-					url = reportGlobal.ctx +
-						'/page/proreport/updateTemplateDimensionsById.json';
+					url = reportGlobal.ctx + '/page/proreport/updateTemplateDimensionsById.json';
 					postdata.dimensionId = dmnsnid;
 				}
 			}
@@ -709,10 +731,7 @@ function buildLeftNav(jsondata) {
 			if (i > 0) {
 				html += "</ul></div>";
 			}
-			html += "<h3><a " + " question_group_id='" + qGroup[i]['questionGroupId'] +
-				"'" + " href='#' onclick='_leftNavQuestionGroupClick(this);'>" + qGroup[i][
-					'name'
-				] + "</a></h3>";
+			html += "<h3><a " + " question_group_id='" + qGroup[i]['questionGroupId'] + "'" + " href='#' onclick='_leftNavQuestionGroupClick(this);'>" + qGroup[i]['name'] + "</a></h3>";
 			html += "<div style='padding:5px;'>";
 			html += "<ul";
 			if (!flag) {
@@ -721,19 +740,14 @@ function buildLeftNav(jsondata) {
 			html += ">";
 
 			for (var j = 0; j < leftNav.length; j++) {
-				if (leftNav[j]['questionGroupId'] == qGroup[i]['questionGroupId'] && (
-						leftNav[j]['activePeriod'] == '' || (leftNav[j]['activePeriod'] != '' &&
-							_compareDates(
-								leftNav[j]['activePeriod'], ds2)))) {
-					if (('groupDriver,groupStandard'.indexOf(qGroup[i]['businessType']) > -1) &&
-						leftNav[j]['filterFlag']) {
-						//不显示driver和standard下面的filterFlag为True的问题
+				if (leftNav[j]['questionGroupId'] == qGroup[i]['questionGroupId'] && (leftNav[j]['activePeriod'] == '' || (leftNav[j]['activePeriod'] != '' && _compareDates(
+						leftNav[j]['activePeriod'], ds2)))) {
+					//leftNav[j]['activePeriod'] != null && (leftNav[j]['activePeriod'].length>0 && _compareDates(leftNav[j]['activePeriod'], ds2)))
+					if (('groupDriver,groupStandard'
+							.indexOf(qGroup[i]['businessType']) > -1) && leftNav[j]['filterFlag']) {
+						// 不显示driver和standard下面的filterFlag为True的问题
 					} else {
-						html += "<li><a " + " questionId='" + leftNav[j]['questionId'] + "'" +
-							" question_group_id='" + leftNav[j]['questionGroupId'] + "'" +
-							" href='#' onclick='_leftNavQuestionClick(this);'>" + leftNav[j][
-								'questionName'
-							] + "</a></li>";
+						html += "<li><a " + " questionId='" + leftNav[j]['questionId'] + "'" + " question_group_id='" + leftNav[j]['questionGroupId'] + "'" + " href='#' onclick='_leftNavQuestionClick(this);'>" + leftNav[j]['questionName'] + "</a></li>";
 					}
 				}
 			}
@@ -770,8 +784,7 @@ function _leftNavQuestionClick(dom) {
 function _refreshFilters(jsondata) {
 	if ($('.sample-dialog input[name="nowtime"]').is(':checked')) {
 		_buildSampleDialog(jsondata);
-	} else if ($('.sample-dialog input[name="start"]').datepicker("getDate") ==
-		null && $('.sample-dialog input[name="end"]').datepicker("getDate") == null) {
+	} else if ($('.sample-dialog input[name="start"]').datepicker("getDate") == null && $('.sample-dialog input[name="end"]').datepicker("getDate") == null) {
 		$(".sample-dialog .dialogAlertMessage").show();
 	} else {
 		_buildSampleDialog(jsondata);
@@ -781,9 +794,7 @@ function _refreshFilters(jsondata) {
 function _refreshDimnsnFilters(jsondata) {
 	if ($('.dimension-dialog input[name="nowtime"]').is(':checked')) {
 		buildDimensionDialog(jsondata);
-	} else if ($('.dimension-dialog input[name="start"]').datepicker("getDate") ==
-		null && $('.dimension-dialog input[name="end"]').datepicker("getDate") ==
-		null) {
+	} else if ($('.dimension-dialog input[name="start"]').datepicker("getDate") == null && $('.dimension-dialog input[name="end"]').datepicker("getDate") == null) {
 		$(".dimension-dialog .dialogAlertMessage").show();
 	} else {
 		buildDimensionDialog(jsondata);
@@ -879,9 +890,7 @@ function buildTempFilterTopNav() {
 		if (html.charAt(html.length - 1) == '/') {
 			html = html.substr(0, html.length - 1);
 		}
-		html += "' ><span class='filtertextspan'  onclick='_topFilterClick(this);'>" +
-			fName +
-			"</span><button class='close' type='button'  onclick='_topFilterRemove(this);'>×</button></div></li>";
+		html += "' ><span class='filtertextspan'  onclick='_topFilterClick(this);'>" + fName + "</span><button class='close' type='button'  onclick='_topFilterRemove(this);'>×</button></div></li>";
 		// $(".tempfilter").html(html);
 	}
 }
@@ -921,9 +930,7 @@ function buildSavedFilterTopNav(jsondata) {
 		if (html.charAt(html.length - 1) == '/') {
 			html = html.substr(0, html.length - 1);
 		}
-		html += "' ><span class='filtertextspan' id='" + topNav[i]['filter_id'] +
-			"'  onclick='_topFilterClick(this);'>" + fName +
-			"</span><button class='close' type='button'  onclick='_topFilterRemove(this);'>×</button></div></li>";
+		html += "' ><span class='filtertextspan' id='" + topNav[i]['filter_id'] + "'  onclick='_topFilterClick(this);'>" + fName + "</span><button class='close' type='button'  onclick='_topFilterRemove(this);'>×</button></div></li>";
 	}
 	$(".savedfilter").html(html);
 }
@@ -950,7 +957,7 @@ function buildDimensionNav(jsondata) {
 
 	var funcname = '_topNavOtherClick';
 	for (var i = start; i < reportGlobal.savedDimns.length; i++) {
-		if (reportGlobal.savedDimns[i].id != null) {
+		if (reportGlobal.savedDimns[i].id != null && reportGlobal.savedDimns[i].type != "stor") {
 			savedDimn = reportGlobal.savedDimns[i];
 			if (savedDimn.type == "stor") {
 				funcname = '_topNavStoreClick';
@@ -959,11 +966,11 @@ function buildDimensionNav(jsondata) {
 			} else {
 				funcname = '_topNavOtherClick';
 			}
-			html += '<li><div onclick="' + funcname + '(this);" id="' + savedDimn.id +
-				'">' + savedDimn.name + ' </div></li>'
+			html += '<li><div onclick="' + funcname + '(this);" id="' + savedDimn.id + '">' + savedDimn.name + ' </div></li>'
 		}
 	}
-	$(".dimnsn").append(html);
+	$("ul.dimnsn li:gt(0)").remove();
+	$("ul.dimnsn").append(html);
 }
 
 function __topNavClick(dom) {
@@ -980,9 +987,15 @@ function _topFilterClick(dom) {
 			reportGlobal.samplefilter = reportGlobal.jsondata["filters"][i];
 		}
 	}
+	reportGlobal.storeSelected = _string2Json(reportGlobal.samplefilter.store);
+	reportGlobal.selectedStoreType = _string2Json(reportGlobal.samplefilter.store).storeType;
+	reportGlobal.period.start_time = _string2Json(reportGlobal.samplefilter.period).start_time == '' ? null : new Date(_string2Json(reportGlobal.samplefilter.period).start_time);
+	reportGlobal.period.end_time = _string2Json(reportGlobal.samplefilter.period).end_time == '' ? null : new Date(_string2Json(reportGlobal.samplefilter.period).end_time);
 	$('.tempfilter div,.savedfilter div').removeClass('active');
 	$(dom).parent().addClass('active');
 	getTotalCount();
+	_loadSavedDimnsnList(reportGlobal.jsondata);
+	buildDimensionNav(reportGlobal.jsondata)
 	loadPage();
 }
 
@@ -1037,8 +1050,7 @@ function _topNavOtherClick(dom) {
 	});
 	for (var i = 0; i < qdata.length; i++) {
 		if (qdata[i]['questionId'] == $(dom).attr('id')) {
-			if (reportGlobal.dimensions.dateType != null && reportGlobal.dimensions.dateType !=
-				'') {
+			if (reportGlobal.dimensions.dateType != null && reportGlobal.dimensions.dateType != '') {
 				var dt = reportGlobal.dimensions.dateType;
 				reportGlobal.dimensions = qdata[i];
 				reportGlobal.dimensions.dateType = dt;
@@ -1070,8 +1082,7 @@ function _topNavCustDimnClick(dom) {
 		for (var i = 0; i < reportGlobal.jsondata["dimensions"].length; i++) {
 			if (reportGlobal.jsondata["dimensions"][i].dimensionId == $(dom)
 				.attr('id')) {
-				if (reportGlobal.dimensions.dateType != null && reportGlobal.dimensions.dateType !=
-					'') {
+				if (reportGlobal.dimensions.dateType != null && reportGlobal.dimensions.dateType != '') {
 					var dt = reportGlobal.dimensions.dateType;
 					reportGlobal.dimensions = reportGlobal.jsondata["dimensions"][i];
 					reportGlobal.dimensions.dateType = dt;
@@ -1101,18 +1112,45 @@ function _checknowtime(dom) {
 	$("input[name='end']").datepicker("option", "disabled", dom.checked);
 }
 
+function _bindStoreCheckBox() {
+	// chkAll全选事件
+	$("#storedialog #all").bind("click", function() {
+		$("[name = 门店]:checkbox").prop("checked", this.checked);
+	});
+
+	// chkItem事件
+	$("[name = 门店]:checkbox").bind(
+		"click",
+		function() {
+			var $chk = $("[name = 门店]:checkbox");
+			$("#storedialog #all").prop("checked",
+				$chk.length == $chk.filter(":checked").length);
+		})
+
+	// chkAll全选事件
+	$("#storegroupdialog #all").bind("click", function() {
+		$("[name = 门店组]:checkbox").prop("checked", this.checked);
+	});
+
+	// chkItem事件
+	$("[name = 门店组]:checkbox").bind(
+		"click",
+		function() {
+			var $chk = $("[name = 门店组]:checkbox");
+			$("#storegroupdialog #all").prop("checked",
+				$chk.length == $chk.filter(":checked").length);
+		})
+}
+
 function _buildSampleDialog(jsondata) {
 	var dialog = $(".sample-dialog");
 	// var times = dialog.find(".timerange");
 	var html = "";
 	var store = dialog.find(".store");
 	html += "<div class='heading'>分店选择:</div>";
-	html +=
-		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='store' id='storeradio' ><label for='storeradio'>分店</label>";
-	html +=
-		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='storegroup' id='storegroupradio' ><label for='storegroupradio'>分店组</label>";
-	html +=
-		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='nostore' id='nostoreradio' checked><label for='nostoreradio'>未分店</label>";
+	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='store' id='storeradio' ><label for='storeradio'>分店</label>";
+	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='storegroup' id='storegroupradio' ><label for='storegroupradio'>分店组</label>";
+	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='nostore' id='nostoreradio' checked><label for='nostoreradio'>未分店</label>";
 	store.html(html);
 	reportGlobal.html = {};
 	reportGlobal.html.store = html;
@@ -1120,14 +1158,11 @@ function _buildSampleDialog(jsondata) {
 	var storedata = jsondata['store'];
 	var htmltemp = "<input type='checkbox' id='all' value='all'>全选</input><br>";
 	for (var i = 0; i < storedata.length; i++) {
-		htmltemp +=
-			"<input type='checkbox' onclick='_filterchecked(this)' name='门店' value='" +
-			storedata[i]['storeName'] + "' id='" + storedata[i]['storeId'] +
-			"'><label for='" + storedata[i]['storeId'] + "'>" + storedata[i][
-				'storeName'
-			] + "</label>";
-		if (i % 2 > 0) {
-			htmltemp += "<br>";
+		if (storedata[i]['storeId'] != '') {
+			htmltemp += "<input type='checkbox' onclick='_filterchecked(this)' name='门店' value='" + storedata[i]['storeName'] + "' id='" + storedata[i]['storeId'] + "'><label for='" + storedata[i]['storeId'] + "'>" + storedata[i]['storeName'] + "</label>";
+			if (i % 2 > 0) {
+				htmltemp += "<br>";
+			}
 		}
 	}
 	$('#storedialog').html(htmltemp);
@@ -1136,18 +1171,17 @@ function _buildSampleDialog(jsondata) {
 	var storegroupdata = jsondata['storeGroup'];
 	htmltemp = "<input type='checkbox' id='all' value='all'>全选</input><br>";
 	for (var i = 0; i < storegroupdata.length; i++) {
-		htmltemp +=
-			"<input type='checkbox' onclick='_filterchecked(this)' name='门店组' value='" +
-			storegroupdata[i]['storeGroupName'] + "' id='" + storegroupdata[i][
-				'storeGroupId'
-			] + "'><label for='" + storegroupdata[i]['storeGroupId'] + "'>" +
-			storegroupdata[i]['storeGroupName'] + "</label>";
-		if (i % 2 > 0) {
-			htmltemp += "<br>";
+		if (storegroupdata[i]['storeGroupId'] != '') {
+			htmltemp += "<input type='checkbox' onclick='_filterchecked(this)' name='门店组' value='" + storegroupdata[i]['storeGroupName'] + "' id='" + storegroupdata[i]['storeGroupId'] + "'><label for='" + storegroupdata[i]['storeGroupId'] + "'>" + storegroupdata[i]['storeGroupName'] + "</label>";
+			if (i % 2 > 0) {
+				htmltemp += "<br>";
+			}
 		}
 	}
 	$('#storegroupdialog').html(htmltemp);
 	reportGlobal.html.storegroupdialog = htmltemp;
+
+	_bindStoreCheckBox();
 
 	html = "";
 	var q = dialog.find(".questionaire");
@@ -1166,33 +1200,21 @@ function _buildSampleDialog(jsondata) {
 	};
 
 	for (var j = 0; j < qGroup.length; j++) {
-		if (qGroup[j]['businessType'] != 'groupCustomerVoice' && qGroup[j][
-				'filterFlag'
-			]) {
+		if (qGroup[j]['businessType'] != 'groupCustomerVoice' && qGroup[j]['filterFlag']) {
 			html += "<div class='splitter'></div>";
-			html += "<div class='heading' id='" + qGroup[j]['questionGroupId'] + "' >" +
-				qGroup[j]['name'] + "</div>";
+			html += "<div class='heading' id='" + qGroup[j]['questionGroupId'] + "' >" + qGroup[j]['name'] + "</div>";
 			var judgeCount = 0;
 			for (var i = 0; i < qdata.length; i++) {
-				if (qdata[i]['filterFlag'] && qGroup[j]['questionGroupId'] == qdata[i][
-						'questionGroupId'
-					] && (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' &&
-						_compareDates(
-							qdata[i]['activePeriod'], ds2)))) {
+				if (qdata[i]['filterFlag'] && qGroup[j]['questionGroupId'] == qdata[i]['questionGroupId'] && (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' && _compareDates(
+						qdata[i]['activePeriod'], ds2)))) {
 					if (qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] +
-							"' ><div class='questionlabel'>" + qdata[i]['questionName'] +
-							"</div><div class='optionsdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' ><div class='questionlabel'>" + qdata[i]['questionName'] + "</div><div class='optionsdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox' onclick='_filterchecked(this)' name='" +
-									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
-									"' id='" + option[k]['optionId'] + "'><label for='" + option[k][
-										'optionId'
-									] + "'>" + option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox' onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] + "' id='" + option[k]['optionId'] + "'><label for='" + option[k]['optionId'] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
@@ -1201,43 +1223,29 @@ function _buildSampleDialog(jsondata) {
 						if (judgeCount == 1) {
 							html += "<span style='padding-left:12px'>"
 						}
-						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" +
-							qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] +
-							"' id='" + qdata[i]['questionId'] + "'><label for='" + qdata[i][
-								'questionId'
-							] + "'>" + qdata[i]['questionName'] + "</label>";
+						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] + "' id='" + qdata[i]['questionId'] + "'><label for='" + qdata[i]['questionId'] + "'>" + qdata[i]['questionName'] + "</label>";
 						if (judgeCount == 1) {
 							html += "</span>"
 						}
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Degree') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" +
-							qdata[i]['questionName'] + "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" +
-									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
-									"'  id='" + option[k]['optionId'] + "'><label for='" + option[k][
-										'optionId'
-									] + "'>" + option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] + "'  id='" + option[k]['optionId'] + "'><label for='" + option[k]['optionId'] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Score') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" +
-							qdata[i]['questionName'] + "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" +
-									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
-									"'  id='" + option[k]['optionId'] + "'><label for='" + option[k][
-										'optionId'
-									] + "'>" + option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] + "'  id='" + option[k]['optionId'] + "'><label for='" + option[k]['optionId'] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
@@ -1259,12 +1267,9 @@ function buildDimensionDialog(jsondata) {
 	var html = "";
 	var store = dialog.find(".store");
 	html += "<div class='heading'>分店选择:</div>";
-	html +=
-		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='store' id='storeradio' ><label for='storeradio'>分店</label>";
-	html +=
-		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='storegroup' id='storegroupradio' ><label for='storegroupradio'>分店组</label>";
-	html +=
-		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='nostore' id='nostoreradio' checked><label for='nostoreradio'>未分店</label>";
+	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='store' id='storeradio' ><label for='storeradio'>分店</label>";
+	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='storegroup' id='storegroupradio' ><label for='storegroupradio'>分店组</label>";
+	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='nostore' id='nostoreradio' checked><label for='nostoreradio'>未分店</label>";
 	store.html(html);
 	reportGlobal.html = {};
 	reportGlobal.html.store = html;
@@ -1272,12 +1277,7 @@ function buildDimensionDialog(jsondata) {
 	var storedata = jsondata['store'];
 	var htmltemp = "<input type='checkbox' id='all' value='all'>全选</input><br>";
 	for (var i = 0; i < storedata.length; i++) {
-		htmltemp +=
-			"<input type='checkbox' onclick='_filterchecked(this)' name='门店' value='" +
-			storedata[i]['storeName'] + "' id='" + storedata[i]['storeId'] +
-			"'><label for='" + storedata[i]['storeId'] + "'>" + storedata[i][
-				'storeName'
-			] + "</label>";
+		htmltemp += "<input type='checkbox' onclick='_filterchecked(this)' name='门店' value='" + storedata[i]['storeName'] + "' id='" + storedata[i]['storeId'] + "'><label for='" + storedata[i]['storeId'] + "'>" + storedata[i]['storeName'] + "</label>";
 		if (i % 2 > 0) {
 			htmltemp += "<br>";
 		}
@@ -1288,18 +1288,14 @@ function buildDimensionDialog(jsondata) {
 	var storegroupdata = jsondata['storeGroup'];
 	htmltemp = "<input type='checkbox' id='all' value='all'>全选</input><br>";
 	for (var i = 0; i < storegroupdata.length; i++) {
-		htmltemp +=
-			"<input type='checkbox' onclick='_filterchecked(this)' name='门店组' value='" +
-			storegroupdata[i]['storeGroupName'] + "' id='" + storegroupdata[i][
-				'storeGroupId'
-			] + "'><label for='" + storegroupdata[i]['storeGroupId'] + "'>" +
-			storegroupdata[i]['storeGroupName'] + "</label>";
+		htmltemp += "<input type='checkbox' onclick='_filterchecked(this)' name='门店组' value='" + storegroupdata[i]['storeGroupName'] + "' id='" + storegroupdata[i]['storeGroupId'] + "'><label for='" + storegroupdata[i]['storeGroupId'] + "'>" + storegroupdata[i]['storeGroupName'] + "</label>";
 		if (i % 2 > 0) {
 			htmltemp += "<br>";
 		}
 	}
 	$('#storegroupdialog').html(htmltemp);
 	reportGlobal.html.storegroupdialog = htmltemp;
+	_bindStoreCheckBox();
 
 	html = "";
 	var q = dialog.find(".questionaire");
@@ -1320,33 +1316,21 @@ function buildDimensionDialog(jsondata) {
 	};
 
 	for (var j = 0; j < qGroup.length; j++) {
-		if (qGroup[j]['businessType'] != 'groupCustomerVoice' && qGroup[j][
-				'filterFlag'
-			]) {
+		if (qGroup[j]['businessType'] != 'groupCustomerVoice' && qGroup[j]['filterFlag']) {
 			html += "<div class='splitter'></div>";
-			html += "<div class='heading' id='" + qGroup[j]['questionGroupId'] + "' >" +
-				qGroup[j]['name'] + "</div>";
+			html += "<div class='heading' id='" + qGroup[j]['questionGroupId'] + "' >" + qGroup[j]['name'] + "</div>";
 			var judgeCount = 0;
 			for (var i = 0; i < qdata.length; i++) {
-				if (qdata[i]['filterFlag'] && qGroup[j]['questionGroupId'] == qdata[i][
-						'questionGroupId'
-					] && (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' &&
-						_compareDates(
-							qdata[i]['activePeriod'], ds2)))) {
+				if (qdata[i]['filterFlag'] && qGroup[j]['questionGroupId'] == qdata[i]['questionGroupId'] && (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' && _compareDates(
+						qdata[i]['activePeriod'], ds2)))) {
 					if (qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] +
-							"' ><div class='questionlabel'>" + qdata[i]['questionName'] +
-							"</div><div class='optionsdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' ><div class='questionlabel'>" + qdata[i]['questionName'] + "</div><div class='optionsdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox' onclick='_filterchecked(this)' name='" +
-									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
-									"' id='" + option[k]['optionId'] + "'><label for='" + option[k][
-										'optionId'
-									] + "'>" + option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox' onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] + "' id='" + option[k]['optionId'] + "'><label for='" + option[k]['optionId'] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
@@ -1355,43 +1339,29 @@ function buildDimensionDialog(jsondata) {
 						if (judgeCount == 1) {
 							html += "<span style='padding-left:12px'>"
 						}
-						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" +
-							qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] +
-							"' id='" + qdata[i]['questionId'] + "'><label for='" + qdata[i][
-								'questionId'
-							] + "'>" + qdata[i]['questionName'] + "</label>";
+						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] + "' id='" + qdata[i]['questionId'] + "'><label for='" + qdata[i]['questionId'] + "'>" + qdata[i]['questionName'] + "</label>";
 						if (judgeCount == 1) {
 							html += "</span>"
 						}
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Degree') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" +
-							qdata[i]['questionName'] + "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" +
-									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
-									"'  id='" + option[k]['optionId'] + "'><label for='" + option[k][
-										'optionId'
-									] + "'>" + option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] + "'  id='" + option[k]['optionId'] + "'><label for='" + option[k]['optionId'] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Score') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" +
-							qdata[i]['questionName'] + "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" +
-									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
-									"'  id='" + option[k]['optionId'] + "'><label for='" + option[k][
-										'optionId'
-									] + "'>" + option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] + "'  id='" + option[k]['optionId'] + "'><label for='" + option[k]['optionId'] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
@@ -1435,29 +1405,14 @@ function _saveFilters(name, saveflag) {
 			.format('yyyy/MM/dd'),
 		"end_time": end_time == null ? '' : end_time.format('yyyy/MM/dd')
 	};
-	// To save the store option and selected stores of the filter.
-	var storeSelected = [];
-	var storegroupSelected = [];
-	var storeTmp = {};
-	//Todo ###01
-	$(
-		'#' + $('input[name="storeradio"]:checked').val() + 'dialog input:checked').each(
-		function() {
-			if ("storeGroup" == $('input[name="storeradio"]:checked').val()) {
-				for (var i = 0; i < reportGlobal.jsondata.storeGroup.length; i++) {
-					if ($(this).attr('id') == reportGlobal.jsondata.storeGroup[i].storeGroupId) {
 
-					}
-				}
-			}
-			storeId.push($(this).attr('id'));
-			storeName.push($(this).val());
-		})
-	var store = {
-		"storeType": $('input[name="storeradio"]:checked').val(),
-		"store": storeSelected,
-		"storeGroup": storegroupSelected
-	};
+	reportGlobal.period = {
+			start_time: start_time,
+			end_time: end_time
+		}
+		// To save the store option and selected stores of the filter.	
+	var store = _saveStoreSelected();
+	reportGlobal.storeSelected = store;
 	var inputs = $('.sample-dialog .questionaire input:checked');
 	var vsltd = {};
 	var nsltd = {};
@@ -1485,8 +1440,7 @@ function _saveFilters(name, saveflag) {
 	}
 	var sf = {};
 	reportGlobal.savedfiltername = name;
-	reportGlobal.selectedStoreType = $('input[name="storeradio"]:checked')
-		.val();
+	reportGlobal.selectedStoreType = $('input[name="storeradio"]:checked').val();
 	sf.filter_id = uuid(32, 16);
 	sf.name = name;
 	sf.period = JSON.stringify(period);
@@ -1744,19 +1698,20 @@ function bindButtons() {
 				var type = "qust";
 				reportGlobal.savedDimns = [];
 				for (var i = 0; i < ckdmns.length; i++) {
-					if ($(ckdmns[i]).parent().text() == '门店' || $(ckdmns[i]).parent().text() ==
-						'门店组') {
+					if ($(ckdmns[i]).parent().text() == '门店' || $(ckdmns[i]).parent().text() == '门店组') {
 						funcname = '_topNavStoreClick';
 						type = "stor";
 					} else if ($(ckdmns[i]).parent().parent().attr(
 							'class') == 'dimensions-dropdown-div-right') {
 						funcname = '_topNavCustDimnClick';
 						type = "dimn";
+					} else {
+						funcname = '_topNavOtherClick';
+						type = "qust";
 					}
 
-					html += '<li><div onclick="' + funcname + '(this);" id="' + $(ckdmns[i]).val() +
-						'">' + $(ckdmns[i]).parent().text().replace(
-							'编辑删除', '') + ' </div></li>'
+					html += '<li><div onclick="' + funcname + '(this);" id="' + $(ckdmns[i]).val() + '">' + $(ckdmns[i]).parent().text().replace(
+						'编辑删除', '') + ' </div></li>'
 					savedDimn = {};
 					savedDimn.id = $(ckdmns[i]).val();
 					savedDimn.type = type;
@@ -1778,8 +1733,7 @@ function bindButtons() {
 	$(".date-dialog li").click(
 		function() {
 			$(".date-dialog-toggle").html($(this).html());
-			if ($(".dim.time").html() != "" || $(".dim.time_dimnsn").html() != "") {} else if (
-				$(".dim.store").html() != "" || $(".dim.one_dimnsn").html() != "") {
+			if ($(".dim.time").html() != "" || $(".dim.time_dimnsn").html() != "") {} else if ($(".dim.store").html() != "" || $(".dim.one_dimnsn").html() != "") {
 				$(".dim").html("");
 				$(".dim.time").html("true")
 			} else {
@@ -1817,8 +1771,7 @@ function bindButtons() {
 			} else if (ui.item.label == '按时间') {
 				reportGlobal.dimensions.dateType = '';
 			}
-			if ($(".dim.time").html() != "" || $(".dim.time_dimnsn").html() != "") {} else if (
-				$(".dim.store").html() != "" || $(".dim.one_dimnsn").html() != "") {
+			if ($(".dim.time").html() != "" || $(".dim.time_dimnsn").html() != "") {} else if ($(".dim.store").html() != "" || $(".dim.one_dimnsn").html() != "") {
 				$(".dim").html("");
 				$(".dim.time").html("true")
 			} else {
@@ -1904,13 +1857,13 @@ function reloadPageMapping() {
 /*
  * "dimnsn" : "p8", "one_dimnsn" : "p411", "store" : "p11", "time" : "p10",
  * "time_dimnsn" : "p13",
- *
+ * 
  * "questionId" : "16", "questionGroupId" : "10", "chartOneDimnsn" : "p1",
  * "chartMultiDimnsn" : "p4", "chartStore" : "p8", "chartTime" : "p8",
  * "chartTimeDimnsn" : "p8",
- *
+ * 
  * var v ; // start testing data setting
- *
+ * 
  * if ($(".dimnsn>li>div:eq(0)").hasClass("active")) { v = "location"; }else if
  * ($(".dimnsn>li>div:eq(1)").hasClass("active")) { v = "mealtime"; }else if
  * ($(".dimnsn>li>div:eq(2)").hasClass("active")) { v = "custtype"; }else if
@@ -1931,7 +1884,7 @@ function loadPage() {
 	var qlist = [];
 
 	for (var i = 0; i < data.length; i++) {
-		if (qgroupid == data[i].questionGroupId) {
+		if (qgroupid == data[i].questionGroupId && data[i].activePeriod != null && data[i].activePeriod.length > 0 && _compareDates(data[i].activePeriod, reportGlobal.period)) {
 			var qst = {};
 			qst.questionGroupId = qgroupid;
 			qst.questionId = data[i].questionId;
@@ -1944,8 +1897,7 @@ function loadPage() {
 			mapping = data[i];
 			questionName = data[i].questionName;
 		}
-		if (data[i].businessType != null && data[i].businessType != '' &&
-			reportGlobal.specialQuestions != '') {
+		if (data[i].businessType != null && data[i].businessType != '' && reportGlobal.specialQuestions != '') {
 			var ql = {};
 			ql.questionId = data[i].questionId;
 			ql.businessType = data[i].businessType;
@@ -1979,7 +1931,8 @@ function loadPage() {
 		questionGroup: JSON.stringify(qstGrup),
 		groupId: qid,
 		questionName: questionName,
-		specialQuestions: reportGlobal.specialQuestions
+		specialQuestions: reportGlobal.specialQuestions,
+		store: JSON.stringify(reportGlobal.storeSelected)
 	};
 	$.ajax({
 		type: 'post',
@@ -1999,19 +1952,16 @@ function loadPage() {
 
 	// eval('load_'+page+'()');
 	/*
-	 * switch(page) {
-	 *  }
+	 * switch(page) { }
 	 */
 }
 
 function getTotalCount() {
 	var cdate = new Date();
 	cdate.setMonth(cdate.getMonth() - 6);
-	var start_time = _string2Json(reportGlobal.samplefilter.period).start_time ==
-		'' ? cdate
+	var start_time = _string2Json(reportGlobal.samplefilter.period).start_time == '' ? cdate
 		.format('yyyy/MM/dd') : _string2Json(reportGlobal.samplefilter.period).start_time;
-	var end_time = _string2Json(reportGlobal.samplefilter.period).end_time == '' ?
-		(new Date())
+	var end_time = _string2Json(reportGlobal.samplefilter.period).end_time == '' ? (new Date())
 		.format('yyyy/MM/dd') : _string2Json(reportGlobal.samplefilter.period).end_time;
 	$('.timeperiodlabel').html(start_time + ' - ' + end_time);
 	var postdata = {
@@ -2037,22 +1987,46 @@ function getTotalCount() {
 }
 
 function drawCharts(jsondata) {
-	//根绝参数判断是否要显示chart还是tablea
-	var html = "<table class='tablesorter'><thead><tr>";
-	html +=
-		"<th><div><div class='summary-dropdown-toggle'>Dimension<span class='table-caret' style='float:right;margin-top:11px;'></span></div>";
-	html +=
-		'<ul class="summary-dropdown-menu"><li><input type="checkbox" name="offering-summary" checked>Offerings by Business Unit</li><li><input type="checkbox" name="iot-summary" checked>Geography by IOTs</li></ul>'; //<li><input type="checkbox" name="platform-summary" checked>Platform</li></ul>';
-	html +=
-		"</div></th><th>Visit</th><th>Visit MTM</th><th>Engagement Rate</th><th>Engagement Rate MTM</th><th>Engaged Visit</th><th>Conversion Rate</th><th>Conversion Rate MTM</th><th>Web Purchase</th>";
-	html += "</tr></thead>";
-	// 基于准备好的dom，初始化echarts图表
-	var chart = echarts.init($(".chart-main")[0]);
-	if (jsondata.option) {
-		chart
-			.setOption(typeof(jsondata.option) == 'string' ? _string2Json(jsondata.option) :
-				jsondata.option);
+	// 根绝参数判断是否要显示chart还是tablea
+	if (jsondata.type == 'table') {
+		$('.chart-main').hide();
+		$('.table-main')
+			.width(
+				$('.middle-center.ui-layout-pane.ui-layout-pane-center')
+				.width() * 0.9);
+		$('.table-main').show();			
+		var html ="<table id='summarytable' class='tablesorter'><thead><tr><th></th>";
+		for(var i =0; i< jsondata.option.total.length; i ++){
+			html +="<th>" + jsondata.option.total[i]+ "</th>";
+		}
+		html += "</tr></thead><tbody>";
+		for(var i =0; i< jsondata.option.data.length; i ++){
+			html +="<tr>";
+			html += "<th>" + jsondata.option.data[i].questionName+ "</th>";
+			for(var j =0; j< jsondata.option.data[i].data.length; j ++){
+				html += "<td>" + jsondata.option.data[i].data[j]+ "%</td>";
+			}
+			html +="</tr>";
+		}
+		html += "</tbody></table>";	
+		$('.table-main').html(html);
+
+	} else if (jsondata.type == 'charttable') {
+
+	} else {
+		$('.table-main').hide();
+		$('.chart-main')
+			.width(
+				$('.middle-center.ui-layout-pane.ui-layout-pane-center')
+				.width() * 0.9);
+		$('.chart-main').show();
+		var chart = echarts.init($(".chart-main")[0]);
+		if (jsondata.option) {
+			chart.setOption(typeof(jsondata.option) == 'string' ? _string2Json(jsondata.option) : jsondata.option);
+		}
 	}
+	// 基于准备好的dom，初始化echarts图表
+
 	$(".pcont .title").html(jsondata.title);
 	if (jsondata.chartlegend) {
 		$(".pcont .chartlegend").show();

@@ -204,3 +204,8 @@ fieldset[disabled] .form-control {  cursor: not-allowed;}
 .sumalertred {background-color: red;border-radius: 1px;color: red;float: left;height: 10px;margin-left: 3px;margin-top: 3px;width: 10px;}
 .sumalertgreen {background-color: green;border-radius: 1px;color: red;float: left;height: 10px;margin-left: 3px;margin-top: 3px;width: 10px;}
 .sumalertyellow {background-color: yellow;border-radius: 1px;color: red;float: left;height: 10px;margin-left: 3px;margin-top: 3px;width: 10px;}
+table.tablesorter thead {background-color:#44a12b; height:40px;}
+table.tablesorter {width:80%}
+table.tablesorter tbody tr:nth-child(2n+1) {background-color: #c6e38e;}
+table.tablesorter tbody tr:nth-child(2n) {background-color: #ededed;}
+table.tablesorter tr td {text-align: center;}

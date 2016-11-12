@@ -96,7 +96,7 @@ public class MybChartD8 extends MybChart {
 							commons.add(jaData.getDouble(j2));
 						}
 						Collections.sort(commons);
-						double maxMin = commons.get(0)-commons.get(commons.size());
+						double maxMin = commons.get(0)-commons.get(commons.size()-1);
 						if(maxMin>=5){
 							++gtFive;
 						}else if(maxMin<5){
@@ -165,7 +165,7 @@ public class MybChartD8 extends MybChart {
 					aReq.setSuccess(true);
 					aReq.setData(rspjb);
 					
-				} else if ("storeGroup".equals(jbStore.getString("store_type"))) {
+				} else if ("storeGroup".equals(jbStore.getString("storeType"))) {
 					List<String> storeIds = new ArrayList<String>();
 					JSONArray ja = JSONArray.fromObject(jbStore.getJSONArray("storeGroup"));
 					Map<String, List<String>> map = new HashMap<String, List<String>>();
@@ -356,7 +356,7 @@ public class MybChartD8 extends MybChart {
 				} else {
 					Percentage = percentageTrue / percentageAll * 100;
 				}
-				jaStore.add(Percentage + "%");
+				jaStore.add(Percentage );
 			}
 			jb.put("data", jaStore);
 			// 最终返回数据
@@ -422,7 +422,7 @@ public class MybChartD8 extends MybChart {
 				} else {
 					Percentage = percentageTrue / percentageAll * 100;
 				}
-				jaStore.add(Percentage + "%");
+				jaStore.add(Percentage );
 			}
 			jb.put("data", jaStore);
 			// 最终返回数据
