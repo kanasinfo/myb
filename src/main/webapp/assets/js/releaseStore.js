@@ -12,7 +12,6 @@ jQuery(function($){
 		$(":checkbox:checked","#mainListTbody").each(function(){
 			storeId.push($(this).attr('value'));
 		})
-		alert(storeId);
 		//获取选中数据
 		$("#downLoadData").val(JSON.stringify(storeId));
 		var downLoadData = $("#downLoadData").val();
