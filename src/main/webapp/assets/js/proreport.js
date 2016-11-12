@@ -23,52 +23,54 @@ reportGlobal.savedDimns = [];
 // For recording status
 reportGlobal.savedFilterDimensions = "";
 reportGlobal.specialQuestions = "";
+reportGlobal.store = "";
+reportGlobal.storeGroup = "";
 reportGlobal.P52 = {};
 reportGlobal.P52.labelTop = {
-	normal : {
-		label : {
-			show : true,
-			position : 'center',
-			formatter : '{b}',
-			textStyle : {
-				baseline : 'bottom'
+	normal: {
+		label: {
+			show: true,
+			position: 'center',
+			formatter: '{b}',
+			textStyle: {
+				baseline: 'bottom'
 			}
 		},
-		labelLine : {
-			show : false
+		labelLine: {
+			show: false
 		}
 	}
 };
 reportGlobal.P52.labelFromatter = {
-	normal : {
-		label : {
-			formatter : function(params) {
+	normal: {
+		label: {
+			formatter: function(params) {
 				return 100 - params.value + '%'
 			},
-			textStyle : {
-				baseline : 'top'
+			textStyle: {
+				baseline: 'top'
 			}
 		}
 	}
 };
 reportGlobal.P52.labelBottom = {
-	normal : {
-		color : '#ccc',
-		label : {
-			show : true,
-			position : 'center'
+	normal: {
+		color: '#ccc',
+		label: {
+			show: true,
+			position: 'center'
 		},
-		labelLine : {
-			show : false
+		labelLine: {
+			show: false
 		}
 	},
-	emphasis : {
-		color : 'rgba(0,0,0,0)'
+	emphasis: {
+		color: 'rgba(0,0,0,0)'
 	}
 };
 reportGlobal.P52.tooltip = {
-	trigger : 'item',
-	formatter : '{a} <br/>{b} : {c} ({d}%)'
+	trigger: 'item',
+	formatter: '{a} <br/>{b} : {c} ({d}%)'
 };
 /*
  * 函数：格式化日期 参数：formatStr-格式化字符串 d：将日显示为不带前导零的数字，如1 dd：将日显示为带前导零的数字，如01
@@ -95,84 +97,89 @@ Date.prototype.format = function(formatStr) {
 		return zeros + value;
 	};
 	return formatStr
-			.replace(
-					/"[^"]*"|'[^']*'|\b(?:d{1,4}|M{1,4}|yy(?:yy)?|([hHmstT])\1?|[lLZ])\b/g,
-					function($0) {
-						switch ($0) {
-						case 'd':
-							return date.getDate();
-						case 'dd':
-							return zeroize(date.getDate());
-						case 'ddd':
-							return [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri',
-									'Sat' ][date.getDay()];
-						case 'dddd':
-							return [ 'Sunday', 'Monday', 'Tuesday',
-									'Wednesday', 'Thursday', 'Friday',
-									'Saturday' ][date.getDay()];
-						case 'M':
-							return date.getMonth() + 1;
-						case 'MM':
-							return zeroize(date.getMonth() + 1);
-						case 'MMM':
-							return [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-									'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ][date
-									.getMonth()];
-						case 'MMMM':
-							return [ 'January', 'February', 'March', 'April',
-									'May', 'June', 'July', 'August',
-									'September', 'October', 'November',
-									'December' ][date.getMonth()];
-						case 'yy':
-							return new String(date.getFullYear()).substr(2);
-						case 'yyyy':
-							return date.getFullYear();
-						case 'h':
-							return date.getHours() % 12 || 12;
-						case 'hh':
-							return zeroize(date.getHours() % 12 || 12);
-						case 'H':
-							return date.getHours();
-						case 'HH':
-							return zeroize(date.getHours());
-						case 'm':
-							return date.getMinutes();
-						case 'mm':
-							return zeroize(date.getMinutes());
-						case 's':
-							return date.getSeconds();
-						case 'ss':
-							return zeroize(date.getSeconds());
-						case 'l':
-							return date.getMilliseconds();
-						case 'll':
-							return zeroize(date.getMilliseconds());
-						case 'tt':
-							return date.getHours() < 12 ? 'am' : 'pm';
-						case 'TT':
-							return date.getHours() < 12 ? 'AM' : 'PM';
-						}
-					});
+		.replace(
+			/"[^"]*"|'[^']*'|\b(?:d{1,4}|M{1,4}|yy(?:yy)?|([hHmstT])\1?|[lLZ])\b/g,
+			function($0) {
+				switch ($0) {
+					case 'd':
+						return date.getDate();
+					case 'dd':
+						return zeroize(date.getDate());
+					case 'ddd':
+						return ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri',
+							'Sat'
+						][date.getDay()];
+					case 'dddd':
+						return ['Sunday', 'Monday', 'Tuesday',
+							'Wednesday', 'Thursday', 'Friday',
+							'Saturday'
+						][date.getDay()];
+					case 'M':
+						return date.getMonth() + 1;
+					case 'MM':
+						return zeroize(date.getMonth() + 1);
+					case 'MMM':
+						return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+							'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+						][date
+							.getMonth()
+						];
+					case 'MMMM':
+						return ['January', 'February', 'March', 'April',
+							'May', 'June', 'July', 'August',
+							'September', 'October', 'November',
+							'December'
+						][date.getMonth()];
+					case 'yy':
+						return new String(date.getFullYear()).substr(2);
+					case 'yyyy':
+						return date.getFullYear();
+					case 'h':
+						return date.getHours() % 12 || 12;
+					case 'hh':
+						return zeroize(date.getHours() % 12 || 12);
+					case 'H':
+						return date.getHours();
+					case 'HH':
+						return zeroize(date.getHours());
+					case 'm':
+						return date.getMinutes();
+					case 'mm':
+						return zeroize(date.getMinutes());
+					case 's':
+						return date.getSeconds();
+					case 'ss':
+						return zeroize(date.getSeconds());
+					case 'l':
+						return date.getMilliseconds();
+					case 'll':
+						return zeroize(date.getMilliseconds());
+					case 'tt':
+						return date.getHours() < 12 ? 'am' : 'pm';
+					case 'TT':
+						return date.getHours() < 12 ? 'AM' : 'PM';
+				}
+			});
 }
 
 function startInits() {
 	// Init Date picker in Filter Dialog
 	$('input[name="start"]').datepicker({
-		maxDate : 0
+		maxDate: 0
 	});
 	$('input[name="end"]').datepicker({
-		maxDate : 0
+		maxDate: 0
 	});
 	_initSampleFilter();
 
 	$('.chart-main')
-			.height(
-					$('.middle-center.ui-layout-pane.ui-layout-pane-center')
-							.height() * 0.9);
+		.height(
+			$('.middle-center.ui-layout-pane.ui-layout-pane-center')
+			.height() * 0.9);
 	$('.chart-main')
-			.width(
-					$('.middle-center.ui-layout-pane.ui-layout-pane-center')
-							.width() * 0.9);
+		.width(
+			$('.middle-center.ui-layout-pane.ui-layout-pane-center')
+			.width() * 0.9);
 }
 
 function _initSampleFilter() {
@@ -180,19 +187,21 @@ function _initSampleFilter() {
 	cdate.setMonth(cdate.getMonth() - 6);
 	var value = {};
 	var period = {
-		start_time : cdate.format('yyyy/MM/dd'),
-		end_time : ''
+		start_time: cdate.format('yyyy/MM/dd'),
+		end_time: ''
 	};
 	var store = {
-		store_type : "",
-		store_id : [ "" ],
-		store_labels : [ "" ]
+		storeType: "",
+		storeId: [""],
+		storeName: [""]
 	};
 	reportGlobal.samplefilter = {};
 	reportGlobal.samplefilter.filter_id = uuid(32, 16);
 	reportGlobal.samplefilter.period = JSON.stringify(period);
 	reportGlobal.samplefilter.store = JSON.stringify(store);
 	reportGlobal.samplefilter.value = JSON.stringify(value);
+	reportGlobal.store = {};
+	reportGlobal.storeGroup = {};
 }
 
 function _initDimnDialog() {
@@ -205,7 +214,7 @@ function _initDimnDialog() {
 	if (lisize > 2) {
 		for (var i = 0; i < lisize - 2; i++) {
 			console.log($($('.newsmplbtn').parent().parent().find('li')[i])
-					.text());
+				.text());
 			$('.newsmplbtn').parent().parent().find('li')[0].remove();
 		}
 		$('.newsmplbtn').parent().next().css('height', '500px');
@@ -220,27 +229,26 @@ function dimn_remove_samplegroup(dom) {
 	$(dom).parent().before().addClass('active');
 	// $('#dimn-tabs-pane-'+$(dom).parent().before().find('a').text()).show();
 	$(dom).parent().parent().find('li:last').height(
-			$(dom).parent().parent().find('li:last').height() + 35);
+		$(dom).parent().parent().find('li:last').height() + 35);
 	_removesamplegroup(dom);
 	$(dom).parent().remove();
 }
 
 function deletedimension(dom) {
 	var dimnId = $(dom).parent().find('input').val();
-	var url = reportGlobal.ctx
-			+ '/page/proreport/delTemplateDimensionsById.json';
+	var url = reportGlobal.ctx + '/page/proreport/delTemplateDimensionsById.json';
 	var postdata = {
-		id : reportGlobal.jsondata.id,
-		dimensionId : dimnId
+		id: reportGlobal.jsondata.id,
+		dimensionId: dimnId
 	};
 
 	$.ajax({
-		type : 'post',
-		url : url,
-		data : postdata,
-		dataType : 'json',
-		cache : false,
-		success : function(data) {
+		type: 'post',
+		url: url,
+		data: postdata,
+		dataType: 'json',
+		cache: false,
+		success: function(data) {
 			if (data.success) {
 				$(dom).parent().remove();
 				console.log("自定义维度'" + $(dom).parent().text() + "'删除成功！");
@@ -258,20 +266,19 @@ function newsamplegroup(dom) {
 	// Save current selected member
 	if ($('.dimension-dialog .store').html() != '') {
 		_saveDimnsnFilters($(dom).parent().parent().find("li[class='active']")
-				.find('span').attr('id'), $(dom).parent().parent().find(
+			.find('span').attr('id'), $(dom).parent().parent().find(
 				"li[class='active']").find('span').text(), false);
 	}
 	$(dom).parent().parent().find("li").removeClass("active");
 	// Add new member tab
 	var rn = uuid(30, 16);
 	$(dom)
-			.parent()
-			.before(
-					' <li><span onclick="_leftDimnGroupClick(this);" class="dimnSGtextspan" id="SG'
-							+ rn
-							+ '" >自定义样品组0'
-							+ ($('.dimn-left-nav').find('ul li').length - 1)
-							+ '</span> <button onclick="dimn_remove_samplegroup(this);" type="button" class="close">×</button></li>');
+		.parent()
+		.before(
+			' <li><span onclick="_leftDimnGroupClick(this);" class="dimnSGtextspan" id="SG' +
+			rn + '" >自定义样品组0' + ($('.dimn-left-nav').find('ul li').length - 1) +
+			'</span> <button onclick="dimn_remove_samplegroup(this);" type="button" class="close">×</button></li>'
+		);
 	$(dom).parent().prev().addClass("active");
 	$(dom).parent().next().height($(dom).parent().next().height() - 35);
 	// Redraw the content pane
@@ -301,7 +308,7 @@ function _leftDimnGroupClick(dom) {
 	// Save current selected member
 	if ($('.dimension-dialog .store').html() != '') {
 		_saveDimnsnFilters($(dom).parent().parent().find("li[class='active']")
-				.find('span').attr('id'), $(dom).parent().parent().find(
+			.find('span').attr('id'), $(dom).parent().parent().find(
 				"li[class='active']").find('span').text(), false);
 	}
 	$(dom).parent().parent().find('li').removeClass('active');
@@ -313,7 +320,7 @@ function _leftDimnGroupClick(dom) {
 function _redrawdimnsn4tabs() {
 	$('.dimension-dialog input[name="start"]').datepicker('setDate', '');
 	$('.dimension-dialog input[name="end"]').datepicker("option", "disabled",
-			false);
+		false);
 	$('.dimension-dialog input[name="end"]').datepicker('setDate', '');
 	if ($('.dimension-dialog input[name="nowtime"]').is(':checked')) {
 		$('.dimension-dialog input[name="nowtime"]').prop('checked', false);
@@ -327,14 +334,14 @@ function _redrawdimnsn4tabs() {
 function _initDimnTempData() {
 	if (!reportGlobal.dimensionstemp) {
 		reportGlobal.dimensionstemp = {
-			"dimensionId" : $('.dimension-name input').attr('id'),
-			"name" : $('.dimension-name input').val(),
-			"members" : []
+			"dimensionId": $('.dimension-name input').attr('id'),
+			"name": $('.dimension-name input').val(),
+			"members": []
 		};
 	} else if (reportGlobal.dimensionstemp.dimensionId != $(
 			'.dimension-name input').attr('id')) {
 		reportGlobal.dimensionstemp.dimensionId = $('.dimension-name input')
-				.attr('id');
+			.attr('id');
 		reportGlobal.dimensionstemp.name = $('.dimension-name input').val();
 		reportGlobal.dimensionstemp.members = [];
 	} else {
@@ -371,29 +378,30 @@ function _loadSavedDimnsnList(jsondata) {
 		// v++;
 		// }
 
-		if (qdata[i]['activeFlag']
-				&& qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
-			html += "<li><input name='dimnsncheck' type='checkbox' value='"
-					+ qdata[i]['questionId'] + "' />"
-					+ qdata[i]['questionName'] + "</li>";
+		if (qdata[i]['activeFlag'] && qdata[i]['questionType'] ==
+			'com.myb.questiontype.SingleSelect') {
+			html += "<li><input name='dimnsncheck' type='checkbox' value='" + qdata[i][
+				'questionId'
+			] + "' />" + qdata[i]['questionName'] + "</li>";
 		}
 	}
 	if (reportGlobal.selectedStoreType == 'store') {
 		$('.dimensions-dropdown-div-left').children().first().show();
 		$('.dimensions-dropdown-div-left')
-				.children()
-				.first()
-				.parent()
-				.html(
-						'<li><input type="checkbox" value="store" name="dimnsncheck">门店</li>');
+			.children()
+			.first()
+			.parent()
+			.html(
+				'<li><input type="checkbox" value="store" name="dimnsncheck">门店</li>');
 	} else if (reportGlobal.selectedStoreType == 'storegroup') {
 		$('.dimensions-dropdown-div-left').children().first().show();
 		$('.dimensions-dropdown-div-left')
-				.children()
-				.first()
-				.parent()
-				.html(
-						'<li><input type="checkbox" value="storegroup" name="dimnsncheck">门店组</li>');
+			.children()
+			.first()
+			.parent()
+			.html(
+				'<li><input type="checkbox" value="storegroup" name="dimnsncheck">门店组</li>'
+			);
 	} else if (reportGlobal.selectedStoreType == 'nostore') {
 		$('.dimensions-dropdown-div-left').children().first().hide();
 	} else {
@@ -405,11 +413,10 @@ function _loadSavedDimnsnList(jsondata) {
 	html = "";
 	if (qdata && qdata.length > 0) {
 		for (var i = 0; i < qdata.length; i++) {
-			html += "<li><input name='dimnsncheck' type='checkbox' value='"
-					+ qdata[i]['dimensionId']
-					+ "' />"
-					+ qdata[i]['name']
-					+ "<span class='dimensions-edit-span' onclick='editdimension(this)'>编辑</span><span class='dimensions-delete-span' onclick='deletedimension(this)'>删除</span></li>";
+			html += "<li><input name='dimnsncheck' type='checkbox' value='" + qdata[i][
+					'dimensionId'
+				] + "' />" + qdata[i]['name'] +
+				"<span class='dimensions-edit-span' onclick='editdimension(this)'>编辑</span><span class='dimensions-delete-span' onclick='deletedimension(this)'>删除</span></li>";
 		}
 		$('.dimensions-dropdown-div-right').html(html);
 		$('.dimensions-dropdown-div-left').css("width", "40%");
@@ -452,38 +459,38 @@ function _loadSavedDimnsnDialog(mdata) {
 	// restore the left nav
 	for (var i = 0; i < reportGlobal.dimensionstemp["members"].length; i++) {
 		$('.newsmplbtn')
-				.parent()
-				.before(
-						' <li><span onclick="_leftDimnGroupClick(this);" class="dimnSGtextspan" id="'
-								+ reportGlobal.dimensionstemp["members"][i]["memberId"]
-								+ '" >'
-								+ reportGlobal.dimensionstemp["members"][i]["name"]
-								+ '</span> <button onclick="dimn_remove_samplegroup(this);" type="button" class="close">×</button></li>');
+			.parent()
+			.before(
+				' <li><span onclick="_leftDimnGroupClick(this);" class="dimnSGtextspan" id="' +
+				reportGlobal.dimensionstemp["members"][i]["memberId"] + '" >' +
+				reportGlobal.dimensionstemp["members"][i]["name"] +
+				'</span> <button onclick="dimn_remove_samplegroup(this);" type="button" class="close">×</button></li>'
+			);
 		// $(dom).parent().prev().addClass("active");
 		$('.newsmplbtn').parent().next().height(
-				$('.newsmplbtn').parent().next().height() - 35);
+			$('.newsmplbtn').parent().next().height() - 35);
 
 		$('#' + reportGlobal.dimensionstemp["members"][i]["memberId"])
-				.dblclick(
-						function() {
-							var span = $(this);
-							// 根据文本创建文本框 并加入表表中--文本框的样式自己调整
-							var text = span.text();
-							var txt = $(
-									"<input type='text' class='dimnSGinput'>")
-									.val(text);
-							txt.blur(function() {
-								// 失去焦点，保存值。
-								var newText = $(this).val();
+			.dblclick(
+				function() {
+					var span = $(this);
+					// 根据文本创建文本框 并加入表表中--文本框的样式自己调整
+					var text = span.text();
+					var txt = $(
+							"<input type='text' class='dimnSGinput'>")
+						.val(text);
+					txt.blur(function() {
+						// 失去焦点，保存值。
+						var newText = $(this).val();
 
-								// 移除文本框,显示新值
-								$(this).remove();
-								span.text(newText);
-								_saveTempDimnsnName(span.attr('id'), newText);
-							});
-							span.text("");
-							span.after(txt);
-						});
+						// 移除文本框,显示新值
+						$(this).remove();
+						span.text(newText);
+						_saveTempDimnsnName(span.attr('id'), newText);
+					});
+					span.text("");
+					span.after(txt);
+				});
 
 	}
 
@@ -505,25 +512,25 @@ function _loadSelectedOptions(so) {
 
 	buildDimensionDialog(reportGlobal.jsondata);
 	$('.dimension-dialog input[name="start"]').datepicker('setDate',
-			new Date(sf.period.start_time));
+		new Date(sf.period.start_time));
 	$('.dimension-dialog input[name="end"]').datepicker('setDate',
-			new Date(sf.period.end_time));
+		new Date(sf.period.end_time));
 	if (!sf.period.end_time) {
 		$('.dimension-dialog input[name="end"]').datepicker("option",
-				"disabled", true);
+			"disabled", true);
 		$('.dimension-dialog input[name="nowtime"]').prop('checked', true);
 	}
-	$('input[name="storeradio"][value="' + sf.store.store_type + '"]').prop(
-			'checked', true);
-	for (var i = 0; i < sf.store.store_id.length; i++) {
+	$('input[name="storeradio"][value="' + sf.store.storeType + '"]').prop(
+		'checked', true);
+	for (var i = 0; i < sf.store.storeId.length; i++) {
 		$(
-				'#' + sf.store.store_type + 'dialog input[id="'
-						+ sf.store.store_id[i] + '"]').prop('checked', true);
+			'#' + sf.store.storeType + 'dialog input[id="' + sf.store.storeId[i] +
+			'"]').prop('checked', true);
 	}
 
-	for ( var v in sf.value) {
-		if (typeof (sf.value[v]) == 'object') {
-			for ( var d in sf.value[v]) {
+	for (var v in sf.value) {
+		if (typeof(sf.value[v]) == 'object') {
+			for (var d in sf.value[v]) {
 				$('#' + sf.value[v][d]).prop('checked', true);
 			}
 		}
@@ -557,28 +564,28 @@ function _saveDimnsnFilters(id, name, saveflag) {
 	var dmnsnid = $('.dimension-name input').attr('id');
 	// To save the time period of the filter.
 	var start_time = $('.dimension-dialog input[name="start"]').datepicker(
-			'getDate');
+		'getDate');
 	var end_time = $('.dimension-dialog input[name="end"]').datepicker(
-			'getDate');
+		'getDate');
 	var period = {
-		"start_time" : start_time == null ? '' : start_time
-				.format('yyyy/MM/dd'),
-		"end_time" : end_time == null ? '' : end_time.format('yyyy/MM/dd')
+		"start_time": start_time == null ? '' : start_time
+			.format('yyyy/MM/dd'),
+		"end_time": end_time == null ? '' : end_time.format('yyyy/MM/dd')
 	};
 	// To save the store option and selected stores of the filter.
-	var store_id = [];
-	var store_labels = [];
+	var storeId = [];
+	var storeName = [];
 	$(
-			'#' + $('input[name="storeradio"]:checked').val()
-					+ 'dialog input:checked').each(function() {
-		store_id.push($(this).attr('id'));
-		store_labels.push($(this).val());
-	})
+		'#' + $('input[name="storeradio"]:checked').val() + 'dialog input:checked').each(
+		function() {
+			storeId.push($(this).attr('id'));
+			storeName.push($(this).val());
+		})
 	var store = {
-		"store_type" : $('.dimension-dialog input[name="storeradio"]:checked')
-				.val(),
-		"store_id" : store_id,
-		"store_labels" : store_labels
+		"storeType": $('.dimension-dialog input[name="storeradio"]:checked')
+			.val(),
+		"storeId": storeId,
+		"storeName": storeName
 	};
 	var inputs = $('.dimension-dialog .questionaire input:checked');
 	var vsltd = {};
@@ -630,41 +637,40 @@ function _saveDimnsnFilters(id, name, saveflag) {
 	if (!saveflag) {
 		// reportGlobal.tempFilters = sf;
 	} else {
-		var url = reportGlobal.ctx
-				+ '/page/proreport/addTemplateDimensions.json';
+		var url = reportGlobal.ctx + '/page/proreport/addTemplateDimensions.json';
 		var postdata = {
-			id : reportGlobal.jsondata.id,
-			data : JSON.stringify(reportGlobal.dimensionstemp)
+			id: reportGlobal.jsondata.id,
+			data: JSON.stringify(reportGlobal.dimensionstemp)
 		};
 		if (reportGlobal.jsondata["dimensions"]) {
 			for (var i = 0; i < reportGlobal.jsondata["dimensions"].length; i++) {
 				if (reportGlobal.jsondata["dimensions"][i].dimensionId == dmnsnid) {
 					reportGlobal.jsondata["dimensions"].splice(i, 1,
-							reportGlobal.dimensionstemp);
+						reportGlobal.dimensionstemp);
 					findmatchedflag = true;
-					url = reportGlobal.ctx
-							+ '/page/proreport/updateTemplateDimensionsById.json';
+					url = reportGlobal.ctx +
+						'/page/proreport/updateTemplateDimensionsById.json';
 					postdata.dimensionId = dmnsnid;
 				}
 			}
 			if (!findmatchedflag) {
 				reportGlobal.jsondata["dimensions"]
-						.push(reportGlobal.dimensionstemp);
+					.push(reportGlobal.dimensionstemp);
 			}
 
 		} else {
 			reportGlobal.jsondata["dimensions"] = [];
 			reportGlobal.jsondata["dimensions"]
-					.push(reportGlobal.dimensionstemp);
+				.push(reportGlobal.dimensionstemp);
 		}
 
 		$.ajax({
-			type : 'post',
-			url : url,
-			data : postdata,
-			dataType : 'json',
-			cache : false,
-			success : function(data) {
+			type: 'post',
+			url: url,
+			data: postdata,
+			dataType: 'json',
+			cache: false,
+			success: function(data) {
 				if (data.success) {
 					console.log("自定义维度'" + sf.name + "'保存成功！");
 				}
@@ -690,23 +696,23 @@ function buildLeftNav(jsondata) {
 		var cdate = new Date();
 		cdate.setMonth(cdate.getMonth() - 6);
 		period = {
-			start_time : cdate.format('yyyy/MM/dd'),
-			end_time : ''
+			start_time: cdate.format('yyyy/MM/dd'),
+			end_time: ''
 		};
 	}
 	var ds2 = {
-		start_time : new Date(period.start_time),
-		end_time : period.end_time == '' ? null : new Date(period.end_time)
+		start_time: new Date(period.start_time),
+		end_time: period.end_time == '' ? null : new Date(period.end_time)
 	};
 	for (var i = 0; i < qGroup.length; i++) {
 		if (qGroup[i]['businessType'] != 'groupCustomerVoice') {
 			if (i > 0) {
 				html += "</ul></div>";
 			}
-			html += "<h3><a " + " question_group_id='"
-					+ qGroup[i]['questionGroupId'] + "'"
-					+ " href='#' onclick='_leftNavQuestionGroupClick(this);'>"
-					+ qGroup[i]['name'] + "</a></h3>";
+			html += "<h3><a " + " question_group_id='" + qGroup[i]['questionGroupId'] +
+				"'" + " href='#' onclick='_leftNavQuestionGroupClick(this);'>" + qGroup[i][
+					'name'
+				] + "</a></h3>";
 			html += "<div style='padding:5px;'>";
 			html += "<ul";
 			if (!flag) {
@@ -715,18 +721,20 @@ function buildLeftNav(jsondata) {
 			html += ">";
 
 			for (var j = 0; j < leftNav.length; j++) {
-				if (leftNav[j]['questionGroupId'] == qGroup[i]['questionGroupId']
-						&& (leftNav[j]['activePeriod'] == '' || (leftNav[j]['activePeriod'] != '' && _compareDates(
+				if (leftNav[j]['questionGroupId'] == qGroup[i]['questionGroupId'] && (
+						leftNav[j]['activePeriod'] == '' || (leftNav[j]['activePeriod'] != '' &&
+							_compareDates(
 								leftNav[j]['activePeriod'], ds2)))) {
-					html += "<li><a "
-							+ " questionId='"
-							+ leftNav[j]['questionId']
-							+ "'"
-							+ " question_group_id='"
-							+ leftNav[j]['questionGroupId']
-							+ "'"
-							+ " href='#' onclick='_leftNavQuestionClick(this);'>"
-							+ leftNav[j]['questionName'] + "</a></li>";
+					if (('groupDriver,groupStandard'.indexOf(qGroup[i]['businessType']) > -1) &&
+						leftNav[j]['filterFlag']) {
+						//不显示driver和standard下面的filterFlag为True的问题
+					} else {
+						html += "<li><a " + " questionId='" + leftNav[j]['questionId'] + "'" +
+							" question_group_id='" + leftNav[j]['questionGroupId'] + "'" +
+							" href='#' onclick='_leftNavQuestionClick(this);'>" + leftNav[j][
+								'questionName'
+							] + "</a></li>";
+					}
 				}
 			}
 		}
@@ -734,8 +742,8 @@ function buildLeftNav(jsondata) {
 	html += "";
 	$(".left-nav").html(html);
 	$("#reportCategory").accordion({
-		heightStyle : "fill",
-		active : 0
+		heightStyle: "fill",
+		active: 0
 	});
 }
 
@@ -747,7 +755,7 @@ function _leftNavQuestionGroupClick(dom) {
 
 function _leftNavQuestionClick(dom) {
 	$(dom).parent().parent().parent().parent().find("ul li").removeClass(
-			"active");
+		"active");
 	$(dom).parent().addClass("active");
 
 	$(".question_group_id").html($(dom).attr('question_group_id'));
@@ -762,8 +770,8 @@ function _leftNavQuestionClick(dom) {
 function _refreshFilters(jsondata) {
 	if ($('.sample-dialog input[name="nowtime"]').is(':checked')) {
 		_buildSampleDialog(jsondata);
-	} else if ($('.sample-dialog input[name="start"]').datepicker("getDate") == null
-			&& $('.sample-dialog input[name="end"]').datepicker("getDate") == null) {
+	} else if ($('.sample-dialog input[name="start"]').datepicker("getDate") ==
+		null && $('.sample-dialog input[name="end"]').datepicker("getDate") == null) {
 		$(".sample-dialog .dialogAlertMessage").show();
 	} else {
 		_buildSampleDialog(jsondata);
@@ -773,8 +781,9 @@ function _refreshFilters(jsondata) {
 function _refreshDimnsnFilters(jsondata) {
 	if ($('.dimension-dialog input[name="nowtime"]').is(':checked')) {
 		buildDimensionDialog(jsondata);
-	} else if ($('.dimension-dialog input[name="start"]').datepicker("getDate") == null
-			&& $('.dimension-dialog input[name="end"]').datepicker("getDate") == null) {
+	} else if ($('.dimension-dialog input[name="start"]').datepicker("getDate") ==
+		null && $('.dimension-dialog input[name="end"]').datepicker("getDate") ==
+		null) {
 		$(".dimension-dialog .dialogAlertMessage").show();
 	} else {
 		buildDimensionDialog(jsondata);
@@ -816,11 +825,11 @@ function _compareDates(ds1, ds2) {
 		d1s = new Date(ds1[i].startTime);
 		d2s = new Date(ds2.start_time);
 		ds1[i].endTime == null || ds1[i].endTime == '' ? d1e = new Date(
-				'2100/01/01') : d1e = new Date(ds1[i].endTime);
+			'2100/01/01') : d1e = new Date(ds1[i].endTime);
 		ds2.end_time == null ? d2e = new Date('2100/01/01') : d2e = new Date(
-				ds2.end_time);
+			ds2.end_time);
 		_minD(d1e, d2e).format('yyyy/MM/dd') >= _maxD(d1s, d2s).format(
-				'yyyy/MM/dd') ? result = true : result = false;
+			'yyyy/MM/dd') ? result = true : result = false;
 		if (result) {
 			return result;
 		}
@@ -855,7 +864,7 @@ function buildTempFilterTopNav() {
 			classstring = ""
 		}
 		html += "<li><div " + classstring + " title='筛选条件: ";
-		for ( var label in labels) {
+		for (var label in labels) {
 			if ('object' == typeof labels[label]) {
 				html += label + ':'
 				for (var j = 0; j < labels[label].length; j++) {
@@ -870,9 +879,9 @@ function buildTempFilterTopNav() {
 		if (html.charAt(html.length - 1) == '/') {
 			html = html.substr(0, html.length - 1);
 		}
-		html += "' ><span class='filtertextspan'  onclick='_topFilterClick(this);'>"
-				+ fName
-				+ "</span><button class='close' type='button'  onclick='_topFilterRemove(this);'>×</button></div></li>";
+		html += "' ><span class='filtertextspan'  onclick='_topFilterClick(this);'>" +
+			fName +
+			"</span><button class='close' type='button'  onclick='_topFilterRemove(this);'>×</button></div></li>";
 		// $(".tempfilter").html(html);
 	}
 }
@@ -897,7 +906,7 @@ function buildSavedFilterTopNav(jsondata) {
 			classstring = ""
 		}
 		html += "<li><div " + classstring + " title='筛选条件: ";
-		for ( var label in labels) {
+		for (var label in labels) {
 			if ('object' == typeof labels[label]) {
 				html += label + ':'
 				for (var j = 0; j < labels[label].length; j++) {
@@ -912,18 +921,16 @@ function buildSavedFilterTopNav(jsondata) {
 		if (html.charAt(html.length - 1) == '/') {
 			html = html.substr(0, html.length - 1);
 		}
-		html += "' ><span class='filtertextspan' id='"
-				+ topNav[i]['filter_id']
-				+ "'  onclick='_topFilterClick(this);'>"
-				+ fName
-				+ "</span><button class='close' type='button'  onclick='_topFilterRemove(this);'>×</button></div></li>";
+		html += "' ><span class='filtertextspan' id='" + topNav[i]['filter_id'] +
+			"'  onclick='_topFilterClick(this);'>" + fName +
+			"</span><button class='close' type='button'  onclick='_topFilterRemove(this);'>×</button></div></li>";
 	}
 	$(".savedfilter").html(html);
 }
 
 function buildDimensionNav(jsondata) {
 	var topNav = jsondata['savedDimnTab'].replace(/"/g, '').replace('[', '')
-			.replace(']', '').replace(/ /g, '').split(',');
+		.replace(']', '').replace(/ /g, '').split(',');
 	reportGlobal.savedDimns = parseDimnTabs(topNav);
 	var start = 0;
 	var savedDimn = {};
@@ -952,8 +959,8 @@ function buildDimensionNav(jsondata) {
 			} else {
 				funcname = '_topNavOtherClick';
 			}
-			html += '<li><div onclick="' + funcname + '(this);" id="'
-					+ savedDimn.id + '">' + savedDimn.name + ' </div></li>'
+			html += '<li><div onclick="' + funcname + '(this);" id="' + savedDimn.id +
+				'">' + savedDimn.name + ' </div></li>'
 		}
 	}
 	$(".dimnsn").append(html);
@@ -983,17 +990,17 @@ function _topFilterRemove(dom) {
 	// TODO to add the logic for removing the item from mongodb
 	$(dom).parent().parent().remove();
 	var postdata = {
-		id : reportGlobal.jsondata.id,
-		filterId : $(dom).prev().attr('id')
+		id: reportGlobal.jsondata.id,
+		filterId: $(dom).prev().attr('id')
 	};
 	var url = reportGlobal.ctx + '/page/proreport/delTemplateFilterById.json';
 	$.ajax({
-		type : 'post',
-		url : url,
-		data : postdata,
-		dataType : 'json',
-		cache : false,
-		success : function(data) {
+		type: 'post',
+		url: url,
+		data: postdata,
+		dataType: 'json',
+		cache: false,
+		success: function(data) {
 			if (data.success) {
 				console.log("筛选条件'" + $(dom).prev().text() + "'删除成功！");
 			}
@@ -1030,8 +1037,8 @@ function _topNavOtherClick(dom) {
 	});
 	for (var i = 0; i < qdata.length; i++) {
 		if (qdata[i]['questionId'] == $(dom).attr('id')) {
-			if (reportGlobal.dimensions.dateType != null
-					&& reportGlobal.dimensions.dateType != '') {
+			if (reportGlobal.dimensions.dateType != null && reportGlobal.dimensions.dateType !=
+				'') {
 				var dt = reportGlobal.dimensions.dateType;
 				reportGlobal.dimensions = qdata[i];
 				reportGlobal.dimensions.dateType = dt;
@@ -1062,9 +1069,9 @@ function _topNavCustDimnClick(dom) {
 	if (reportGlobal.jsondata["dimensions"]) {
 		for (var i = 0; i < reportGlobal.jsondata["dimensions"].length; i++) {
 			if (reportGlobal.jsondata["dimensions"][i].dimensionId == $(dom)
-					.attr('id')) {
-				if (reportGlobal.dimensions.dateType != null
-						&& reportGlobal.dimensions.dateType != '') {
+				.attr('id')) {
+				if (reportGlobal.dimensions.dateType != null && reportGlobal.dimensions.dateType !=
+					'') {
 					var dt = reportGlobal.dimensions.dateType;
 					reportGlobal.dimensions = reportGlobal.jsondata["dimensions"][i];
 					reportGlobal.dimensions.dateType = dt;
@@ -1073,8 +1080,7 @@ function _topNavCustDimnClick(dom) {
 				}
 			}
 		}
-	} else {
-	}
+	} else {}
 
 	loadPage();
 }
@@ -1101,9 +1107,12 @@ function _buildSampleDialog(jsondata) {
 	var html = "";
 	var store = dialog.find(".store");
 	html += "<div class='heading'>分店选择:</div>";
-	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='store' id='storeradio' ><label for='storeradio'>分店</label>";
-	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='storegroup' id='storegroupradio' ><label for='storegroupradio'>分店组</label>";
-	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='nostore' id='nostoreradio' checked><label for='nostoreradio'>未分店</label>";
+	html +=
+		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='store' id='storeradio' ><label for='storeradio'>分店</label>";
+	html +=
+		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='storegroup' id='storegroupradio' ><label for='storegroupradio'>分店组</label>";
+	html +=
+		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='nostore' id='nostoreradio' checked><label for='nostoreradio'>未分店</label>";
 	store.html(html);
 	reportGlobal.html = {};
 	reportGlobal.html.store = html;
@@ -1111,15 +1120,12 @@ function _buildSampleDialog(jsondata) {
 	var storedata = jsondata['store'];
 	var htmltemp = "<input type='checkbox' id='all' value='all'>全选</input><br>";
 	for (var i = 0; i < storedata.length; i++) {
-		htmltemp += "<input type='checkbox' onclick='_filterchecked(this)' name='门店' value='"
-				+ storedata[i]['store_name']
-				+ "' id='"
-				+ storedata[i]['store_id']
-				+ "'><label for='"
-				+ storedata[i]['store_id']
-				+ "'>"
-				+ storedata[i]['store_name']
-				+ "</label>";
+		htmltemp +=
+			"<input type='checkbox' onclick='_filterchecked(this)' name='门店' value='" +
+			storedata[i]['storeName'] + "' id='" + storedata[i]['storeId'] +
+			"'><label for='" + storedata[i]['storeId'] + "'>" + storedata[i][
+				'storeName'
+			] + "</label>";
 		if (i % 2 > 0) {
 			htmltemp += "<br>";
 		}
@@ -1130,14 +1136,12 @@ function _buildSampleDialog(jsondata) {
 	var storegroupdata = jsondata['storeGroup'];
 	htmltemp = "<input type='checkbox' id='all' value='all'>全选</input><br>";
 	for (var i = 0; i < storegroupdata.length; i++) {
-		htmltemp += "<input type='checkbox' onclick='_filterchecked(this)' name='门店组' value='"
-				+ storegroupdata[i]['store_group_name']
-				+ "' id='"
-				+ storegroupdata[i]['store_group_id']
-				+ "'><label for='"
-				+ storegroupdata[i]['store_group_id']
-				+ "'>"
-				+ storegroupdata[i]['store_group_name'] + "</label>";
+		htmltemp +=
+			"<input type='checkbox' onclick='_filterchecked(this)' name='门店组' value='" +
+			storegroupdata[i]['storeGroupName'] + "' id='" + storegroupdata[i][
+				'storeGroupId'
+			] + "'><label for='" + storegroupdata[i]['storeGroupId'] + "'>" +
+			storegroupdata[i]['storeGroupName'] + "</label>";
 		if (i % 2 > 0) {
 			htmltemp += "<br>";
 		}
@@ -1156,44 +1160,39 @@ function _buildSampleDialog(jsondata) {
 	var v = 0;
 	var ds1;
 	var ds2 = {
-		start_time : $('.sample-dialog input[name="start"]').datepicker(
-				'getDate'),
-		end_time : $('.sample-dialog input[name="end"]').datepicker('getDate')
+		start_time: $('.sample-dialog input[name="start"]').datepicker(
+			'getDate'),
+		end_time: $('.sample-dialog input[name="end"]').datepicker('getDate')
 	};
 
 	for (var j = 0; j < qGroup.length; j++) {
-		if (qGroup[j]['businessType'] != 'groupCustomerVoice'
-				&& qGroup[j]['filterFlag']) {
+		if (qGroup[j]['businessType'] != 'groupCustomerVoice' && qGroup[j][
+				'filterFlag'
+			]) {
 			html += "<div class='splitter'></div>";
-			html += "<div class='heading' id='" + qGroup[j]['questionGroupId']
-					+ "' >" + qGroup[j]['name'] + "</div>";
+			html += "<div class='heading' id='" + qGroup[j]['questionGroupId'] + "' >" +
+				qGroup[j]['name'] + "</div>";
 			var judgeCount = 0;
 			for (var i = 0; i < qdata.length; i++) {
-				if (qdata[i]['filterFlag']
-						&& qGroup[j]['questionGroupId'] == qdata[i]['questionGroupId']
-						&& (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' && _compareDates(
-								qdata[i]['activePeriod'], ds2)))) {
+				if (qdata[i]['filterFlag'] && qGroup[j]['questionGroupId'] == qdata[i][
+						'questionGroupId'
+					] && (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' &&
+						_compareDates(
+							qdata[i]['activePeriod'], ds2)))) {
 					if (qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
-						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId']
-								+ "' ><div class='questionlabel'>"
-								+ qdata[i]['questionName']
-								+ "</div><div class='optionsdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] +
+							"' ><div class='questionlabel'>" + qdata[i]['questionName'] +
+							"</div><div class='optionsdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox' onclick='_filterchecked(this)' name='"
-										+ qdata[i]['questionName']
-										+ "' value='"
-										+ option[k]['optionValue']
-										+ "' id='"
-										+ option[k]['optionId']
-										+ "'><label for='"
-										+ option[k]['optionId']
-										+ "'>"
-										+ option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox' onclick='_filterchecked(this)' name='" +
+									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
+									"' id='" + option[k]['optionId'] + "'><label for='" + option[k][
+										'optionId'
+									] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
@@ -1202,62 +1201,43 @@ function _buildSampleDialog(jsondata) {
 						if (judgeCount == 1) {
 							html += "<span style='padding-left:12px'>"
 						}
-						html += "<input type='checkbox' onclick='_filterchecked(this)' name='"
-								+ qdata[i]['questionName']
-								+ "' value='"
-								+ qdata[i]['questionName']
-								+ "' id='"
-								+ qdata[i]['questionId']
-								+ "'><label for='"
-								+ qdata[i]['questionId']
-								+ "'>"
-								+ qdata[i]['questionName'] + "</label>";
+						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" +
+							qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] +
+							"' id='" + qdata[i]['questionId'] + "'><label for='" + qdata[i][
+								'questionId'
+							] + "'>" + qdata[i]['questionName'] + "</label>";
 						if (judgeCount == 1) {
 							html += "</span>"
 						}
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Degree') {
-						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId'] + "' >"
-								+ qdata[i]['questionName']
-								+ "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" +
+							qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='"
-										+ qdata[i]['questionName']
-										+ "' value='"
-										+ option[k]['optionValue']
-										+ "'  id='"
-										+ option[k]['optionId']
-										+ "'><label for='"
-										+ option[k]['optionId']
-										+ "'>"
-										+ option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" +
+									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
+									"'  id='" + option[k]['optionId'] + "'><label for='" + option[k][
+										'optionId'
+									] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Score') {
-						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId'] + "' >"
-								+ qdata[i]['questionName']
-								+ "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" +
+							qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='"
-										+ qdata[i]['questionName']
-										+ "' value='"
-										+ option[k]['optionValue']
-										+ "'  id='"
-										+ option[k]['optionId']
-										+ "'><label for='"
-										+ option[k]['optionId']
-										+ "'>"
-										+ option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" +
+									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
+									"'  id='" + option[k]['optionId'] + "'><label for='" + option[k][
+										'optionId'
+									] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
@@ -1279,9 +1259,12 @@ function buildDimensionDialog(jsondata) {
 	var html = "";
 	var store = dialog.find(".store");
 	html += "<div class='heading'>分店选择:</div>";
-	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='store' id='storeradio' ><label for='storeradio'>分店</label>";
-	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='storegroup' id='storegroupradio' ><label for='storegroupradio'>分店组</label>";
-	html += "<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='nostore' id='nostoreradio' checked><label for='nostoreradio'>未分店</label>";
+	html +=
+		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='store' id='storeradio' ><label for='storeradio'>分店</label>";
+	html +=
+		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='storegroup' id='storegroupradio' ><label for='storegroupradio'>分店组</label>";
+	html +=
+		"<input type='radio' onclick='_filterchecked(this)' name='storeradio' value='nostore' id='nostoreradio' checked><label for='nostoreradio'>未分店</label>";
 	store.html(html);
 	reportGlobal.html = {};
 	reportGlobal.html.store = html;
@@ -1289,15 +1272,12 @@ function buildDimensionDialog(jsondata) {
 	var storedata = jsondata['store'];
 	var htmltemp = "<input type='checkbox' id='all' value='all'>全选</input><br>";
 	for (var i = 0; i < storedata.length; i++) {
-		htmltemp += "<input type='checkbox' onclick='_filterchecked(this)' name='门店' value='"
-				+ storedata[i]['store_name']
-				+ "' id='"
-				+ storedata[i]['store_id']
-				+ "'><label for='"
-				+ storedata[i]['store_id']
-				+ "'>"
-				+ storedata[i]['store_name']
-				+ "</label>";
+		htmltemp +=
+			"<input type='checkbox' onclick='_filterchecked(this)' name='门店' value='" +
+			storedata[i]['storeName'] + "' id='" + storedata[i]['storeId'] +
+			"'><label for='" + storedata[i]['storeId'] + "'>" + storedata[i][
+				'storeName'
+			] + "</label>";
 		if (i % 2 > 0) {
 			htmltemp += "<br>";
 		}
@@ -1308,14 +1288,12 @@ function buildDimensionDialog(jsondata) {
 	var storegroupdata = jsondata['storeGroup'];
 	htmltemp = "<input type='checkbox' id='all' value='all'>全选</input><br>";
 	for (var i = 0; i < storegroupdata.length; i++) {
-		htmltemp += "<input type='checkbox' onclick='_filterchecked(this)' name='门店组' value='"
-				+ storegroupdata[i]['store_group_name']
-				+ "' id='"
-				+ storegroupdata[i]['store_group_id']
-				+ "'><label for='"
-				+ storegroupdata[i]['store_group_id']
-				+ "'>"
-				+ storegroupdata[i]['store_group_name'] + "</label>";
+		htmltemp +=
+			"<input type='checkbox' onclick='_filterchecked(this)' name='门店组' value='" +
+			storegroupdata[i]['storeGroupName'] + "' id='" + storegroupdata[i][
+				'storeGroupId'
+			] + "'><label for='" + storegroupdata[i]['storeGroupId'] + "'>" +
+			storegroupdata[i]['storeGroupName'] + "</label>";
 		if (i % 2 > 0) {
 			htmltemp += "<br>";
 		}
@@ -1335,45 +1313,40 @@ function buildDimensionDialog(jsondata) {
 	var v = 0;
 	var ds1;
 	var ds2 = {
-		start_time : $('.dimension-dialog input[name="start"]').datepicker(
-				'getDate'),
-		end_time : $('.dimension-dialog input[name="end"]').datepicker(
-				'getDate')
+		start_time: $('.dimension-dialog input[name="start"]').datepicker(
+			'getDate'),
+		end_time: $('.dimension-dialog input[name="end"]').datepicker(
+			'getDate')
 	};
 
 	for (var j = 0; j < qGroup.length; j++) {
-		if (qGroup[j]['businessType'] != 'groupCustomerVoice'
-				&& qGroup[j]['filterFlag']) {
+		if (qGroup[j]['businessType'] != 'groupCustomerVoice' && qGroup[j][
+				'filterFlag'
+			]) {
 			html += "<div class='splitter'></div>";
-			html += "<div class='heading' id='" + qGroup[j]['questionGroupId']
-					+ "' >" + qGroup[j]['name'] + "</div>";
+			html += "<div class='heading' id='" + qGroup[j]['questionGroupId'] + "' >" +
+				qGroup[j]['name'] + "</div>";
 			var judgeCount = 0;
 			for (var i = 0; i < qdata.length; i++) {
-				if (qdata[i]['filterFlag']
-						&& qGroup[j]['questionGroupId'] == qdata[i]['questionGroupId']
-						&& (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' && _compareDates(
-								qdata[i]['activePeriod'], ds2)))) {
+				if (qdata[i]['filterFlag'] && qGroup[j]['questionGroupId'] == qdata[i][
+						'questionGroupId'
+					] && (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' &&
+						_compareDates(
+							qdata[i]['activePeriod'], ds2)))) {
 					if (qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
-						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId']
-								+ "' ><div class='questionlabel'>"
-								+ qdata[i]['questionName']
-								+ "</div><div class='optionsdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] +
+							"' ><div class='questionlabel'>" + qdata[i]['questionName'] +
+							"</div><div class='optionsdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox' onclick='_filterchecked(this)' name='"
-										+ qdata[i]['questionName']
-										+ "' value='"
-										+ option[k]['optionValue']
-										+ "' id='"
-										+ option[k]['optionId']
-										+ "'><label for='"
-										+ option[k]['optionId']
-										+ "'>"
-										+ option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox' onclick='_filterchecked(this)' name='" +
+									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
+									"' id='" + option[k]['optionId'] + "'><label for='" + option[k][
+										'optionId'
+									] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
@@ -1382,62 +1355,43 @@ function buildDimensionDialog(jsondata) {
 						if (judgeCount == 1) {
 							html += "<span style='padding-left:12px'>"
 						}
-						html += "<input type='checkbox' onclick='_filterchecked(this)' name='"
-								+ qdata[i]['questionName']
-								+ "' value='"
-								+ qdata[i]['questionName']
-								+ "' id='"
-								+ qdata[i]['questionId']
-								+ "'><label for='"
-								+ qdata[i]['questionId']
-								+ "'>"
-								+ qdata[i]['questionName'] + "</label>";
+						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" +
+							qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] +
+							"' id='" + qdata[i]['questionId'] + "'><label for='" + qdata[i][
+								'questionId'
+							] + "'>" + qdata[i]['questionName'] + "</label>";
 						if (judgeCount == 1) {
 							html += "</span>"
 						}
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Degree') {
-						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId'] + "' >"
-								+ qdata[i]['questionName']
-								+ "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" +
+							qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='"
-										+ qdata[i]['questionName']
-										+ "' value='"
-										+ option[k]['optionValue']
-										+ "'  id='"
-										+ option[k]['optionId']
-										+ "'><label for='"
-										+ option[k]['optionId']
-										+ "'>"
-										+ option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" +
+									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
+									"'  id='" + option[k]['optionId'] + "'><label for='" + option[k][
+										'optionId'
+									] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Score') {
-						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId'] + "' >"
-								+ qdata[i]['questionName']
-								+ "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" +
+							qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
 						for (var k = 0; k < option.length; k++) {
 							if (option[k]['activeFlag']) {
-								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='"
-										+ qdata[i]['questionName']
-										+ "' value='"
-										+ option[k]['optionValue']
-										+ "'  id='"
-										+ option[k]['optionId']
-										+ "'><label for='"
-										+ option[k]['optionId']
-										+ "'>"
-										+ option[k]['optionValue'] + "</label>";
+								html += "<input type='checkbox'	 onclick='_filterchecked(this)' name='" +
+									qdata[i]['questionName'] + "' value='" + option[k]['optionValue'] +
+									"'  id='" + option[k]['optionId'] + "'><label for='" + option[k][
+										'optionId'
+									] + "'>" + option[k]['optionValue'] + "</label>";
 							}
 						}
 						html += "</div></div>";
@@ -1474,26 +1428,35 @@ function _checkLength(o, n, min, max) {
 function _saveFilters(name, saveflag) {
 	// To save the time period of the filter.
 	var start_time = $('.sample-dialog input[name="start"]').datepicker(
-			'getDate');
+		'getDate');
 	var end_time = $('.sample-dialog input[name="end"]').datepicker('getDate');
 	var period = {
-		"start_time" : start_time == null ? '' : start_time
-				.format('yyyy/MM/dd'),
-		"end_time" : end_time == null ? '' : end_time.format('yyyy/MM/dd')
+		"start_time": start_time == null ? '' : start_time
+			.format('yyyy/MM/dd'),
+		"end_time": end_time == null ? '' : end_time.format('yyyy/MM/dd')
 	};
 	// To save the store option and selected stores of the filter.
-	var store_id = [];
-	var store_labels = [];
+	var storeSelected = [];
+	var storegroupSelected = [];
+	var storeTmp = {};
+	//Todo ###01
 	$(
-			'#' + $('input[name="storeradio"]:checked').val()
-					+ 'dialog input:checked').each(function() {
-		store_id.push($(this).attr('id'));
-		store_labels.push($(this).val());
-	})
+		'#' + $('input[name="storeradio"]:checked').val() + 'dialog input:checked').each(
+		function() {
+			if ("storeGroup" == $('input[name="storeradio"]:checked').val()) {
+				for (var i = 0; i < reportGlobal.jsondata.storeGroup.length; i++) {
+					if ($(this).attr('id') == reportGlobal.jsondata.storeGroup[i].storeGroupId) {
+
+					}
+				}
+			}
+			storeId.push($(this).attr('id'));
+			storeName.push($(this).val());
+		})
 	var store = {
-		"store_type" : $('input[name="storeradio"]:checked').val(),
-		"store_id" : store_id,
-		"store_labels" : store_labels
+		"storeType": $('input[name="storeradio"]:checked').val(),
+		"store": storeSelected,
+		"storeGroup": storegroupSelected
 	};
 	var inputs = $('.sample-dialog .questionaire input:checked');
 	var vsltd = {};
@@ -1523,7 +1486,7 @@ function _saveFilters(name, saveflag) {
 	var sf = {};
 	reportGlobal.savedfiltername = name;
 	reportGlobal.selectedStoreType = $('input[name="storeradio"]:checked')
-			.val();
+		.val();
 	sf.filter_id = uuid(32, 16);
 	sf.name = name;
 	sf.period = JSON.stringify(period);
@@ -1541,17 +1504,17 @@ function _saveFilters(name, saveflag) {
 			reportGlobal.jsondata["filters"].push(sf);
 		}
 		var postdata = {
-			id : reportGlobal.jsondata.id,
-			data : JSON.stringify(sf)
+			id: reportGlobal.jsondata.id,
+			data: JSON.stringify(sf)
 		};
 		var url = reportGlobal.ctx + '/page/proreport/addTemplateFilter.json';
 		$.ajax({
-			type : 'post',
-			url : url,
-			data : postdata,
-			dataType : 'json',
-			cache : false,
-			success : function(data) {
+			type: 'post',
+			url: url,
+			data: postdata,
+			dataType: 'json',
+			cache: false,
+			success: function(data) {
 				if (data.success) {
 					console.log("筛选条件'" + sf.name + "'保存成功！");
 				}
@@ -1569,19 +1532,19 @@ function _filterchecked(dom) {
 		// 点击分店，分店组
 		if (dom.value == "store" || dom.value == "storegroup") {
 			dialog = $("#" + dom.value + "dialog").dialog({
-				autoOpen : false,
-				height : 300,
-				width : 350,
-				modal : true,
-				buttons : {
-					"确认" : function() {
+				autoOpen: false,
+				height: 300,
+				width: 350,
+				modal: true,
+				buttons: {
+					"确认": function() {
 						dialog.dialog("close");
 					},
-					"取消" : function() {
+					"取消": function() {
 						dialog.dialog("close");
 					}
 				},
-				close : function() {
+				close: function() {
 					// form[ 0 ].reset();
 					// allFields.removeClass( "ui-state-error" );
 				}
@@ -1589,8 +1552,8 @@ function _filterchecked(dom) {
 
 			dialog.dialog("open");
 			$("#" + dom.value + "dialog").parent().css({
-				left : '300px',
-				top : '140px'
+				left: '300px',
+				top: '140px'
 			});
 
 		} else if (dom.name != dom.value) {
@@ -1606,7 +1569,7 @@ function _filterchecked(dom) {
 function buildSampleDialogButtons(jsondata) {
 	var left = ($(window).width() - $(".sample-dialog").width()) / 2;
 	$(".sample-dialog").css({
-		left : '100px'
+		left: '100px'
 	});
 	$(".sample-dialog .close-dialog").click(function() {
 		$(".sample-dialog").hide();
@@ -1642,12 +1605,12 @@ function buildSampleDialogButtons(jsondata) {
 	});
 
 	$("#saveFilterNameDialog").dialog({
-		autoOpen : false,
-		height : 170,
-		width : 250,
-		modal : true,
-		buttons : {
-			"保存条件" : function() {
+		autoOpen: false,
+		height: 170,
+		width: 250,
+		modal: true,
+		buttons: {
+			"保存条件": function() {
 				var name = $("#filterName");
 				name.removeClass("ui-state-error");
 				var bValid = true;
@@ -1661,12 +1624,12 @@ function buildSampleDialogButtons(jsondata) {
 					loadPage();
 				}
 			},
-			Cancel : function() {
+			Cancel: function() {
 				$(this).dialog("close");
 				console.log('Cancel');
 			}
 		},
-		close : function() {
+		close: function() {
 			console.log('close');
 		}
 	});
@@ -1692,15 +1655,15 @@ function buildDimensionDialogButtons(jsondata) {
 
 	// Save the customized dimension and close the dimension dialog
 	$(".savedimnsnbtn").click(
-			function() {
-				$(".dimension-dialog").toggle();
-				_saveDimnsnFilters($('.dimn-sg-name')
-						.find('li[class="active"]').find('span').attr('id'), $(
-						'.dimn-sg-name').find('li[class="active"]')
-						.find('span').text(), true);
-				_loadSavedDimnsnList(reportGlobal.jsondata);
-				loadPage();
-			});
+		function() {
+			$(".dimension-dialog").toggle();
+			_saveDimnsnFilters($('.dimn-sg-name')
+				.find('li[class="active"]').find('span').attr('id'), $(
+					'.dimn-sg-name').find('li[class="active"]')
+				.find('span').text(), true);
+			_loadSavedDimnsnList(reportGlobal.jsondata);
+			loadPage();
+		});
 
 	$(".dimension-dialog input[name='start']").click(function() {
 		$(".dimension-dialog .dialogAlertMessage").hide();
@@ -1717,8 +1680,9 @@ function buildDimensionDialogButtons(jsondata) {
 
 function uuid(len, radix) {
 	var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-			.split('');
-	var uuid = [], i;
+		.split('');
+	var uuid = [],
+		i;
 	radix = radix || chars.length;
 
 	if (len) {
@@ -1771,44 +1735,40 @@ function bindButtons() {
 	});
 
 	$(".dimn-confirm")
-			.click(
-					function() {
-						$('.dimensions').next('ul').toggle();
-						var ckdmns = $('.dimensions-dropdown input:checked')
-						var html = '';
-						var funcname = '_topNavOtherClick';
-						var type = "qust";
-						reportGlobal.savedDimns = [];
-						for (var i = 0; i < ckdmns.length; i++) {
-							if ($(ckdmns[i]).parent().text() == '门店'
-									|| $(ckdmns[i]).parent().text() == '门店组') {
-								funcname = '_topNavStoreClick';
-								type = "stor";
-							} else if ($(ckdmns[i]).parent().parent().attr(
-									'class') == 'dimensions-dropdown-div-right') {
-								funcname = '_topNavCustDimnClick';
-								type = "dimn";
-							}
+		.click(
+			function() {
+				$('.dimensions').next('ul').toggle();
+				var ckdmns = $('.dimensions-dropdown input:checked')
+				var html = '';
+				var funcname = '_topNavOtherClick';
+				var type = "qust";
+				reportGlobal.savedDimns = [];
+				for (var i = 0; i < ckdmns.length; i++) {
+					if ($(ckdmns[i]).parent().text() == '门店' || $(ckdmns[i]).parent().text() ==
+						'门店组') {
+						funcname = '_topNavStoreClick';
+						type = "stor";
+					} else if ($(ckdmns[i]).parent().parent().attr(
+							'class') == 'dimensions-dropdown-div-right') {
+						funcname = '_topNavCustDimnClick';
+						type = "dimn";
+					}
 
-							html += '<li><div onclick="'
-									+ funcname
-									+ '(this);" id="'
-									+ $(ckdmns[i]).val()
-									+ '">'
-									+ $(ckdmns[i]).parent().text().replace(
-											'编辑删除', '') + ' </div></li>'
-							savedDimn = {};
-							savedDimn.id = $(ckdmns[i]).val();
-							savedDimn.type = type;
-							savedDimn.name = $(ckdmns[i]).parent().text()
-									.replace('编辑删除', '');
-							reportGlobal.savedDimns.push(savedDimn);
-						}
-						$("ul.dimnsn").children().first().siblings().remove();
-						$("ul.dimnsn").children().first().after(html);
-						saveDimnTabs();
-						return false;
-					});
+					html += '<li><div onclick="' + funcname + '(this);" id="' + $(ckdmns[i]).val() +
+						'">' + $(ckdmns[i]).parent().text().replace(
+							'编辑删除', '') + ' </div></li>'
+					savedDimn = {};
+					savedDimn.id = $(ckdmns[i]).val();
+					savedDimn.type = type;
+					savedDimn.name = $(ckdmns[i]).parent().text()
+						.replace('编辑删除', '');
+					reportGlobal.savedDimns.push(savedDimn);
+				}
+				$("ul.dimnsn").children().first().siblings().remove();
+				$("ul.dimnsn").children().first().after(html);
+				saveDimnTabs();
+				return false;
+			});
 
 	$(".date-dialog-toggle").click(function() {
 		$(".date-dialog").toggle();
@@ -1816,20 +1776,18 @@ function bindButtons() {
 	});
 
 	$(".date-dialog li").click(
-			function() {
-				$(".date-dialog-toggle").html($(this).html());
-				if ($(".dim.time").html() != ""
-						|| $(".dim.time_dimnsn").html() != "") {
-				} else if ($(".dim.store").html() != ""
-						|| $(".dim.one_dimnsn").html() != "") {
-					$(".dim").html("");
-					$(".dim.time").html("true")
-				} else {
-					$(".dim").html("");
-					$(".dim.time_dimnsn").html("true");
-				}
-				$(".date-dialog").hide();
-			});
+		function() {
+			$(".date-dialog-toggle").html($(this).html());
+			if ($(".dim.time").html() != "" || $(".dim.time_dimnsn").html() != "") {} else if (
+				$(".dim.store").html() != "" || $(".dim.one_dimnsn").html() != "") {
+				$(".dim").html("");
+				$(".dim.time").html("true")
+			} else {
+				$(".dim").html("");
+				$(".dim.time_dimnsn").html("true");
+			}
+			$(".date-dialog").hide();
+		});
 
 	$('.dimnSGtextspan').dblclick(function() {
 		var span = $(this);
@@ -1848,47 +1806,44 @@ function bindButtons() {
 		span.after(txt);
 	});
 
-	$("#showmenu").selectmenu(
-			{
-				change : function(event, ui) {
-					if (ui.item.label == '年') {
-						reportGlobal.dimensions.dateType = 'year';
-					} else if (ui.item.label == '季') {
-						reportGlobal.dimensions.dateType = 'quarter';
-					} else if (ui.item.label == '月') {
-						reportGlobal.dimensions.dateType = 'month';
-					} else if (ui.item.label == '按时间') {
-						reportGlobal.dimensions.dateType = '';
-					}
-					if ($(".dim.time").html() != ""
-							|| $(".dim.time_dimnsn").html() != "") {
-					} else if ($(".dim.store").html() != ""
-							|| $(".dim.one_dimnsn").html() != "") {
-						$(".dim").html("");
-						$(".dim.time").html("true")
-					} else {
-						$(".dim").html("");
-						$(".dim.time_dimnsn").html("true");
-					}
-					loadPage();
-				}
-			});
+	$("#showmenu").selectmenu({
+		change: function(event, ui) {
+			if (ui.item.label == '年') {
+				reportGlobal.dimensions.dateType = 'year';
+			} else if (ui.item.label == '季') {
+				reportGlobal.dimensions.dateType = 'quarter';
+			} else if (ui.item.label == '月') {
+				reportGlobal.dimensions.dateType = 'month';
+			} else if (ui.item.label == '按时间') {
+				reportGlobal.dimensions.dateType = '';
+			}
+			if ($(".dim.time").html() != "" || $(".dim.time_dimnsn").html() != "") {} else if (
+				$(".dim.store").html() != "" || $(".dim.one_dimnsn").html() != "") {
+				$(".dim").html("");
+				$(".dim.time").html("true")
+			} else {
+				$(".dim").html("");
+				$(".dim.time_dimnsn").html("true");
+			}
+			loadPage();
+		}
+	});
 }
 
 function saveDimnTabs() {
 	var savedDimnTabsStr = parseSavedDimns(reportGlobal.savedDimns);
 	var postdata = {
-		id : reportGlobal.jsondata.id,
-		data : savedDimnTabsStr
+		id: reportGlobal.jsondata.id,
+		data: savedDimnTabsStr
 	};
 	var url = reportGlobal.ctx + '/page/proreport/addSavedDimensionsList.json';
 	$.ajax({
-		type : 'post',
-		url : url,
-		data : postdata,
-		dataType : 'json',
-		cache : false,
-		success : function(data) {
+		type: 'post',
+		url: url,
+		data: postdata,
+		dataType: 'json',
+		cache: false,
+		success: function(data) {
 			if (data.success) {
 				console.log("保存维度条件'" + savedDimnTabsStr + "'保存成功！");
 			}
@@ -1914,8 +1869,7 @@ function parseSavedDimns(savedDimns) {
 	var savedDimn;
 	for (var i = 0; i < savedDimns.length; i++) {
 		savedDimn = savedDimns[i];
-		dimnTabs += savedDimn.type + '_' + savedDimn.id + '_' + savedDimn.name
-				+ ',';
+		dimnTabs += savedDimn.type + '_' + savedDimn.id + '_' + savedDimn.name + ',';
 	}
 	if (dimnTabs.length > 0) {
 		dimnTabs = dimnTabs.substr(0, dimnTabs.length - 1);
@@ -1925,20 +1879,20 @@ function parseSavedDimns(savedDimns) {
 
 function reloadPageMapping() {
 	$.ajax({
-		type : 'post',
-		url : reportGlobal.ctx + '/assets/report/qst_page_mapping.js',
-		data : JSON.stringify(''),
-		dataType : 'json',
-		headers : {
-			Accept : "application/json",
-			"Content-Type" : "application/json"
+		type: 'post',
+		url: reportGlobal.ctx + '/assets/report/qst_page_mapping.js',
+		data: JSON.stringify(''),
+		dataType: 'json',
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json"
 		},
-		processData : false,
-		cache : false,
-		success : function(data) {
+		processData: false,
+		cache: false,
+		success: function(data) {
 			reportGlobal.qst_page_mapping = data;
 		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
 			console.log(XMLHttpRequest.status);
 			console.log(XMLHttpRequest.readyState);
 			console.log(textStatus);
@@ -1950,13 +1904,13 @@ function reloadPageMapping() {
 /*
  * "dimnsn" : "p8", "one_dimnsn" : "p411", "store" : "p11", "time" : "p10",
  * "time_dimnsn" : "p13",
- * 
+ *
  * "questionId" : "16", "questionGroupId" : "10", "chartOneDimnsn" : "p1",
  * "chartMultiDimnsn" : "p4", "chartStore" : "p8", "chartTime" : "p8",
  * "chartTimeDimnsn" : "p8",
- * 
+ *
  * var v ; // start testing data setting
- * 
+ *
  * if ($(".dimnsn>li>div:eq(0)").hasClass("active")) { v = "location"; }else if
  * ($(".dimnsn>li>div:eq(1)").hasClass("active")) { v = "mealtime"; }else if
  * ($(".dimnsn>li>div:eq(2)").hasClass("active")) { v = "custtype"; }else if
@@ -1968,8 +1922,7 @@ function reloadPageMapping() {
 function loadPage() {
 	var data = reportGlobal.jsondata.questions.sort(function(a, b) {
 		return a.sortNumber - b.sortNumber;
-	});
-	;
+	});;
 	var qgroupid = $(".question_group_id").text();
 	var qid = $(".question_id").text();
 	var qstGrup = [];
@@ -1978,7 +1931,7 @@ function loadPage() {
 	var qlist = [];
 
 	for (var i = 0; i < data.length; i++) {
-		if (qgroupid == data[i].questionGroupId && data[i].activeFlag) {
+		if (qgroupid == data[i].questionGroupId) {
 			var qst = {};
 			qst.questionGroupId = qgroupid;
 			qst.questionId = data[i].questionId;
@@ -1991,8 +1944,8 @@ function loadPage() {
 			mapping = data[i];
 			questionName = data[i].questionName;
 		}
-		if (data[i].businessType != null && data[i].businessType != ''
-				&& reportGlobal.specialQuestions != '') {
+		if (data[i].businessType != null && data[i].businessType != '' &&
+			reportGlobal.specialQuestions != '') {
 			var ql = {};
 			ql.questionId = data[i].questionId;
 			ql.businessType = data[i].businessType;
@@ -2000,7 +1953,7 @@ function loadPage() {
 		}
 	}
 	reportGlobal.specialQuestions == '' ? reportGlobal.specialQuestions = JSON
-			.stringify(qlist) : 1 == 1;
+		.stringify(qlist) : 1 == 1;
 
 	var page = "";
 	if ($(".dim.one_dimnsn").html() != "") {
@@ -2017,27 +1970,27 @@ function loadPage() {
 	console.log("打开page " + page);
 
 	var postdata = {
-		questionnaire_id : reportGlobal.id,
-		question_id : qid,
-		page : page,
-		filter : JSON.stringify(reportGlobal.samplefilter),
-		dimensiontype : reportGlobal.dimensionType,
-		dimension : JSON.stringify(reportGlobal.dimensions),
-		questionGroup : JSON.stringify(qstGrup),
-		groupId : qid,
-		questionName : questionName,
-		specialQuestions : reportGlobal.specialQuestions
+		questionnaire_id: reportGlobal.id,
+		question_id: qid,
+		page: page,
+		filter: JSON.stringify(reportGlobal.samplefilter),
+		dimensiontype: reportGlobal.dimensionType,
+		dimension: JSON.stringify(reportGlobal.dimensions),
+		questionGroup: JSON.stringify(qstGrup),
+		groupId: qid,
+		questionName: questionName,
+		specialQuestions: reportGlobal.specialQuestions
 	};
 	$.ajax({
-		type : 'post',
-		url : reportGlobal.ctx + '/page/reportEchart/getChartAllInfo.json', // '/assets/report/testdata-'+page+'.js',
-		data : postdata, // JSON.stringify(''),
-		dataType : 'json',
-		cache : false,
-		success : function(data) {
+		type: 'post',
+		url: reportGlobal.ctx + '/page/reportEchart/getChartAllInfo.json', // '/assets/report/testdata-'+page+'.js',
+		data: postdata, // JSON.stringify(''),
+		dataType: 'json',
+		cache: false,
+		success: function(data) {
 			drawCharts(data.data);
 		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
 			console.log(XMLHttpRequest.status);
 			console.log(XMLHttpRequest.readyState);
 			console.log(textStatus);
@@ -2054,28 +2007,28 @@ function loadPage() {
 function getTotalCount() {
 	var cdate = new Date();
 	cdate.setMonth(cdate.getMonth() - 6);
-	var start_time = _string2Json(reportGlobal.samplefilter.period).start_time == '' ? cdate
-			.format('yyyy/MM/dd')
-			: _string2Json(reportGlobal.samplefilter.period).start_time;
-	var end_time = _string2Json(reportGlobal.samplefilter.period).end_time == '' ? (new Date())
-			.format('yyyy/MM/dd')
-			: _string2Json(reportGlobal.samplefilter.period).end_time;
+	var start_time = _string2Json(reportGlobal.samplefilter.period).start_time ==
+		'' ? cdate
+		.format('yyyy/MM/dd') : _string2Json(reportGlobal.samplefilter.period).start_time;
+	var end_time = _string2Json(reportGlobal.samplefilter.period).end_time == '' ?
+		(new Date())
+		.format('yyyy/MM/dd') : _string2Json(reportGlobal.samplefilter.period).end_time;
 	$('.timeperiodlabel').html(start_time + ' - ' + end_time);
 	var postdata = {
-		questionnaire_id : reportGlobal.id,
-		filter : JSON.stringify(reportGlobal.samplefilter)
+		questionnaire_id: reportGlobal.id,
+		filter: JSON.stringify(reportGlobal.samplefilter)
 	};
 	$.ajax({
-		type : 'post',
-		url : reportGlobal.ctx + '/page/proreport/querySampleCountById.json', // '/assets/report/testdata-'+page+'.js',
-		data : postdata,
-		dataType : 'json',
-		cache : false,
-		success : function(data) {
+		type: 'post',
+		url: reportGlobal.ctx + '/page/proreport/querySampleCountById.json', // '/assets/report/testdata-'+page+'.js',
+		data: postdata,
+		dataType: 'json',
+		cache: false,
+		success: function(data) {
 			$('.filterlabel').html(
-					'样本量: ' + (_string2Json(data.data)).totalCount);
+				'样本量: ' + (_string2Json(data.data)).totalCount);
 		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
 			console.log(XMLHttpRequest.status);
 			console.log(XMLHttpRequest.readyState);
 			console.log(textStatus);
@@ -2084,12 +2037,21 @@ function getTotalCount() {
 }
 
 function drawCharts(jsondata) {
+	//根绝参数判断是否要显示chart还是tablea
+	var html = "<table class='tablesorter'><thead><tr>";
+	html +=
+		"<th><div><div class='summary-dropdown-toggle'>Dimension<span class='table-caret' style='float:right;margin-top:11px;'></span></div>";
+	html +=
+		'<ul class="summary-dropdown-menu"><li><input type="checkbox" name="offering-summary" checked>Offerings by Business Unit</li><li><input type="checkbox" name="iot-summary" checked>Geography by IOTs</li></ul>'; //<li><input type="checkbox" name="platform-summary" checked>Platform</li></ul>';
+	html +=
+		"</div></th><th>Visit</th><th>Visit MTM</th><th>Engagement Rate</th><th>Engagement Rate MTM</th><th>Engaged Visit</th><th>Conversion Rate</th><th>Conversion Rate MTM</th><th>Web Purchase</th>";
+	html += "</tr></thead>";
 	// 基于准备好的dom，初始化echarts图表
 	var chart = echarts.init($(".chart-main")[0]);
 	if (jsondata.option) {
 		chart
-				.setOption(typeof (jsondata.option) == 'string' ? _string2Json(jsondata.option)
-						: jsondata.option);
+			.setOption(typeof(jsondata.option) == 'string' ? _string2Json(jsondata.option) :
+				jsondata.option);
 	}
 	$(".pcont .title").html(jsondata.title);
 	if (jsondata.chartlegend) {
