@@ -44,16 +44,16 @@ public class MybChartUtils {
 
 		// Store in filter
 		JSONObject jbStore = JSONObject.fromObject(jb.getString("store"));
-		if("nostore".equals(jbStore.getString("store_type"))){
+		if("nostore".equals(jbStore.getString("storeType"))){
 			list.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-		}else if(isNotNull(jbStore.getString("store_type"))) {
+		}else if(isNotNull(jbStore.getString("storeType"))) {
 			String storeColumnName = "storeId";
-			if ("store".equals(jbStore.getString("store_type"))) {
+			if ("store".equals(jbStore.getString("storeType"))) {
 				storeColumnName = "storeId";
 			} else {
 				storeColumnName = "storeGroupId";
 			}
-			ja = jbStore.getJSONArray("store_id");
+			ja = jbStore.getJSONArray("storeId");
 			List<String> listParam = new ArrayList<String>();
 			for (int i = 0; i < ja.size(); i++) {
 				listParam.add(ja.getString(i));
@@ -105,18 +105,18 @@ public class MybChartUtils {
 
 			// Store in filter
 			JSONObject jbStore = JSONObject.fromObject(jb.getString("store"));
-			if(!isNotNull(jbStore.getString("store_type"))){
+			if(!isNotNull(jbStore.getString("storeType"))){
 				criteria.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-			}else if("nostore".equals(jbStore.getString("store_type"))){
+			}else if("nostore".equals(jbStore.getString("storeType"))){
 				criteria.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-			}else if(isNotNull(jbStore.getString("store_type"))) {
+			}else if(isNotNull(jbStore.getString("storeType"))) {
 				String storeColumnName = "storeId";
-				if ("store".equals(jbStore.getString("store_type"))) {
+				if ("store".equals(jbStore.getString("storeType"))) {
 					storeColumnName = "storeId";
 				} else {
 					storeColumnName = "storeGroupId";
 				}
-				jaQuestionid = jbStore.getJSONArray("store_id");
+				jaQuestionid = jbStore.getJSONArray("storeId");
 				List<String> listParam = new ArrayList<String>();
 				for (int i1 = 0; i1 < jaQuestionid.size(); i1++) {
 					listParam.add(jaQuestionid.getString(i1));
@@ -152,18 +152,18 @@ public class MybChartUtils {
 				List<Criteria> criteria = new ArrayList<Criteria>();
 				// Store in filter
 				JSONObject jbStore = JSONObject.fromObject(jb.getString("store"));
-				if(!isNotNull(jbStore.getString("store_type"))){
+				if(!isNotNull(jbStore.getString("storeType"))){
 					criteria.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-				}else if("nostore".equals(jbStore.getString("store_type"))){
+				}else if("nostore".equals(jbStore.getString("storeType"))){
 					criteria.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-				}else if(isNotNull(jbStore.getString("store_type"))) {
+				}else if(isNotNull(jbStore.getString("storeType"))) {
 					String storeColumnName = "storeId";
-					if ("store".equals(jbStore.getString("store_type"))) {
+					if ("store".equals(jbStore.getString("storeType"))) {
 						storeColumnName = "storeId";
 					} else {
 						storeColumnName = "storeGroupId";
 					}
-					jaQuestionid = jbStore.getJSONArray("store_id");
+					jaQuestionid = jbStore.getJSONArray("storeId");
 					List<String> listParam = new ArrayList<String>();
 					for (int i1 = 0; i1 < jaQuestionid.size(); i1++) {
 						listParam.add(jaQuestionid.getString(i1));
