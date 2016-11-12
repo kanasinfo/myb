@@ -233,7 +233,7 @@ public class MybAnswerServiceImpl implements MybAnswerService{
 				mybanswer.setDay(jb.getString("day"));
 				mybanswer.setQuarter(jb.getString("quarter"));
 				mybanswer.setStatus(jb.getInt("status"));
-				if(null!=jb.getString("storeId")){
+				if(null!=jb.get("storeId")){
 					mybanswer.setStoreId(jb.getString("storeId"));
 				}
 				mongoTemplate.save(mybanswer,"answer");
