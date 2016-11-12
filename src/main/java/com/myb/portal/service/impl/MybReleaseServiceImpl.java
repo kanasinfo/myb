@@ -639,7 +639,8 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 				storeList.setStoreId(mybStore.getId());
 				storeList.setStoreName(mybStore.getName());
 				storeList.setUrl(
-						Utils.ParseProperties("RELEASE_URL") + templateId + "/" + mybStore.getId()+".html");
+						Utils.ParseProperties("RELEASE_STORE") + templateId + "/" + mybStore.getId()+".html");
+
 				list.add(storeList);
 			}
 		} catch (Exception e) {
