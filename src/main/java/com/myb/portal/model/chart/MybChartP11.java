@@ -119,9 +119,6 @@ public class MybChartP11 extends MybChart {
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 			list = (BasicDBList)results.getRawResults().get("result");	
-			
-			
-			
 			aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),				
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
@@ -131,14 +128,10 @@ public class MybChartP11 extends MybChart {
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 			list = (BasicDBList)results.getRawResults().get("result");	
-			
-			
 			aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),				
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 			list = (BasicDBList)results.getRawResults().get("result");	
-
-
 			for(int k = 0; k < groups.length; k++){
 				//boolean gFlag = false;
 				legendStr.append("'"+groups[k]+"分',");
