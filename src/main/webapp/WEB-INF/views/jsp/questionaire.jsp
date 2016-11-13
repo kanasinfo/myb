@@ -156,7 +156,7 @@
 							        </div>
 					        	</c:when>
 					        	<c:when test="${question.questionType=='com.myb.questiontype.TextAnswer'}">
-									<input type="email" class="form-control" name="${question.questionId}">
+									<input type="text" id="textName" class="form-control" name="${question.questionId}">
 					        	</c:when>
 					        </c:choose>
 			        	</div>
@@ -173,82 +173,6 @@
         </div>
 	</div>
 </div>
-	
-
-	
-<!-- 
-		<div class="row ask">
-			<div class="block"></div>
-			请问您对本次用餐是否满意？
-		</div>
-		<div class="row option">
-			<div class="minValue" style="float:left;padding-top:40px;">非常不满意</div>
-			<div style="float:left;margin:0 -70px;">
-			<div class="btn-group" data-toggle="buttons">
-			   <label class="btn btn-default"><input type="radio" name="options" id="option1" value="1">1</label>
-			   <label class="btn btn-default"><input type="radio" name="options" id="option2" value="2">2</label>
-			   <label class="btn btn-default"><input type="radio" name="options" id="option3" value="3">3</label>
-			   <label class="btn btn-default"><input type="radio" name="options" id="option3" value="3">4</label>
-			   <label class="btn btn-default"><input type="radio" name="options" id="option3" value="3">5</label>
-			   <label class="btn btn-default"><input type="radio" name="options" id="option3" value="3">6</label>
-			   <label class="btn btn-default"><input type="radio" name="options" id="option3" value="3">7</label>
-			   <label class="btn btn-default"><input type="radio" name="options" id="option3" value="3">8</label>
-			   <label class="btn btn-default"><input type="radio" name="options" id="option3" value="3">9</label>
-			   <label class="btn btn-default"><input type="radio" name="options" id="option3" value="3">10</label>
-			</div>	
-			</div>
-			<div class="maxValue" style="float:left;padding-top:40px;">非常满意</div>
-		</div>
-		<div class="row ask">
-			<div class="block"></div>
-			请问您在消费过程中是否遇到以下情况（可多选）。
-		</div>
-		<div class="row option">
-			<div class="btn-group-vertical" data-toggle="buttons">
-			   <label class="btn btn-default">
-			      <input type="checkbox">招呼领座
-			   </label>
-			   <label class="btn btn-default">
-			      <input type="checkbox">及时送菜单
-			   </label>
-			   <label class="btn btn-default">
-			      <input type="checkbox">倒水
-			   </label>
-			   <label class="btn btn-default">
-			      <input type="checkbox">确认点单
-			   </label>
-			   <label class="btn btn-default">
-			      <input type="checkbox">提示上菜时间
-			   </label>
-			   <label class="btn btn-default">
-			      <input type="checkbox">报菜名
-			   </label>
-			   <label class="btn btn-default">
-			      <input type="checkbox">道别
-			   </label>
-			</div>
-		</div>
-		
-		<div class="row ask">
-			<div class="block"></div>
-			本次消费你是一人独行，还是和其他人一起？
-		</div>
-		<div class="row option">
-			<div class="btn-group-vertical"  data-toggle="buttons">
-	            <label class="btn btn-default">
-	                <input type="radio" name="optionsRadios" id="optionsRadios1" checked>自己
-	            </label>
-	            <label class="btn btn-default">
-	                <input type="radio" name="optionsRadios" id="optionsRadios1" checked>和同事一起
-	            </label>
-	        </div>
-		</div>
-		
-	</div>
-</div>
-
- -->
-
         <script type="application/javascript">
         	var ctx = '<%=request.getSession().getAttribute("ctx")%>';
            jQuery(function($){
@@ -284,6 +208,18 @@
        		}
         		
         		$("#submitBtn").click(function(){
+        			var textName = $("#textName").val();
+        			var id = $("input:text").prop("name");
+        			if(textName!=""&&textName!=null){
+        				 for (var i = 0; i <dataDecode.answers.length; i++) {
+      						if(dataDecode.answers[i].questionId == id){
+      								dataDecode.answers[i].questionIdValue=id+"_"+textName;
+      								dataDecode.answers[i].optionValue = textName;
+      								dataDecode.answers[i]["VoiceOfCustomers"] = "VoiceOfCustomers";
+      	 							var key = id+"_optionValue";
+      						}
+      					}
+        			}
         			$.ajax({
         				url : ctx+'/page/answer/addAnswer.json?R' + Math.random(),
         				data : {

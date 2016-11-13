@@ -235,6 +235,7 @@ public class MybAnswerServiceImpl implements MybAnswerService{
 				mybanswer.setStatus(jb.getInt("status"));
 				if(null!=jb.get("storeId")){
 					mybanswer.setStoreId(jb.getString("storeId"));
+					mybanswer.setStoreName(jb.getString("storeName"));
 				}
 				mongoTemplate.save(mybanswer,"answer");
 			}

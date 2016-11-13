@@ -117,38 +117,38 @@
   						<button class="zoomIn" onclick="zoomCard(this)"></button>
   						<span>顾客之声</span>
   					</div>
-  					<div class="secondRowContent">
+  					<div class="secondRowContent" id="secondRowContentCustomer">
 						<div><select ><option>最新评论</option></select></div>
-						<table style="width:100%;border-bottom:1px solid #eee;">
-							<tr>
-								<td rowspan="2" width="50px;">头像</td>
-								<td colspan="2">未知用户：巴拉巴拉巴拉巴拉拉巴拉</td>
-							</tr>
-							<tr>
-								<td width="90">2016/01/01</td>
-								<td>分店1</td>
-							</tr>
-						</table>
-						<table width="100%" style="border-bottom:1px solid #eee;">
-							<tr>
-								<td rowspan="2" width="50px;">头像</td>
-								<td colspan="2">未知用户：巴拉巴拉巴拉巴拉拉巴拉</td>
-							</tr>
-							<tr>
-								<td width="90">2016/01/01</td>
-								<td>分店1</td>
-							</tr>
-						</table>
-						<table width="100%" style="border-bottom:1px solid #eee;">
-							<tr>
-								<td rowspan="2" width="50px;">头像</td>
-								<td colspan="2">未知用户：巴拉巴拉巴拉巴拉拉巴拉</td>
-							</tr>
-							<tr>
-								<td width="90">2016/01/01</td>
-								<td>分店1</td>
-							</tr>
-						</table>
+<!-- 						<table style="width:100%;border-bottom:1px solid #eee;"> -->
+<!-- 							<tr> -->
+<!-- 								<td rowspan="2" width="50px;">头像</td> -->
+<!-- 								<td colspan="2">未知用户：巴拉巴拉巴拉巴拉拉巴拉</td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="90">2016/01/01</td> -->
+<!-- 								<td>分店1</td> -->
+<!-- 							</tr> -->
+<!-- 						</table> -->
+<!-- 						<table width="100%" style="border-bottom:1px solid #eee;"> -->
+<!-- 							<tr> -->
+<!-- 								<td rowspan="2" width="50px;">头像</td> -->
+<!-- 								<td colspan="2">未知用户：巴拉巴拉巴拉巴拉拉巴拉</td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="90">2016/01/01</td> -->
+<!-- 								<td>分店1</td> -->
+<!-- 							</tr> -->
+<!-- 						</table> -->
+<!-- 						<table width="100%" style="border-bottom:1px solid #eee;"> -->
+<!-- 							<tr> -->
+<!-- 								<td rowspan="2" width="50px;">头像</td> -->
+<!-- 								<td colspan="2">未知用户：巴拉巴拉巴拉巴拉拉巴拉</td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="90">2016/01/01</td> -->
+<!-- 								<td>分店1</td> -->
+<!-- 							</tr> -->
+<!-- 						</table> -->
 					</div>
   				</div>
   				<div class="leftColumn">
