@@ -177,6 +177,7 @@
         	var ctx = '<%=request.getSession().getAttribute("ctx")%>';
            jQuery(function($){
         		var data = decodeURIComponent($("#data").val());
+        		var reg = new RegExp("^[0-9]*$");
         		var dataDecode = JSON.parse(data);
         		var selectCheck = function(id){
         			 for (var i = 0; i <dataDecode.answers.length; i++) {
@@ -200,9 +201,20 @@
        			 for (var i = 0; i <dataDecode.answers.length; i++) {
 						if(dataDecode.answers[i].questionId == questionId){
 							dataDecode.answers[i].questionIdValue=questionId+"_"+$("#" +questionId+"_"+ id).val();
-							dataDecode.answers[i].optionValue = $("#" +questionId+"_"+ id).val();
+							var reg = new RegExp("^[0-9]*$");
+							var questionVal = $("#" +questionId+"_"+ id).val();
 							var key = questionId+"_optionValue";
-							dataDecode.answers[i][key] = $("#" +questionId+"_"+ id).val();
+							if(reg.test(questionVal)){
+								questionVal =parseInt(questionVal);
+								dataDecode.answers[i].optionValue = questionVal;
+								dataDecode.answers[i][key] = questionVal;
+							}else{
+								dataDecode.answers[i].optionValue = $("#" +questionId+"_"+ id).val();
+								dataDecode.answers[i][key] = $("#" +questionId+"_"+ id).val();
+							}
+							
+							
+							
 						}
 					}
        		}
