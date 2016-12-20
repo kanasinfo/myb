@@ -169,12 +169,57 @@ function loadPage(page,businessType) {
             console.log(textStatus);
         }
 	});
+	$.ajax({
+        type: 'GET',
+        url: reportGlobal.ctx+'/page/reportEchart/getVoiceOfCustomer/'+reportGlobal.id+'.json?R='+Math.random(),
+        dataType: 'json',
+	    cache: false,
+	    success: function (data) {
+	    	drawDetailedCustomer(data);
+	    },
+	    error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest.status);
+            console.log(XMLHttpRequest.readyState);
+            console.log(textStatus);
+        }
+	});
+	
 
 	//eval('load_'+page+'()');
 	/*
 	switch(page) {
 
 	}*/
+}
+function drawDetailedCustomer(jsondata) {
+	jsondata = JSON.parse(jsondata.data);;
+	var tableStr ="" 
+	
+	if(jsondata && jsondata.length>=1){
+		var html = "";
+		
+		for(var i=0;i<jsondata.length;i++){
+			$("#secondRowContentCustomer table").html("");
+			html += "<table width='100%' style='border-bottom:1px solid #eee;'>";
+			html += "<tr>";
+			html += "<td rowspan='2' width='50px;'>"+jsondata[i].picImage+"</td>";
+			html += "<td colspan='2'>"+jsondata[i].voiceOfComstomer+"</td>";
+			html += "</tr>";
+			html += "<tr>";	
+			var createTime = new Date(jsondata[i].createTime.time);
+			html += "<td width='90'>"+createTime.getFullYear()+"/"+(createTime.getMonth()+1)+"/"+createTime.getDate()+"</td>"
+			if(jsondata[i].storeName!=null){
+				html += "<td>   &nbsp&nbsp "+jsondata[i].storeName+"</td>"
+			}else{
+				html += "<td>   &nbsp&nbsp </td>"
+			}
+			html += "</tr>"
+			html += "</table>"
+		}	
+		$("#secondRowContentCustomer").append(html);
+	}else{
+		$(".detailedItemTable tr:last").after('<tr><td colspan=2>暂无数据</td></tr>');
+	}
 }
 
 function drawDetailedItemCharts(jsondata) {

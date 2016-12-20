@@ -71,9 +71,9 @@ public class MybChartP37 extends MybChart{
 			
 			
 			Map<String, List<Criteria>> fdmp = new HashMap<String, List<Criteria>>();	
-			if(filter == null || "".equals(filter) || "\"\"".equals(filter) ){
-				setFilter("{'value' : '{}','period' : '{\"start_time\":\"2016/01/01\",\"end_time\":\"2016/06/01\",}','store' : '{\"store_type\":\"\",\"store_id\":[\"\"],\"store_labels\":[\"\"]}'}");
-			}
+//			if(filter == null || "".equals(filter) || "\"\"".equals(filter) ){
+//				setFilter("{'value' : '{}','period' : '{\"start_time\":\"2016/01/01\",\"end_time\":\"2016/06/01\",}','store' : '{\"storeType\":\"\",\"store_id\":[\"\"],\"store_labels\":[\"\"]}'}");
+//			}
 			MybChartUtils.packDimensionsFilter(dimension, filter, fdmp);	
 			Criteria ct =null;
 			if(fdmp.get("filterOnly") != null){

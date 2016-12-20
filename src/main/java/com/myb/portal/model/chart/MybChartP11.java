@@ -63,18 +63,18 @@ public class MybChartP11 extends MybChart {
 			 * 
 			store: storeids/storegroupids selected by users. 			 			 
 			var store = {
-				store_type : "",
-				store_id : [ "" ],
+				storeType : "",
+				storeId : [ "" ],
 				store_labels : [ "" ]
 			};			 
 			 */
 			List<Criteria> criteria = new ArrayList<Criteria>();
 			JSONObject jbStore = JSONObject.fromObject(store);					
 			List<String> listParam = new ArrayList<String>();
-			for (int i = 0; i < jbStore.getJSONArray("store_id").size(); i++) {
-				listParam.add(jbStore.getJSONArray("store_id").getString(i));
+			for (int i = 0; i < jbStore.getJSONArray("storeId").size(); i++) {
+				listParam.add(jbStore.getJSONArray("storeId").getString(i));
 			}
-			criteria.add(Criteria.where(jbStore.getString("store_type").replaceAll("group","Group") + "Id").in(listParam.toArray()));
+			criteria.add(Criteria.where(jbStore.getString("storeType").replaceAll("group","Group") + "Id").in(listParam.toArray()));
 			
 			
 			
@@ -119,9 +119,6 @@ public class MybChartP11 extends MybChart {
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 			list = (BasicDBList)results.getRawResults().get("result");	
-			
-			
-			
 			aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),				
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
@@ -131,14 +128,10 @@ public class MybChartP11 extends MybChart {
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 			list = (BasicDBList)results.getRawResults().get("result");	
-			
-			
 			aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),				
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 			list = (BasicDBList)results.getRawResults().get("result");	
-
-
 			for(int k = 0; k < groups.length; k++){
 				//boolean gFlag = false;
 				legendStr.append("'"+groups[k]+"分',");
