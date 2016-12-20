@@ -17,32 +17,22 @@
 <body>
 	<jsp:include page="../include/topheader.jsp" />
 	<div id="body" style="padding:10px 0;">
-		<div class="wrapper bodyWrapper"  align="center">
-		<h1 style="margin:0 0 10 0px;line-height:35px;font-size:14px;border-bottom: 2px #696 solid;">用户登录</h1>
+		<div class="wrapper bodyWrapper"  align="center" style="background:none;padding:40px 0;">
 			<form action="${ctx}/page/account/login.html" method="post">
-				<table cellpadding="0" cellspacing="10" class="l-table-edit" style="margin-top:40px;">
-					<tr>
-						<td colspan="2" align="center"><h3 style="color: red">${msg}</h3></td>
-					</tr>
-					<tr>
-		                <td >用户名:</td>
-		                <td ><input type="text" id="loginName" name="loginName"/></td>
-					</tr>
-					<tr>
-		                <td >密码:</td>
-		                <td ><input type="password" id="passWord" name="passWord"/></td>
-					</tr>
-					<tr>
-		                <td >验证码:</td>
-		                <td ><input style="width:40px;" type="text" id="code" name="code"></input>&nbsp&nbsp&nbsp&nbsp<img src="${ctx}/servlet/captchaCode" id="captchaCode"></img></td>
-					</tr>
-					<tr>
-					<td align="center" colspan="2"><input type="submit" value="登陆" id="Button1" /><input type="button" id="buttonResg" value="注册"/></td> 
-					</tr>
-				</table>
+				<div style="background:white;box-shadow:0px 0px 8px #ccc; width:400px; padding:30px 0 50px 100px;border-radius:4px;text-align:left;">
+					<div><img src="${ctx}/assets/images/myb-big-logo.png" /></div>
+					<h2 style="color:gray;">登录</h2>
+					<h3 style="color: red">${msg}</h3>
+					<div style="margin:20px 0 10px 0;">账号：</div>
+					<div><input type="text" id="loginName" name="loginName" style="backgroud:white;border-radius:5px;width:250px;height:20px;"/></div>
+					<div style="margin:20px 0 10px 0;">密码：</div>
+					<div><input type="password" id="passWord" name="passWord" style="backgroud:white;border-radius:5px;width:250px;height:20px;"/></div>
+					<div style="margin-top:20px;">验证码：</div>
+					<div><input type="text" id="code" name="code" style="backgroud:white;border-radius:5px;width:100px;height:20px;color:#FFF;font-weight:bold;"></input>&nbsp&nbsp&nbsp&nbsp<img src="${ctx}/servlet/captchaCode" id="captchaCode"></img></div>
+					<div style="margin:30px 0 0 0;"><input type="submit" value="登陆" id="Button1"  style="width:250px;height:30px;background-color:#78973E;"/></div>
+					<div style="width:250px;text-align:center;padding:10px;">还没注册，请点击<a href="${ctx}/page/account/register.html">注册</a></div>			
+				</div>
 			</form>
-		</div>
-		<div>
 		</div>
     </div>
 	<jsp:include page="../include/footer.jsp" />
