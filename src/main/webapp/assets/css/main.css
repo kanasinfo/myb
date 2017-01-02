@@ -1,3 +1,4 @@
+
 /*
 color:
 title background: #78973E
@@ -13,7 +14,7 @@ body{
 	padding: 0px;
 	font-size:12px;
 	background: #5B636D;
-	font-family:"Microsoft YaHei",΢���ź�;
+	font-family:"Microsoft YaHei","微软雅黑", "宋体", Arial, sans-serif;
 }
 button{
 	cursor:pointer

@@ -810,7 +810,7 @@ table>tbody>tr>td{
 }
 ul{
     list-style: none;
-    padding: 0px;
+    /*padding: 0px;*/
 }
 .main_group_left_botton{
     margin-top: 20px;
@@ -888,7 +888,7 @@ ul{
 .btn{ background-color:#FFF; border:1px solid #CDCDCD;height:22px; width:70px;line-height: 0.5}
 .file{ position:absolute; top:0; right:80px; height:22px; filter:alpha(opacity:0);opacity: 0;width:260px }
 .main_add_context>span{
-    font-size: 90%
+    font-size: 90%;
 color: rgb(91,99,109);
 }
 .main_add_context>img{
