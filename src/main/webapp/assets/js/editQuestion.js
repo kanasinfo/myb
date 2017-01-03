@@ -332,7 +332,8 @@ jQuery(function($) {
 						width : 500,
 						modal : true,
 						buttons : {
-							"保存" : function() {
+							"保存" : function(e) {
+								e.preventDefault();
 								if ($('#MyRediofrom').validationEngine(
 										'validate') == false)
 									return;
@@ -463,8 +464,9 @@ jQuery(function($) {
 						width : 700,
 						modal : true,
 						buttons : {
-							"保存" : function() {
-								if (jQuery('#myCheckForm').validationEngine(
+							"保存" : function(e) {
+                                e.preventDefault();
+                                if (jQuery('#myCheckForm').validationEngine(
 										'validate') == false)
 									return;
 								var groupId = $("#groupId").val();

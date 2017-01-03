@@ -35,7 +35,6 @@ public class MybMainController {
 	QuestionsService questionsService;
 	@Autowired
 	MybAccountService mybAccountService;
-	
 
 	@RequestMapping(value="home",method=RequestMethod.GET)
 	public ModelAndView home(ModelAndView mv){

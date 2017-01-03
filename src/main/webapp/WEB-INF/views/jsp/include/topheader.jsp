@@ -8,14 +8,14 @@
 <div id="header">
 	<div class="wrapper">
 		<div style="float:right">
-			<ul id="mainNavigator">
-				<li><a href="${ctx}/page/account/login.html" id="login">登录</a></li>
-				<li><a href="${ctx}/page/account/register.html">注册</a></li>
+			<ul id="mainNavigator" class="main-navigator login-reg">
+				<li><a href="${ctx}/page/account/login.html" id="login" class="font-14">登录</a></li>
+				<li><a href="${ctx}/page/account/register.html" class="font-14">注册</a></li>
 			</ul>
 		</div>
 		<div id="membershortcuts"></div>
 		<div id="logo"></div>
-		<ul id="mainNavigator">
+		<ul id="mainNavigator" class="main-navigator">
 			<li><a href="${ctx}/page/main/home.html" ${pageContext.request.servletPath=="/WEB-INF/views/jsp/home.jsp"?"class=\"current\"":""}>首页</a></li>
 			<li><a href="${ctx}/page/main/question.html" ${pageContext.request.servletPath=="/WEB-INF/views/jsp/question.jsp"?"class=\"current\"":""}>我的调查列表</a></li>
 			<li><a href="${ctx}/page/main/product.html" ${pageContext.request.servletPath=="/WEB-INF/views/jsp/product.jsp"?"class=\"current\"":""}>产品介绍</a></li>
