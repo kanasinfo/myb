@@ -473,7 +473,8 @@
 }
 
 .div_center_title {
-    height: 25px
+    height: 25px;
+    margin-bottom: 5px;
 }
 
 .div_center_title_group {
@@ -482,7 +483,7 @@
 
 .div_button {
     height: 20px;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
     margin-left: 0px;
     border-top: 5px;
 }

@@ -203,7 +203,7 @@ jQuery(function($) {
 						autoOpen : false,
 						height : 180,
 						width : 500,
-						modal : true,
+						modeal : true,
 						buttons : {
 							"保存" : function() {
 								if (jQuery('#myEditTemplateFrom')
@@ -935,8 +935,8 @@ jQuery(function($) {
 	}
 
 	var addquestion = function(group_type, groupId, question_group_name,
-			question_group_sort_num, displayValue) {
-		$("#questionEditFlag").val(true);
+			question_group_sort_num, displayValue, e) {
+        $("#questionEditFlag").val(true);
 		$("#question_id").val('');
 		$("#questionType").val(group_type);
 		// questionScoreRadio
@@ -948,8 +948,10 @@ jQuery(function($) {
 		$("#question").val('');
 		$("#questionCheckName").val('');
 		$("#questionCheckVal").val('');
-		$("#tableListAll tr").remove()
-		var id = UUID.prototype.createUUID();
+		$("#tableListAll tr").remove();
+        $('#MyRediofrom')[0].reset();
+        $('.formError').remove();
+        var id = UUID.prototype.createUUID();
 		var html = "<tr name='delDiv' id='div_" + id + "'>";
 		html += "<td class='table_question'></td>"
 		html += "<td class='table_question_text_list'><input type='text' id="

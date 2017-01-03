@@ -108,12 +108,14 @@
                 <span style="margin-left: 100px;font-size:16px;padding-top: 10px;position: absolute;color: <c:if test="${question.key.type ==0}">rgb(204,204,204)</c:if>
                 <c:if test="${question.key.type ==1}">rgb(82,82,82)</c:if>">
                 	<c:if test="${question.key.type ==1}">
-                		<input type="checkbox" disabled="disabled" checked="<c:if test="${question.key.select }">checked</c:if>" id="check_group_${question.key.questionGroupId}" onclick="selectGroup('${question.key.questionGroupId}')"/><a href="javascript:void(0)" style="color: rgb(82,82,82)"  onclick="editquestionTemplate('${question.key.questionGroupId}')"><span>${question.key.name}</span></a>
+                		<input type="checkbox" disabled="disabled" checked="<c:if test="${question.key.select }">checked</c:if>" id="check_group_${question.key.questionGroupId}" onclick="selectGroup('${question.key.questionGroupId}')"/>
+                        <a href="javascript:void(0)" style="color: rgb(82,82,82)"  onclick="editquestionTemplate('${question.key.questionGroupId}')"><span>${question.key.name}</span></a>
                 	</c:if>
                 	<c:if test="${question.key.type ==0}">
                 		<strong>${question.key.name}</strong>
                 	</c:if>
-                </span><span style="margin-left: 280px;padding-top: 13px;position: absolute;color: rgb(204,204,204)" id="dispanVale_${question.key.questionGroupId}">${question.key.displayValue}</span>
+                </span>
+                <span style="margin-left: 280px;padding-top: 13px;position: absolute;color: rgb(204,204,204)" id="dispanVale_${question.key.questionGroupId}">${question.key.displayValue}</span>
             </div>
             </c:if>
           	<c:if test="${question.key.type ==1 }">
@@ -165,7 +167,7 @@
         </c:if>
         <div class="div_center">
             <div class="div_center_title">
-                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 10px;position: absolute;" onclick="selectWelcomeMsg(this)" <c:if test='${industry.activeFlag==true}'>checked="checked"</c:if>/>
+                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 13px;position: absolute;" onclick="selectWelcomeMsg(this)" <c:if test='${industry.activeFlag==true}'>checked="checked"</c:if>/>
                 <span style="margin-left: 115px;padding-top: 7.5px;position: absolute;color: rgb(82,82,82)"><strong>设置调查欢迎语</strong></span>
             </div>
             <div class="question_option">
@@ -174,7 +176,7 @@
         </div>
         <div class="div_center">
             <div class="div_center_title">
-                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 10px;position: absolute;" onclick="selectEndWelcomeMsg(this)" <c:if test='${industry.endActiveFlag==true}'>checked="checked"</c:if>/>
+                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 13px;position: absolute;" onclick="selectEndWelcomeMsg(this)" <c:if test='${industry.endActiveFlag==true}'>checked="checked"</c:if>/>
                 <span style="margin-left: 115px;padding-top: 7.5px;position: absolute;color: rgb(82,82,82)"><strong>设置调查结后语</strong></span>
             </div>
             <div class="question_option">
