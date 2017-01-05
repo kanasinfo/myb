@@ -161,7 +161,7 @@ jQuery(function($) {
 										+ $("#groupId").val() + "\",\""
 										+ question_id + "\")' >编辑</a></span>";
 								html = html
-										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion(&apos;"
+										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204); font-size: 12px;' onclick='delQuestion(&apos;"
 										+ question_id + "&apos;,&apos;"
 										+ questionName
 										+ "&apos;)'>删除</a></span></li>";
@@ -394,20 +394,25 @@ jQuery(function($) {
 								var html = "";
 								if(MyRedioFlag==2){
 									 html = html +"<li id=" + question_id
-										+ ">" 
-										+"<input type='checkbox' onclick='selectOrunSelect(&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;)' id='check_"+question_id+"'/>"
+										+ ">"
+                                         + "<div style=\"border: none; float: left; overflow: hidden; width: 150px; line-height: 0;\">"
+										+"<input type='checkbox' onclick='selectOrunSelect(&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;)' id='check_"+question_id+"'/> "
 										+"<a href='javascript:void(0)' onclick='editquestion(&apos;"+questionType+"&apos;,&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;,&apos;"+questionJson.questionGroupName+"&apos;,"+false+")'>"
-										+"<span id="
+
+                                         +"<span id="
 										+ groupId + "_" + question_id + ">"
 										+ question + "</span>"
 										+"</a>"
-										+"<span style='margin-left: 20%; font-size:12px;color:rgb(204,204,204)' id='editSpan_"+question_id+"'>"+questionName+"</span>"
+                                         +"</div>"
+                                         +"<span style='margin-left: 10px; font-size:12px;color:rgb(204,204,204)' id='editSpan_"+question_id+"'>"+questionName+"</span>"
 										;
 								html = html
-										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion(&apos;"
+										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204); font-size: 12px;' onclick='delQuestion(&apos;"
 										+ question_id + "&apos;,&apos;"
 										+ questionName
-										+ "&apos;)'>删除</a></span></li>";
+										+ "&apos;)'>删除</a>" +
+                                        "</span>" +
+                                        "</li>";
 								}else{
 									 html = html +"<li id=" + question_id
 									+ ">" 

@@ -95,7 +95,7 @@
         	</div>
         </form>
          <div class="clear_div" id="clear_div">
-            <span>问卷设置</span>
+            <span style="display: block; margin-top: 2px; float: left;">问卷设置</span>
             <input type="button" id="editButon"  name="editButon" value="编辑"/>
             <input type="button" id="cancelButon" style="display: none; color: #fff;" name="cancelButon" value="取消"/>
         </div>
@@ -155,7 +155,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <c:if test="${question.key.businessType !='groupOverview' }">
-                <div class="div_button" style="margin-top:20px;">
+                <div class="div_button" style="margin-top:20px; margin-left: 15px;">
 	            	<button disabled="disabled" onclick="addquestion('${question.key.customQuestionType}','${question.key.questionGroupId}','${question.key.name}','${question.key.sortNumber}','${question.key.displayValue}')"></button>
 	                <span style="color:rgb(204,204,204)">添加'${question.key.name}'自定义指标</span>
            		</div>
@@ -167,7 +167,7 @@
         </c:if>
         <div class="div_center">
             <div class="div_center_title">
-                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 13px;position: absolute;" onclick="selectWelcomeMsg(this)" <c:if test='${industry.activeFlag==true}'>checked="checked"</c:if>/>
+                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 10px;position: absolute;" onclick="selectWelcomeMsg(this)" <c:if test='${industry.activeFlag==true}'>checked="checked"</c:if>/>
                 <span style="margin-left: 115px;padding-top: 7.5px;position: absolute;color: rgb(82,82,82)"><strong>设置调查欢迎语</strong></span>
             </div>
             <div class="question_option">
@@ -176,7 +176,7 @@
         </div>
         <div class="div_center">
             <div class="div_center_title">
-                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 13px;position: absolute;" onclick="selectEndWelcomeMsg(this)" <c:if test='${industry.endActiveFlag==true}'>checked="checked"</c:if>/>
+                <input type="checkbox" disabled="disabled" style="margin-left: 100px;margin-top: 10px;position: absolute;" onclick="selectEndWelcomeMsg(this)" <c:if test='${industry.endActiveFlag==true}'>checked="checked"</c:if>/>
                 <span style="margin-left: 115px;padding-top: 7.5px;position: absolute;color: rgb(82,82,82)"><strong>设置调查结后语</strong></span>
             </div>
             <div class="question_option">
