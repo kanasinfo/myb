@@ -1,3 +1,4 @@
+
 /*
 color:
 title background: #78973E
@@ -9,10 +10,11 @@ darkbar: #5B636D
 */
 
 body{
-	margin: 0px;
+	margin: 0 0 60px;
 	padding: 0px;
-	font-size:12px;
-	background: #5B636D;
+	font-size:14px;
+	background: #F5F5F5;
+	font-family:"Microsoft YaHei","微软雅黑", "宋体", Arial, sans-serif;
 }
 button{
 	cursor:pointer
@@ -46,27 +48,27 @@ div#logo{
 	width:99px;
 	height:30px;
 }
-ul#mainNavigator{
+ul.main-navigator{
 	float:left;
 	list-style:none;
 	line-height: 50px;
 	margin: 0;
 }
-ul#mainNavigator li{float:left;}
-ul#mainNavigator a{
+ul.main-navigator li{float:left;}
+ul.main-navigator a{
 	display:block;
 	text-align:center;
 	padding:0 20px;
-	font-size:13px;
+	font-size:16px;
 	font-weight: bold;
 	color: white;
 	text-decoration: none;
 }
-ul#mainNavigator a:visited{color:#FFF;}
-ul#mainNavigator a:hover{color:#FFF;
+ul.main-navigator a:visited{color:#FFF;}
+ul.main-navigator a:hover{color:#FFF;
 	background: url("../images/nav_hover_bg.png") repeat-x;	
 }
-ul#mainNavigator a.current{
+ul.main-navigator a.current{
 	background: url("../images/nav_hover_bg.png") repeat-x;	
 }
 div#subHeader{
@@ -137,7 +139,10 @@ span#titleTip a{
 	color:#4298D2;
 }
 div#footer{
-	line-height:30px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+	line-height:60px;
 	color:#ccc;
 	background-color:#5B636D;
 }
@@ -210,4 +215,8 @@ div.secondRowContent{
 } 
 .mybrow .three { 
    
+}
+
+.login-reg>li>a{
+    font-size: 14px;
 }

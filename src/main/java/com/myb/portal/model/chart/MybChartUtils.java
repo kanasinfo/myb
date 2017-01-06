@@ -44,21 +44,11 @@ public class MybChartUtils {
 
 		// Store in filter
 		JSONObject jbStore = JSONObject.fromObject(jb.getString("store"));
-		if("nostore".equals(jbStore.getString("store_type"))){
+		if("nostore".equals(jbStore.getString("storeType"))){
 			list.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-		}else if(isNotNull(jbStore.getString("store_type"))) {
-			String storeColumnName = "storeId";
-			if ("store".equals(jbStore.getString("store_type"))) {
-				storeColumnName = "storeId";
-			} else {
-				storeColumnName = "storeGroupId";
-			}
-			ja = jbStore.getJSONArray("store_id");
-			List<String> listParam = new ArrayList<String>();
-			for (int i = 0; i < ja.size(); i++) {
-				listParam.add(ja.getString(i));
-			}
-			list.add(Criteria.where(storeColumnName).in(listParam.toArray()));
+		}else if(isNotNull(jbStore.getString("storeType"))) {
+			List<String> listParam = extractStoreIds(jbStore);
+			list.add(Criteria.where("storeId").in(listParam.toArray()));			
 		}
 		
 		//Questions/Options values in Filter
@@ -105,23 +95,13 @@ public class MybChartUtils {
 
 			// Store in filter
 			JSONObject jbStore = JSONObject.fromObject(jb.getString("store"));
-			if(!isNotNull(jbStore.getString("store_type"))){
+			if(!isNotNull(jbStore.getString("storeType"))){
 				criteria.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-			}else if("nostore".equals(jbStore.getString("store_type"))){
+			}else if("nostore".equals(jbStore.getString("storeType"))){
 				criteria.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-			}else if(isNotNull(jbStore.getString("store_type"))) {
-				String storeColumnName = "storeId";
-				if ("store".equals(jbStore.getString("store_type"))) {
-					storeColumnName = "storeId";
-				} else {
-					storeColumnName = "storeGroupId";
-				}
-				jaQuestionid = jbStore.getJSONArray("store_id");
-				List<String> listParam = new ArrayList<String>();
-				for (int i1 = 0; i1 < jaQuestionid.size(); i1++) {
-					listParam.add(jaQuestionid.getString(i1));
-				}
-				criteria.add(Criteria.where(storeColumnName).in(listParam.toArray()));
+			}else if(isNotNull(jbStore.getString("storeType"))) {
+				List<String> listParam = extractStoreIds(jbStore);
+				criteria.add(Criteria.where("storeId").in(listParam.toArray()));
 			}
 			
 			JSONObject jbValue = JSONObject.fromObject(jb.getString("value"));
@@ -142,7 +122,6 @@ public class MybChartUtils {
 		}
 	}
 	
-	
 	public static void packDimensionsFilter(String dimension,String filter,Map<String, List<Criteria>> map){
 		if(dimension != null && !"".equals(dimension) && !"\"\"".equals(dimension)){
 			JSONArray ja = JSONObject.fromObject(dimension).getJSONArray("members");
@@ -152,23 +131,13 @@ public class MybChartUtils {
 				List<Criteria> criteria = new ArrayList<Criteria>();
 				// Store in filter
 				JSONObject jbStore = JSONObject.fromObject(jb.getString("store"));
-				if(!isNotNull(jbStore.getString("store_type"))){
+				if(!isNotNull(jbStore.getString("storeType"))){
 					criteria.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-				}else if("nostore".equals(jbStore.getString("store_type"))){
+				}else if("nostore".equals(jbStore.getString("storeType"))){
 					criteria.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
-				}else if(isNotNull(jbStore.getString("store_type"))) {
-					String storeColumnName = "storeId";
-					if ("store".equals(jbStore.getString("store_type"))) {
-						storeColumnName = "storeId";
-					} else {
-						storeColumnName = "storeGroupId";
-					}
-					jaQuestionid = jbStore.getJSONArray("store_id");
-					List<String> listParam = new ArrayList<String>();
-					for (int i1 = 0; i1 < jaQuestionid.size(); i1++) {
-						listParam.add(jaQuestionid.getString(i1));
-					}
-					criteria.add(Criteria.where(storeColumnName).in(listParam.toArray()));
+				}else if(isNotNull(jbStore.getString("storeType"))) {
+					List<String> listParam = extractStoreIds(jbStore);
+					criteria.add(Criteria.where("storeId").in(listParam.toArray()));
 				}
 				
 				JSONObject jbValue = JSONObject.fromObject(jb.getString("value"));
@@ -193,150 +162,30 @@ public class MybChartUtils {
 		}	
 	}
 	
-	public class MybField implements Field{
-		private final String name;
-		private final String target;
-
-		/**
-		 * Creates an aggregation field with the given {@code name}.
-		 * 
-		 * @see MybField#MybField(String, String).
-		 * @param name must not be {@literal null} or empty
-		 */
-		public MybField(String name) {
-			this(name, null);
-		}
-
-		/**
-		 * Creates an aggregation field with the given {@code name} and {@code target}.
-		 * <p>
-		 * The {@code name} serves as an alias for the actual backing document field denoted by {@code target}. If no target
-		 * is set explicitly, the name will be used as target.
-		 * 
-		 * @param name must not be {@literal null} or empty
-		 * @param target
-		 */
-		public MybField(String name, String target) {
-
-			String nameToSet = cleanUp(name);
-			String targetToSet = cleanUp(target);
-
-			Assert.hasText(nameToSet, "AggregationField name must not be null or empty!");
-
-			if (target == null && name.contains(".")) {
-				this.name = nameToSet.substring(nameToSet.indexOf('.') + 1);
-				this.target = nameToSet;
-			} else {
-				this.name = nameToSet;
-				this.target = targetToSet;
+	private static List<String> extractStoreIds(JSONObject jbStore) {
+		JSONArray jbStoreTmp = null;
+		JSONArray jbStoreGroupTmp = null;
+		List<String> listParam = new ArrayList<String>();
+		if ("store".equals(jbStore.getString("storeType"))) {
+			jbStoreTmp = jbStore.getJSONArray("store");
+			for (int i1 = 0; i1 < jbStoreTmp.size(); i1++) {
+				System.out.println("storeID:"+jbStoreTmp.getJSONObject(i1).getString("storeId"));
+				if(jbStoreTmp.getJSONObject(i1).getString("storeId") != null && !listParam.contains(jbStoreTmp.getJSONObject(i1).getString("storeId"))){
+					listParam.add(jbStoreTmp.getJSONObject(i1).getString("storeId"));
+				}
+			}					
+		} else {
+			jbStoreGroupTmp =  jbStore.getJSONArray("storeGroup");
+			for (int j = 0; j < jbStoreGroupTmp.size(); j++){
+				jbStoreTmp = jbStoreGroupTmp.getJSONObject(j).getJSONArray("store");
+				for (int i1 = 0; i1 < jbStoreTmp.size(); i1++) {
+					System.out.println("storeID:"+jbStoreTmp.getJSONObject(i1).getString("storeId"));
+					if(jbStoreTmp.getJSONObject(i1).getString("storeId") != null && !listParam.contains(jbStoreTmp.getJSONObject(i1).getString("storeId"))){
+						listParam.add(jbStoreTmp.getJSONObject(i1).getString("storeId"));
+					}
+				}	
 			}
 		}
-
-		private final String cleanUp(String source) {
-
-			if (source == null) {
-				return source;
-			}
-//
-//			if (MybField.SystemVariable.isReferingToSystemVariable(source)) {
-//				return source;
-//			}
-
-			int dollarIndex = source.lastIndexOf('$');
-			return dollarIndex == -1 ? source : source.substring(dollarIndex + 1);
-		}
-
-		/*
-		 * (non-Javadoc)
-		 * @see org.springframework.data.mongodb.core.aggregation.Field#getKey()
-		 */
-		public String getName() {
-			return name;
-		}
-
-		/*
-		 * (non-Javadoc)
-		 * @see org.springframework.data.mongodb.core.aggregation.Field#getAlias()
-		 */
-		public String getTarget() {
-			return StringUtils.hasText(this.target) ? this.target : this.name;
-		}
-
-		/*
-		 * (non-Javadoc)
-		 * @see org.springframework.data.mongodb.core.aggregation.Field#isAliased()
-		 */
-		@Override
-		public boolean isAliased() {
-			return !getName().equals(getTarget());
-		}
-
-		/* 
-		 * (non-Javadoc)
-		 * @see java.lang.Object#toString()
-		 */
-		@Override
-		public String toString() {
-			return String.format("MybField - name: %s, target: %s", name, target);
-		}
-
-		/* 
-		 * (non-Javadoc)
-		 * @see java.lang.Object#equals(java.lang.Object)
-		 */
-		@Override
-		public boolean equals(Object obj) {
-
-			if (this == obj) {
-				return true;
-			}
-
-			if (!(obj instanceof MybField)) {
-				return false;
-			}
-
-			MybField that = (MybField) obj;
-
-			return this.name.equals(that.name) && ObjectUtils.nullSafeEquals(this.target, that.target);
-		}
-
-		/* 
-		 * (non-Javadoc)
-		 * @see java.lang.Object#hashCode()
-		 */
-		@Override
-		public int hashCode() {
-
-			int result = 17;
-
-			result += 31 * name.hashCode();
-			result += 31 * ObjectUtils.nullSafeHashCode(target);
-
-			return result;
-		}
-		
-	}
-	
-	
-	
-	public static void main(String[] args) {
-		try {
-//			String ss = new String(Files.readAllBytes(Paths.get("/Users/william/Desktop/1.txt")));
-//			String dimn = new String(Files.readAllBytes(Paths.get("/Users/william/Desktop/2.txt")));
-//			System.out.println(ss);
-//			List<Criteria> list = new ArrayList<Criteria>();
-//			packFilter(ss, list);
-//			System.out.println("111111111111111111111");
-//			Map<String, List<Criteria>> mp = new HashMap();
-//			packDimensions(dimn, mp);
-//			System.out.println("222222222222222222222");
-//			Map<String, List<Criteria>> fdmp = new HashMap();
-//			packDimensionsFilter(dimn, ss, fdmp);
-//			String a = "storegroup";
-//			System.out.println(a.replaceAll("group", "Group"));
-						
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		return listParam;
 	}
 }

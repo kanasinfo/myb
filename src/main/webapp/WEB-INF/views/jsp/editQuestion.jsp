@@ -45,11 +45,11 @@
     	<input type="hidden" id="editQuestion" name="editQuestion" value="0"></input>
     	<!-- 单选框赋值，分值类型还是是否类型 -->
     	<input type="hidden" id="MyRedioFlag" name="MyRedioFlag" value=""/>
-        <div id="create_panel">
+        	<div id="create_panel">
                 <div id="title">基本设置
-                	<input type="button" class="basic_button" id="basic_edit" value="编辑"/> 
+                	<input type="button" class="basic_button" id="basic_edit" value="编辑"/>
                 	<input type="button" class="basic_button" style="display: none" id="basic_Reset_edit" value="取消"/>
-                	<input type="button" class="basic_Save_button" style="display: none" id="basic_save" value="保存"/> 
+                	<input type="button" class="basic_Save_button" style="display: none" id="basic_save" value="保存"/>
                 </div>
                 <div class="form_row" id="form_row_id">
                 	<div class="column_left">选择行业</div>
@@ -75,7 +75,7 @@
                 	</div>
                 	</c:if>
                 </div>
-                
+
                 <div class="form_row">
                 	<div class="column_left">调查名称</div>
                 	<div class="column_right">
@@ -95,9 +95,9 @@
         	</div>
         </form>
          <div class="clear_div" id="clear_div">
-            <span>问卷设置</span>
+            <span style="display: block; margin-top: 2px; float: left;">问卷设置</span>
             <input type="button" id="editButon"  name="editButon" value="编辑"/>
-            <input type="button" id="cancelButon" style="display: none" name="cancelButon" value="取消"/>
+            <input type="button" id="cancelButon" style="display: none; color: #fff;" name="cancelButon" value="取消"/>
         </div>
        <c:if test="${list !=null }">
         <c:forEach var="question" items="${list}">
@@ -105,15 +105,17 @@
         <div class="div_center">
         <c:if test="${question.key.type ==1 }">
             <div class="div_center_title">
-                <span style="margin-left: 100px;font-size:15px;padding-top: 10px;position: absolute;color: <c:if test="${question.key.type ==0}">rgb(204,204,204)</c:if>
+                <span style="margin-left: 100px;font-size:16px;padding-top: 10px;position: absolute;color: <c:if test="${question.key.type ==0}">rgb(204,204,204)</c:if>
                 <c:if test="${question.key.type ==1}">rgb(82,82,82)</c:if>">
                 	<c:if test="${question.key.type ==1}">
-                		<input type="checkbox" disabled="disabled" checked="<c:if test="${question.key.select }">checked</c:if>" id="check_group_${question.key.questionGroupId}" onclick="selectGroup('${question.key.questionGroupId}')"/><a href="javascript:void(0)" style="color: rgb(82,82,82)"  onclick="editquestionTemplate('${question.key.questionGroupId}')"><strong>${question.key.name}</strong></a>
+                		<input type="checkbox" disabled="disabled" checked="<c:if test="${question.key.select }">checked</c:if>" id="check_group_${question.key.questionGroupId}" onclick="selectGroup('${question.key.questionGroupId}')"/>
+                        <a href="javascript:void(0)" style="color: rgb(82,82,82)"  onclick="editquestionTemplate('${question.key.questionGroupId}')"><span>${question.key.name}</span></a>
                 	</c:if>
                 	<c:if test="${question.key.type ==0}">
                 		<strong>${question.key.name}</strong>
                 	</c:if>
-                </span><span style="margin-left: 280px;padding-top: 13px;position: absolute;color: rgb(204,204,204)" id="dispanVale_${question.key.questionGroupId}">${question.key.displayValue}</span>
+                </span>
+                <span style="margin-left: 280px;padding-top: 13px;position: absolute;color: rgb(204,204,204)" id="dispanVale_${question.key.questionGroupId}">${question.key.displayValue}</span>
             </div>
             </c:if>
           	<c:if test="${question.key.type ==1 }">
@@ -128,16 +130,18 @@
 	             	<c:forEach var="option" items="${question.value}">
 	             		<c:if test="${option.filterFlag ==true}">
 	           			 <li id="${option.questionId}">
-		           			 <input type="checkbox" disabled="disabled" onclick="selectOrunSelect('${question.key.questionGroupId}','${option.questionId}')" id="check_${option.questionId}"<c:if test='${option.activeFlag==true}'>checked="checked"</c:if> />
-		           			<a href="javascript:void(0)" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}',${option.templateFlag})">
-		           			 <span id="${question.key.questionGroupId}_${option.questionId}">${option.questionName}</span>
-		           			 </a>
+		           			 <div style="border: none; float: left; overflow: hidden; width: 150px; line-height: 0;">
+								 <input type="checkbox" disabled="disabled" onclick="selectOrunSelect('${question.key.questionGroupId}','${option.questionId}')" id="check_${option.questionId}"<c:if test='${option.activeFlag==true}'>checked="checked"</c:if> />
+								 <a href="javascript:void(0)" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}',${option.templateFlag})">
+									 <span id="${question.key.questionGroupId}_${option.questionId}">${option.questionName}</span>
+								 </a>
+							 </div>
 		           			 <c:if test="${question.key.type ==0 }">
-	           			 		<span style="margin-left: 20%; font-size:12px;color:rgb(204,204,204)" id="editSpan_${option.questionId}">${option.questionValue}</span>
+	           			 		<span style="line-height: 10px;margin-left: 10px; font-size:12px;color:rgb(204,204,204)" id="editSpan_${option.questionId}">${option.questionValue}</span>
 	           			 	</c:if>
 		           			 <c:if test="${option.templateFlag==false}">
 <%-- 			           			 <span style="padding-left:1px;"><a style="color: rgb(205,204,204)" data-toggle="modal" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}')">编辑</a></span> --%>
-			           			 <span style="padding-left:2px;color: rgb(82,82,82);margin-left: 8%;"><a style="color: rgb(82,82,82);font-size:12px;" onclick="delQuestion('${option.questionId}','${option.questionName}')">删除</a></span>
+			           			 <span style="line-height: 10px; color: rgb(82,82,82);margin-left: 10px;"><a style="color: rgb(82,82,82);font-size:12px;" onclick="delQuestion('${option.questionId}','${option.questionName}')">删除</a></span>
 		           			 </c:if>
 		           			 <c:if test="${option.templateFlag==true&& question.key.name eq '顾客消费习惯及背景调查'}">
 		           			 	<span style="padding-left:1px;" id="span_top"><input type="button" disabled="disabled" id="top_${option.questionId}" class="<c:if test="${option.topFlag==0}">question_top_onSelect</c:if>
@@ -151,7 +155,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <c:if test="${question.key.businessType !='groupOverview' }">
-                <div class="div_button" style="margin-top:20px;">
+                <div class="div_button" style="margin-top:20px; margin-left: 15px;">
 	            	<button disabled="disabled" onclick="addquestion('${question.key.customQuestionType}','${question.key.questionGroupId}','${question.key.name}','${question.key.sortNumber}','${question.key.displayValue}')"></button>
 	                <span style="color:rgb(204,204,204)">添加'${question.key.name}'自定义指标</span>
            		</div>
@@ -210,16 +214,16 @@
 	
 	<div id="MyRedio">
 		<form action="" id="MyRediofrom">
-       	<div id="model_redio" style="height: 100px;">
+       	<div id="model_redio" style="height: 100px; overflow: hidden;">
        		<table>
-     				<tr>	
-	                    <td  class="table_question">名称:</td>
-	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="redioQuestion" /></td>
-	                </tr>
-	                <tr>
-	                    <td class="table_question">描述:</td>
-	                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="redioQuestionName" /></td>
-	                </tr>
+                <tr>
+                    <td  class="table_question">名称:</td>
+                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="redioQuestion" /></td>
+                </tr>
+                <tr>
+                    <td class="table_question">描述:</td>
+                    <td class="table_question_text"><input type="text" data-validation-placeholder="输入不正确" class="validate[required] text-input table_question_text" id="redioQuestionName" /></td>
+                </tr>
        		</table>
 	    </div>
 	    </form>

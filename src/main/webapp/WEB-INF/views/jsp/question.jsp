@@ -11,12 +11,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <link rel="stylesheet" type="text/css" href="${ctx}/assets/bootstrap-3.3.5/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="${ctx}/assets/css/main.css" />
-<link rel="stylesheet" type="text/css"
-	href="${ctx}/assets/css/question.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/assets/css/question.css" />
 <script type="text/javascript" src="${ctx}/assets/jquery/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="${ctx}/assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="${ctx}/assets/js/question.js"></script>
-<title>我的问卷</title> 
+<title>我的问卷</title>
 </head>
 <body>
 	<jsp:include page="include/topheader.jsp" />
@@ -60,7 +59,7 @@
 								<input type="button" class="button" style="background-image: url('${ctx}/assets/images/question_query.png')" title="报告"  ${item.qustnnrStatus<2?"onclick=\"optionReport('".concat(item.id).concat("')\""):"disabled=\"disabled\""} />
 								<input type="button" class="button" style="background-image: url('${ctx}/assets/images/question_crm.png')" title="客户管理"  ${item.qustnnrStatus<2?"onclick=\"\"":"disabled=\"disabled\""} />
 								<input type="button" class="button" title="删除"  onclick="delQuestion('1','${item.id}'${item.qustnnrStatus<2?'':',\'item.qustnrName\''})" style="background-image: url('${ctx}/assets/images/question_display_del.png')" data-toggle="modal" data-target="#myModal" disabled="disabled"/>
-								
+
 							</div>
 						</div>
 					</c:forEach>
@@ -69,7 +68,7 @@
 			<div style="background:#FFF;padding:15px;">
 			${page}
 			</div>
-			
+
 		</div>
 	</div>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -89,8 +88,8 @@
         </div>
     </div>
     </div>
-    
-    
+
+
     <div class="modal fade" id="stopModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
 	        <div class="modal_question">
@@ -108,7 +107,7 @@
 	        </div>
 	    </div>
     </div>
-    
+
 	<jsp:include page="include/footer.jsp" />
 </body>
 

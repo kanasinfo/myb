@@ -129,10 +129,10 @@
 					<div class="pcont report-page">
 						<div class="title">总体顾客满意度</div>
 							<div class="chartdiv">	
-								<div class="chart-main"></div>							
+								<div class="chart-main"></div>	
+								<div class="table-main"></div>						
 								<div class="chartlegend">
-										<div style="line-height:20px">
-							  														  </div>			        
+										<div style="line-height:20px"> </div>			        
 									</div>	
 								</div>
 							<div class="comments">
@@ -298,7 +298,6 @@
 	<script type="text/javascript" src="${ctx}/assets/jqueryui/jquery.layout/jquery.layout.min.js"></script>
 	<script type="text/javascript" src="${ctx}/assets/jqueryui/jquery.layout/callbacks/jquery.layout.resizePaneAccordions.min.js"></script>
 	<script type="text/javascript" src="${ctx}/assets/echarts/echarts-3.1.10.min.js"></script>
-	<!-- script type="text/javascript" src="${ctx}/assets/echarts/build/dist/echarts.js"></script> -->
 	<script type="text/javascript" src="${ctx}/assets/js/proreport.js"></script>
 	<script type="text/javascript">	
 		//Load the data of the page		

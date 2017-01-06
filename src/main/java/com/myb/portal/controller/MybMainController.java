@@ -35,7 +35,6 @@ public class MybMainController {
 	QuestionsService questionsService;
 	@Autowired
 	MybAccountService mybAccountService;
-	
 
 	@RequestMapping(value="home",method=RequestMethod.GET)
 	public ModelAndView home(ModelAndView mv){
@@ -64,6 +63,9 @@ public class MybMainController {
 	public ModelAndView report(@PathVariable("id")String id,ModelAndView mv){
 		mv.addObject("id", id);
 		mv.setViewName("report");
+		//查询顾客之声
+		
+		
 		return mv;
 	}
 	

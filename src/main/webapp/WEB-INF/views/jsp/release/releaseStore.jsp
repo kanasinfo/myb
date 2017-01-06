@@ -85,7 +85,7 @@
 						<table class="main_table" id="mainList">
 			                	<thead >
 			                    <tr class="main_group_table_top">
-			                        <td class="tableCheck"><input type="checkbox" id="mainListCheckBox"/>全选</td>
+			                        <td class="tableCheck"><input type="checkbox" id="mainListCheckBox"/> 全选</td>
 	                                <td></td>
 	                                <td></td>
 			                    </tr>
@@ -94,7 +94,7 @@
 								<c:if test="${storeList!=null }">
 									<c:forEach var="sotre" items="${storeList }">
 					                   <tr>
-						                    <td class="table_left"><input name="mainCheckBox" value="${sotre.storeId }_${sotre.storeName }" type="checkbox"/>${sotre.storeName }</td>
+						                    <td class="table_left"><input name="mainCheckBox" value="${sotre.storeId }_${sotre.storeName }" type="checkbox"/> ${sotre.storeName }</td>
 											<td class="table_center"><input type="text" value="${sotre.url }"/></td>
 											<td class="table_right"><img src="${ctx }/assets/images/towcodeDemo.png" style="width: 25px;height: 25px"/></td>
 										</tr>

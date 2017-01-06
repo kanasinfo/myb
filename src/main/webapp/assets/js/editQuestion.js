@@ -161,7 +161,7 @@ jQuery(function($) {
 										+ $("#groupId").val() + "\",\""
 										+ question_id + "\")' >编辑</a></span>";
 								html = html
-										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion(&apos;"
+										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204); font-size: 12px;' onclick='delQuestion(&apos;"
 										+ question_id + "&apos;,&apos;"
 										+ questionName
 										+ "&apos;)'>删除</a></span></li>";
@@ -203,7 +203,7 @@ jQuery(function($) {
 						autoOpen : false,
 						height : 180,
 						width : 500,
-						modal : true,
+						modeal : true,
 						buttons : {
 							"保存" : function() {
 								if (jQuery('#myEditTemplateFrom')
@@ -332,7 +332,8 @@ jQuery(function($) {
 						width : 500,
 						modal : true,
 						buttons : {
-							"保存" : function() {
+							"保存" : function(e) {
+								e.preventDefault();
 								if ($('#MyRediofrom').validationEngine(
 										'validate') == false)
 									return;
@@ -393,20 +394,25 @@ jQuery(function($) {
 								var html = "";
 								if(MyRedioFlag==2){
 									 html = html +"<li id=" + question_id
-										+ ">" 
-										+"<input type='checkbox' onclick='selectOrunSelect(&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;)' id='check_"+question_id+"'/>"
+										+ ">"
+                                         + "<div style=\"border: none; float: left; overflow: hidden; width: 150px; line-height: 0;\">"
+										+"<input type='checkbox' onclick='selectOrunSelect(&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;)' id='check_"+question_id+"'/> "
 										+"<a href='javascript:void(0)' onclick='editquestion(&apos;"+questionType+"&apos;,&apos;"+groupId+"&apos;,&apos;"+question_id+"&apos;,&apos;"+questionJson.questionGroupName+"&apos;,"+false+")'>"
-										+"<span id="
+
+                                         +"<span id="
 										+ groupId + "_" + question_id + ">"
 										+ question + "</span>"
 										+"</a>"
-										+"<span style='margin-left: 20%; font-size:12px;color:rgb(204,204,204)' id='editSpan_"+question_id+"'>"+questionName+"</span>"
+                                         +"</div>"
+                                         +"<span style='margin-left: 10px; font-size:12px;color:rgb(204,204,204)' id='editSpan_"+question_id+"'>"+questionName+"</span>"
 										;
 								html = html
-										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204)' onclick='delQuestion(&apos;"
+										+ "<span style='padding-left:2px;color: rgb(205,204,204)'><a style='color: rgb(205,204,204); font-size: 12px;' onclick='delQuestion(&apos;"
 										+ question_id + "&apos;,&apos;"
 										+ questionName
-										+ "&apos;)'>删除</a></span></li>";
+										+ "&apos;)'>删除</a>" +
+                                        "</span>" +
+                                        "</li>";
 								}else{
 									 html = html +"<li id=" + question_id
 									+ ">" 
@@ -463,8 +469,9 @@ jQuery(function($) {
 						width : 700,
 						modal : true,
 						buttons : {
-							"保存" : function() {
-								if (jQuery('#myCheckForm').validationEngine(
+							"保存" : function(e) {
+                                e.preventDefault();
+                                if (jQuery('#myCheckForm').validationEngine(
 										'validate') == false)
 									return;
 								var groupId = $("#groupId").val();
@@ -933,8 +940,8 @@ jQuery(function($) {
 	}
 
 	var addquestion = function(group_type, groupId, question_group_name,
-			question_group_sort_num, displayValue) {
-		$("#questionEditFlag").val(true);
+			question_group_sort_num, displayValue, e) {
+        $("#questionEditFlag").val(true);
 		$("#question_id").val('');
 		$("#questionType").val(group_type);
 		// questionScoreRadio
@@ -946,8 +953,10 @@ jQuery(function($) {
 		$("#question").val('');
 		$("#questionCheckName").val('');
 		$("#questionCheckVal").val('');
-		$("#tableListAll tr").remove()
-		var id = UUID.prototype.createUUID();
+		$("#tableListAll tr").remove();
+        $('#MyRediofrom')[0].reset();
+        $('.formError').remove();
+        var id = UUID.prototype.createUUID();
 		var html = "<tr name='delDiv' id='div_" + id + "'>";
 		html += "<td class='table_question'></td>"
 		html += "<td class='table_question_text_list'><input type='text' id="

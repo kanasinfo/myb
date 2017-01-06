@@ -2,6 +2,7 @@ package com.myb.portal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,6 +47,18 @@ public class MybProReportEchartController {
 			e1.printStackTrace();
 		}
 		return null;
+	}
+	/**
+	 * getVoiceOfCustomer TODO(查询顾客之声) 
+	 * @author wangzx
+	 * @param questionnaire_id
+	 * @param question_id
+	 * @return
+	 */
+	@RequestMapping(value="getVoiceOfCustomer/{questionnaire_id}",method=RequestMethod.GET)
+	@ResponseBody
+	public AjaxReq getVoiceOfCustomer(@PathVariable("questionnaire_id")String questionnaire_id){
+		return mybProReportEcharService.getVoiceOfCustomer(questionnaire_id);
 	}
 
 	@RequestMapping(value = "getChartSummaryInfo", method = RequestMethod.POST)

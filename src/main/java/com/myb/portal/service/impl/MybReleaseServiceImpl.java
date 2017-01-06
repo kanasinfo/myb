@@ -638,8 +638,8 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 				storeList = new StoreList();
 				storeList.setStoreId(mybStore.getId());
 				storeList.setStoreName(mybStore.getName());
-				storeList.setUrl(
-						Utils.ParseProperties("RELEASE_URL") + templateId + ".html?storeId=" + mybStore.getId());
+				storeList.setUrl(Utils.ParseProperties("RELEASE_STORE") + templateId + "/" + mybStore.getId()+".html");
+
 				list.add(storeList);
 			}
 		} catch (Exception e) {
@@ -668,7 +668,7 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 				for (MybStore mybStore : myblist) {
 					jb.put("storeId", mybStore.getId());
 					jb.put("storeName", mybStore.getName());
-					jb.put("url", Utils.ParseProperties("RELEASE_URL") + templateId + ".html");
+					jb.put("url",Utils.ParseProperties("RELEASE_STORE") + templateId + "/" + mybStore.getId() + ".html");
 					ja.add(jb);
 				}
 				ar.setSuccess(true);
@@ -783,6 +783,8 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 					for (MybStore mybStore : listStore) {
 						store = new Store();
 						store.setId(mybStore.getId());
+						store.setStoreId(mybStore.getId());
+						store.setStoreName(mybStore.getName());
 						store.setAddress(mybStore.getAccountId());
 						store.setManagerEmail(mybStore.getManagerEmail());
 						store.setManagerName(mybStore.getManagerName());
@@ -839,7 +841,7 @@ public class MybReleaseServiceImpl implements MybReleaseService {
 						listDate.add(Utils.getDate());
 						storogroup.setDownDate(listDate);
 					} else {
-						storogroup.getDownDate().add(Utils.getDate());
+//						storogroup.getDownDate().add(Utils.getDate());
 					}
 					storogroup.setStore(addStore);
 				}

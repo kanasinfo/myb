@@ -44,17 +44,17 @@ public class MybChartP11 extends MybChart {
 		try {
 			if (StringUtils.isBlank(questionnaireId)) {
 				aReq.setSuccess(false);
-				aReq.setMessage("数据不正确");
+				aReq.setMessage("数据不正�);
 				return aReq;
 			}
 			if (StringUtils.isBlank(questionId)) {
 				aReq.setSuccess(false);
-				aReq.setMessage("数据不正确");
+				aReq.setMessage("数据不正�);
 				return aReq;
 			}
 			if (StringUtils.isBlank(store)) {
 				aReq.setSuccess(false);
-				aReq.setMessage("数据不正确");
+				aReq.setMessage("数据不正�);
 				return aReq;
 			}
 			//chartOneDimnsn,chartMultiDimnsn,chartStore,chartTime,chartTimeDimnsn,chartCustDimnsn		
@@ -63,18 +63,18 @@ public class MybChartP11 extends MybChart {
 			 * 
 			store: storeids/storegroupids selected by users. 			 			 
 			var store = {
-				store_type : "",
-				store_id : [ "" ],
+				storeType : "",
+				storeId : [ "" ],
 				store_labels : [ "" ]
 			};			 
 			 */
 			List<Criteria> criteria = new ArrayList<Criteria>();
 			JSONObject jbStore = JSONObject.fromObject(store);					
 			List<String> listParam = new ArrayList<String>();
-			for (int i = 0; i < jbStore.getJSONArray("store_id").size(); i++) {
-				listParam.add(jbStore.getJSONArray("store_id").getString(i));
+			for (int i = 0; i < jbStore.getJSONArray("storeId").size(); i++) {
+				listParam.add(jbStore.getJSONArray("storeId").getString(i));
 			}
-			criteria.add(Criteria.where(jbStore.getString("store_type").replaceAll("group","Group") + "Id").in(listParam.toArray()));
+			criteria.add(Criteria.where(jbStore.getString("storeType").replaceAll("group","Group") + "Id").in(listParam.toArray()));
 			
 			
 			
@@ -86,9 +86,9 @@ public class MybChartP11 extends MybChart {
 			String[] groups = {"10","9","8","6-7","1-5"};
 			String dimensionStr = "";			
 			/**
-			1. 查找门店的满意度分布（1-5，6-7，8，9，10）
+			1. 查找门店的满意度分布�-5�-7���0�
 			2. 计算总体满意顾客占比 (8+9+10)/total
-			3. 计算各个分数的占比 10/total, 9/total, 8/total, 6-7/total, 1-5/total			
+			3. 计算各个分数的占�10/total, 9/total, 8/total, 6-7/total, 1-5/total			
 			**/
 
 			JSONObject jb = null;
@@ -119,9 +119,6 @@ public class MybChartP11 extends MybChart {
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 			list = (BasicDBList)results.getRawResults().get("result");	
-			
-			
-			
 			aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),				
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
@@ -131,17 +128,13 @@ public class MybChartP11 extends MybChart {
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 			list = (BasicDBList)results.getRawResults().get("result");	
-			
-			
 			aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),				
 					group(Fields.from(fields)).count().as("count"));
 			results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 			list = (BasicDBList)results.getRawResults().get("result");	
-
-
 			for(int k = 0; k < groups.length; k++){
 				//boolean gFlag = false;
-				legendStr.append("'"+groups[k]+"分',");
+				legendStr.append("'"+groups[k]+"�,");
 				JSONArray jaResult = new JSONArray();
 				for(int j = 0; j < names.size(); j++){
 					boolean gFlag = false;
@@ -197,7 +190,7 @@ public class MybChartP11 extends MybChart {
 				String[] ds = (String[]) ls.toArray(new String[names.size()]);
 				resultDimn[k] = ds;
 				jbOld = new JSONObject();
-				jbOld.put("name", groups[k]+"分");
+				jbOld.put("name", groups[k]+"�);
 				jbOld.put("type", "bar");
 				jbOld.put("stack", "stack");
 				jbOld.put("itemStyle", "{ normal: {label : {show: true, position: 'insideRight',formatter: '{c} %'}}}");
@@ -266,20 +259,20 @@ public class MybChartP11 extends MybChart {
 			yAxisStr.append("]");
 
 			if(count > 0){
-			String gapDesc = "显著落后于行业平均水平";	
+			String gapDesc = "显著落后于行业平均水�;	
 			int gap = saRult.get(saRult.size()-1).getInt("value") - saRult.get(0).getInt("value");
 			if(gap >=5){
 				gapDesc = "较大差异";
 			}else if(gap >=3 && gap<5){
 				gapDesc = "略有差异";
 			}else{
-				gapDesc = "无明显差异";
+				gapDesc = "无明显差�;
 			}
 			
 			
 
-			StringBuffer comments = new StringBuffer("从不同维度入手了解客群之间的满意度表现差异，可以更直观的透视顾客中“满意顾客“和“不满意顾客”的典型特征。<br> ");
-			comments.append("按"+qstName+"来看，不同"+qstName+"的顾客满意度存在"+gapDesc + "。其中<最大值类别："+saRult.get(saRult.size()-1).getString("name")+"相对较好，<最小值类别："+saRult.get(0).getString("name")+">相对较差。");
+			StringBuffer comments = new StringBuffer("从不同维度入手了解客群之间的满意度表现差异，可以更直观的透视顾客中“满意顾客“和“不满意顾客”的典型特征�br> ");
+			comments.append("�+qstName+"来看，不�+qstName+"的顾客满意度存在"+gapDesc + "。其�最大值类别："+saRult.get(saRult.size()-1).getString("name")+"相对较好�最小值类别："+saRult.get(0).getString("name")+">相对较差�);
 
 			StringBuffer chartLegend = new StringBuffer("<div style=\"line-height:20px;width:40%;float:right\">");
 			chartLegend.append("<div style=\"height:90px;text-align: left;\">满意顾客比例</div>");
@@ -320,7 +313,7 @@ public class MybChartP11 extends MybChart {
 				rspjb.put("type", "bar");
 				rspjb.put("title", qstName+"在此条件下没有数据！");
 				rspjb.put("nodata", true);
-				rspjb.put("nodatacomment", "此条件下没有数据！");
+				rspjb.put("nodatacomment", "此条件下没有数据�);
 				aReq.setSuccess(true);
 				aReq.setData(rspjb);
 			}
