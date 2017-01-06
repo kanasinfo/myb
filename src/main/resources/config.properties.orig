@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+RELEASE_URL=http://localhost:8080/myb-portal/page/answer/questionaire/
+RELEASE_STORE="http://localhost:8080/myb-portal/page/answer/questionaireStore/
+RELEASE_ONLY_ONE="http://localhost:8080/myb-portal/page/answer/questionaireOnlyOne/
+=======
+RELEASE_URL=http://localhost:8081/page/answer/questionaire/
+RELEASE_STORE=http://localhost:8081/page/answer/questionaireStore/
+RELEASE_ONLY_ONE=http://localhost:8081/page/answer/questionaireOnlyOne/
+>>>>>>> a3a77a4e361cf3cee1a95d6e7f8e1886eb98d9a2
+QR_CODE_URL=WEB-INF/qrcodeImg/
