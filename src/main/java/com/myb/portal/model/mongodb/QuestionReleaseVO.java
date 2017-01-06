@@ -50,6 +50,7 @@ public class QuestionReleaseVO {
 	private List<QuestionDimensions> dimensions;
 	private List<QuestionChartMapping> chartMapping;
 	private List<QuestionGroupVO> questionGroup;
+	
 	public List<QuestionGroupVO> getQuestionGroup() {
 		return questionGroup;
 	}

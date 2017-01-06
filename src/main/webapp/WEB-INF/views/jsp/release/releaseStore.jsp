@@ -268,15 +268,6 @@
 			$("#downBtn").click(function(){
 				$("#downLoadFrom").submit();
 			})
-			$('#copyName').zclip({ 
-			    path: '../js/ZeroClipboard.swf', 
-			    copy: function(){//复制内容 
-			      return $('#urlName').val(); 
-			    }, 
-			    afterCopy: function(){//复制成功 
-			      $("<span id='msg'/>").insertAfter($('#copy_input')).text('复制成功'); 
-			    } 
-			  }); 
 		})
     </script>
     

@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -46,7 +47,7 @@ public class MybChartD2 extends MybChart{
 			}
 
 			Map<String, List<Criteria>> fdmp = new HashMap<String, List<Criteria>>();						
-			MybChartUtils.packDimensionsFilter(dimension, filter, fdmp);	
+			MybChartUtils.packDimensionsFilter("", filter, fdmp);	
 			Criteria ct =null;
 			if(fdmp.get("filterOnly") != null){
 				ct = new Criteria().andOperator(fdmp.get("filterOnly").toArray(new Criteria[fdmp.get("filterOnly").size()]));
@@ -125,104 +126,69 @@ public class MybChartD2 extends MybChart{
 			
 			JSONArray name = new JSONArray();
 			List<String> valueList = new ArrayList<String>();
+			List<String> avgValueList = new ArrayList<String>();
+			Map<String, String> mapTree =new TreeMap<String, String>();
 			for(JSONObject jot:jbOpt){
 				name.add(jot.getString("name"));
+				avgValueList.add(String.valueOf((Double.parseDouble(jot.getString("sValue"))-Math.random()*20<0?Double.parseDouble(jot.getString("sValue")):Double.parseDouble(jot.getString("sValue"))-Math.random()*20)));
+				mapTree.put(jot.getString("name"), String.valueOf((Double.parseDouble(jot.getString("sValue"))-Math.random()*20<0?Double.parseDouble(jot.getString("sValue")):Double.parseDouble(jot.getString("sValue"))-Math.random()*20)));
 				valueList.add(jot.getString("sValue"));
 			}
-//			StringBuffer nameStr = new StringBuffer("[");
-//			JSONArray names = new JSONArray();
-//			StringBuffer series = new StringBuffer("[");	
-//			int sCount = 0;
-//			for(int i=0;i<jAResult.size();i++){
-//				JSONObject jo = jAResult.get(i);
-//				nameStr.append("'"+jo.getString("name")+"',");
-//				names.add(jo.getString("name"));
-//				if(jo.getInt("sPct")>=80){
-//					sCount++;
-//				}
-//				int x = (2*((i)%5+1)-1)*10;
-//				int y = i/5>=1?70:30;                                                          
-//				series.append("{type : 'pie',")
-//				.append("center : ['"+x+"%', '"+y+"%'],")
-//				.append("radius : [40, 55],")
-//				//.append("x:'0%',")
-//				.append("itemStyle:")
-//				.append("reportGlobal.P52.labelFromatter")
-//				.append(",")
-//				.append("data:[")
-//				.append("{name:'非满意顾客',value:")
-//				.append(jo.getString("dPct"))
-//				.append(",itemStyle:")
-//				.append("reportGlobal.P52.labelBottom")
-//				.append("},{name:'")
-//				.append(jo.getString("name"))
-//				.append("',value:")
-//				.append(jo.getString("sPct"))
-//				.append(",itemStyle:")
-//				.append("reportGlobal.P52.labelTop")
-//				.append("}]},");
-//			}
-//			nameStr.substring(0, nameStr.length()-1);
-//			nameStr.append("]");
-//			series.append("]");
+			StringBuffer gapDesc = new StringBuffer();
+			JSONArray comments = new JSONArray();
+			JSONArray jaQuestionName=  new JSONArray();
+			if(mapTree.size()>=3){
+				int i = 0;
+				for (Map.Entry<String, String> object : mapTree.entrySet()) {
+					if(i>=3){
+						++i;
+						jaQuestionName.add(object.getValue());	
+					}
+				}
+				
+			}else{
+				for (Map.Entry<String, String> object : mapTree.entrySet()) {
+						jaQuestionName.add(object.getValue());	
+				}
+			}
+			if(avgValueList.size()>4){
+				
+			}else{
+				int leAvg = 0;
+				int gtAvg = 0;
+				for (Map.Entry<String, String> ent :mapTree.entrySet()) {
+					if(Double.valueOf(ent.getValue())<=10){
+						++leAvg;
+						if(leAvg==avgValueList.size()){
+							gapDesc.append("1、从各项服务规范的达标状况看,").append("本店的各项服务规范执行均比较到位，各项规范均达到了较高标准（90%及以上）2、").append("相对来讲，未达标率较高的是:").append(jaQuestionName);
+						}else if(leAvg>=valueList.size()/2){
+							gapDesc.append("1、从各项服务规范的达标状况看,").append("超过半数的服务规范达到了较高标准（90%及以上） 2、").append("相对来讲，未达标率较高的是:").append(jaQuestionName);
+						}
+						
+					}else if(Double.valueOf(ent.getValue())>=10){
+						++gtAvg;
+						if(gtAvg==avgValueList.size()){
+							gapDesc.append("1、从各项服务规范的达标状况看,").append("超过半数的服务环节未能达到90%的达标率 2、").append("相对来讲，未达标率较高的是:").append(jaQuestionName);
+						}else if(gtAvg>=valueList.size()/2){
+							gapDesc.append("1、从各项服务规范的达标状况看,").append("本店的各项服务环节均未达到90%的达标率 2、").append("相对来讲，未达标率较高的是:").append(jaQuestionName);
+						}
+					}
+				}
+			}
 			StringBuffer sb = new StringBuffer();
 			sb.append("{tooltip : {trigger: 'axis'},");
 			sb.append("toolbox: {show : true,feature : {mark : {show: true},");
 			sb.append("dataView : {show: true, readOnly: false},magicType: {show: true, type: ['line', 'bar']},");
 			sb.append("restore : {show: true},saveAsImage : {show: true}}},");
-			sb.append("calculable : true,legend: {data:['蒸发量','降水量','平均温度']},");
+			sb.append("calculable : true,legend: {data:['蒸发量','降水量','服务规划未达标率']},");
 			sb.append("xAxis : [{type : 'category',data : "+name+"}],");
 			sb.append("yAxis : [{type : 'value',name : '平均值',axisLabel : {formatter: '{value} %'}},");
 			sb.append("{type : 'value',name : '行业平均值',axisLabel : {formatter: '{value} %'}}],");
-			sb.append("series : [{name:'服务规范达标率',type:'bar',data:"+valueList+"},");
-			sb.append("{name:'平均温度',type:'line',yAxisIndex: 1,data:"+valueList+"}]}");
+			sb.append("series : [{name:'服务规范达标率',type:'bar',data:"+avgValueList+"},");
+			sb.append("{name:'行业平均值',type:'line',yAxisIndex: 1,data:"+valueList+"}]}");
 
 			
-			
-			
-//			StringBuffer option =new StringBuffer("{title : {text: '',subtext: '',x:'center'},")
-//					.append("toolbox: {show: true,feature: {dataView: {show: true, readOnly: false},restore: {show: true},saveAsImage: {show: true}}},")
-//					.append("tooltip : {trigger: 'item',formatter: '{a} <br/>{b} : {c} ({d}%)'},")
-//					.append("legend: {x:'left',y:'top',data: ")
-//					.append(nameStr.toString())
-//					.append("},")
-//					.append("series : ")
-//					.append(series.toString())
-//					.append("}");
-			String gapDesc = "";			
-//			if(sCount == jAResult.size()){
-//				gapDesc = "本店的各服务细节表现优秀，各项指标均达到了高满意度评价（80分及以上）";
-//			}else if(sCount >= jAResult.size()/2){
-//				gapDesc = "超过半数的服务环节达到了高满意度评价（80分及以上）";
-//			}else if(sCount > 0 && sCount <= jAResult.size()/2){
-//				gapDesc = "超过半数的服务环节未能达到高满意度评价（80分及以上）";
-//			}else if(sCount == 0){
-//				gapDesc = "本店的各项服务环节均未达到高满意度评价（80分以上）";
-//			}
-
 			//当指标数量小于3个时，不显示Comments。当指标数量为3个时，n=1；指标数量为4-5个时，n=2；指标数量大于或等于6个时，n=3.
-			StringBuffer comments = new StringBuffer("");
-//			if(jAResult.size()>=3){
-//				comments.append("1、从顾客对各项服务环节的评价来看， ")
-//				.append(gapDesc)
-//				.append(";<br>2、相对来讲， ");
-//						if(jAResult.size() == 3){
-//							comments.append(nameSorted.get(0));
-//							comments.append("满意度评分较高， ");
-//							comments.append(nameSorted.get(jAResult.size()-1));
-//							comments.append("满意度评分较低。");
-//						}else if(jAResult.size() ==4 || jAResult.size() ==5){
-//							comments.append(nameSorted.get(0)+","+nameSorted.get(1));
-//							comments.append("满意度评分较高， ");
-//							comments.append(nameSorted.get(jAResult.size()-1)+','+nameSorted.get(jAResult.size()-2));
-//							comments.append("满意度评分较低。");
-//						}else{
-//							comments.append(nameSorted.get(0)+","+nameSorted.get(1)+","+nameSorted.get(2));
-//							comments.append("满意度评分较高， ");
-//							comments.append(nameSorted.get(jAResult.size()-1)+','+nameSorted.get(jAResult.size()-2)+','+nameSorted.get(jAResult.size()-3));
-//							comments.append("满意度评分较低。");
-//						}						
-//			}
 	
 			JSONObject rspjb = new JSONObject();
 			rspjb.put("type", "pie");

@@ -11,6 +11,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -108,8 +110,9 @@ public class MybChartP8 extends MybChart{
 				Field x = Fields.field("x","$answers."+qstId+"_optionValue");
 				fields[0] = x;			
 				Field y = Fields.field("y","$answers."+questionId+"_optionValue");
-				fields[1] = y;
-				aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),					
+				fields[1] = y;				
+				//Criteria crt = Criteria.where("answers."+qstId+"_optionValue").nin("",null).and("answers."+questionId+"_optionValue").nin("",null);
+				aggregation = newAggregation(match(Criteria.where("questionnaireId").is(questionnaireId)),match(ct),				
 						group(Fields.from(fields)).count().as("count"));
 				AggregationResults<TwoDimnCount> results = mongoTemplate.aggregate(aggregation, "answer", TwoDimnCount.class);
 				list = (BasicDBList)results.getRawResults().get("result");			
@@ -154,11 +157,14 @@ public class MybChartP8 extends MybChart{
 			            	yStr = (String)obj.get("_id");	
 			            }else{
 				    		jb = JSONObject.fromObject(obj.get("_id"));				    		
-				    		xStr = ((List<String>)jb.get("x")).get(0);
-				    		yStr = ((List<String>)jb.get("y")).get(0);	
+				    		if(((List<String>)jb.get("x")).size()>0 && ((List<String>)jb.get("y")).size() >0){
+				    			xStr =((List<String>)jb.get("x")).get(0);
+					    		yStr =((List<String>)jb.get("y")).get(0);	
+				    		}				    		
 			            }
-	    		
-			            if(!"".equals(yStr) && !"".equals(xStr)){
+			            Pattern pattern = Pattern.compile("[0-9]*"); 
+			            Matcher isNum = pattern.matcher(yStr);
+			            if(!"".equals(yStr) && isNum.matches() && !"".equals(xStr)){
 							if (Integer.parseInt(yStr) > 7 && groups[k].equals(yStr) && name.equals(xStr)) {
 								gFlag = true;
 								satisfied += tmpCnt;

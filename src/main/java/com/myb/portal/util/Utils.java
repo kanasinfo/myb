@@ -3,10 +3,12 @@ package com.myb.portal.util;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -17,6 +19,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.mongodb.BasicDBObject;
 import com.myb.portal.model.mongodb.Options;
+import com.myb.portal.model.mongodb.QuestionGroupVO;
 import com.myb.portal.model.mongodb.QuestionTmpltVO;
 import com.myb.portal.model.mongodb.QuestionsVo;
 import com.myb.portal.model.mongodb.Store;
@@ -29,6 +32,22 @@ public abstract class Utils {
 	public final static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	public static String getDate(){
 		return format.format(new Date());
+	}
+	public static Date getDateTime(int d){
+		Calendar calendar=Calendar.getInstance();   
+		calendar.setTime(new Date()); 
+		System.out.println(calendar.get(Calendar.MONTH));
+		calendar.set(Calendar.MONTH,calendar.get(Calendar.MONTH)-d);
+		System.out.println(calendar.getTime());
+		SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(s.format(calendar.getTime()));
+		try {
+			return s.parse(s.format(calendar.getTime()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
 	}
 	public static Integer getType(String className){
 		try {
@@ -90,10 +109,11 @@ public abstract class Utils {
 		jb.put("endUserIdentity", vo.getIndustry());
 		jb.put("tenementId", vo.getTenementId());
 		jb.put("storeId", storeId);
+		jb.put("status", 0);
 		Calendar calendar = Calendar.getInstance();
 		jb.put("year", calendar.get(Calendar.YEAR));
-		jb.put("quarter", Utils.quarter(calendar.get(Calendar.MONTH)));
-		jb.put("month", calendar.get(Calendar.MONTH));
+		jb.put("quarter", Utils.quarter(calendar.get(Calendar.MONTH)+1));
+		jb.put("month", calendar.get(Calendar.MONTH)+1);
 		jb.put("day", calendar.get(Calendar.DATE));
 		for (Store s : vo.getStore()) {
 			if(storeId.equals(s.getStoreId())){
@@ -103,16 +123,25 @@ public abstract class Utils {
 		BasicDBObject time = new BasicDBObject("ts", new Date());
 		jb.put("createdTime",time);
 	}
-	public static void packageAnserQuestion(QuestionsVo questionsVo,JSONArray ja){
+	public static void packageAnserQuestion(QuestionsVo questionsVo,JSONArray ja,Map<String, QuestionGroupVO> questionMap){
 		JSONObject jb = new JSONObject();
-		jb.put("questionIdValue", "");
+		if(questionMap.get(questionsVo.getQuestionGroupId())!=null&&questionMap.get(questionsVo.getQuestionGroupId()).getCustomQuestionType().equals("com.myb.questiontype.Judge")){
+			jb.put("questionIdValue", questionsVo.getQuestionId()+"_false");
+			jb.put(questionsVo.getQuestionId()+"_optionValue", "false");
+			jb.put("optionValue", "false");
+		}else{
+			jb.put("questionIdValue", "");
+			jb.put("optionValue", "");
+			jb.put(questionsVo.getQuestionId()+"_optionValue", "");
+		}
 		jb.put("businessType", questionsVo.getBusinessType());
 		jb.put("questionId", questionsVo.getQuestionId());
 		jb.put("questionGroupId", questionsVo.getQuestionGroupId());
 		jb.put("questionGroupName", questionsVo.getQuestionGroupName());
 		jb.put("questionName", questionsVo.getQuestionName());
+			
 		jb.put("optionValue", "");
-		jb.put(questionsVo.getQuestionId()+"_optionValue", "");
+		
 		ja.add(jb);
 	}
 	public static String ParseProperties(String key){

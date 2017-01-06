@@ -237,7 +237,7 @@ public class MybChartSUMMARYNPS extends MybChart{
 				StringBuffer chartLegend = new StringBuffer("<div style='margin-top: 40px;'>");			
 				chartLegend.append("<span style='float: left;font-size: 12px;font-weight: bold;color:#6f6f6f'>净推荐值</span><span class='"
 						+ alertColor
-						+ "'></span><br><br>")
+						+ "'></span><br>")
 				.append("<div class='legenddetailsnumber' style='float:left'><div class='star-rating rating-active'><div class='rating-container rating-gly-star' data-content=''><div class='rating-stars satisfiedstar' data-content='' style='width: ")
 				.append(starVal)
 				.append("%;'></div></div></div> </div></div>");

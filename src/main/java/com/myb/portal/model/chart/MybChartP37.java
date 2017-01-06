@@ -57,16 +57,16 @@ public class MybChartP37 extends MybChart{
 			//不稳定客户
 			double instable = 0d;
 			Query query = new Query();
-			Criteria criterg = Criteria.where("id").is(questionnaireId).and("questions.businessType").in("qustRepurchase","qustRecommendation");
+			Criteria criterg = Criteria.where("qustnnrId").is(questionnaireId);
 			query.addCriteria(criterg);
 			//根据相关type查询questionId
-			ReleaseQuestionVo listId = mongoTemplate.findOne(query, ReleaseQuestionVo.class,"release_qustnnr");
+			ReleaseQuestionVo listId = mongoTemplate.findOne(query, ReleaseQuestionVo.class);
 			//查询忠诚客户(8-10)
 			for (QuestionsVo q : listId.getQuestions()) {
-				if(q.getBusinessType().equals("qustRepurchase")||q.getBusinessType().equals("qustRecommendation")){
+				if(q.getBusinessType()!=null && !"".equals(q.getBusinessType()) && 
+						(q.getBusinessType().equals("qustRepurchase")||q.getBusinessType().equals("qustRecommendation"))){
 					criterias.add(Criteria.where("answers.questionIdValue").in(q.getQuestionId()+"_8",q.getQuestionId()+"_9",q.getQuestionId()+"_10"));	
-				}
-				
+				}			
 			}
 			
 			
@@ -90,7 +90,7 @@ public class MybChartP37 extends MybChart{
 			 //查询流失客户(1-6)
 			criterias.clear();
 			for (QuestionsVo q : listId.getQuestions()) {
-				if(q.getBusinessType().equals("qustRepurchase")||q.getBusinessType().equals("qustRecommendation")){
+				if(q.getBusinessType()!=null && !"".equals(q.getBusinessType()) && (q.getBusinessType().equals("qustRepurchase")||q.getBusinessType().equals("qustRecommendation"))){
 					criterias.add(Criteria.where("answers.questionIdValue").in(q.getQuestionId()+"_1",q.getQuestionId()+"_2",q.getQuestionId()+"_3",q.getQuestionId()+"_4",q.getQuestionId()+"_5"));
 				}
 			}

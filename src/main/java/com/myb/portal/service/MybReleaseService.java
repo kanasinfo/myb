@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.transaction.annotation.Transactional;
+import javax.servlet.ServletOutputStream;
 
 import com.myb.portal.model.account.MybStoreGroup;
 import com.myb.portal.model.mongodb.StoreList;
@@ -127,5 +127,13 @@ public interface MybReleaseService {
 	 * @return
 	 */
 	public AjaxReq downGroupLoadExcel( String parentId,String data,String questionId,String groupId,String classPath);
+	/**
+	 * downOnlyONeLoadExcel TODO(每个用户生成一个连接) 
+	 * @author wangzx
+	 * @param groupId
+	 * @param questionId
+	 * @return
+	 */
+	public void downOnlyONeLoadExcel(String questionId, String classPath,String downCount,ServletOutputStream outputStream,AjaxReq ar);
 	
 }

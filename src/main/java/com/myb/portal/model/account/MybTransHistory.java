@@ -33,9 +33,18 @@ public class MybTransHistory extends AbstractModel<String>{
 	private double creditAmount;
 	@Column(name="CREATED_TIME")
 	private Date createdTime;
+	@Column(name="QUESTION_ID")
+	private String questionId;
 	
-	
-	
+	public String getQuestionId() {
+		return questionId;
+	}
+	public void setQuestionId(String questionId) {
+		this.questionId = questionId;
+	}
+
+
+
 	public String getAccountId() {
 		return accountId;
 	}

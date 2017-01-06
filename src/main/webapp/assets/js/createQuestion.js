@@ -9,6 +9,7 @@ jQuery(function(){
 			url:'../main/queryAmount.json?r='+Math.random(),
 			method:'get',
 			dataType:'json',
+			async: false,
 			success:function(data){
 				if(data.success){
 					amount=data.data;
