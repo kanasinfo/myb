@@ -209,3 +209,31 @@ table.tablesorter {width:80%}
 table.tablesorter tbody tr:nth-child(2n+1) {background-color: #c6e38e;}
 table.tablesorter tbody tr:nth-child(2n) {background-color: #ededed;}
 table.tablesorter tr td {text-align: center;}
+
+div.thumb-img {
+    position: relative;
+    width: 100%;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+}
+
+div.thumb-img > img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.fancybox-close {
+    background: transparent url("../images/fancybox.png") repeat scroll -40px 0;
+    cursor: pointer;
+    display: none;
+    height: 30px;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 30px;
+    z-index: 999103;
+}
+
+.hide {
+    display: none;
+}

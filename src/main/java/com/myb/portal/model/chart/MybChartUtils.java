@@ -123,7 +123,7 @@ public class MybChartUtils {
 	}
 	
 	public static void packDimensionsFilter(String dimension,String filter,Map<String, List<Criteria>> map){
-		if(dimension != null && !"".equals(dimension) && !"\"\"".equals(dimension)){
+		if(dimension != null && !"".equals(dimension) && !"\"\"".equals(dimension) && JSONObject.fromObject(dimension).isArray()){
 			JSONArray ja = JSONObject.fromObject(dimension).getJSONArray("members");
 			for (int i = 0; i < ja.size(); i++) {
 				JSONObject jb = ja.getJSONObject(i);

@@ -36,7 +36,7 @@ public class Page {
 		}
 		if(currentPage==page){
 			sBuffer.append("<span class=\"disabled\">");
-			sBuffer.append("&lt");
+			sBuffer.append("&gt");
 			sBuffer.append("</span>");
 		}else{
 			sBuffer.append("<span>");
