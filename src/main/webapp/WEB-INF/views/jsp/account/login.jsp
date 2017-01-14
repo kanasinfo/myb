@@ -29,8 +29,8 @@
 					<div><input type="password" id="passWord" name="passWord" style="backgroud:white;border-radius:5px;width:250px;height:20px;"/></div>
 					<div style="margin-top:20px;">验证码：</div>
 					<div><input type="text" id="code" name="code" style="backgroud:white;border-radius:5px;width:100px;height:20px;font-weight:bold;"></input>&nbsp&nbsp&nbsp&nbsp<img src="${ctx}/servlet/captchaCode" id="captchaCode"></img></div>
-					<div style="margin:30px 0 0 0;"><input type="submit" value="登陆" id="Button1"  style="width:250px;height:30px;background-color:#78973E;"/></div>
-					<div style="width:250px;text-align:center;padding:10px;">还没注册，请点击<a href="${ctx}/page/account/register.html">注册</a></div>			
+					<div style="margin:30px 0 0 0;"><input type="submit" value="登陆" id="Button1"  style="width:250px;height:30px;background-color:#78973E;color:#FFF;font-weight:bold;border-radius:5px;"/></div>
+					<div style="width:250px;text-align:center;padding:10px;">还没注册，请点击<a href="${ctx}/page/account/register.html"  style="text-decoration: none;color: #09f; font-weight: bold;">注册</a></div>			
 				</div>
 			</form>
 		</div>

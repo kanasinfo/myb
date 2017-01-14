@@ -156,4 +156,9 @@ public class MybMainController {
 		return mv;
 		
 	}
+	@RequestMapping(value="info/{view}.html",method=RequestMethod.GET)
+	public String showInfo(@PathVariable("view") String view){
+		return "info/"+view;
+	}
+	
 }
