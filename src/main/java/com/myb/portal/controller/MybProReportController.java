@@ -158,7 +158,7 @@ public class MybProReportController extends ControllerSupport {
     @RequestMapping(value = "/modal/{fragementId}", method = RequestMethod.GET)
 	public String showChartsFragementModel(@PathVariable String fragementId, String questionId, Model model) {
         model.addAttribute("fragementId", fragementId);
-        model.addAttribute("questionId", questionId);
+        model.addAttribute("questionnaireId", questionId);
         return "charts/modal";
     }
 

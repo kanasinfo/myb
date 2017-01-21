@@ -56,7 +56,7 @@ public class MybProReportServiceImpl implements MybProReportService {
             m.setId(releaseQuestionVo.getQustnrTmpltId());
 
             // 查询ArchiveCharts
-            ArchiveCharts archiveCharts = mongoTemplate.findOne(Query.query(Criteria.where("questionId").is(id)), ArchiveCharts.class);
+            ArchiveCharts archiveCharts = mongoTemplate.findOne(Query.query(Criteria.where("questionnaireId").is(id)), ArchiveCharts.class);
             if(archiveCharts != null) {
                 List<ChartsFragement> chartsFragements = archiveCharts.getChartsFragements();
                 releaseQuestionVo.setChartsFragements(chartsFragements);
@@ -491,7 +491,7 @@ public class MybProReportServiceImpl implements MybProReportService {
         AjaxReq ajaxReq = new AjaxReq();
         try {
             Query query = new Query();
-            Criteria criteria = Criteria.where("questionId").is(id);
+            Criteria criteria = Criteria.where("questionnaireId").is(id);
             query.addCriteria(criteria);
 
             Update update = new Update();
@@ -513,7 +513,7 @@ public class MybProReportServiceImpl implements MybProReportService {
     public AjaxReq findChartsFragementById(String id, String fragementId) {
         AjaxReq ajaxReq = new AjaxReq();
         ChartsFragement fragement = null;
-        ArchiveCharts archiveCharts = mongoTemplate.findOne(Query.query(Criteria.where("questionId").is(id)), ArchiveCharts.class);
+        ArchiveCharts archiveCharts = mongoTemplate.findOne(Query.query(Criteria.where("questionnaireId").is(id)), ArchiveCharts.class);
         List<ChartsFragement> chartsFragements = archiveCharts.getChartsFragements();
         int index = 0;
         if (chartsFragements != null && !chartsFragements.isEmpty()) {
@@ -529,6 +529,8 @@ public class MybProReportServiceImpl implements MybProReportService {
                 fragement.setLeft(chartsFragements.get(index - 1).getFragementId());
             if(index < chartsFragements.size() - 1)
                 fragement.setRight(chartsFragements.get(index + 1).getFragementId());
+            fragement.setIndex(index);
+            fragement.setSize(chartsFragements.size());
         }
 
         ajaxReq.setSuccess(true);

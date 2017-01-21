@@ -27,6 +27,9 @@ public class ChartsFragement {
     private String left;       // 左边FragementId
     private String right;      // 右边FragementId
 
+    private int index;          // 位置
+    private int size;           // 数量
+
     public ChartsFragement() {
         fragementId = StringUtils.generateUUID();
     }
@@ -165,5 +168,21 @@ public class ChartsFragement {
 
     public void setRight(String right) {
         this.right = right;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

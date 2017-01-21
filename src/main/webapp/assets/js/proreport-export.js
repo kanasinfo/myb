@@ -100,6 +100,21 @@
         });
     });
 
+    $('a[rel="modal:open"]').click(function(event, args) {
+        console.log(args);
+        if(args && args == 'download'){     // 文件自动下载
+            window.downloadImgs = [];
+            $.modal.defaults.showClose = false;
+        }else{
+            $.modal.defaults.showClose = true;
+            window.downloadImgs = null;
+            event.preventDefault();
+            $.get(this.href, function(html) {
+                $(html).modal();
+            });
+        }
+    });
+
     var drawCurrentCharts = function (data) {
         console.log('load charts: ' + JSON.stringify(data));
         var $currentChart = $('#chartsCanvas>div.charts-content');
@@ -121,7 +136,7 @@
     /**
      * 画图
      */
-    var loadCharts = function (postdata) {
+    var loadCharts = function (postdata, callback) {
         $('#chartsCanvas div.loading-text').show();
         $('#chartsCanvas div.charts-content').empty();
         var postdata = {
@@ -147,8 +162,11 @@
             dataType: 'json',
             cache: false,
             success: function (data) {
-                console.log(data)
+                console.log(data);
                 drawCurrentCharts(data.data);
+                if(typeof callback == 'function') {
+                    callback();
+                }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest.status);

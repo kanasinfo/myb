@@ -232,6 +232,7 @@
         <a href="#" id="saveReportImg">
             <img src="${ctx}/assets/images/savepdf.png" width="16px" id="savepdficon" alt="Save the report."></img>
         </a>
+        <a href="#" id="downloadCharts">下载图片</a>
     </div>
 
 </div>
@@ -251,7 +252,7 @@
     </div>
     <div class="right-center" style="background-color:white; padding: 0 5px; overflow-y: auto">
             <div class="thumb-img hide" >
-                <a href="#" rel="modal:open">
+                <a href="#" rel="modal:open" class="a-img">
                     <a class="fancybox-close" style="display: none;"></a>
                 </a>
             </div>
@@ -343,8 +344,28 @@
 <script type="text/javascript" src="${ctx}/assets/jquery-modal/jquery.modal.min.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/proreport.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/canvas2image.js"></script>
+
+<script type="text/javascript" src="${ctx}/assets/zipjs/jszip.js"></script>
+<script type="text/javascript" src="${ctx}/assets/zipjs/FileSaver.js"></script>
+
 <script type="text/javascript" src="${ctx}/assets/js/proreport-export.js"></script>
+<script type="text/javascript" src="${ctx}/assets/js/zipfile.js"></script>
 <script type="text/javascript">
+
+    $.modal.defaults = {
+        closeExisting: true,    // Close existing modals. Set this to false if you need to stack multiple modal instances.
+        escapeClose: true,      // Allows the user to close the modal by pressing `ESC`
+        clickClose: false,       // Allows the user to close the modal by clicking the overlay
+        closeText: 'Close',     // Text content for the close <a> tag.
+        closeClass: '',         // Add additional class(es) to the close <a> tag.
+        showClose: true,        // Shows a (X) icon/link in the top-right corner
+        modalClass: "modal",    // CSS class added to the element being displayed in the modal.
+        spinnerHtml: null,      // HTML appended to the default spinner during AJAX requests.
+        showSpinner: true,      // Enable/disable the default spinner during AJAX requests.
+        fadeDuration: null,     // Number of milliseconds the fade transition takes (null means no transition)
+        fadeDelay: 1.0          // Point during the overlay's fade-in that the modal begins to fade in (.5 = 50%, 1.5 = 150%, etc.)
+    };
+
     //Load the data of the page
     reportGlobal.ctx = '${ctx}';
     reportGlobal['dimn-tabs-panel'] = $('#dimn-tabs-panel').html().toString();
