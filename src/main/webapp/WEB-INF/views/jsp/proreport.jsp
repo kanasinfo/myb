@@ -339,7 +339,7 @@
 <script type="text/javascript" src="${ctx}/assets/jqueryui/jquery.layout/jquery.layout.min.js"></script>
 <script type="text/javascript"
         src="${ctx}/assets/jqueryui/jquery.layout/callbacks/jquery.layout.resizePaneAccordions.min.js"></script>
-<script type="text/javascript" src="${ctx}/assets/echarts/echarts-3.1.10.min.js"></script>
+<script type="text/javascript" src="${ctx}/assets/echarts/echarts-3.1.10.js"></script>
 <script type="text/javascript" src="${ctx}/assets/jquery-modal/jquery.modal.min.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/proreport.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/canvas2image.js"></script>

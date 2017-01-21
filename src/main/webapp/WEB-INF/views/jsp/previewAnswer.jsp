@@ -57,23 +57,23 @@
 								<c:if test="${question.activeFlag ==true }">
 									<c:choose>
 										<c:when test="${question.questionType=='com.myb.questiontype.Judge'}">
-											<label class="btn btn-default" onclick="selectCheck('${question.questionId}')" >
-										       <input type="checkbox" id="${question.questionId}" name="${question.questionId}" onclick="selectCheck('${question.questionId}')" />
+											<label class="btn btn-default" onclick="selectCheck('${question.questionnaireId}')" >
+										       <input type="checkbox" id="${question.questionnaireId}" name="${question.questionnaireId}" onclick="selectCheck('${question.questionnaireId}')" />
 										       ${question.questionName}
 										    </label>
 										</c:when>
 										<c:when test="${question.questionType=='com.myb.questiontype.SingleSelect'}">
 											<c:forEach var="option" items="${question.options}">
-									            <label class="btn btn-default" onclick="selectRadio('${question.questionId}','${option.optionId}')">
-									                <input type="radio" id="${question.questionId}_${option.optionId}" value="${option.optionValue }" name="${question.questionId}" onclick="selectRadio('${question.questionId}','${option.optionId}')" />
+									            <label class="btn btn-default" onclick="selectRadio('${question.questionnaireId}','${option.optionId}')">
+									                <input type="radio" id="${question.questionnaireId}_${option.optionId}" value="${option.optionValue }" name="${question.questionnaireId}" onclick="selectRadio('${question.questionnaireId}','${option.optionId}')" />
 									                ${option.optionName}
 									            </label>
 									        </c:forEach>
 										</c:when>
 										<c:when test="${question.questionType=='com.myb.questiontype.MultiSelect'}">
 											<c:forEach var="option" items="${question.options}">
-									            <label class="btn btn-default" onclick="selectRadio('${question.questionId}','${option.optionId}')">
-									                <input type="checkbox" id="${question.questionId}_${option.optionId}" value="${option.optionValue }"  name="${question.questionId}" onclick="selectRadio('${question.questionId}','${option.optionId}')" />
+									            <label class="btn btn-default" onclick="selectRadio('${question.questionnaireId}','${option.optionId}')">
+									                <input type="checkbox" id="${question.questionnaireId}_${option.optionId}" value="${option.optionValue }"  name="${question.questionnaireId}" onclick="selectRadio('${question.questionnaireId}','${option.optionId}')" />
 									                ${option.optionName}
 									            </label>
 									        </c:forEach>
@@ -96,8 +96,8 @@
 							<c:choose>
 							<c:when test="${question.questionType=='com.myb.questiontype.Judge'}">
 											<div class="btn-group-vertical" data-toggle="buttons">
-											<label class="btn btn-default" onclick="selectCheck('${question.questionId}')" >
-										       <input type="checkbox" id="${question.questionId}" name="${question.questionId}" onclick="selectCheck('${question.questionId}')" />
+											<label class="btn btn-default" onclick="selectCheck('${question.questionnaireId}')" >
+										       <input type="checkbox" id="${question.questionnaireId}" name="${question.questionnaireId}" onclick="selectCheck('${question.questionnaireId}')" />
 										       ${question.questionName}
 										    </label>
 										    </div>
@@ -105,8 +105,8 @@
 								<c:when test="${question.questionType=='com.myb.questiontype.Degree'}">
 									<div class="btn-group" data-toggle="buttons">
 										<c:forEach var="option" begin="1" end="10">
-									   		<label class="btn btn-default" onclick="selectRadio('${question.questionId}','${option}')" >
-									   		<input type="radio" id="${question.questionId}_${option }" name="${question.questionId}"   onclick="selectRadio('${question.questionId}','${option}')"  value="${option}">${option}</label>
+									   		<label class="btn btn-default" onclick="selectRadio('${question.questionnaireId}','${option}')" >
+									   		<input type="radio" id="${question.questionnaireId}_${option }" name="${question.questionnaireId}"   onclick="selectRadio('${question.questionnaireId}','${option}')"  value="${option}">${option}</label>
 									   	</c:forEach>
 									</div>
 									<div class="row" style="padding:0 10px;">
@@ -117,8 +117,8 @@
 								<c:when test="${question.questionType=='com.myb.questiontype.SingleSelect'}">
 									<div class="btn-group-vertical" data-toggle="buttons">
 									<c:forEach var="option" items="${question.options}">
-							            <label class="btn btn-default" onclick="selectRadio('${question.questionId}','${option.optionId}')" >
-							                <input type="radio" id="${question.questionId}_${option.optionId}" value="${option.optionValue }"  name="${question.questionId}" onclick="selectRadio('${question.questionId}','${option.optionId}')" />
+							            <label class="btn btn-default" onclick="selectRadio('${question.questionnaireId}','${option.optionId}')" >
+							                <input type="radio" id="${question.questionnaireId}_${option.optionId}" value="${option.optionValue }"  name="${question.questionnaireId}" onclick="selectRadio('${question.questionnaireId}','${option.optionId}')" />
 							                ${option.optionName}
 							            </label>
 							        </c:forEach>
@@ -127,8 +127,8 @@
 					        	<c:when test="${question.questionType=='com.myb.questiontype.MultiSelect'}">
 									<div class="btn-group-vertical" data-toggle="buttons">
 									<c:forEach var="option" items="${question.options}">
-							            <label class="btn btn-default" onclick="selectRadio('${question.questionId}','${option.optionId}')">
-							                <input type="checkbox" id="${question.questionId}_${option.optionId}" value="${option.optionValue }" name="${question.questionId}" onclick="selectRadio('${question.questionId}','${option.optionId}')" 
+							            <label class="btn btn-default" onclick="selectRadio('${question.questionnaireId}','${option.optionId}')">
+							                <input type="checkbox" id="${question.questionnaireId}_${option.optionId}" value="${option.optionValue }" name="${question.questionnaireId}" onclick="selectRadio('${question.questionnaireId}','${option.optionId}')"
 							                />
 							                ${option.optionName}
 							            </label>
@@ -136,7 +136,7 @@
 							        </div>
 					        	</c:when>
 					        	<c:when test="${question.questionType=='com.myb.questiontype.TextAnswer'}">
-									<input type="email" class="form-control" name="${question.questionId}">
+									<input type="email" class="form-control" name="${question.questionnaireId}">
 					        	</c:when>
 					        </c:choose>
 			        	</div>
@@ -232,7 +232,7 @@
         		var dataDecode = JSON.parse(data);
         		var selectCheck = function(id){
         			 for (var i = 0; i <dataDecode.answers.length; i++) {
- 						if(dataDecode.answers[i].questionId == id){
+ 						if(dataDecode.answers[i].questionnaireId == id){
  							if($("#" +id).is(':checked')){
  								dataDecode.answers[i].questionIdValue=1;
  	 							dataDecode.answers[i].optionValue = 1;
@@ -247,13 +247,13 @@
  						}
  					}
         		}
-        		var selectRadio = function(questionId,id){
+        		var selectRadio = function(questionnaireId,id){
        			 for (var i = 0; i <dataDecode.answers.length; i++) {
-						if(dataDecode.answers[i].questionId == questionId){
-							dataDecode.answers[i].questionIdValue=questionId+"_"+$("#" +questionId+"_"+ id).val();
-							dataDecode.answers[i].optionValue = $("#" +questionId+"_"+ id).val();
-							var key = questionId+"_optionValue";
-							dataDecode.answers[i][key] = $("#" +questionId+"_"+ id).val();
+						if(dataDecode.answers[i].questionnaireId == questionnaireId){
+							dataDecode.answers[i].questionIdValue=questionnaireId+"_"+$("#" +questionnaireId+"_"+ id).val();
+							dataDecode.answers[i].optionValue = $("#" +questionnaireId+"_"+ id).val();
+							var key = questionnaireId+"_optionValue";
+							dataDecode.answers[i][key] = $("#" +questionnaireId+"_"+ id).val();
 						}
 					}
        		}
@@ -302,7 +302,7 @@
                    $('#'+event.currentTarget.attributes.id.nodeValue).rating('update', value);
                    //给json赋值
                    for (var i = 0; i <dataDecode.answers.length; i++) {
-						if(dataDecode.answers[i].questionId == event.currentTarget.attributes.id.nodeValue){
+						if(dataDecode.answers[i].questionnaireId == event.currentTarget.attributes.id.nodeValue){
 							dataDecode.answers[i].questionIdValue=event.currentTarget.attributes.id.nodeValue+"_"+$("#"+event.currentTarget.attributes.id.nodeValue).val();
 							dataDecode.answers[i].optionValue = $("#"+event.currentTarget.attributes.id.nodeValue).val();
 							var key = event.currentTarget.attributes.id.nodeValue+"_optionValue";

@@ -144,9 +144,9 @@ public class MybProReportController extends ControllerSupport {
      */
 	@RequestMapping(value = "/saveChartsFragment", method = RequestMethod.POST)
     @ResponseBody
-	public AjaxReq saveChartsFragment(String questionId, ChartsFragement chartsFragement){
+	public AjaxReq saveChartsFragment(String questionnaireId, ChartsFragement chartsFragement){
 
-        return mybProReportService.saveChartsFragement(questionId, chartsFragement);
+        return mybProReportService.saveChartsFragement(questionnaireId, chartsFragement);
     }
 
     @RequestMapping(value = "/deleteChartsFragment", method = RequestMethod.GET)

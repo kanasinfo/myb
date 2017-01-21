@@ -127,7 +127,7 @@
         </div>
         <form action="${ctx}/page/release/downGroupLoadExcel.html" method="post" id="downLoadZipFrom" enctype="application/x-www-form-urlencoded">
         	<input type="hidden" id="downLoadData" name="data" value=""/>
-        	<input type="hidden" id="downLoadQuestionId" name="questionId" value="${templId }"/>
+        	<input type="hidden" id="downLoadQuestionId" name="questionnaireId" value="${templId }"/>
         	<input type="hidden" id="downLoadGroupId" name="groupId" value=""/>
         	<input type="hidden" id="parentId" name="parentId" value=""/>
         </form>

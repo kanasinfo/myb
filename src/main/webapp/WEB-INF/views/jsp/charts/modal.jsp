@@ -29,9 +29,10 @@
     (function () {
         var loadModelData = function (fragementId) {
             if (fragementId) {
-                $.post("${ctx}/page/proreport/modal/" + fragementId + "?questionId=${questionId}", {}, function (req) {
+                $.post("${ctx}/page/proreport/modal/" + fragementId + "?questionnaireId=${questionnaireId}", {}, function (req) {
                     console.log('current fragementId: ' + req.data.fragementId)
                     window.currentFragement = req.data;
+                    console.log(req)
                     $('#chartsCanvas>a.charts-left').attr('data-fragement-id', req.data.left);
                     $('#chartsCanvas>a.charts-right').attr('data-fragement-id', req.data.right);
                     loadCharts(req.data)

@@ -1,31 +1,33 @@
 /**
  * Created by gefangshuai on 2017/1/13.
  */
-(function(){
+(function () {
     /**
      * 推送数据到后台
      * @param chartsData
      * @param img
      */
     var pushChartsData = function (chartsData, img) {
-        console.log(reportGlobal)
+        var data = JSON.stringify(chartsData);
+        console.log('save charts: ' + JSON.stringify(reportGlobal.postdata));
         var postData = {
-            questionId: reportGlobal.id,
-            data: JSON.stringify(chartsData),
+            questionnaireId: reportGlobal.id,
+            data: data,
             image: img.src,
 
-            questionnaireId: reportGlobal.postdata.questionnaire_id,
+            questionId: reportGlobal.postdata.question_id,
             page: reportGlobal.postdata.page,
             filter: reportGlobal.postdata.filter,
             dimensiontype: reportGlobal.postdata.dimensiontype,
             dimension: reportGlobal.postdata.dimension,
+            questionGroup: reportGlobal.postdata.questionGroup,
             groupId: reportGlobal.postdata.groupId,
             questionName: reportGlobal.postdata.questionName,
             specialQuestions: reportGlobal.postdata.specialQuestions,
             store: reportGlobal.postdata.store
         };
         $.post(reportGlobal.ctx + '/page/proreport/saveChartsFragment', postData, function (data) {
-            if(data.success) {
+            if (data.success) {
                 drawImg(data.data, img);
                 console.log(data.message);
             }
@@ -40,7 +42,7 @@
     var drawImg = function (id, img) {
         var $div = $('div.thumb-img').first().remove('img').clone(true);
         var $a_img = $div.children('a');
-        $a_img.attr('href', reportGlobal.ctx+'/page/proreport/modal/' + id + "?questionId=" + reportGlobal.id);
+        $a_img.attr('href', reportGlobal.ctx + '/page/proreport/modal/' + id + "?questionId=" + reportGlobal.id);
         $a_img.html(img);
         $div.prepend($a_img[0]);
         $div.removeClass('hide');
@@ -64,7 +66,7 @@
     /**
      * 保存图片按钮
      */
-    $('#saveReportImg').on('click', function(e){
+    $('#saveReportImg').on('click', function (e) {
         e.preventDefault();
         var $canvas = $('div.chart-main canvas');
         var img = Canvas2Image.convertToImage($canvas[0]);
@@ -90,8 +92,8 @@
         $.get(reportGlobal.ctx + "/page/proreport/deleteChartsFragment", {
             id: reportGlobal.id,
             fragementId: $this.data('id')
-        }, function(data){
-            if(data.success) {
+        }, function (data) {
+            if (data.success) {
                 console.log(data.message);
                 $this.closest('div.thumb-img').remove();
             }
@@ -99,17 +101,20 @@
     });
 
     var drawCurrentCharts = function (data) {
-        console.log(data);
-        var currentChart = echarts.init($('#chartsCanvas>div.charts-content')[0]);
+        console.log('load charts: ' + JSON.stringify(data));
+        var $currentChart = $('#chartsCanvas>div.charts-content');
+
+
+        var chart = echarts.init($currentChart[0]);
         var option = data.option;
-
-
         option.title = {
             text: data.title,
             left: 'middle'
         };
-        currentChart.setOption(option);
-        $('#chartsCanvas div.charts-bar').text(data.comments).css('display', '');
+        chart.setOption(typeof(option) == 'string' ? _string2Json(option) : option);
+
+        if (data.comments)
+            $('#chartsCanvas div.charts-bar').text(data.comments).css('display', '');
         $('#chartsCanvas div.loading-text').hide();
     };
 
@@ -137,11 +142,12 @@
 
         $.ajax({
             type: 'post',
-            url: reportGlobal.ctx + '/page/reportEchart/getChartAllInfo.json',
+            url: reportGlobal.ctx + '/page/reportEchart/getChartAllInfo.json?_' + new Date().getTime(),
             data: postdata,
             dataType: 'json',
             cache: false,
             success: function (data) {
+                console.log(data)
                 drawCurrentCharts(data.data);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

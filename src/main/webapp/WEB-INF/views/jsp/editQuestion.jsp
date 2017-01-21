@@ -129,24 +129,24 @@
                 <ul id="add_${question.key.questionGroupId}" class="sortcontainer">
 	             	<c:forEach var="option" items="${question.value}">
 	             		<c:if test="${option.filterFlag ==true}">
-	           			 <li id="${option.questionId}">
+	           			 <li id="${option.questionnaireId}">
 		           			 <div style="border: none; float: left; overflow: hidden; width: 150px; line-height: 0;">
-								 <input type="checkbox" disabled="disabled" onclick="selectOrunSelect('${question.key.questionGroupId}','${option.questionId}')" id="check_${option.questionId}"<c:if test='${option.activeFlag==true}'>checked="checked"</c:if> />
-								 <a href="javascript:void(0)" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}',${option.templateFlag})">
-									 <span id="${question.key.questionGroupId}_${option.questionId}">${option.questionName}</span>
+								 <input type="checkbox" disabled="disabled" onclick="selectOrunSelect('${question.key.questionGroupId}','${option.questionnaireId}')" id="check_${option.questionnaireId}"<c:if test='${option.activeFlag==true}'>checked="checked"</c:if> />
+								 <a href="javascript:void(0)" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionnaireId}','${question.key.name}',${option.templateFlag})">
+									 <span id="${question.key.questionGroupId}_${option.questionnaireId}">${option.questionName}</span>
 								 </a>
 							 </div>
 		           			 <c:if test="${question.key.type ==0 }">
-	           			 		<span style="line-height: 10px;margin-left: 10px; font-size:12px;color:rgb(204,204,204)" id="editSpan_${option.questionId}">${option.questionValue}</span>
+	           			 		<span style="line-height: 10px;margin-left: 10px; font-size:12px;color:rgb(204,204,204)" id="editSpan_${option.questionnaireId}">${option.questionValue}</span>
 	           			 	</c:if>
 		           			 <c:if test="${option.templateFlag==false}">
-<%-- 			           			 <span style="padding-left:1px;"><a style="color: rgb(205,204,204)" data-toggle="modal" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionId}','${question.key.name}')">编辑</a></span> --%>
-			           			 <span style="line-height: 10px; color: rgb(82,82,82);margin-left: 10px;"><a style="color: rgb(82,82,82);font-size:12px;" onclick="delQuestion('${option.questionId}','${option.questionName}')">删除</a></span>
+<%-- 			           			 <span style="padding-left:1px;"><a style="color: rgb(205,204,204)" data-toggle="modal" onclick="editquestion('${option.questionType}','${question.key.questionGroupId}','${option.questionnaireId}','${question.key.name}')">编辑</a></span> --%>
+			           			 <span style="line-height: 10px; color: rgb(82,82,82);margin-left: 10px;"><a style="color: rgb(82,82,82);font-size:12px;" onclick="delQuestion('${option.questionnaireId}','${option.questionName}')">删除</a></span>
 		           			 </c:if>
 		           			 <c:if test="${option.templateFlag==true&& question.key.name eq '顾客消费习惯及背景调查'}">
-		           			 	<span style="padding-left:1px;" id="span_top"><input type="button" disabled="disabled" id="top_${option.questionId}" class="<c:if test="${option.topFlag==0}">question_top_onSelect</c:if>
+		           			 	<span style="padding-left:1px;" id="span_top"><input type="button" disabled="disabled" id="top_${option.questionnaireId}" class="<c:if test="${option.topFlag==0}">question_top_onSelect</c:if>
 		           			 	<c:if test="${option.topFlag==1}">question_top_select</c:if>"
-		           			 	 data-toggle="modal" onclick="questionTop('${option.questionId}','${option.topFlag}')" style="background-color:transparent;border:0" value="置顶"/></span>
+		           			 	 data-toggle="modal" onclick="questionTop('${option.questionnaireId}','${option.topFlag}')" style="background-color:transparent;border:0" value="置顶"/></span>
 		           			 </c:if>
 	           			 </li>
 	             		</c:if>

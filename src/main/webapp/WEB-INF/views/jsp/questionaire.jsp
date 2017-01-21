@@ -76,12 +76,12 @@
                                                                          style="text-align:center;">
                                                                         <c:forEach var="option" begin="1" end="10">
                                                                             <label class="btn btn-default"
-                                                                                   onclick="selectRadio('${question.questionId}','${option}')"
+                                                                                   onclick="selectRadio('${question.questionnaireId}','${option}')"
                                                                                    style="width:auto;float:left">
                                                                                 <input type="radio"
-                                                                                       id="${question.questionId}_${option }"
-                                                                                       name="${question.questionId}"
-                                                                                       onclick="selectRadio('${question.questionId}','${option}')"
+                                                                                       id="${question.questionnaireId}_${option }"
+                                                                                       name="${question.questionnaireId}"
+                                                                                       onclick="selectRadio('${question.questionnaireId}','${option}')"
                                                                                        value="${option}">${option}</label>
                                                                         </c:forEach>
                                                                     </div>
@@ -102,11 +102,11 @@
                                                         </c:when>
                                                         <c:when test="${question.questionType=='com.myb.questiontype.Judge'}">
                                                             <label class="btn btn-default"
-                                                                   onclick="selectCheck('${question.questionId}')">
-                                                                <input type="checkbox" id="${question.questionId}"
+                                                                   onclick="selectCheck('${question.questionnaireId}')">
+                                                                <input type="checkbox" id="${question.questionnaireId}"
                                                                        value="${option.optionValue}"
-                                                                       name="${question.questionId}"
-                                                                       onclick="selectCheck('${question.questionId}')"/>
+                                                                       name="${question.questionnaireId}"
+                                                                       onclick="selectCheck('${question.questionnaireId}')"/>
                                                                     ${question.questionName}
                                                             </label>
                                                         </c:when>
@@ -115,12 +115,12 @@
                                                                 <div class="col-md-12">
                                                                     <c:forEach var="option" items="${question.options}">
                                                                         <label class="btn btn-default"
-                                                                               onclick="selectRadio('${question.questionId}','${option.optionId}')">
+                                                                               onclick="selectRadio('${question.questionnaireId}','${option.optionId}')">
                                                                             <input type="radio"
-                                                                                   id="${question.questionId}_${option.optionId}"
+                                                                                   id="${question.questionnaireId}_${option.optionId}"
                                                                                    value="${option.optionValue }"
-                                                                                   name="${question.questionId}"
-                                                                                   onclick="selectRadio('${question.questionId}','${option.optionId}')"/>
+                                                                                   name="${question.questionnaireId}"
+                                                                                   onclick="selectRadio('${question.questionnaireId}','${option.optionId}')"/>
                                                                                 ${option.optionName}
                                                                         </label>
                                                                     </c:forEach>
@@ -132,12 +132,12 @@
                                                                 <div class="col-md-12">
                                                                     <c:forEach var="option" items="${question.options}">
                                                                         <label class="btn btn-default"
-                                                                               onclick="selectRadio('${question.questionId}','${option.optionId}')">
+                                                                               onclick="selectRadio('${question.questionnaireId}','${option.optionId}')">
                                                                             <input type="checkbox"
-                                                                                   id="${question.questionId}_${option.optionId}"
+                                                                                   id="${question.questionnaireId}_${option.optionId}"
                                                                                    value="${option.optionValue }"
-                                                                                   name="${question.questionId}"
-                                                                                   onclick="selectRadio('${question.questionId}','${option.optionId}')"/>
+                                                                                   name="${question.questionnaireId}"
+                                                                                   onclick="selectRadio('${question.questionnaireId}','${option.optionId}')"/>
                                                                                 ${option.optionName}
                                                                         </label>
                                                                     </c:forEach>
@@ -169,11 +169,11 @@
                                                     <div class="col-md-12">
                                                         <div class="btn-group-vertical" data-toggle="buttons">
                                                             <label class="btn btn-default"
-                                                                   onclick="selectCheck('${question.questionId}')">
-                                                                <input type="checkbox" id="${question.questionId}"
+                                                                   onclick="selectCheck('${question.questionnaireId}')">
+                                                                <input type="checkbox" id="${question.questionnaireId}"
                                                                        value="${option.optionValue }"
-                                                                       name="${question.questionId}"
-                                                                       onclick="selectCheck('${question.questionId}')"/>
+                                                                       name="${question.questionnaireId}"
+                                                                       onclick="selectCheck('${question.questionnaireId}')"/>
                                                                     ${question.questionName}
                                                             </label>
                                                         </div>
@@ -186,10 +186,10 @@
                                                         <div class="btn-group" data-toggle="buttons">
                                                             <c:forEach var="option" begin="1" end="10">
                                                                 <label class="btn btn-default"
-                                                                       onclick="selectRadio('${question.questionId}','${option}')">
-                                                                    <input type="radio" id="${question.questionId}_${option }"
-                                                                           name="${question.questionId}"
-                                                                           onclick="selectRadio('${question.questionId}','${option}')"
+                                                                       onclick="selectRadio('${question.questionnaireId}','${option}')">
+                                                                    <input type="radio" id="${question.questionnaireId}_${option }"
+                                                                           name="${question.questionnaireId}"
+                                                                           onclick="selectRadio('${question.questionnaireId}','${option}')"
                                                                            value="${option}">${option}</label>
                                                             </c:forEach>
                                                         </div>
@@ -212,12 +212,12 @@
                                                         <div class="btn-group-vertical" data-toggle="buttons" style="padding: 0 10px;">
                                                             <c:forEach var="option" items="${question.options}">
                                                                 <label class="btn btn-default"
-                                                                       onclick="selectRadio('${question.questionId}','${option.optionId}')">
+                                                                       onclick="selectRadio('${question.questionnaireId}','${option.optionId}')">
                                                                     <input type="radio"
-                                                                           id="${question.questionId}_${option.optionId}"
+                                                                           id="${question.questionnaireId}_${option.optionId}"
                                                                            value="${option.optionValue }"
-                                                                           name="${question.questionId}"
-                                                                           onclick="selectRadio('${question.questionId}','${option.optionId}')"/>
+                                                                           name="${question.questionnaireId}"
+                                                                           onclick="selectRadio('${question.questionnaireId}','${option.optionId}')"/>
                                                                         ${option.optionName}
                                                                 </label>
                                                             </c:forEach>
@@ -231,12 +231,12 @@
                                                         <div class="btn-group-vertical" data-toggle="buttons">
                                                             <c:forEach var="option" items="${question.options}">
                                                                 <label class="btn btn-default"
-                                                                       onclick="selectRadio('${question.questionId}','${option.optionId}')">
+                                                                       onclick="selectRadio('${question.questionnaireId}','${option.optionId}')">
                                                                     <input type="checkbox"
-                                                                           id="${question.questionId}_${option.optionId}"
+                                                                           id="${question.questionnaireId}_${option.optionId}"
                                                                            value="${option.optionValue }"
-                                                                           name="${question.questionId}"
-                                                                           onclick="selectRadio('${question.questionId}','${option.optionId}')"
+                                                                           name="${question.questionnaireId}"
+                                                                           onclick="selectRadio('${question.questionnaireId}','${option.optionId}')"
                                                                     />
                                                                         ${option.optionName}
                                                                 </label>
@@ -249,7 +249,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12" style="padding: 0 25px;">
                                                         <input type="text" id="textName" class="form-control"
-                                                               name="${question.questionId}">
+                                                               name="${question.questionnaireId}">
                                                     </div>
                                                 </div>
                                             </c:when>
@@ -276,7 +276,7 @@
         var dataDecode = JSON.parse(data);
         var selectCheck = function (id) {
             for (var i = 0; i < dataDecode.answers.length; i++) {
-                if (dataDecode.answers[i].questionId == id) {
+                if (dataDecode.answers[i].questionnaireId == id) {
                     if ($("#" + id).is(':checked')) {
                         dataDecode.answers[i].questionIdValue = id + "_false";
                         dataDecode.answers[i].optionValue = false;
@@ -292,20 +292,20 @@
                 }
             }
         }
-        var selectRadio = function (questionId, id) {
+        var selectRadio = function (questionnaireId, id) {
             for (var i = 0; i < dataDecode.answers.length; i++) {
-                if (dataDecode.answers[i].questionId == questionId) {
-                    dataDecode.answers[i].questionIdValue = questionId + "_" + $("#" + questionId + "_" + id).val();
+                if (dataDecode.answers[i].questionnaireId == questionnaireId) {
+                    dataDecode.answers[i].questionIdValue = questionnaireId + "_" + $("#" + questionnaireId + "_" + id).val();
                     var reg = new RegExp("^[0-9]*$");
-                    var questionVal = $("#" + questionId + "_" + id).val();
-                    var key = questionId + "_optionValue";
+                    var questionVal = $("#" + questionnaireId + "_" + id).val();
+                    var key = questionnaireId + "_optionValue";
                     if (reg.test(questionVal)) {
                         questionVal = parseInt(questionVal);
                         dataDecode.answers[i].optionValue = questionVal;
                         dataDecode.answers[i][key] = questionVal;
                     } else {
-                        dataDecode.answers[i].optionValue = $("#" + questionId + "_" + id).val();
-                        dataDecode.answers[i][key] = $("#" + questionId + "_" + id).val();
+                        dataDecode.answers[i].optionValue = $("#" + questionnaireId + "_" + id).val();
+                        dataDecode.answers[i][key] = $("#" + questionnaireId + "_" + id).val();
                     }
 
 
@@ -318,7 +318,7 @@
             var id = $("input:text").prop("name");
             if (textName != "" && textName != null) {
                 for (var i = 0; i < dataDecode.answers.length; i++) {
-                    if (dataDecode.answers[i].questionId == id) {
+                    if (dataDecode.answers[i].questionnaireId == id) {
                         dataDecode.answers[i].questionIdValue = id + "_" + textName;
                         dataDecode.answers[i].optionValue = textName;
                         dataDecode.answers[i]["VoiceOfCustomers"] = "VoiceOfCustomers";
@@ -370,7 +370,7 @@
             $('#' + event.currentTarget.attributes.id.nodeValue).rating('update', value);
             //给json赋值
             for (var i = 0; i < dataDecode.answers.length; i++) {
-                if (dataDecode.answers[i].questionId == event.currentTarget.attributes.id.nodeValue) {
+                if (dataDecode.answers[i].questionnaireId == event.currentTarget.attributes.id.nodeValue) {
                     dataDecode.answers[i].questionIdValue = event.currentTarget.attributes.id.nodeValue + "_" + $("#" + event.currentTarget.attributes.id.nodeValue).val();
                     dataDecode.answers[i].optionValue = $("#" + event.currentTarget.attributes.id.nodeValue).val();
                     var key = event.currentTarget.attributes.id.nodeValue + "_optionValue";

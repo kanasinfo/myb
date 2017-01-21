@@ -452,11 +452,11 @@ public class MybProReportServiceImpl implements MybProReportService {
     }
 
     @Override
-    public AjaxReq saveChartsFragement(String questionId, ChartsFragement chartsFragement) {
+    public AjaxReq saveChartsFragement(String questionnaireId, ChartsFragement chartsFragement) {
         AjaxReq ajaxReq = new AjaxReq();
         try {
             Query query = new Query();
-            Criteria criterg = Criteria.where("questionId").is(questionId);
+            Criteria criterg = Criteria.where("questionnaireId").is(questionnaireId);
             query.addCriteria(criterg);
 
             ArchiveCharts archiveCharts = mongoTemplate.findOne(query, ArchiveCharts.class);
@@ -464,7 +464,7 @@ public class MybProReportServiceImpl implements MybProReportService {
 
             if (archiveCharts == null) {
                 archiveCharts = new ArchiveCharts();
-                archiveCharts.setQuestionId(questionId);
+                archiveCharts.setQuestionnaireId(questionnaireId);
                 archiveCharts.getChartsFragements().add(chartsFragement);
                 mongoTemplate.save(archiveCharts);
             }else{

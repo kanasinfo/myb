@@ -87,12 +87,12 @@
     </div>
 <%--      <form action="${ctx}/page/release/downGroupLoadExcel.html" method="post" id="downLoadZipFrom" enctype="application/x-www-form-urlencoded"> --%>
 <!--         	<input type="hidden" id="downLoadData" name="data" value=""/> -->
-<%--         	<input type="hidden" id="downLoadQuestionId" name="questionId" value="${templId }"/> --%>
+<%--         	<input type="hidden" id="downLoadQuestionId" name="questionnaireId" value="${templId }"/> --%>
 <!--         	<input type="hidden" id="downLoadGroupId" name="groupId" value=""/> -->
 <!--         	<input type="hidden" id="parentId" name="parentId" value=""/> -->
 <!--         </form> -->
         <form action="${ctx}/page/release/downOnlyONeLoadExcel.html" method="post" id="downLoadFrom" enctype="application/x-www-form-urlencoded">
-        	<input type="hidden" id="questionId" name="questionId" value="${templId }"/>
+        	<input type="hidden" id="questionnaireId" name="questionnaireId" value="${templId }"/>
         	<input type="hidden" id="downCount" name="downCount" value=""/>
         </form>
     <div class="clearfix" style="height:10px;"></div>

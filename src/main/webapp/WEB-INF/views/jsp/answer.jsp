@@ -77,7 +77,7 @@
 						 	<div>
 		                    	${questionScore.questionName}
 		                    </div>
-	                     	<input id="${questionScore.questionId }" value="1" type="number" class="abcd"/>
+	                     	<input id="${questionScore.questionnaireId }" value="1" type="number" class="abcd"/>
                      	</c:if>
                      </c:forEach>
 				</c:if>
@@ -85,7 +85,7 @@
 					  <ul>
                        <c:forEach var="questionCheck" items="${group.value}">
                        <c:if test="${questionCheck.activeFlag ==true }">
-                          <li><input type="checkbox" id="${ questionCheck.questionId}" name="${ questionCheck.questionId}radioName" onclick="selectCheck('${ questionCheck.questionId}')" />${questionCheck.questionName}</li>
+                          <li><input type="checkbox" id="${ questionCheck.questionnaireId}" name="${ questionCheck.questionnaireId}radioName" onclick="selectCheck('${ questionCheck.questionnaireId}')" />${questionCheck.questionName}</li>
                           </c:if>
                          </c:forEach>
                       </ul>
@@ -97,7 +97,7 @@
 						 	<div>
 		                    	${questionMulti.questionName}
 		                    </div>
-                     		<input id="${questionMulti.questionId }" value="1" type="number" class="abcd"/>
+                     		<input id="${questionMulti.questionnaireId }" value="1" type="number" class="abcd"/>
                      		</c:if>
 					 	</c:if>
 					 	<c:if test="${questionMulti.questionType=='1' }">
@@ -105,7 +105,7 @@
 					 		<div >
 	                    		${questionMulti.questionName}
 	                    	</div>
-                     		<input type="checkbox" id="${ questionMulti.questionId}" name="${ questionMulti.questionId}radioName" onclick="selectCheck('${ questionMulti.questionId}')" />${questionMulti.questionName}
+                     		<input type="checkbox" id="${ questionMulti.questionnaireId}" name="${ questionMulti.questionnaireId}radioName" onclick="selectCheck('${ questionMulti.questionnaireId}')" />${questionMulti.questionName}
                      		</c:if>
 					 	</c:if>
 					 	<c:if test="${questionMulti.questionType=='3' }">
@@ -115,7 +115,7 @@
 	                    	</div>
 	                    	<ul>
 		                      	<c:forEach var="questionmultiOption" items="${questionMulti.options}">
-		                          <li><input type="radio" id="${ questionmultiOption.optionId}" name="${ questionMulti.questionId}radioName" value="${questionmultiOption.optionValue }" onclick="selectRadio('${ questionMulti.questionId}','${ questionmultiOption.optionId}')" />${questionmultiOption.optionName}</li>
+		                          <li><input type="radio" id="${ questionmultiOption.optionId}" name="${ questionMulti.questionnaireId}radioName" value="${questionmultiOption.optionValue }" onclick="selectRadio('${ questionMulti.questionnaireId}','${ questionmultiOption.optionId}')" />${questionmultiOption.optionName}</li>
 	                         	</c:forEach>
 	                      	</ul>
 	                      	</c:if>
@@ -135,7 +135,7 @@
         		var dataDecode = JSON.parse(data);
         		var selectCheck = function(id){
         			 for (var i = 0; i <dataDecode.answers.length; i++) {
- 						if(dataDecode.answers[i].questionId == id){
+ 						if(dataDecode.answers[i].questionnaireId == id){
  							dataDecode.answers[i].questionIdValue=id+"_"+$("#" + id).prop("checked");
  							dataDecode.answers[i].optionValue = $("#" + id).prop("checked");
  							var key = id+"_optionValue";
@@ -143,15 +143,15 @@
  						}
  					}
         		}
-        		var selectRadio = function(questionId,id){
-        			alert(questionId);
+        		var selectRadio = function(questionnaireId,id){
+        			alert(questionnaireId);
         			alert(id);
        			 for (var i = 0; i <dataDecode.answers.length; i++) {
-       				 alert(dataDecode.answers[i].questionId == questionId);
-						if(dataDecode.answers[i].questionId == questionId){
-							dataDecode.answers[i].questionIdValue=questionId+"_"+$("#" + id).val();
+       				 alert(dataDecode.answers[i].questionnaireId == questionnaireId);
+						if(dataDecode.answers[i].questionnaireId == questionnaireId){
+							dataDecode.answers[i].questionIdValue=questionnaireId+"_"+$("#" + id).val();
 							dataDecode.answers[i].optionValue = $("#" + id).val();
-							var key = questionId+"_optionValue";
+							var key = questionnaireId+"_optionValue";
 							dataDecode.answers[i][key] = $("#" + id).val();
 						}
 					}
@@ -201,7 +201,7 @@
                    $('#'+event.currentTarget.attributes.id.nodeValue).rating('update', value);
                    //给json赋值
                    for (var i = 0; i <dataDecode.answers.length; i++) {
-						if(dataDecode.answers[i].questionId == event.currentTarget.attributes.id.nodeValue){
+						if(dataDecode.answers[i].questionnaireId == event.currentTarget.attributes.id.nodeValue){
 							dataDecode.answers[i].questionIdValue=event.currentTarget.attributes.id.nodeValue+"_"+$("#"+event.currentTarget.attributes.id.nodeValue).val();
 							dataDecode.answers[i].optionValue = $("#"+event.currentTarget.attributes.id.nodeValue).val();
 							var key = event.currentTarget.attributes.id.nodeValue+"_optionValue";

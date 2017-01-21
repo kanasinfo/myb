@@ -12,15 +12,15 @@ import java.util.List;
 @Document(collection = "archive_charts")
 public class ArchiveCharts {
 
-    private String questionId;
+    private String questionnaireId;
     private List<ChartsFragement> chartsFragements = new ArrayList<>();
 
-    public String getQuestionId() {
-        return questionId;
+    public String getQuestionnaireId() {
+        return questionnaireId;
     }
 
-    public void setQuestionId(String questionId) {
-        this.questionId = questionId;
+    public void setQuestionnaireId(String questionnaireId) {
+        this.questionnaireId = questionnaireId;
     }
 
     public List<ChartsFragement> getChartsFragements() {
