@@ -6,6 +6,7 @@ package com.myb.portal.service;
  * @author wangzx
  * @version 1.0
  */
+import com.myb.portal.model.mongodb.ChartsFragement;
 import com.myb.portal.util.AjaxReq;
 
 public interface MybProReportService {
@@ -85,8 +86,14 @@ public interface MybProReportService {
 	 * @return
 	 */
 	public AjaxReq querySampleCountById(String id,String data);
-	
-	
-	
-	
+
+
+    /**
+     * 保存统计图片及查询条件
+     */
+    AjaxReq saveChartsFragement(String questionId, ChartsFragement chartsFragement);
+
+    AjaxReq deleteChartsFragement(String id, String fragementId);
+
+	AjaxReq findChartsFragementById(String id, String fragementId);
 }

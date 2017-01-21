@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/assets/css/report.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="${ctx}/assets/css/themes-cust/myb-green/jquery-ui.css">
-
+    <link rel="stylesheet" href="${ctx}/assets/jquery-modal/jquery.modal.min.css">
     <style type="text/css">
         /*
          * Customize borders and shading to suit this nested layout
@@ -98,7 +98,10 @@
         .right-south {
             background-color: white;
         }
-
+        .modal {
+            max-width: 900px;
+            padding: 15px 0;
+        }
     </style>
 
 </head>
@@ -247,11 +250,14 @@
         </div>
     </div>
     <div class="right-center" style="background-color:white; padding: 0 5px; overflow-y: auto">
-        <div class="thumb-img hide" >
-            <a class="fancybox-close " style="display: none;"></a>
-        </div>
+            <div class="thumb-img hide" >
+                <a href="#" rel="modal:open">
+                    <a class="fancybox-close" style="display: none;"></a>
+                </a>
+            </div>
     </div>
 </div>
+
 
 <div class="sample-dialog">
     <div class="content col-md-12">
@@ -334,6 +340,7 @@
 <script type="text/javascript"
         src="${ctx}/assets/jqueryui/jquery.layout/callbacks/jquery.layout.resizePaneAccordions.min.js"></script>
 <script type="text/javascript" src="${ctx}/assets/echarts/echarts-3.1.10.min.js"></script>
+<script type="text/javascript" src="${ctx}/assets/jquery-modal/jquery.modal.min.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/proreport.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/canvas2image.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/proreport-export.js"></script>
@@ -364,6 +371,7 @@
                 buildTopNav(jsondata);
                 buildSampleDialogButtons(jsondata);
                 buildDimensionDialogButtons(jsondata);
+                buildChartsFragementsSlide(jsondata);
                 //reloadPageMapping();
                 finalInits();
             }

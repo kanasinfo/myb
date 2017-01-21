@@ -3,12 +3,13 @@
  */
 package com.myb.portal.controller;
 
+import com.google.gson.Gson;
+import com.myb.portal.model.mongodb.ChartsFragement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import com.myb.portal.service.MybProReportService;
 import com.myb.portal.support.ControllerSupport;
@@ -136,7 +137,34 @@ public class MybProReportController extends ControllerSupport {
 	public AjaxReq querySampleCountById(@RequestParam(value="questionnaire_id", required=true) String id,@RequestParam(value="filter", required=false) String data){
 		return mybProReportService.querySampleCountById(id,data);
 	}
-	
-	
 
+    /**
+     * 保存图片及查询信息
+     * @return
+     */
+	@RequestMapping(value = "/saveChartsFragment", method = RequestMethod.POST)
+    @ResponseBody
+	public AjaxReq saveChartsFragment(String questionId, ChartsFragement chartsFragement){
+
+        return mybProReportService.saveChartsFragement(questionId, chartsFragement);
+    }
+
+    @RequestMapping(value = "/deleteChartsFragment", method = RequestMethod.GET)
+    @ResponseBody
+    public AjaxReq deleteChartsFragment(String id, String fragementId){
+        return mybProReportService.deleteChartsFragement(id, fragementId);
+    }
+
+    @RequestMapping(value = "/modal/{fragementId}", method = RequestMethod.GET)
+	public String showChartsFragementModel(@PathVariable String fragementId, String questionId, Model model) {
+        model.addAttribute("fragementId", fragementId);
+        model.addAttribute("questionId", questionId);
+        return "charts/modal";
+    }
+
+    @RequestMapping(value = "/modal/{fragementId}", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxReq loadChartsFragementModelData(@PathVariable String fragementId, String questionId) {
+        return mybProReportService.findChartsFragementById(questionId, fragementId);
+    }
 }
