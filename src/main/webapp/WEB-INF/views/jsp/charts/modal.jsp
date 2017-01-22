@@ -61,7 +61,7 @@
                         $('#chartsCanvas>a.charts-right').attr('data-fragement-id', req.data.right);
                         addDownloadImgs(req.data.image);
                         if(window.downloadImgs) {
-                            $('span#dling').text('下载进度');
+                            $('span#dling').text('下载中, 当前进度');
                             loadCharts(req.data, function(){
                                 setTimeout(function () {
                                     $('#chartsCanvas>a.charts-right').trigger('click');

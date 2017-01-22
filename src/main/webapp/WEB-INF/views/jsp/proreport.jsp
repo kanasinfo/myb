@@ -232,7 +232,7 @@
         <a href="#" id="saveReportImg">
             <img src="${ctx}/assets/images/savepdf.png" width="16px" id="savepdficon" alt="Save the report."></img>
         </a>
-        <a href="#" id="downloadCharts">下载图片</a>
+
     </div>
 
 </div>
@@ -248,6 +248,9 @@
     <div class="right-south">
         <div id="slideDown"></div>
         <div id="slideToolbar" style="text-align:center">
+            <a href="#" id="downloadCharts">
+                <img src="${ctx}/assets/images/dl.png" alt="" style="margin-top: 5px;">
+            </a>
         </div>
     </div>
     <div class="right-center" style="background-color:white; padding: 0 5px; overflow-y: auto">

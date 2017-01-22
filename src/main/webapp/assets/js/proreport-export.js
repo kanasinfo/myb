@@ -127,8 +127,8 @@
             left: 'middle'
         };
         chart.setOption(typeof(option) == 'string' ? _string2Json(option) : option);
-
-        if (data.comments)
+        console.log('cmt: ' + data.comments)
+        if (data.comments && data.comments.length > 0)
             $('#chartsCanvas div.charts-bar').text(data.comments).css('display', '');
         $('#chartsCanvas div.loading-text').hide();
     };
