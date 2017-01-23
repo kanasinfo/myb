@@ -1,5 +1,6 @@
 package com.myb.portal.model.mongodb;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -52,6 +53,12 @@ public class ReleaseQuestionVo {
 	private List<QuestionGroupVO> questionGroup;
 	//用户选择的维度列表
 	private String savedDimnTab;
+
+	// 统计图表
+	@Transient
+	private List<ChartsFragement> chartsFragements;
+
+
 	public String getSavedDimnTab() {
 		return savedDimnTab;
 	}
@@ -195,6 +202,12 @@ public class ReleaseQuestionVo {
 	public void setQuestions(List<QuestionsVo> questions) {
 		this.questions = questions;
 	}
-	
-	
+
+    public List<ChartsFragement> getChartsFragements() {
+        return chartsFragements;
+    }
+
+    public void setChartsFragements(List<ChartsFragement> chartsFragements) {
+        this.chartsFragements = chartsFragements;
+    }
 }

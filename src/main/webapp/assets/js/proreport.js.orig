@@ -375,7 +375,7 @@ function _loadSavedDimnsnList(jsondata) {
 		if (qdata[i]['activeFlag']
 				&& qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
 			html += "<li><input name='dimnsncheck' type='checkbox' value='"
-					+ qdata[i]['questionId'] + "' />"
+					+ qdata[i]['questionnaireId'] + "' />"
 					+ qdata[i]['questionName'] + "</li>";
 		}
 	}
@@ -720,8 +720,8 @@ function buildLeftNav(jsondata) {
 						&& (leftNav[j]['activePeriod'] == '' || (leftNav[j]['activePeriod'] != '' && _compareDates(
 								leftNav[j]['activePeriod'], ds2)))) {
 					html += "<li><a "
-							+ " questionId='"
-							+ leftNav[j]['questionId']
+							+ " questionnaireId='"
+							+ leftNav[j]['questionnaireId']
 							+ "'"
 							+ " question_group_id='"
 							+ leftNav[j]['questionGroupId']
@@ -1030,7 +1030,7 @@ function _topNavOtherClick(dom) {
 		return a.sortNumber - b.sortNumber;
 	});
 	for (var i = 0; i < qdata.length; i++) {
-		if (qdata[i]['questionId'] == $(dom).attr('id')) {
+		if (qdata[i]['questionnaireId'] == $(dom).attr('id')) {
 			if (reportGlobal.dimensions.dateType != null
 					&& reportGlobal.dimensions.dateType != '') {
 				var dt = reportGlobal.dimensions.dateType;
@@ -1176,7 +1176,7 @@ function _buildSampleDialog(jsondata) {
 								qdata[i]['activePeriod'], ds2)))) {
 					if (qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
 						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId']
+								+ qdata[i]['questionnaireId']
 								+ "' ><div class='questionlabel'>"
 								+ qdata[i]['questionName']
 								+ "</div><div class='optionsdiv'>";
@@ -1208,9 +1208,9 @@ function _buildSampleDialog(jsondata) {
 								+ "' value='"
 								+ qdata[i]['questionName']
 								+ "' id='"
-								+ qdata[i]['questionId']
+								+ qdata[i]['questionnaireId']
 								+ "'><label for='"
-								+ qdata[i]['questionId']
+								+ qdata[i]['questionnaireId']
 								+ "'>"
 								+ qdata[i]['questionName'] + "</label>";
 						if (judgeCount == 1) {
@@ -1218,7 +1218,7 @@ function _buildSampleDialog(jsondata) {
 						}
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Degree') {
 						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId'] + "' >"
+								+ qdata[i]['questionnaireId'] + "' >"
 								+ qdata[i]['questionName']
 								+ "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
@@ -1241,7 +1241,7 @@ function _buildSampleDialog(jsondata) {
 						html += "</div></div>";
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Score') {
 						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId'] + "' >"
+								+ qdata[i]['questionnaireId'] + "' >"
 								+ qdata[i]['questionName']
 								+ "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
@@ -1356,7 +1356,7 @@ function buildDimensionDialog(jsondata) {
 								qdata[i]['activePeriod'], ds2)))) {
 					if (qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
 						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId']
+								+ qdata[i]['questionnaireId']
 								+ "' ><div class='questionlabel'>"
 								+ qdata[i]['questionName']
 								+ "</div><div class='optionsdiv'>";
@@ -1388,9 +1388,9 @@ function buildDimensionDialog(jsondata) {
 								+ "' value='"
 								+ qdata[i]['questionName']
 								+ "' id='"
-								+ qdata[i]['questionId']
+								+ qdata[i]['questionnaireId']
 								+ "'><label for='"
-								+ qdata[i]['questionId']
+								+ qdata[i]['questionnaireId']
 								+ "'>"
 								+ qdata[i]['questionName'] + "</label>";
 						if (judgeCount == 1) {
@@ -1398,7 +1398,7 @@ function buildDimensionDialog(jsondata) {
 						}
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Degree') {
 						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId'] + "' >"
+								+ qdata[i]['questionnaireId'] + "' >"
 								+ qdata[i]['questionName']
 								+ "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
@@ -1421,7 +1421,7 @@ function buildDimensionDialog(jsondata) {
 						html += "</div></div>";
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Score') {
 						html += "<div class='heading1' id='"
-								+ qdata[i]['questionId'] + "' >"
+								+ qdata[i]['questionnaireId'] + "' >"
 								+ qdata[i]['questionName']
 								+ "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
@@ -1952,7 +1952,7 @@ function reloadPageMapping() {
  * "dimnsn" : "p8", "one_dimnsn" : "p411", "store" : "p11", "time" : "p10",
  * "time_dimnsn" : "p13",
  * 
- * "questionId" : "16", "questionGroupId" : "10", "chartOneDimnsn" : "p1",
+ * "questionnaireId" : "16", "questionGroupId" : "10", "chartOneDimnsn" : "p1",
  * "chartMultiDimnsn" : "p4", "chartStore" : "p8", "chartTime" : "p8",
  * "chartTimeDimnsn" : "p8",
  * 
@@ -1982,20 +1982,20 @@ function loadPage() {
 		if (qgroupid == data[i].questionGroupId && data[i].activeFlag) {
 			var qst = {};
 			qst.questionGroupId = qgroupid;
-			qst.questionId = data[i].questionId;
+			qst.questionnaireId = data[i].questionnaireId;
 			qst.questionValue = data[i].questionValue;
 			qst.questionName = data[i].questionName;
 			qst.sortNumber = data[i].sortNumber;
 			qstGrup.push(qst);
 		}
-		if (qgroupid == data[i].questionGroupId && data[i].questionId == qid) {
+		if (qgroupid == data[i].questionGroupId && data[i].questionnaireId == qid) {
 			mapping = data[i];
 			questionName = data[i].questionName;
 		}
 		if (data[i].businessType != null && data[i].businessType != ''
 				&& reportGlobal.specialQuestions != '') {
 			var ql = {};
-			ql.questionId = data[i].questionId;
+			ql.questionnaireId = data[i].questionnaireId;
 			ql.businessType = data[i].businessType;
 			qlist.push(ql)
 		}
@@ -2492,7 +2492,7 @@ function _loadSavedDimnsnList(jsondata) {
 		// }
 
 		if (qdata[i]['activeFlag'] && qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
-			html += "<li><input name='dimnsncheck' type='checkbox' value='" + qdata[i]['questionId'] + "' />" + qdata[i]['questionName'] + "</li>";
+			html += "<li><input name='dimnsncheck' type='checkbox' value='" + qdata[i]['questionnaireId'] + "' />" + qdata[i]['questionName'] + "</li>";
 		}
 	}
 	if (reportGlobal.selectedStoreType == 'store') {
@@ -2857,7 +2857,7 @@ function buildLeftNav(jsondata) {
 							.indexOf(qGroup[i]['businessType']) > -1) && leftNav[j]['filterFlag']) {
 						// 不显示driver和standard下面的filterFlag为True的问题
 					} else {
-						html += "<li><a " + " questionId='" + leftNav[j]['questionId'] + "'" + " question_group_id='" + leftNav[j]['questionGroupId'] + "'" + " href='#' onclick='_leftNavQuestionClick(this);'>" + leftNav[j]['questionName'] + "</a></li>";
+						html += "<li><a " + " questionnaireId='" + leftNav[j]['questionnaireId'] + "'" + " question_group_id='" + leftNav[j]['questionGroupId'] + "'" + " href='#' onclick='_leftNavQuestionClick(this);'>" + leftNav[j]['questionName'] + "</a></li>";
 					}
 				}
 			}
@@ -3159,7 +3159,7 @@ function _topNavOtherClick(dom) {
 		return a.sortNumber - b.sortNumber;
 	});
 	for (var i = 0; i < qdata.length; i++) {
-		if (qdata[i]['questionId'] == $(dom).attr('id')) {
+		if (qdata[i]['questionnaireId'] == $(dom).attr('id')) {
 			if (reportGlobal.dimensions.dateType != null && reportGlobal.dimensions.dateType != '') {
 				var dt = reportGlobal.dimensions.dateType;
 				reportGlobal.dimensions = qdata[i];
@@ -3318,7 +3318,7 @@ function _buildSampleDialog(jsondata) {
 				if (qdata[i]['filterFlag'] && qGroup[j]['questionGroupId'] == qdata[i]['questionGroupId'] && (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' && _compareDates(
 						qdata[i]['activePeriod'], ds2)))) {
 					if (qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' ><div class='questionlabel'>" + qdata[i]['questionName'] + "</div><div class='optionsdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionnaireId'] + "' ><div class='questionlabel'>" + qdata[i]['questionName'] + "</div><div class='optionsdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
@@ -3333,12 +3333,12 @@ function _buildSampleDialog(jsondata) {
 						if (judgeCount == 1) {
 							html += "<span style='padding-left:12px'>"
 						}
-						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] + "' id='" + qdata[i]['questionId'] + "'><label for='" + qdata[i]['questionId'] + "'>" + qdata[i]['questionName'] + "</label>";
+						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] + "' id='" + qdata[i]['questionnaireId'] + "'><label for='" + qdata[i]['questionnaireId'] + "'>" + qdata[i]['questionName'] + "</label>";
 						if (judgeCount == 1) {
 							html += "</span>"
 						}
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Degree') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionnaireId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
@@ -3349,7 +3349,7 @@ function _buildSampleDialog(jsondata) {
 						}
 						html += "</div></div>";
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Score') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionnaireId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
@@ -3434,7 +3434,7 @@ function buildDimensionDialog(jsondata) {
 				if (qdata[i]['filterFlag'] && qGroup[j]['questionGroupId'] == qdata[i]['questionGroupId'] && (qdata[i]['activePeriod'] == '' || (qdata[i]['activePeriod'] != '' && _compareDates(
 						qdata[i]['activePeriod'], ds2)))) {
 					if (qdata[i]['questionType'] == 'com.myb.questiontype.SingleSelect') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' ><div class='questionlabel'>" + qdata[i]['questionName'] + "</div><div class='optionsdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionnaireId'] + "' ><div class='questionlabel'>" + qdata[i]['questionName'] + "</div><div class='optionsdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
@@ -3449,12 +3449,12 @@ function buildDimensionDialog(jsondata) {
 						if (judgeCount == 1) {
 							html += "<span style='padding-left:12px'>"
 						}
-						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] + "' id='" + qdata[i]['questionId'] + "'><label for='" + qdata[i]['questionId'] + "'>" + qdata[i]['questionName'] + "</label>";
+						html += "<input type='checkbox' onclick='_filterchecked(this)' name='" + qdata[i]['questionName'] + "' value='" + qdata[i]['questionName'] + "' id='" + qdata[i]['questionnaireId'] + "'><label for='" + qdata[i]['questionnaireId'] + "'>" + qdata[i]['questionName'] + "</label>";
 						if (judgeCount == 1) {
 							html += "</span>"
 						}
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Degree') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionnaireId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
@@ -3465,7 +3465,7 @@ function buildDimensionDialog(jsondata) {
 						}
 						html += "</div></div>";
 					} else if (qdata[i]['questionType'] == 'com.myb.questiontype.Score') {
-						html += "<div class='heading1' id='" + qdata[i]['questionId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
+						html += "<div class='heading1' id='" + qdata[i]['questionnaireId'] + "' >" + qdata[i]['questionName'] + "<br/><div class='custdiv'>";
 						var option = qdata[i]['options'].sort(function(a, b) {
 							return a.sortNumber - b.sortNumber;
 						});
@@ -3968,7 +3968,7 @@ function reloadPageMapping() {
  * "dimnsn" : "p8", "one_dimnsn" : "p411", "store" : "p11", "time" : "p10",
  * "time_dimnsn" : "p13",
  * 
- * "questionId" : "16", "questionGroupId" : "10", "chartOneDimnsn" : "p1",
+ * "questionnaireId" : "16", "questionGroupId" : "10", "chartOneDimnsn" : "p1",
  * "chartMultiDimnsn" : "p4", "chartStore" : "p8", "chartTime" : "p8",
  * "chartTimeDimnsn" : "p8",
  * 
@@ -3997,19 +3997,19 @@ function loadPage() {
 		if (qgroupid == data[i].questionGroupId && data[i].activePeriod != null && data[i].activePeriod.length > 0 && _compareDates(data[i].activePeriod, reportGlobal.period)) {
 			var qst = {};
 			qst.questionGroupId = qgroupid;
-			qst.questionId = data[i].questionId;
+			qst.questionnaireId = data[i].questionnaireId;
 			qst.questionValue = data[i].questionValue;
 			qst.questionName = data[i].questionName;
 			qst.sortNumber = data[i].sortNumber;
 			qstGrup.push(qst);
 		}
-		if (qgroupid == data[i].questionGroupId && data[i].questionId == qid) {
+		if (qgroupid == data[i].questionGroupId && data[i].questionnaireId == qid) {
 			mapping = data[i];
 			questionName = data[i].questionName;
 		}
 		if (data[i].businessType != null && data[i].businessType != '' && reportGlobal.specialQuestions != '') {
 			var ql = {};
-			ql.questionId = data[i].questionId;
+			ql.questionnaireId = data[i].questionnaireId;
 			ql.businessType = data[i].businessType;
 			qlist.push(ql)
 		}

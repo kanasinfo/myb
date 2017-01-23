@@ -74,7 +74,7 @@ jQuery(function($) {
 		update : function(event, ui) {
 			$(".question_option .sortcontainer li").each(function(i) {
 				for (var j = 0; j < data1.questions.length; j++) {
-					if (this.id == data1.questions[j].questionId) {
+					if (this.id == data1.questions[j].questionnaireId) {
 						data1.questions[j].sortNumber = i;
 					}
 				}
@@ -97,7 +97,7 @@ jQuery(function($) {
 						var questionEditScoreVal = $("#questionEditScoreVal").val();
 						var question_id = $("#question_id").val();
 						for(var i =0 ;i<data1.questions.length;i++){
-							if(data1.questions[i].questionId==question_id){
+							if(data1.questions[i].questionnaireId==question_id){
 								data1.questions[i].questionValue = questionEditScoreVal;
 							}
 						}
@@ -130,7 +130,7 @@ jQuery(function($) {
 								if (question_id == '') {
 									question_id = UUID.prototype.createUUID();
 								}
-								questionJson.questionId = question_id;
+								questionJson.questionnaireId = question_id;
 								questionJson.questionGroupId = groupId;
 								questionJson.filterFlag = true;
 								questionJson.questionGroupName = $("#question_group_name").val();
@@ -167,7 +167,7 @@ jQuery(function($) {
 										+ questionName
 										+ "&apos;)'>删除</a></span></li>";
 								for (var j = 0; j < data1.questions.length; j++) {
-									if (data1.questions[j].questionId == question_id) {
+									if (data1.questions[j].questionnaireId == question_id) {
 										data1.questions.splice(j, 1);
 									}
 								}
@@ -210,18 +210,18 @@ jQuery(function($) {
 								if (jQuery('#myEditTemplateFrom')
 										.validationEngine('validate') == false)
 									return;
-								var questionId = $("#question_id").val();
+								var questionnaireId = $("#question_id").val();
 								var groupId = $("#groupId").val();
 								var editQuestionTemplateType = $(
 										"#editQuestionTemplateType").val();
 								var questionTemplateVal = $(
 										"#questionTemplateVal").val();
 								for (var i = 0; i < data1.questions.length; i++) {
-									if (data1.questions[i].questionId == questionId) {
+									if (data1.questions[i].questionnaireId == questionnaireId) {
 										data1.questions[i].questionValue = questionTemplateVal;
 										if (editQuestionTemplateType == 1) {
 											data1.questions[i].questionName = questionTemplateVal;
-											$("#" + groupId + "_" + questionId)
+											$("#" + groupId + "_" + questionnaireId)
 													.text(questionTemplateVal);
 										}
 									}
@@ -242,7 +242,7 @@ jQuery(function($) {
 			"保存" : function() {
 				var id = $("#question_id").val();
 				for (var i = 0; i < data1.questions.length; i++) {
-					if (data1.questions[i].questionId == id) {
+					if (data1.questions[i].questionnaireId == id) {
 						data1.questions.splice(i, 1);
 						$("#" + id).remove();
 					}
@@ -274,7 +274,7 @@ jQuery(function($) {
 						var questionEditCheckName = $("#questionEditCheckName").val();
 						var questionEditCheckVal = $("#questionEditCheckVal").val();
 						for(var i = 0;i<data1.questions.length;i++){
-							if(data1.questions[i].questionId==question_id){
+							if(data1.questions[i].questionnaireId==question_id){
 								data1.questions[i].questionName = redioEditQuestionName;
 								data1.questions[i].questionValue = redioEditQuestionValue;
 							}
@@ -308,7 +308,7 @@ jQuery(function($) {
 						var redioEditQuestionName = $("#redioEditQuestionName").val();
 						var redioEditQuestionValue = $("#redioEditQuestionValue").val();
 						for(var i = 0;i<data1.questions.length;i++){
-							if(data1.questions[i].questionId==question_id){
+							if(data1.questions[i].questionnaireId==question_id){
 								data1.questions[i].questionName = redioEditQuestionName;
 								data1.questions[i].questionValue = redioEditQuestionValue;
 							}
@@ -346,7 +346,7 @@ jQuery(function($) {
 								if (question_id == '') {
 									question_id = UUID.prototype.createUUID();
 								}
-								questionJson.questionId = question_id;
+								questionJson.questionnaireId = question_id;
 								questionJson.questionGroupId = groupId;
 								questionJson.filterFlag = true;
 								questionJson.questionGroupName = $("#question_group_name").val();
@@ -425,7 +425,7 @@ jQuery(function($) {
 								}
 								
 								for (var j = 0; j < data1.questions.length; j++) {
-									if (data1.questions[j].questionId == question_id) {
+									if (data1.questions[j].questionnaireId == question_id) {
 										data1.questions.splice(j, 1);
 									}
 								}
@@ -479,7 +479,7 @@ jQuery(function($) {
 								if (question_id == '') {
 									question_id = UUID.prototype.createUUID();
 								}
-								questionJson.questionId = question_id;
+								questionJson.questionnaireId = question_id;
 								var questionType = $("#questionType").val();
 								questionJson.filterFlag = true;
 								questionJson.questionGroupId = groupId;
@@ -535,7 +535,7 @@ jQuery(function($) {
 										})
 								questionJson.options = optionData;
 								for (var j = 0; j < data1.questions.length; j++) {
-									if (data1.questions[j].questionId == question_id) {
+									if (data1.questions[j].questionnaireId == question_id) {
 										data1.questions.splice(j, 1);
 									}
 								}
@@ -749,7 +749,7 @@ jQuery(function($) {
 				}
 				
 				for (var i = 0; i < data1.questions.length; i++) {
-					if (data1.questions[i].questionId == id) {
+					if (data1.questions[i].questionnaireId == id) {
 						data1.questions[i].activeFlag = true;
 						for (var ji = 0; ji < data1.questionGroup.length; ji++) {
 							if (data1.questionGroup[ji].questionGroupId == groupId) {
@@ -771,7 +771,7 @@ jQuery(function($) {
 					}
 				}
 				for (var i = 0; i < data1.questions.length; i++) {
-					if (data1.questions[i].questionId == id) {
+					if (data1.questions[i].questionnaireId == id) {
 						data1.questions[i].activeFlag = false;
 						for (var ji = 0; ji < data1.questionGroup.length; ji++) {
 							if (data1.questionGroup[ji].questionGroupId == groupId) {
@@ -854,15 +854,15 @@ jQuery(function($) {
 			}
 		}
 	}
-	var editquestion = function(type, groupId, questionId, question_group_name,templateFlag) {
+	var editquestion = function(type, groupId, questionnaireId, question_group_name,templateFlag) {
 		$("#questionEditFlag").val(true);
-		$("#question_id").val(questionId);
+		$("#question_id").val(questionnaireId);
 		$("#groupId").val(groupId);
 		$("#tableListAll tr").remove();
 		$("#questionType").val(type);
 		if (type == 0|| type == 1||type == 2 ) {
 			for (var i = 0; i < data1.questions.length; i++) {
-				if (data1.questions[i].questionId == questionId) {
+				if (data1.questions[i].questionnaireId == questionnaireId) {
 					if(templateFlag==false){
 						$('#redioEditQuestionName').attr('disabled',true);
 						$('#redioEditQuestionValue').attr('disabled',true);
@@ -884,7 +884,7 @@ jQuery(function($) {
 			}
 		} else if (type == 3) {
 			for (var i = 0; i < data1.questions.length; i++) {
-				if (data1.questions[i].questionId == questionId) {
+				if (data1.questions[i].questionnaireId == questionnaireId) {
 					$("#option_List").empty();
 					if(templateFlag==true){
 						$("#questionEditCheckName").attr("disabled",true);
@@ -922,7 +922,7 @@ jQuery(function($) {
 			}
 		} else if(type=4){
 			for (var i = 0; i < data1.questions.length; i++) {
-				if (data1.questions[i].questionId == questionId) {
+				if (data1.questions[i].questionnaireId == questionnaireId) {
 					$("#questionEditScoreName").val(data1.questions[i].questionName);
 					$("#questionEditScoreVal").val(data1.questions[i].questionValue);
 					$("#myEditOverAllScore").html(data1.questions[i].options.length+"分");
@@ -993,7 +993,7 @@ jQuery(function($) {
 
 	var questionTop = function(question_id, flag) {
 		for (var j = 0; j < data1.questions.length; j++) {
-			if (data1.questions[j].questionId == question_id) {
+			if (data1.questions[j].questionnaireId == question_id) {
 				if (data1.questions[j].topFlag == 0) {
 					data1.questions[j].topFlag = 1;
 					$("#top_" + question_id).removeClass(
@@ -1025,8 +1025,8 @@ jQuery(function($) {
 			}
 			//选中第一个问题
 			for(var i = 0;i<data1.questions.length;i++){
-				if(data1.questions[i].questionId==array[1]){
-					data1.questions[i].questionId.activeFlag = true;
+				if(data1.questions[i].questionnaireId==array[1]){
+					data1.questions[i].questionnaireId.activeFlag = true;
 				}
 			}
 		}else{
@@ -1036,8 +1036,8 @@ jQuery(function($) {
 			for(var i = 0;i<array.size();i++){
 				$("#"+$("#add_"+groupid+" li input:checkbox")[i].id).attr('checked',false);
 				for(var ii = 0;ii<data1.questions.length;ii++){
-					if(data1.questions[ii].questionId=array[1]){
-						data1.questions[ii].questionId.activeFlag = false;
+					if(data1.questions[ii].questionnaireId=array[1]){
+						data1.questions[ii].questionnaireId.activeFlag = false;
 					}
 				}
 			}
@@ -1141,7 +1141,7 @@ jQuery(function($) {
 		update : function(event, ui) {
 			$(".question_option .sortcontainer li").each(function(i) {
 				for (var j = 0; j < data1.questions.length; j++) {
-					if (this.id == data1.questions[j].questionId) {
+					if (this.id == data1.questions[j].questionnaireId) {
 						data1.questions[j].sortNumber = i;
 					}
 				}
@@ -1164,7 +1164,7 @@ jQuery(function($) {
 						var questionEditScoreVal = $("#questionEditScoreVal").val();
 						var question_id = $("#question_id").val();
 						for(var i =0 ;i<data1.questions.length;i++){
-							if(data1.questions[i].questionId==question_id){
+							if(data1.questions[i].questionnaireId==question_id){
 								data1.questions[i].questionValue = questionEditScoreVal;
 							}
 						}
@@ -1197,7 +1197,7 @@ jQuery(function($) {
 								if (question_id == '') {
 									question_id = UUID.prototype.createUUID();
 								}
-								questionJson.questionId = question_id;
+								questionJson.questionnaireId = question_id;
 								questionJson.questionGroupId = groupId;
 								questionJson.filterFlag = true;
 								questionJson.questionGroupName = $("#question_group_name").val();
@@ -1234,7 +1234,7 @@ jQuery(function($) {
 										+ questionName
 										+ "&apos;)'>删除</a></span></li>";
 								for (var j = 0; j < data1.questions.length; j++) {
-									if (data1.questions[j].questionId == question_id) {
+									if (data1.questions[j].questionnaireId == question_id) {
 										data1.questions.splice(j, 1);
 									}
 								}
@@ -1277,18 +1277,18 @@ jQuery(function($) {
 								if (jQuery('#myEditTemplateFrom')
 										.validationEngine('validate') == false)
 									return;
-								var questionId = $("#question_id").val();
+								var questionnaireId = $("#question_id").val();
 								var groupId = $("#groupId").val();
 								var editQuestionTemplateType = $(
 										"#editQuestionTemplateType").val();
 								var questionTemplateVal = $(
 										"#questionTemplateVal").val();
 								for (var i = 0; i < data1.questions.length; i++) {
-									if (data1.questions[i].questionId == questionId) {
+									if (data1.questions[i].questionnaireId == questionnaireId) {
 										data1.questions[i].questionValue = questionTemplateVal;
 										if (editQuestionTemplateType == 1) {
 											data1.questions[i].questionName = questionTemplateVal;
-											$("#" + groupId + "_" + questionId)
+											$("#" + groupId + "_" + questionnaireId)
 													.text(questionTemplateVal);
 										}
 									}
@@ -1309,7 +1309,7 @@ jQuery(function($) {
 			"保存" : function() {
 				var id = $("#question_id").val();
 				for (var i = 0; i < data1.questions.length; i++) {
-					if (data1.questions[i].questionId == id) {
+					if (data1.questions[i].questionnaireId == id) {
 						data1.questions.splice(i, 1);
 						$("#" + id).remove();
 					}
@@ -1341,7 +1341,7 @@ jQuery(function($) {
 						var questionEditCheckName = $("#questionEditCheckName").val();
 						var questionEditCheckVal = $("#questionEditCheckVal").val();
 						for(var i = 0;i<data1.questions.length;i++){
-							if(data1.questions[i].questionId==question_id){
+							if(data1.questions[i].questionnaireId==question_id){
 								data1.questions[i].questionName = redioEditQuestionName;
 								data1.questions[i].questionValue = redioEditQuestionValue;
 							}
@@ -1375,7 +1375,7 @@ jQuery(function($) {
 						var redioEditQuestionName = $("#redioEditQuestionName").val();
 						var redioEditQuestionValue = $("#redioEditQuestionValue").val();
 						for(var i = 0;i<data1.questions.length;i++){
-							if(data1.questions[i].questionId==question_id){
+							if(data1.questions[i].questionnaireId==question_id){
 								data1.questions[i].questionName = redioEditQuestionName;
 								data1.questions[i].questionValue = redioEditQuestionValue;
 							}
@@ -1414,7 +1414,7 @@ jQuery(function($) {
 								if (question_id == '') {
 									question_id = UUID.prototype.createUUID();
 								}
-								questionJson.questionId = question_id;
+								questionJson.questionnaireId = question_id;
 								questionJson.questionGroupId = groupId;
 								questionJson.filterFlag = true;
 								questionJson.questionGroupName = $("#question_group_name").val();
@@ -1498,7 +1498,7 @@ jQuery(function($) {
 								}
 								
 								for (var j = 0; j < data1.questions.length; j++) {
-									if (data1.questions[j].questionId == question_id) {
+									if (data1.questions[j].questionnaireId == question_id) {
 										data1.questions.splice(j, 1);
 									}
 								}
@@ -1553,7 +1553,7 @@ jQuery(function($) {
 								if (question_id == '') {
 									question_id = UUID.prototype.createUUID();
 								}
-								questionJson.questionId = question_id;
+								questionJson.questionnaireId = question_id;
 								var questionType = $("#questionType").val();
 								questionJson.filterFlag = true;
 								questionJson.questionGroupId = groupId;
@@ -1609,7 +1609,7 @@ jQuery(function($) {
 										})
 								questionJson.options = optionData;
 								for (var j = 0; j < data1.questions.length; j++) {
-									if (data1.questions[j].questionId == question_id) {
+									if (data1.questions[j].questionnaireId == question_id) {
 										data1.questions.splice(j, 1);
 									}
 								}
@@ -1823,7 +1823,7 @@ jQuery(function($) {
 				}
 				
 				for (var i = 0; i < data1.questions.length; i++) {
-					if (data1.questions[i].questionId == id) {
+					if (data1.questions[i].questionnaireId == id) {
 						data1.questions[i].activeFlag = true;
 						for (var ji = 0; ji < data1.questionGroup.length; ji++) {
 							if (data1.questionGroup[ji].questionGroupId == groupId) {
@@ -1845,7 +1845,7 @@ jQuery(function($) {
 					}
 				}
 				for (var i = 0; i < data1.questions.length; i++) {
-					if (data1.questions[i].questionId == id) {
+					if (data1.questions[i].questionnaireId == id) {
 						data1.questions[i].activeFlag = false;
 						for (var ji = 0; ji < data1.questionGroup.length; ji++) {
 							if (data1.questionGroup[ji].questionGroupId == groupId) {
@@ -1928,15 +1928,15 @@ jQuery(function($) {
 			}
 		}
 	}
-	var editquestion = function(type, groupId, questionId, question_group_name,templateFlag) {
+	var editquestion = function(type, groupId, questionnaireId, question_group_name,templateFlag) {
 		$("#questionEditFlag").val(true);
-		$("#question_id").val(questionId);
+		$("#question_id").val(questionnaireId);
 		$("#groupId").val(groupId);
 		$("#tableListAll tr").remove();
 		$("#questionType").val(type);
 		if (type == 0|| type == 1||type == 2 ) {
 			for (var i = 0; i < data1.questions.length; i++) {
-				if (data1.questions[i].questionId == questionId) {
+				if (data1.questions[i].questionnaireId == questionnaireId) {
 					if(templateFlag==false){
 						$('#redioEditQuestionName').attr('disabled',true);
 						$('#redioEditQuestionValue').attr('disabled',true);
@@ -1958,7 +1958,7 @@ jQuery(function($) {
 			}
 		} else if (type == 3) {
 			for (var i = 0; i < data1.questions.length; i++) {
-				if (data1.questions[i].questionId == questionId) {
+				if (data1.questions[i].questionnaireId == questionnaireId) {
 					$("#option_List").empty();
 					if(templateFlag==true){
 						$("#questionEditCheckName").attr("disabled",true);
@@ -1996,7 +1996,7 @@ jQuery(function($) {
 			}
 		} else if(type=4){
 			for (var i = 0; i < data1.questions.length; i++) {
-				if (data1.questions[i].questionId == questionId) {
+				if (data1.questions[i].questionnaireId == questionnaireId) {
 					$("#questionEditScoreName").val(data1.questions[i].questionName);
 					$("#questionEditScoreVal").val(data1.questions[i].questionValue);
 					$("#myEditOverAllScore").html(data1.questions[i].options.length+"分");
@@ -2069,7 +2069,7 @@ jQuery(function($) {
 
 	var questionTop = function(question_id, flag) {
 		for (var j = 0; j < data1.questions.length; j++) {
-			if (data1.questions[j].questionId == question_id) {
+			if (data1.questions[j].questionnaireId == question_id) {
 				if (data1.questions[j].topFlag == 0) {
 					data1.questions[j].topFlag = 1;
 					$("#top_" + question_id).removeClass(
@@ -2101,8 +2101,8 @@ jQuery(function($) {
 			}
 			//选中第一个问题
 			for(var i = 0;i<data1.questions.length;i++){
-				if(data1.questions[i].questionId==array[1]){
-					data1.questions[i].questionId.activeFlag = true;
+				if(data1.questions[i].questionnaireId==array[1]){
+					data1.questions[i].questionnaireId.activeFlag = true;
 				}
 			}
 		}else{
@@ -2112,8 +2112,8 @@ jQuery(function($) {
 			for(var i = 0;i<array.size();i++){
 				$("#"+$("#add_"+groupid+" li input:checkbox")[i].id).attr('checked',false);
 				for(var ii = 0;ii<data1.questions.length;ii++){
-					if(data1.questions[ii].questionId=array[1]){
-						data1.questions[ii].questionId.activeFlag = false;
+					if(data1.questions[ii].questionnaireId=array[1]){
+						data1.questions[ii].questionnaireId.activeFlag = false;
 					}
 				}
 			}

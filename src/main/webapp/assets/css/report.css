@@ -217,7 +217,7 @@ div.thumb-img {
     margin: 5px 0;
 }
 
-div.thumb-img > img {
+div.thumb-img img {
     width: 100%;
     cursor: pointer;
 }
@@ -228,7 +228,7 @@ div.thumb-img > img {
     display: none;
     height: 30px;
     position: absolute;
-    right: -5px;
+    right:0px;
     top: -5px;
     width: 30px;
     z-index: 999103;

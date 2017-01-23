@@ -1934,6 +1934,9 @@ function loadPage() {
 		specialQuestions: reportGlobal.specialQuestions,
 		store: JSON.stringify(reportGlobal.storeSelected)
 	};
+
+	reportGlobal.postdata = postdata;
+
 	$.ajax({
 		type: 'post',
 		url: reportGlobal.ctx + '/page/reportEchart/getChartAllInfo.json', // '/assets/report/testdata-'+page+'.js',
@@ -1987,6 +1990,8 @@ function getTotalCount() {
 }
 
 function drawCharts(jsondata) {
+    reportGlobal.chartsData = jsondata;   // 缓存数据
+
 	// 根绝参数判断是否要显示chart还是tablea
 	if (jsondata.type == 'table') {
 		$('.chart-main').hide();
@@ -2041,4 +2046,5 @@ function drawCharts(jsondata) {
 function finalInits() {
 	_loadSavedDimnsnList(reportGlobal.jsondata);
 	getTotalCount();
+
 }

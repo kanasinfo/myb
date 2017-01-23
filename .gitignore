@@ -6,3 +6,4 @@
 /.gitignore
 .idea/
 myb-portal.iml
+.DS_Store
