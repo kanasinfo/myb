@@ -56,10 +56,11 @@
 <!--         write-fsync="true"/> -->
 <!-- 	</mongo:mongo> -->
 <!-- 	<mongo:db-factory dbname="mongoDbFactory" mongo-ref="mongo" username="${mongo.userName}" password="${mongo.passWord}"/> -->
-	<mongo:db-factory id="mongoDbFactory" dbname="${mongo.dbname}" host="${mongo.host}" port="${mongo.port}" username="${mongo.userName}" password="${mongo.passWord}"/>
+	<mongo:db-factory write-concern="NORMAL" id="mongoDbFactory" dbname="${mongo.dbname}" host="${mongo.host}" port="${mongo.port}" username="${mongo.userName}" password="${mongo.passWord}"/>
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
+	
 	<!-- <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate"> -->
 	<!-- <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"></constructor-arg> -->
 	<!-- </bean> -->

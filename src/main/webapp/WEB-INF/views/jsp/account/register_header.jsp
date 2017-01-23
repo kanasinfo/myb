@@ -9,8 +9,8 @@
 	<div class="wrapper">
 		<div style="text-align:center;padding:30px;"><img src="${ctx}/assets/images/logo-green-bg.png" />
 			<div style="margin:30px auto 0 auto; width:540px;">
-				<div style="float:left;width:80px;margin-right:150px;"><img src="${ctx}/assets/images/register_info1.png" /></div>
 				<div style="float:left;width:80px;margin-right:150px;"><img src="${ctx}/assets/images/register_mobile1.png" /></div>
+				<div style="float:left;width:80px;margin-right:150px;"><img src="${ctx}/assets/images/register_info2.png" /></div>
 				<div style="float:left;width:80px;"><img src="${ctx}/assets/images/register_final2.png" /></div>
 				<div style="clear:both;"></div>
 			</div>
