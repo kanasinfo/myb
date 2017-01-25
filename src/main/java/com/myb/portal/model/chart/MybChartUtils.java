@@ -44,7 +44,8 @@ public class MybChartUtils {
 
 		// Store in filter
 		JSONObject jbStore = JSONObject.fromObject(jb.getString("store"));
-		if("nostore".equals(jbStore.getString("storeType"))){
+
+		if(!jbStore.has("storeType") || "nostore".equals(jbStore.getString("storeType"))){
 			list.add(Criteria.where("storeId").in("",null).and("storeGroupId").in("",null));
 		}else if(isNotNull(jbStore.getString("storeType"))) {
 			List<String> listParam = extractStoreIds(jbStore);
