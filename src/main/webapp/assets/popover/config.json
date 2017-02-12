@@ -1,0 +1,11 @@
+{
+  "vars": {},
+  "css": [
+    "popovers.less"
+  ],
+  "js": [
+    "tooltip.js",
+    "popover.js"
+  ],
+  "customizerUrl": "http://getbootstrap.com/customize/?id=f24d15af85105ddaaeb43e3c66797e78"
+}

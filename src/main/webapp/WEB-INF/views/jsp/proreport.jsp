@@ -14,8 +14,10 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/assets/css/main.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/assets/css/report.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/assets/css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/assets/popover/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="${ctx}/assets/css/themes-cust/myb-green/jquery-ui.css">
     <link rel="stylesheet" href="${ctx}/assets/jquery-modal/jquery.modal.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <style type="text/css">
         /*
          * Customize borders and shading to suit this nested layout
@@ -98,9 +100,14 @@
         .right-south {
             background-color: white;
         }
+
         .modal {
             max-width: 900px;
             padding: 15px 0;
+        }
+
+        .popover {
+            width: 250px;
         }
     </style>
 
@@ -243,10 +250,14 @@
 </div>
 <div class="outer-east">
     <div class="right-north">
-        <div id="slideUp"></div>
+        <div style="text-align: center">
+            <a href="#" id="slideUp"><img src="${ctx}/assets/images/bigup.gif" alt=""></a>
+        </div>
     </div>
     <div class="right-south">
-        <div id="slideDown"></div>
+        <div style="text-align: center">
+            <a href="#" id="slideDown"><img src="${ctx}/assets/images/bigdown.gif" alt=""></a>
+        </div>
         <div id="slideToolbar" style="text-align:center">
             <a href="#" id="downloadCharts">
                 <img src="${ctx}/assets/images/dl.png" alt="" style="margin-top: 5px;">
@@ -254,11 +265,11 @@
         </div>
     </div>
     <div class="right-center" style="background-color:white; padding: 0 5px; overflow-y: auto">
-            <div class="thumb-img hide" >
-                <a href="#" rel="modal:open" class="a-img">
-                    <a class="fancybox-close" style="display: none;"></a>
-                </a>
-            </div>
+        <div class="thumb-img hide">
+            <a href="#" rel="modal:open" class="a-img">
+                <a class="fancybox-close" style="display: none;" title="删除"></a>
+            </a>
+        </div>
     </div>
 </div>
 
@@ -338,6 +349,7 @@
                                              class="text ui-widget-content ui-corner-all">
     <p class="validateTips">所有的表单字段都是必填的。</p>
 </div>
+<div id="modal" style="display: none;"></div>
 <script type="text/javascript" src="${ctx}/assets/jqueryui/jquery.js"></script>
 <script type="text/javascript" src="${ctx}/assets/jqueryui/jquery-ui.js"></script>
 <script type="text/javascript" src="${ctx}/assets/jqueryui/jquery.layout/jquery.layout.min.js"></script>
@@ -351,6 +363,10 @@
 <script type="text/javascript" src="${ctx}/assets/zipjs/jszip.js"></script>
 <script type="text/javascript" src="${ctx}/assets/zipjs/FileSaver.js"></script>
 
+<script type="text/javascript" src="${ctx}/assets/js/clipboard.min.js"></script>
+<script type="text/javascript" src="${ctx}/assets/popover/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/proreport-export.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/zipfile.js"></script>
 <script type="text/javascript">
@@ -368,6 +384,10 @@
         fadeDuration: null,     // Number of milliseconds the fade transition takes (null means no transition)
         fadeDelay: 1.0          // Point during the overlay's fade-in that the modal begins to fade in (.5 = 50%, 1.5 = 150%, etc.)
     };
+
+    toastr.options = {
+        positionClass: "toast-top-center"
+    }
 
     //Load the data of the page
     reportGlobal.ctx = '${ctx}';
@@ -451,7 +471,23 @@
         $("#showmenu").selectmenu();
         $("#dimension-tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
         $("#dimension-tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
-        $(document).tooltip();
+
+        $('#slideUp').on('click', function (e) {
+            e.preventDefault();
+            var $cnt = $('div.right-center');
+            var s = $cnt.scrollTop() - 50;
+            $cnt.scrollTop(s > 0 ? s : 0);
+
+        });
+
+        $('#slideDown').on('click', function (e) {
+            e.preventDefault();
+            var $cnt = $('div.right-center');
+            var height = $cnt[0].scrollHeight;
+            var s = $cnt.scrollTop() + 50;
+            console.log('heigth: ' + height + ', s: ' + s);
+            $cnt.scrollTop(s < height ? s : height);
+        });
     });
 </script>
 </body>

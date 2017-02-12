@@ -22,6 +22,7 @@ public class ChartsFragement {
     private String store;
     private String data;                        // 统计参数
     private String image;                       // 图片
+    private String comment;                     // 批注
     private Date createdDate = new Date();                   // 添加时间
 
     private String left;       // 左边FragementId
@@ -184,5 +185,13 @@ public class ChartsFragement {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

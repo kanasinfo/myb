@@ -167,4 +167,11 @@ public class MybProReportController extends ControllerSupport {
     public AjaxReq loadChartsFragementModelData(@PathVariable String fragementId, String questionId) {
         return mybProReportService.findChartsFragementById(questionId, fragementId);
     }
+
+    @RequestMapping(value = "/comment/{fragementId}", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxReq saveChartsFragementComment(@PathVariable String fragementId, String comment, String questionId) {
+
+        return mybProReportService.saveChartsFragementCommnet(fragementId, comment, questionId);
+    }
 }

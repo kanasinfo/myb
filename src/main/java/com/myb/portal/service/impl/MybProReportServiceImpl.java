@@ -474,7 +474,7 @@ public class MybProReportServiceImpl implements MybProReportService {
             }
 
 
-            ajaxReq.setData(chartsFragement.getFragementId());
+            ajaxReq.setData(chartsFragement);
             ajaxReq.setSuccess(true);
             ajaxReq.setMessage("保存成功");
         } catch (Exception e) {
@@ -535,6 +535,24 @@ public class MybProReportServiceImpl implements MybProReportService {
 
         ajaxReq.setSuccess(true);
         ajaxReq.setData(fragement);
+        return ajaxReq;
+    }
+
+    @Override
+    public AjaxReq saveChartsFragementCommnet(String fragementId, String comment, String questionId) {
+        AjaxReq ajaxReq = new AjaxReq();
+        try {
+            Query query = Query.query(Criteria.where("questionnaireId").is(questionId).and("chartsFragements.fragementId").is(fragementId));
+
+            Update update = new Update();
+            update.set("chartsFragements.$.comment", comment);
+
+            mongoTemplate.updateMulti(query, update, ArchiveCharts.class);
+            ajaxReq.setSuccess(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ajaxReq.setSuccess(false);
+        }
         return ajaxReq;
     }
 

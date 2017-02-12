@@ -5,12 +5,16 @@
 
     </div>
     <div class="charts-bar" style="position: absolute;
-                                    padding: 10px 20px;
                                     bottom: 0;
                                     background: #707070;
                                     color: #ffffff;
+                                    width: 100%;
                                     border-radius: 0 0 8px 8px; display: none;">
-
+        <div id="cmt" style="margin: 10px 20px;"></div>
+        <a href="#" id="copyCmt" data-clipboard-action="copy" data-clipboard-target="#cmt" style="
+                        position: absolute;right: 3px;top: 5px; display: none;">
+            <img src="${ctx}/assets/images/copy.png" alt="" style="width: 24px; height: 24px;" title="复制文字">
+        </a>
     </div>
     <a href="#" style="position: absolute;
             color: #fff;
@@ -32,13 +36,35 @@
         font-size: 18px;
         letter-spacing: 0.2em;"><span id="dling"></span> <span id="index"></span> / <span id="size"></span></div>
 </div>
+<script type="text/javascript" src="${ctx}/assets/js/clipboard.js"></script>
+
 <script>
     (function () {
-        if(window.downloadImgs) {
+
+        $('div.charts-bar').hover(function () {
+            console.log('hover')
+            $('#copyCmt').css('display', '');
+        }, function () {
+            $('#copyCmt').css('display', 'none');
+        });
+
+
+        var clipboard = new Clipboard('#copyCmt');
+
+        clipboard.on('success', function (e) {
+            console.log(e);
+            toastr.success('文字已复制到剪切板!');
+        });
+
+        clipboard.on('error', function (e) {
+            console.log(e);
+        });
+
+        if (window.downloadImgs) {
             $('#chartsCanvas a').hide();
         }
-        var addDownloadImgs = function(image) {
-            if(window.downloadImgs) {
+        var addDownloadImgs = function (image) {
+            if (window.downloadImgs) {
                 window.downloadImgs.push({
                     name: new Date().getTime() + '.png',
                     image: image.replace("data:image/png;base64,", "")
@@ -51,53 +77,58 @@
                     type: 'post',
                     url: '${ctx}/page/proreport/modal/' + fragementId + '?questionId=${questionnaireId}',
                     async: false,
+                    cache: false,
                     success: function (req) {
                         $('span#index').text(req.data.index + 1);
                         $('span#size').text(req.data.size);
                         console.log('current fragementId: ' + req.data.fragementId);
                         window.currentFragement = req.data;
-                        console.log(req);
                         $('#chartsCanvas>a.charts-left').attr('data-fragement-id', req.data.left);
                         $('#chartsCanvas>a.charts-right').attr('data-fragement-id', req.data.right);
                         addDownloadImgs(req.data.image);
-                        if(window.downloadImgs) {
+                        if (window.downloadImgs) {
                             $('span#dling').text('下载中, 当前进度');
-                            loadCharts(req.data, function(){
+                            loadCharts(req.data, function () {
                                 setTimeout(function () {
                                     $('#chartsCanvas>a.charts-right').trigger('click');
-                                }, 1000);
+                                }, 1500);
 
                             });
-                        }else{
+                        } else {
                             $('span#dling').text('');
                             loadCharts(req.data);
                         }
                     }
                 });
-            }else{
-                var zip = new JSZip();
-                var img = zip.folder("images");
-                $.each(window.downloadImgs, function (i, o) {
-                    img.file(o.name, o.image, {base64: true});
-                });
-                zip.generateAsync({type: "blob"})
-                    .then(function (content) {
-                        saveAs(content, "charts-images.zip");
+            } else {
+                if (window.downloadImgs) {
+                    var zip = new JSZip();
+                    var img = zip.folder("images");
+                    $.each(window.downloadImgs, function (i, o) {
+                        img.file(o.name, o.image, {base64: true});
                     });
-                window.downloadImgs = null;
-                $.modal.close();
+                    zip.generateAsync({type: "blob"})
+                        .then(function (content) {
+                            saveAs(content, "charts-images.zip");
+                        });
+                    window.downloadImgs = null;
+                    $.modal.close();
+                }
             }
         };
         loadModelData('${fragementId}');
 
         $('#chartsCanvas>a.charts-left').on('click', function (e) {
             e.preventDefault();
-            loadModelData(window.currentFragement.left)
+            var left = window.currentFragement.left;
+            loadModelData(left);
         });
         $('#chartsCanvas>a.charts-right').on('click', function (e) {
             e.preventDefault();
-            loadModelData(window.currentFragement.right)
+            var right = window.currentFragement.right;
+            loadModelData(right);
         });
+
 
     })();
 </script>

@@ -96,4 +96,6 @@ public interface MybProReportService {
     AjaxReq deleteChartsFragement(String id, String fragementId);
 
 	AjaxReq findChartsFragementById(String id, String fragementId);
+
+    AjaxReq saveChartsFragementCommnet(String fragementId, String comment, String questionId);
 }
