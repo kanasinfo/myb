@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.myb.portal.shiro.CaptchaServlet;
+import com.myb.portal.util.CaptchaUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
@@ -17,8 +19,10 @@ import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myb.portal.exception.CaptchaException;
@@ -27,6 +31,7 @@ import com.myb.portal.service.MybAccountService;
 import com.myb.portal.shiro.UsernamePasswordCaptchaToken;
 import com.myb.portal.support.ControllerSupport;
 import com.myb.portal.util.AjaxReq;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("account")
@@ -120,32 +125,60 @@ public class MybAccountController extends ControllerSupport{
 	    currentUser.logout();
         return "redirect:../main/question.html";
     }
+
+    @RequestMapping(value = "registerAccount.html", method = RequestMethod.GET)
+    public String registerMobile() {
+        return ACCOUNT_PATH + "register-account";
+    }
+
 	@RequestMapping(value="register",method=RequestMethod.GET)
 	public ModelAndView register(ModelAndView mv){
 		mv.setViewName(ACCOUNT_PATH+"register");
 		return mv;
 	}
-	/**
-	 * registerAccount TODO(注册功能) 
-	 * @author wangzx
-	 * @param mybAccount
-	 * @return
-	 */
+
 	@RequestMapping(value="register",method=RequestMethod.POST)
-	public ModelAndView registerAccount(MybAccount mybAccount){
-		ModelAndView mv = new ModelAndView();
-		AjaxReq aReq = mybAccountService.registerAccount(mybAccount);
-		//判断是否注册成功
-		if(aReq.isSuccess()){
-			mv.setViewName(THEMES_PATH+"main");
-			return mv;
-		}else{
-			mv.addObject("mes", aReq.getData());
-			mv.setViewName(ACCOUNT_PATH+"login");
-			return mv;
-		}
-	}
-	public static void main(String[] args) {
+	public String registerMobile(String mobile, String mobileCode, String code, HttpSession session, Model model){
+        model.addAttribute("mobile", mobile);
+
+        return ACCOUNT_PATH + "register-account";
+    }
+
+
+    /**
+     * registerAccount
+     */
+    @RequestMapping(value="register-account",method=RequestMethod.POST)
+    public String registerAccount(MybAccount mybAccount, RedirectAttributes redirectAttributes){
+        AjaxReq ajaxReq = mybAccountService.registerAccount(mybAccount);
+        if (ajaxReq.isSuccess()) {
+            return ACCOUNT_PATH + "register-success";
+        }else {
+            redirectAttributes.addFlashAttribute("error", ajaxReq.getMessage());
+            return "redirect:registerAccount.html";
+        }
+    }
+
+    @RequestMapping(value = "loginEmail/verify")
+    @ResponseBody
+    public boolean verifyLoginEmail(String loginEmail) {
+        return mybAccountService.findByLoginEmail(loginEmail) == null;
+    }
+
+    @RequestMapping(value = "phone/verify")
+    @ResponseBody
+    public boolean verifyPhone(String phone) {
+        return mybAccountService.findByPhone(phone) == null;
+    }
+
+    @RequestMapping(value = "code/verify")
+    @ResponseBody
+    public boolean verifyCode(String code, HttpSession session) {
+        String exitCode = (String) SecurityUtils.getSubject().getSession()
+                .getAttribute(CaptchaServlet.KEY_CAPTCHA);
+        return code.equalsIgnoreCase(exitCode);
+    }
+    public static void main(String[] args) {
 		List<Integer> list = new ArrayList<Integer>();
 	}
 }

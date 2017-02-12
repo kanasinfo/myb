@@ -37,4 +37,8 @@ public interface MybAccountService {
 	 * @return
 	 */
 	public int queryAmount();
+
+	MybAccount findByPhone(String phone);
+
+	MybAccount findByLoginEmail(String loginEmail);
 }

@@ -55,9 +55,20 @@ public class MybAccountServiceImpl implements MybAccountService {
 		}
 		return amount;
 	}
+
+	@Override
+	public MybAccount findByPhone(String phone) {
+		return mybAccountRepository.findByPhone(phone);
+	}
+
+	@Override
+	public MybAccount findByLoginEmail(String loginEmail) {
+		return mybAccountRepository.findByloginEmail(loginEmail);
+	}
+
 	/**
 	 * registerAccount TODO(用户注册)
-	 * 
+	 *
 	 * @author wangzx
 	 * @param mybAccount
 	 * @return
@@ -88,8 +99,12 @@ public class MybAccountServiceImpl implements MybAccountService {
 			aReq.setSuccess(true);
 			aReq.setData("注册成功");
 		} catch (ServiceException e) {
+		    aReq.setSuccess(false);
+		    aReq.setMessage(e.getMessage());
 			e.printStackTrace();
 		} catch (Exception e) {
+            aReq.setSuccess(false);
+            aReq.setMessage(e.getMessage());
 			e.printStackTrace();
 		}
 		return aReq;
@@ -97,7 +112,7 @@ public class MybAccountServiceImpl implements MybAccountService {
 
 	/**
 	 * saveGroup TODO(保存该用户的分组)
-	 * 
+	 *
 	 * @author wangzx
 	 * @param groupName
 	 * @return
@@ -128,7 +143,7 @@ public class MybAccountServiceImpl implements MybAccountService {
 
 	/**
 	 * saveAccountAndGroup TODO(保存门店和组的关系)
-	 * 
+	 *
 	 * @author wangzx
 	 * @return
 	 */
@@ -166,7 +181,7 @@ public class MybAccountServiceImpl implements MybAccountService {
 
 	/**
 	 * queryGroupByAccountId TODO(根据用户ID查询分组信息)
-	 * 
+	 *
 	 * @author wangzx
 	 * @param accountId
 	 * @return

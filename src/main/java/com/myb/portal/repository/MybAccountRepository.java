@@ -10,4 +10,6 @@ public interface MybAccountRepository extends JpaRepository<MybAccount, String>{
 	MybAccount findByloginEmail(String loginEmail);
 	@Modifying @Query("update MybAccount set creaditAmount = creaditAmount-?1 where id=?2")
 	void updateAmountById(int amount,String accountId);
+
+    MybAccount findByPhone(String phone);
 }
