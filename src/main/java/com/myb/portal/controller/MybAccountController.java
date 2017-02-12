@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -69,7 +70,7 @@ public class MybAccountController extends ControllerSupport{
 	 * @return
 	 */
 	@RequestMapping(value="/login.html",method=RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request,ModelAndView mv) throws CaptchaException{
+	public ModelAndView login(HttpServletRequest request, HttpSession session, ModelAndView mv) throws CaptchaException{
 		SavedRequest savedRequest = WebUtils.getSavedRequest(request);
 		long time = System.currentTimeMillis();
 		//获取用户名
@@ -84,6 +85,7 @@ public class MybAccountController extends ControllerSupport{
          Subject currentUser = SecurityUtils.getSubject();  
          try {
         	 currentUser.login(token);
+             session.setAttribute("loginName", loginName);
         	 try {
         		 mv.setViewName("redirect:"+savedRequest.getRequestUrl().replace("/myb-portal", ""));
         	 } catch (Exception e) {
@@ -113,13 +115,11 @@ public class MybAccountController extends ControllerSupport{
 		return mv;
 	}
 	@RequestMapping(value="loginOut",method=RequestMethod.GET)
-	public ModelAndView loginOut(){
-		ModelAndView mv = new ModelAndView();
-	    Subject currentUser = SecurityUtils.getSubject(); 
+	public String loginOut(){
+	    Subject currentUser = SecurityUtils.getSubject();
 	    currentUser.logout();
-	    mv.setViewName(THEMES_PATH+"main");
-		return mv;
-	}
+        return "redirect:../main/question.html";
+    }
 	@RequestMapping(value="register",method=RequestMethod.GET)
 	public ModelAndView register(ModelAndView mv){
 		mv.setViewName(ACCOUNT_PATH+"register");
